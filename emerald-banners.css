@@ -1,0 +1,111 @@
+:root {
+  --site-emerald-texture: url("assets/site-emerald-banner-texture.webp");
+}
+
+/* Clean page banners use the reference texture itself. */
+.legal-hero,
+.page-hero.ask-hero,
+.page-hero.books-hero,
+.page-hero.donation-hero,
+.page-hero.qna-hero,
+.page-hero.soul-hero,
+.page-hero.levado-hero {
+  isolation: isolate !important;
+  background: #003018 var(--site-emerald-texture) center / cover no-repeat !important;
+}
+
+.legal-hero::before,
+.legal-hero::after,
+.page-hero.ask-hero::before,
+.page-hero.ask-hero::after,
+.page-hero.books-hero::before,
+.page-hero.books-hero::after,
+.page-hero.donation-hero::before,
+.page-hero.donation-hero::after,
+.page-hero.qna-hero::before,
+.page-hero.qna-hero::after,
+.page-hero.soul-hero::before,
+.page-hero.soul-hero::after,
+.page-hero.levado-hero::before,
+.page-hero.levado-hero::after {
+  background: transparent !important;
+  opacity: 0 !important;
+}
+
+/* Image-led banners keep their subject while receiving the exact emerald hue and texture. */
+.home-live-hero,
+.about-rabbi-hero,
+.article-topic-hero,
+.page-hero.psakim-hero,
+.page-hero.spark-premium-hero {
+  isolation: isolate !important;
+  background-color: #003018 !important;
+}
+
+.home-live-hero::before,
+.about-rabbi-hero::before,
+.article-topic-hero::before,
+.page-hero.psakim-hero::before,
+.page-hero.spark-premium-hero::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  display: block !important;
+  pointer-events: none !important;
+  background: var(--site-emerald-texture) center / cover no-repeat !important;
+  opacity: .68 !important;
+  mix-blend-mode: normal !important;
+}
+
+.home-live-hero::after,
+.about-rabbi-hero::after,
+.article-topic-hero::after,
+.page-hero.psakim-hero::after,
+.page-hero.spark-premium-hero::after {
+  opacity: .18 !important;
+}
+
+.home-live-hero > *,
+.about-rabbi-hero > *,
+.article-topic-hero > *,
+.page-hero.psakim-hero > *,
+.page-hero.spark-premium-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 680px) {
+  .home-live-hero::before,
+  .about-rabbi-hero::before,
+  .article-topic-hero::before,
+  .page-hero.psakim-hero::before,
+  .page-hero.spark-premium-hero::before {
+    opacity: .74 !important;
+  }
+}
+
+.about-rabbi-bg {
+  filter: saturate(1.02) contrast(1.04) brightness(.9) !important;
+}
+
+/* Growth follows the clean Nefesh banner treatment. */
+.growth-page .page-hero.growth-hero {
+  background: #003018 var(--site-emerald-texture) center / cover no-repeat !important;
+}
+
+.growth-page .page-hero.growth-hero::before,
+.growth-page .page-hero.growth-hero::after {
+  background: transparent !important;
+  opacity: 0 !important;
+}
+
+.about-rabbi-bg::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  pointer-events: none !important;
+  background: var(--site-emerald-texture) center / cover no-repeat !important;
+  opacity: .68 !important;
+}

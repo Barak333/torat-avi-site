@@ -1,0 +1,9 @@
+html body .site-header .main-nav .nav-donate,
+html body .site-header .main-nav .nav-donate[aria-current="page"] {
+  color: #fff !important;
+  background: #b39434 linear-gradient(135deg, #8f6820 0%, #b8922e 42%, #dfc75d 100%) !important;
+  border: 1px solid rgba(255, 235, 157, .5) !important;
+  box-shadow:
+    0 10px 22px rgba(154, 116, 43, .22),
+    inset 0 1px 0 rgba(255, 255, 255, .38) !important;
+}

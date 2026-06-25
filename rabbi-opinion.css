@@ -1,0 +1,660 @@
+/* Premium delayed statement modal on the home page. */
+.rabbi-opinion-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 520ms ease, visibility 520ms ease;
+}
+
+.rabbi-opinion-modal[hidden] {
+  display: none !important;
+}
+
+.rabbi-opinion-modal.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.rabbi-opinion-backdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(4, 78, 43, .42), transparent 42%),
+    rgba(0, 14, 8, .82);
+  backdrop-filter: blur(10px) saturate(.8);
+}
+
+.rabbi-opinion-dialog {
+  --reading-duration: 5s;
+  position: relative;
+  width: min(680px, 100%);
+  max-height: min(720px, calc(100vh - 40px));
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 48px 58px 42px;
+  color: #fffdf0;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(234,215,118,.13), transparent 38%),
+    linear-gradient(180deg, rgba(0,26,14,.08), rgba(0,18,9,.2)),
+    url("assets/site-emerald-banner-texture.webp") center / cover no-repeat;
+  border: 1px solid rgba(234, 215, 118, .78);
+  border-radius: 8px;
+  box-shadow:
+    0 38px 100px rgba(0,0,0,.5),
+    0 0 0 7px rgba(226,202,91,.08),
+    inset 0 1px 0 rgba(255,255,255,.18),
+    inset 0 0 0 5px rgba(0,18,9,.28);
+  opacity: 0;
+  transform: translateY(34px) scale(.93);
+  transition: opacity 620ms cubic-bezier(.2,.8,.2,1), transform 620ms cubic-bezier(.2,.8,.2,1);
+}
+
+.rabbi-opinion-modal.is-visible .rabbi-opinion-dialog {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.rabbi-opinion-dialog::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(234,219,130,.28);
+  border-radius: 5px;
+  pointer-events: none;
+}
+
+.rabbi-opinion-dialog::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 28%, rgba(255,255,255,.09) 48%, transparent 67%);
+  transform: translateX(100%);
+}
+
+.rabbi-opinion-modal.is-visible .rabbi-opinion-dialog::after {
+  animation: rabbiOpinionSheen 1.25s .3s ease-out both;
+}
+
+.rabbi-opinion-crown {
+  position: relative;
+  z-index: 1;
+  width: 88px;
+  height: 26px;
+  margin: -13px auto 12px;
+  border-bottom: 1px solid rgba(234,215,118,.76);
+}
+
+.rabbi-opinion-crown::before,
+.rabbi-opinion-crown::after,
+.rabbi-opinion-crown span {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  width: 9px;
+  height: 9px;
+  border: 1px solid #ead776;
+  background: #064b2c;
+  transform: rotate(45deg);
+}
+
+.rabbi-opinion-crown::before { right: 4px; }
+.rabbi-opinion-crown::after { left: 4px; }
+.rabbi-opinion-crown span {
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  bottom: -8px;
+  transform: translateX(-50%) rotate(45deg);
+  background: linear-gradient(135deg, #f4e48e, #b98d1b);
+  box-shadow: 0 0 15px rgba(234,215,118,.32);
+}
+
+.rabbi-opinion-importance {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 22px auto 22px;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: max-content;
+  max-width: 100%;
+  min-height: 28px;
+  margin: 0 auto 13px;
+  padding: 4px 14px;
+  color: #fff6c7;
+  background:
+    linear-gradient(180deg, rgba(226,198,83,.2), rgba(111,79,8,.12)),
+    rgba(0,27,14,.34);
+  border: 1px solid rgba(234,215,118,.4);
+  border-radius: 6px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.1),
+    0 7px 18px rgba(0,0,0,.12);
+}
+
+.rabbi-opinion-importance strong {
+  font-size: .78rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.rabbi-opinion-importance span {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d5b847);
+}
+
+.rabbi-opinion-importance span:last-child {
+  transform: scaleX(-1);
+}
+
+.rabbi-opinion-importance span::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 4px;
+  height: 4px;
+  background: #ead776;
+  transform: translate(50%, -50%) rotate(45deg);
+}
+
+.rabbi-opinion-heading {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(30px, 1fr) auto minmax(30px, 1fr);
+  align-items: center;
+  gap: 18px;
+  width: min(560px, 100%);
+  margin: 0 auto 22px;
+  padding: 5px 0 11px;
+}
+
+.rabbi-opinion-heading::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 42%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(234,215,118,.58), transparent);
+  transform: translateX(-50%);
+}
+
+.rabbi-opinion-heading h2 {
+  margin: 0;
+  color: #f1dc71;
+  font-size: clamp(2.35rem, 5.4vw, 3.45rem);
+  line-height: 1;
+  font-weight: 950;
+  background: linear-gradient(180deg, #fff3a5 0%, #e6c653 48%, #af7f12 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 3px 8px rgba(0,0,0,.38));
+}
+
+.rabbi-opinion-ornament {
+  position: relative;
+  height: 2px;
+  background:
+    linear-gradient(90deg, transparent, rgba(234,215,118,.45) 24%, #d2b543);
+  box-shadow: 0 1px 5px rgba(234,215,118,.12);
+}
+
+.rabbi-opinion-ornament:last-child {
+  transform: scaleX(-1);
+}
+
+.rabbi-opinion-ornament::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 9px;
+  height: 9px;
+  border: 1px solid #ead776;
+  background: #075331;
+  transform: translate(50%, -50%) rotate(45deg);
+  box-shadow: 0 0 0 3px rgba(234,215,118,.07);
+}
+
+.rabbi-opinion-ornament:last-child::after {
+  right: auto;
+  left: 0;
+}
+
+.rabbi-opinion-dialog blockquote {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+
+.rabbi-opinion-dialog blockquote p {
+  margin: 0;
+  color: #fffdf2;
+  font-size: clamp(1.5rem, 3.6vw, 2.25rem);
+  line-height: 1.65;
+  font-weight: 900;
+  text-wrap: balance;
+  text-shadow: 0 3px 12px rgba(0,0,0,.34);
+}
+
+.rabbi-opinion-quote {
+  position: absolute;
+  top: -27px;
+  right: -16px;
+  color: rgba(234,214,110,.17);
+  font-family: Georgia, serif;
+  font-size: 8rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.rabbi-opinion-action-stage {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  min-height: 72px;
+  width: min(330px, 100%);
+  margin: 26px auto 0;
+}
+
+.rabbi-opinion-reading {
+  position: relative;
+  z-index: 2;
+  grid-area: 1 / 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 0;
+  padding: 8px 15px 8px 10px;
+  color: rgba(255,253,240,.78);
+  background: rgba(0,20,10,.26);
+  border: 1px solid rgba(234,215,118,.22);
+  border-radius: 8px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 8px 22px rgba(0,0,0,.1);
+  transition: opacity 240ms ease;
+}
+
+.rabbi-opinion-timer-ring {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  flex: 0 0 54px;
+  display: grid;
+  place-items: center;
+}
+
+.rabbi-opinion-timer-ring svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.rabbi-opinion-timer-ring circle {
+  fill: none;
+  stroke-width: 3;
+}
+
+.rabbi-opinion-timer-ring .timer-track {
+  stroke: rgba(255,255,255,.12);
+}
+
+.rabbi-opinion-timer-ring .timer-progress {
+  stroke: #ead66e;
+  stroke-linecap: round;
+  stroke-dasharray: 144.52;
+  stroke-dashoffset: 0;
+  filter: drop-shadow(0 0 4px rgba(234,214,110,.4));
+}
+
+.rabbi-opinion-modal.is-reading .timer-progress {
+  animation: rabbiOpinionTimer var(--reading-duration) linear forwards;
+}
+
+.rabbi-opinion-timer-ring strong {
+  position: relative;
+  color: #fff7cc;
+  font-size: 1.25rem;
+  line-height: 1;
+  font-weight: 950;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 1px 8px rgba(0,0,0,.35);
+}
+
+.rabbi-opinion-timer-copy {
+  display: grid;
+  gap: 2px;
+  text-align: right;
+}
+
+.rabbi-opinion-timer-copy span {
+  color: #f0df8c;
+  font-size: .94rem;
+  font-weight: 900;
+}
+
+.rabbi-opinion-timer-copy small {
+  color: rgba(255,253,240,.62);
+  font-size: .75rem;
+  font-weight: 700;
+}
+
+.rabbi-opinion-modal.is-unlocked .rabbi-opinion-reading {
+  opacity: 0;
+  transform: scale(.94);
+  pointer-events: none;
+}
+
+.rabbi-opinion-close {
+  position: absolute;
+  z-index: 3;
+  top: 18px;
+  left: 18px;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid rgba(234,215,118,.58);
+  border-radius: 50%;
+  color: #fffdf0;
+  background: rgba(0,25,13,.56);
+  font: inherit;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(.75);
+  pointer-events: none;
+  transition: opacity 240ms ease, transform 240ms ease, color 180ms ease;
+}
+
+.rabbi-opinion-continue {
+  position: relative;
+  z-index: 2;
+  grid-area: 1 / 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  width: 100%;
+  margin: 0;
+  padding: 10px 28px;
+  border: 1px solid rgba(255,239,159,.86);
+  border-radius: 8px;
+  color: #12351f;
+  background: linear-gradient(180deg, #f2df7d, #cba72d 58%, #a47712);
+  box-shadow:
+    0 14px 28px rgba(0,0,0,.25),
+    inset 0 1px 0 rgba(255,255,255,.4);
+  font: inherit;
+  font-weight: 950;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(8px) scale(.96);
+  pointer-events: none;
+  transition: opacity 320ms ease, transform 320ms ease, box-shadow 180ms ease;
+}
+
+.rabbi-opinion-modal.is-unlocked .rabbi-opinion-close,
+.rabbi-opinion-modal.is-unlocked .rabbi-opinion-continue {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.rabbi-opinion-close:hover {
+  color: #ead66e;
+}
+
+.rabbi-opinion-continue:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 18px 36px rgba(0,0,0,.3),
+    0 0 0 3px rgba(234,214,110,.12),
+    inset 0 1px 0 rgba(255,255,255,.46);
+}
+
+body.rabbi-opinion-open {
+  overflow: hidden;
+}
+
+.rabbi-opinion-modal.is-docking .rabbi-opinion-backdrop {
+  opacity: 0;
+  transition: opacity 760ms ease;
+}
+
+.rabbi-opinion-modal.is-docking .rabbi-opinion-dialog {
+  opacity: 0;
+  transition: opacity 80ms ease;
+}
+
+.rabbi-opinion-flight-line {
+  position: fixed;
+  z-index: 3100;
+  height: 3px;
+  border-radius: 999px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, #b79522 12%, #f2df83 50%, #b79522 88%, transparent);
+  box-shadow:
+    0 0 12px rgba(234,214,110,.55),
+    0 0 28px rgba(7,83,49,.35);
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+.rabbi-opinion-dock {
+  position: relative;
+  z-index: 5;
+  padding: 22px 0;
+  background: linear-gradient(180deg, #f8f3e3, #fffdf7 52%, #f7f1de);
+  border-top: 1px solid rgba(190,154,43,.42);
+  border-bottom: 1px solid rgba(190,154,43,.42);
+  overflow: hidden;
+}
+
+.rabbi-opinion-dock[hidden] {
+  display: none !important;
+}
+
+.rabbi-opinion-dock.is-preparing {
+  display: block !important;
+}
+
+.rabbi-opinion-dock.is-preparing .rabbi-opinion-dock-card {
+  opacity: 0;
+  clip-path: inset(49.5% 0 49.5% 0 round 8px);
+  transform: none;
+}
+
+.rabbi-opinion-dock-card {
+  position: relative;
+  width: min(100%, 1040px);
+  margin-inline: auto;
+  padding: 25px 50px 28px;
+  color: #fffdf0;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(235,216,124,.1), transparent 42%),
+    linear-gradient(180deg, rgba(0,25,13,.06), rgba(0,18,9,.17)),
+    url("assets/site-emerald-banner-texture.webp") center / cover no-repeat;
+  border: 1px solid rgba(226,202,91,.7);
+  border-radius: 8px;
+  box-shadow:
+    0 18px 42px rgba(0,42,23,.19),
+    inset 0 1px 0 rgba(255,255,255,.15),
+    inset 0 0 0 4px rgba(0,25,13,.2);
+  opacity: 0;
+  transform: translateY(-18px) scale(.97);
+}
+
+.rabbi-opinion-dock-card::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(234,219,130,.23);
+  border-radius: 5px;
+  pointer-events: none;
+}
+
+.rabbi-opinion-dock.is-settled .rabbi-opinion-dock-card {
+  animation: rabbiOpinionSettle 480ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+.rabbi-opinion-dock .rabbi-opinion-heading {
+  width: min(600px, 86%);
+  margin: 0 auto 12px;
+}
+
+.rabbi-opinion-dock .rabbi-opinion-heading h2 {
+  font-size: clamp(1.45rem, 2.6vw, 2.15rem);
+}
+
+.rabbi-opinion-dock-card p {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  color: #fffdf2;
+  font-size: clamp(1.25rem, 2.35vw, 1.95rem);
+  line-height: 1.65;
+  font-weight: 850;
+  text-wrap: balance;
+  text-shadow: 0 2px 8px rgba(0,0,0,.28);
+}
+
+.rabbi-opinion-dock + .home-pulse {
+  margin-top: 0 !important;
+}
+
+@keyframes rabbiOpinionTimer {
+  to { stroke-dashoffset: 144.52; }
+}
+
+@keyframes rabbiOpinionSheen {
+  from { transform: translateX(100%); }
+  to { transform: translateX(-100%); }
+}
+
+@keyframes rabbiOpinionSettle {
+  0% {
+    opacity: .72;
+    clip-path: inset(49.5% 0 49.5% 0 round 8px);
+    transform: scaleX(.96);
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0 round 8px);
+    transform: scaleX(1);
+  }
+}
+
+@media (max-width: 620px) {
+  .rabbi-opinion-modal {
+    padding: 14px;
+  }
+
+  .rabbi-opinion-dialog {
+    width: 100%;
+    padding: 42px 24px 30px;
+  }
+
+  .rabbi-opinion-crown {
+    margin-bottom: 11px;
+  }
+
+  .rabbi-opinion-importance {
+    margin-bottom: 11px;
+    padding-inline: 11px;
+  }
+
+  .rabbi-opinion-importance strong {
+    font-size: .72rem;
+  }
+
+  .rabbi-opinion-heading {
+    gap: 11px;
+    margin-bottom: 18px;
+  }
+
+  .rabbi-opinion-heading h2 {
+    font-size: 2.45rem;
+  }
+
+  .rabbi-opinion-dialog blockquote p {
+    font-size: 1.3rem;
+    line-height: 1.62;
+  }
+
+  .rabbi-opinion-quote {
+    top: -19px;
+    right: -4px;
+    font-size: 5.8rem;
+  }
+
+  .rabbi-opinion-reading {
+    padding: 7px 12px 7px 8px;
+  }
+
+  .rabbi-opinion-timer-ring {
+    width: 50px;
+    height: 50px;
+    flex-basis: 50px;
+  }
+
+  .rabbi-opinion-action-stage {
+    width: min(310px, 100%);
+    min-height: 68px;
+    margin-top: 22px;
+  }
+
+  .rabbi-opinion-dock {
+    padding: 14px 10px;
+  }
+
+  .rabbi-opinion-dock-card {
+    padding: 21px 18px 23px;
+  }
+
+  .rabbi-opinion-dock .rabbi-opinion-heading {
+    width: 94%;
+    margin-bottom: 11px;
+  }
+
+  .rabbi-opinion-dock .rabbi-opinion-heading h2 {
+    font-size: 1.42rem;
+  }
+
+  .rabbi-opinion-dock-card p {
+    font-size: 1.12rem;
+    line-height: 1.58;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rabbi-opinion-modal,
+  .rabbi-opinion-dialog,
+  .rabbi-opinion-close,
+  .rabbi-opinion-continue {
+    transition-duration: 1ms !important;
+  }
+
+  .rabbi-opinion-dialog::after {
+    animation: none !important;
+  }
+}

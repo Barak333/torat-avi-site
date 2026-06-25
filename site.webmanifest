@@ -1,0 +1,57 @@
+{
+  "name": "תורת אבי",
+  "short_name": "תורת אבי",
+  "description": "בית הוראה ובית דין תורת אבי: שאלות ותשובות, פסקי דין, מאמרים וספרי הרב.",
+  "id": "./",
+  "lang": "he",
+  "dir": "rtl",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#fffdf8",
+  "theme_color": "#002611",
+  "categories": ["education", "books", "lifestyle"],
+  "icons": [
+    {
+      "src": "./assets/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "שאלות ותשובות",
+      "short_name": "שו״ת",
+      "url": "./qna.html",
+      "icons": [{ "src": "./assets/favicon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "פסקי דין",
+      "short_name": "פסקי דין",
+      "url": "./piskei-din.html",
+      "icons": [{ "src": "./assets/favicon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "ספרי הרב",
+      "short_name": "ספרים",
+      "url": "./books.html",
+      "icons": [{ "src": "./assets/favicon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
+
+

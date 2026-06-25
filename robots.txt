@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin.html
+Disallow: /reports/
+Disallow: /tools/
+Disallow: /ocr-data/
+Disallow: /mobile-checks/
+Disallow: /.github/

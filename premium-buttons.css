@@ -1,0 +1,484 @@
+/* Refined site-wide button language: emerald, ivory and restrained gold. */
+:root {
+  --button-emerald-top: #07542f;
+  --button-emerald-mid: #003d21;
+  --button-emerald-deep: #002414;
+  --button-gold: #c8a936;
+  --button-gold-light: #eadb82;
+  --button-ivory: #fffdf4;
+  --button-ink: #07351f;
+}
+
+body .btn,
+body button.btn,
+body .book-add-btn,
+body .levado-help-open {
+  position: relative;
+  isolation: isolate;
+  min-height: 46px;
+  border-radius: 8px !important;
+  border: 1px solid rgba(224, 200, 91, .58) !important;
+  font-weight: 900;
+  letter-spacing: 0;
+  overflow: hidden;
+  box-shadow:
+    0 10px 22px rgba(0, 39, 21, .16),
+    inset 0 1px 0 rgba(255, 255, 255, .24),
+    inset 0 -1px 0 rgba(0, 0, 0, .12) !important;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    filter 180ms ease !important;
+}
+
+body .btn::after,
+body button.btn::after,
+body .book-add-btn::after,
+body .levado-help-open::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 1px 1px auto;
+  height: 42%;
+  border-radius: 6px 6px 45% 45%;
+  background: linear-gradient(180deg, rgba(255,255,255,.18), transparent);
+  pointer-events: none;
+}
+
+body .btn:hover,
+body button.btn:hover,
+body .book-add-btn:hover,
+body .levado-help-open:hover {
+  transform: translateY(-2px);
+  border-color: rgba(239, 218, 119, .82) !important;
+  box-shadow:
+    0 15px 30px rgba(0, 39, 21, .22),
+    0 0 0 2px rgba(200, 169, 54, .09),
+    inset 0 1px 0 rgba(255, 255, 255, .28) !important;
+  filter: saturate(1.05);
+}
+
+body .btn:active,
+body button.btn:active,
+body .book-add-btn:active,
+body .levado-help-open:active {
+  transform: translateY(0);
+  box-shadow:
+    0 7px 15px rgba(0, 39, 21, .18),
+    inset 0 1px 3px rgba(0, 0, 0, .14) !important;
+}
+
+body .btn.btn-primary,
+body button.btn-primary,
+body .book-add-btn,
+body .levado-help-open {
+  color: #fffdf0 !important;
+  -webkit-text-fill-color: #fffdf0 !important;
+  background:
+    linear-gradient(105deg, transparent 0 42%, rgba(255,255,255,.08) 50%, transparent 58%),
+    linear-gradient(180deg, var(--button-emerald-top), var(--button-emerald-mid) 52%, var(--button-emerald-deep)) !important;
+  background-size: 220% 100%, 100% 100% !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,.3) !important;
+}
+
+body .btn.btn-primary:hover,
+body button.btn-primary:hover,
+body .book-add-btn:hover,
+body .levado-help-open:hover {
+  background-position: -90% 0, 0 0 !important;
+}
+
+body .btn.btn-secondary,
+body .btn.btn-quiet,
+body .btn.btn-ghost {
+  color: var(--button-ink) !important;
+  -webkit-text-fill-color: var(--button-ink) !important;
+  background:
+    linear-gradient(105deg, transparent 0 43%, rgba(255,255,255,.68) 50%, transparent 57%),
+    linear-gradient(180deg, #fffef9, #f5efda) !important;
+  background-size: 220% 100%, 100% 100% !important;
+  border-color: rgba(164, 130, 27, .44) !important;
+  text-shadow: none !important;
+}
+
+body .btn.btn-secondary:hover,
+body .btn.btn-quiet:hover,
+body .btn.btn-ghost:hover {
+  background-position: -90% 0, 0 0 !important;
+}
+
+body .about-rabbi-hero .btn-ghost,
+body .daily-spark .btn-secondary {
+  color: #fffdf0 !important;
+  -webkit-text-fill-color: #fffdf0 !important;
+  background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.06)) !important;
+  border-color: rgba(234, 219, 130, .58) !important;
+  backdrop-filter: blur(8px);
+}
+
+body .about-cta-card .btn-ghost {
+  color: var(--button-ink) !important;
+  -webkit-text-fill-color: var(--button-ink) !important;
+  background:
+    linear-gradient(105deg, transparent 0 43%, rgba(255,255,255,.7) 50%, transparent 57%),
+    linear-gradient(180deg, #fffef9, #f3ecd3) !important;
+  background-size: 220% 100%, 100% 100% !important;
+  border-color: rgba(164, 130, 27, .5) !important;
+  text-shadow: none !important;
+}
+
+body .about-cta-card .btn-ghost:hover {
+  color: #fffdf0 !important;
+  -webkit-text-fill-color: #fffdf0 !important;
+  background: linear-gradient(180deg, #08603a, #003018) !important;
+}
+
+body .home-hero-panel .btn.btn-primary,
+body .impact-wide-btn,
+body .torah-donation-section .btn,
+body .impact-cta-grid .btn,
+body .donation-submit {
+  color: #12351f !important;
+  -webkit-text-fill-color: #12351f !important;
+  background:
+    linear-gradient(105deg, transparent 0 42%, rgba(255,255,255,.34) 50%, transparent 58%),
+    linear-gradient(180deg, #f2df7d, #cfad31 55%, #a87b15) !important;
+  background-size: 220% 100%, 100% 100% !important;
+  border-color: rgba(255, 241, 169, .82) !important;
+  text-shadow: 0 1px 0 rgba(255,255,255,.36) !important;
+}
+
+body .home-hero-panel .btn.btn-primary:hover,
+body .impact-wide-btn:hover,
+body .torah-donation-section .btn:hover,
+body .impact-cta-grid .btn:hover,
+body .donation-submit:hover {
+  background-position: -90% 0, 0 0 !important;
+}
+
+/* Filters, segmented controls and selectable amounts. */
+body .moadim-filter,
+body .segmented button,
+body .amounts button,
+body .premium-amounts button,
+body .qna-category-tabs a {
+  min-height: 42px;
+  border: 1px solid rgba(152, 122, 31, .34) !important;
+  border-radius: 8px !important;
+  color: var(--button-ink) !important;
+  -webkit-text-fill-color: var(--button-ink) !important;
+  background: linear-gradient(180deg, #fffef9, #f6f0dd) !important;
+  box-shadow:
+    0 6px 15px rgba(0, 48, 24, .07),
+    inset 0 1px 0 rgba(255,255,255,.9) !important;
+  font-weight: 850;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease !important;
+}
+
+body .moadim-filter:hover,
+body .segmented button:hover,
+body .amounts button:hover,
+body .premium-amounts button:hover,
+body .qna-category-tabs a:hover {
+  transform: translateY(-1px);
+  border-color: rgba(184, 158, 20, .66) !important;
+  box-shadow: 0 10px 20px rgba(0, 48, 24, .11) !important;
+}
+
+body .moadim-filter.is-active,
+body .segmented button.is-active,
+body .amounts button.is-active,
+body .premium-amounts button.is-active,
+body .qna-category-tabs a.is-active {
+  color: #fffdf0 !important;
+  -webkit-text-fill-color: #fffdf0 !important;
+  background: linear-gradient(180deg, #08603a, #003018) !important;
+  border-color: rgba(224, 200, 91, .68) !important;
+  box-shadow:
+    0 10px 22px rgba(0, 48, 24, .18),
+    inset 0 1px 0 rgba(255,255,255,.2) !important;
+}
+
+body .segmented {
+  padding: 5px !important;
+  border: 1px solid rgba(152, 122, 31, .18);
+  border-radius: 8px !important;
+  background: rgba(247, 242, 224, .72) !important;
+}
+
+body .premium-amounts button {
+  border-radius: 8px !important;
+}
+
+body .premium-amounts button.is-active strong,
+body .premium-amounts button.is-active span,
+body .premium-amounts button:hover strong,
+body .premium-amounts button:hover span {
+  color: #fffdf0 !important;
+  -webkit-text-fill-color: #fffdf0 !important;
+}
+
+body .donation-premium .segmented button:hover,
+body .donation-premium .segmented button:hover small,
+body .donation-premium .segmented button.is-active small {
+  color: #fffdf0 !important;
+  -webkit-text-fill-color: #fffdf0 !important;
+}
+
+body .donation-premium .segmented button:hover {
+  background: linear-gradient(180deg, #08603a, #003018) !important;
+  border-color: rgba(224, 200, 91, .68) !important;
+  box-shadow:
+    0 10px 22px rgba(0, 48, 24, .18),
+    inset 0 1px 0 rgba(255,255,255,.2) !important;
+}
+
+/* Quantity controls stay compact and precise. */
+body .premium-store-book .book-qty {
+  border: 1px solid rgba(184, 158, 20, .48) !important;
+  border-radius: 8px !important;
+  background: #fffdf5 !important;
+  box-shadow: 0 8px 18px rgba(0,48,24,.1), inset 0 1px 0 #fff !important;
+  overflow: hidden;
+}
+
+body .premium-store-book .book-qty button {
+  color: #fffdf0 !important;
+  -webkit-text-fill-color: #fffdf0 !important;
+  background: linear-gradient(180deg, #13704a, #064628) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2) !important;
+}
+
+body .premium-store-book .book-qty button:hover {
+  background: linear-gradient(180deg, #1a7b53, #075033) !important;
+}
+
+body .premium-store-book .book-qty output {
+  color: #496b5a !important;
+  background: #fffdf5 !important;
+}
+
+body .premium-store-book button:disabled,
+body .premium-store-book .book-add-btn:disabled,
+body button.btn:disabled {
+  cursor: not-allowed !important;
+  filter: grayscale(.35) !important;
+  opacity: .62 !important;
+  transform: none !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.18) !important;
+}
+
+/* Search, close, accessibility and compact utility controls. */
+body .quick-site-search,
+body .quick-cart-icon,
+body .site-search-close,
+body .levado-help-close,
+body .accessibility-toggle,
+body .back-to-top {
+  border: 1px solid rgba(205, 174, 63, .48) !important;
+  color: #fffdf0 !important;
+  background:
+    radial-gradient(circle at 32% 22%, rgba(255,255,255,.17), transparent 32%),
+    linear-gradient(145deg, #075432, #002616) !important;
+  box-shadow:
+    0 9px 20px rgba(0, 39, 21, .2),
+    inset 0 1px 0 rgba(255,255,255,.2) !important;
+  transition: transform 170ms ease, box-shadow 170ms ease, border-color 170ms ease !important;
+}
+
+body .quick-site-search:hover,
+body .quick-cart-icon:hover,
+body .site-search-close:hover,
+body .levado-help-close:hover,
+body .accessibility-toggle:hover,
+body.scrolled .back-to-top:hover {
+  transform: translateY(-2px) !important;
+  border-color: rgba(239, 218, 119, .78) !important;
+  box-shadow:
+    0 13px 26px rgba(0, 39, 21, .26),
+    0 0 0 2px rgba(200,169,54,.1),
+    inset 0 1px 0 rgba(255,255,255,.24) !important;
+}
+
+body .quick-site-search svg,
+body .quick-cart-icon svg {
+  color: #fffdf0 !important;
+  stroke: #fffdf0 !important;
+  transition: color 170ms ease, stroke 170ms ease, filter 170ms ease !important;
+}
+
+body .quick-site-search:hover svg,
+body .quick-site-search:active svg,
+body .quick-site-search:focus-visible svg,
+body .quick-cart-icon:hover svg,
+body .quick-cart-icon:active svg,
+body .quick-cart-icon:focus-visible svg {
+  color: #e4c85b !important;
+  stroke: #e4c85b !important;
+  filter: drop-shadow(0 0 5px rgba(228, 200, 91, .28));
+}
+
+body .menu-toggle {
+  border: 1px solid rgba(184, 158, 20, .42) !important;
+  border-radius: 8px !important;
+  color: var(--button-ink) !important;
+  background: linear-gradient(180deg, #fffef9, #f5eed8) !important;
+  box-shadow: 0 7px 16px rgba(0,48,24,.09), inset 0 1px 0 #fff !important;
+}
+
+body .footer-accordion-toggle {
+  box-shadow: none !important;
+}
+
+body .footer-accordion-icon {
+  color: #f3df80;
+  border-color: rgba(234,219,130,.5) !important;
+  background: rgba(255,255,255,.06) !important;
+}
+
+/* Donation mode and bank-copy commands. */
+body .donation-premium .segmented button {
+  min-height: 48px;
+}
+
+body .bank-details button {
+  min-height: 34px;
+  padding: 5px 12px;
+  border: 1px solid rgba(184,158,20,.38);
+  border-radius: 7px;
+  color: var(--button-ink);
+  background: linear-gradient(180deg, #fffef9, #efe6c8);
+  box-shadow: 0 5px 12px rgba(0,48,24,.08);
+  font: inherit;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+body .bank-details button:hover {
+  color: #fffdf0;
+  background: linear-gradient(180deg, #08603a, #003018);
+  border-color: rgba(224,200,91,.62);
+}
+
+/* Long-form accordion commands need refinement without looking like CTA buttons. */
+body .levado-item > button,
+body .psakim-toggle {
+  position: relative;
+  width: 100%;
+  border: 1px solid rgba(157, 126, 30, .28) !important;
+  border-radius: 8px !important;
+  color: var(--button-ink) !important;
+  background:
+    linear-gradient(90deg, rgba(200,169,54,.1), transparent 18%),
+    linear-gradient(180deg, #fffef9, #faf6e9) !important;
+  box-shadow:
+    0 8px 20px rgba(0,48,24,.07),
+    inset 0 1px 0 rgba(255,255,255,.95) !important;
+  cursor: pointer;
+  transition: transform 170ms ease, box-shadow 170ms ease, border-color 170ms ease !important;
+}
+
+body .levado-item > button::after,
+body .psakim-toggle::after {
+  content: "";
+  position: absolute;
+  inset: 12px auto 12px 0;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--button-gold-light), var(--button-gold));
+  box-shadow: 0 0 10px rgba(200,169,54,.24);
+}
+
+body .levado-item > button:hover,
+body .psakim-toggle:hover {
+  transform: translateY(-1px);
+  border-color: rgba(184,158,20,.58) !important;
+  box-shadow:
+    0 12px 25px rgba(0,48,24,.11),
+    inset 0 1px 0 #fff !important;
+}
+
+body .levado-item > button[aria-expanded="true"],
+body details[open] > .psakim-toggle {
+  color: #fffdf0 !important;
+  background:
+    linear-gradient(90deg, rgba(234,219,130,.1), transparent 20%),
+    linear-gradient(180deg, #075432, #002b18) !important;
+  border-color: rgba(224,200,91,.62) !important;
+  box-shadow: 0 12px 26px rgba(0,48,24,.17) !important;
+}
+
+body .levado-item > button span {
+  color: #ad8c1d !important;
+  text-shadow: none !important;
+}
+
+body .levado-item > button[aria-expanded="true"] span {
+  color: #eadb82 !important;
+}
+
+body .levado-item > button[aria-expanded="true"] strong {
+  color: #fff !important;
+}
+
+body :is(
+  .btn,
+  button.btn,
+  .book-add-btn,
+  .levado-help-open,
+  .moadim-filter,
+  .segmented button,
+  .amounts button,
+  .premium-amounts button,
+  .qna-category-tabs a,
+  .book-qty button,
+  .quick-site-search,
+  .quick-cart-icon,
+  .site-search-close,
+  .levado-help-close,
+  .accessibility-toggle,
+  .back-to-top,
+  .menu-toggle,
+  .bank-details button,
+  .levado-item > button,
+  .psakim-toggle
+):focus-visible {
+  outline: 3px solid rgba(234, 219, 130, .92) !important;
+  outline-offset: 3px !important;
+}
+
+@media (max-width: 760px) {
+  body .btn,
+  body button.btn,
+  body .book-add-btn,
+  body .levado-help-open {
+    min-height: 46px;
+    padding-inline: 16px;
+  }
+
+  body .moadim-filter {
+    min-height: 40px;
+    padding-inline: 14px;
+  }
+
+  body .premium-amounts button {
+    min-height: 70px;
+    padding: 10px 7px;
+  }
+
+  body .premium-store-book .book-qty,
+  body .premium-store-book .book-add-btn {
+    min-height: 48px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body .btn,
+  body button,
+  body .qna-category-tabs a {
+    transition: none !important;
+  }
+}

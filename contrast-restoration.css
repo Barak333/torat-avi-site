@@ -1,0 +1,84 @@
+/* Restore component colors after the banner-only emerald treatment. */
+body .btn.btn-primary,
+body button.btn-primary,
+body .book-add-btn,
+body .premium-store-book .book-qty button,
+body .accessibility-toggle,
+body .qna-search button,
+body .qna-hero-search button,
+body button[type="submit"] {
+  color: #fffdf0 !important;
+  -webkit-text-fill-color: #fffdf0 !important;
+  background: linear-gradient(135deg, #003018, #001a0d) !important;
+  border-color: rgba(221, 202, 98, .34) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .3) !important;
+}
+
+body .home-hero-panel .btn.btn-primary,
+body .impact-wide-btn {
+  color: #082a17 !important;
+  -webkit-text-fill-color: #082a17 !important;
+  background: linear-gradient(135deg, #f0da72, #c8a92f) !important;
+  border-color: rgba(255, 242, 180, .72) !important;
+  text-shadow: none !important;
+}
+
+body .btn.btn-secondary,
+body .btn.btn-quiet {
+  -webkit-text-fill-color: currentColor !important;
+}
+
+/* Titles and supporting copy on the new dark emerald banners. */
+.legal-hero h1,
+.page-hero.ask-hero h1,
+.page-hero.donation-hero h1,
+.page-hero.qna-hero h1,
+.page-hero.soul-hero h1,
+.page-hero.levado-hero h1 {
+  color: #fffdf0 !important;
+  -webkit-text-fill-color: #fffdf0 !important;
+  text-shadow: 0 3px 16px rgba(0, 0, 0, .36) !important;
+}
+
+.legal-hero .lead,
+.page-hero.ask-hero .lead,
+.page-hero.donation-hero .lead,
+.page-hero.qna-hero .lead,
+.page-hero.soul-hero .lead,
+.page-hero.levado-hero .lead,
+.page-hero .hero-subtitle,
+.page-hero .levado-hero-subtitle {
+  color: rgba(255, 253, 240, .92) !important;
+  -webkit-text-fill-color: rgba(255, 253, 240, .92) !important;
+}
+
+.legal-hero .eyebrow,
+.page-hero .eyebrow,
+.page-hero .hero-kicker {
+  color: #ddca62 !important;
+  -webkit-text-fill-color: #ddca62 !important;
+}
+
+/* Preserve intentional gold display titles. */
+.premium-books-hero .books-hero-title,
+.article-topic-hero .article-hero-title,
+.spark-premium-hero .spark-hero-title,
+.qna-hero .qna-hero-title,
+.donation-hero .donation-hero-title {
+  color: #ddca62 !important;
+  -webkit-text-fill-color: #ddca62 !important;
+}
+
+/* Gradient text on the About banner remains gold and readable. */
+.about-rabbi-hero .eyebrow {
+  color: #ddca62 !important;
+  -webkit-text-fill-color: #ddca62 !important;
+}
+
+/* The donation navigation command keeps its dedicated gold treatment. */
+html body .site-header .main-nav .nav-donate,
+html body .site-header .main-nav .nav-donate[aria-current="page"] {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  background: #b39434 linear-gradient(135deg, #8f6820 0%, #b8922e 42%, #dfc75d 100%) !important;
+}
