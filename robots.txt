@@ -7,3 +7,5 @@ Disallow: /tools/
 Disallow: /ocr-data/
 Disallow: /mobile-checks/
 Disallow: /.github/
+
+Sitemap: https://toratavi.co.il/sitemap.xml

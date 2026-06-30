@@ -443,7 +443,7 @@ document.querySelectorAll("[data-whatsapp-join]").forEach((form) => {
     event.preventDefault();
     const phone = form.querySelector('input[name="phone"]')?.value.trim() || "";
     const message = `אני רוצה להצטרף לקהילה. מספר הפלאפון שלי: ${phone}`;
-    window.open(`https://wa.me/972527009541?text=${encodeURIComponent(message)}`, "_blank", "noopener");
+    window.open(`https://wa.me/972532273277?text=${encodeURIComponent(message)}`, "_blank", "noopener");
   });
 });
 

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-label="רקע עדין">
+  <rect width="1200" height="420" fill="#f1f6f0"/>
+  <path d="M0 318c155-56 324-70 508-42 232 36 450 10 692-78v222H0Z" fill="#ffffff" opacity=".78"/>
+  <circle cx="186" cy="122" r="92" fill="#c8a75d" opacity=".16"/>
+  <path d="M894 86c66 12 118 50 156 114-80 6-141-27-183-98" fill="#6f927f" opacity=".22"/>
+  <path d="M886 91c-52 14-91 48-118 102 66 0 116-29 150-86" fill="#557f9a" opacity=".18"/>
+</svg>

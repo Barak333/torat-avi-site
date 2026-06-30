@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-label="חלל לימוד מואר ושקט">
+  <defs>
+    <linearGradient id="wall" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#d9e2dc"/>
+      <stop offset=".52" stop-color="#f3ead8"/>
+      <stop offset="1" stop-color="#9fb7ad"/>
+    </linearGradient>
+    <linearGradient id="light" x1="0" x2="1">
+      <stop stop-color="#fff8dc" stop-opacity=".86"/>
+      <stop offset="1" stop-color="#fff8dc" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" x2="1">
+      <stop stop-color="#314f45"/>
+      <stop offset=".52" stop-color="#9d8754"/>
+      <stop offset="1" stop-color="#e1c87b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="900" fill="url(#wall)"/>
+  <path d="M820 0h580v900H932c-44-150-60-306-48-468C896 268 878 124 820 0Z" fill="#6f8d81" opacity=".28"/>
+  <path d="M936 64h338v494H936z" fill="#f9f6ea" opacity=".56"/>
+  <path d="M988 112h84v390h-84zm118 0h84v390h-84" fill="#c9d8d1" opacity=".76"/>
+  <path d="M930 116 560 900h318l342-784z" fill="url(#light)" opacity=".75"/>
+  <path d="M84 118h330v486H84z" fill="#1d302a" opacity=".72"/>
+  <path d="M124 166h248M124 226h248M124 286h248M124 346h248M124 406h248M124 466h248M124 526h248" stroke="#d7c58c" stroke-width="17" opacity=".62"/>
+  <path d="M0 642c212-54 446-72 702-52 246 18 478-3 698-64v374H0Z" fill="url(#wood)" opacity=".82"/>
+  <path d="M512 646c188-35 374-35 558 0" fill="none" stroke="#fff3c8" stroke-width="5" opacity=".28"/>
+  <path d="M594 548h290v24H594zM624 572h230v104H624z" fill="#243a33" opacity=".55"/>
+  <path d="M648 520h182v32H648z" fill="#fff6d6" opacity=".52"/>
+</svg>

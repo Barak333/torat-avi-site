@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220" role="img" aria-label="שיעורי חיזוק ואמונה לנשים">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#0d6b34"/><stop offset=".55" stop-color="#06441f"/><stop offset="1" stop-color="#021f10"/></linearGradient>
+    <radialGradient id="r" cx="72%" cy="18%" r="62%"><stop offset="0" stop-color="#ddca62" stop-opacity=".42"/><stop offset=".38" stop-color="#ddca62" stop-opacity=".12"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"/></filter>
+  </defs>
+  <rect width="420" height="220" fill="url(#g)"/>
+  <rect width="420" height="220" fill="url(#r)"/>
+  <path d="M0 174 C88 135 150 206 232 168 C309 132 351 140 420 102 L420 220 L0 220Z" fill="#ffffff" opacity=".045"/>
+  <path d="M20 26 H400" stroke="#f7e7aa" stroke-opacity=".18" stroke-width="1"/>
+  <g fill="none" stroke="#fff4ca" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><path d="M138 160c24-42 120-42 144 0"/><path d="M162 118c12-30 84-30 96 0"/><path d="M180 86c8-22 52-22 60 0"/><path d="M210 42v128"/></g><path d="M210 30c20 20 20 45 0 65-20-20-20-45 0-65Z" fill="#ddca62" opacity=".72"/><path d="M94 170h232" stroke="#ddca62" stroke-width="4" opacity=".55" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 620" role="img" aria-label="ספרייה מוארת">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop stop-color="#2f4d43"/>
+      <stop offset="1" stop-color="#557f9a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="620" fill="url(#g)"/>
+  <path d="M0 426c180-46 362-56 548-28 244 36 496 14 852-76v298H0Z" fill="#b99246" opacity=".45"/>
+  <path d="M144 84h312v330H144zM510 62h256v360H510zM820 112h430v292H820z" fill="#101d19" opacity=".42"/>
+  <path d="M178 132h244M178 190h244M178 248h244M178 306h244M548 118h178M548 176h178M548 234h178M548 292h178M866 162h330M866 220h330M866 278h330" stroke="#efe2b5" stroke-width="15" opacity=".52"/>
+  <path d="M735 80 530 620h260l198-540z" fill="#fff5cf" opacity=".16"/>
+</svg>

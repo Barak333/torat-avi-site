@@ -1,4 +1,4 @@
-const CACHE_NAME = "torat-avi-pwa-v121";
+const CACHE_NAME = "torat-avi-pwa-v124";
 const CORE_ASSETS = [
   "./",
   "./index.html",

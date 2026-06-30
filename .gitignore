@@ -1,0 +1,29 @@
+node_modules/
+.wrangler/
+.dev.vars
+
+# Local/dev-only files
+*.log
+reports/
+mobile-checks/
+ocr-data/
+tools/
+
+# Cloudflare/CMS experiment files - not needed for the simple GitHub Pages upload
+functions/
+migrations/
+wrangler.toml
+package.json
+pnpm-lock.yaml
+pnpm-workspace.yaml
+CMS-SETUP.md
+.dev.vars.example
+.assetsignore
+
+# Admin CMS screen is not part of the public static site
+admin.html
+admin.css
+admin-cms.js
+
+# Temporary screenshots/check files
+weekly-flip-mobile-check.png
