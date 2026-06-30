@@ -1617,7 +1617,7 @@ function initializeWhatsAppShareButton() {
   share.href = `https://wa.me/?text=${encodeURIComponent(message)}`;
 
   const icon = document.createElement("img");
-  icon.src = "assets/whatsapp-community-icon-transparent.png";
+  icon.src = "assets/whatsapp-community-icon-transparent.webp";
   icon.alt = "";
   icon.setAttribute("aria-hidden", "true");
   share.append(icon);

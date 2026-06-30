@@ -1,4 +1,4 @@
-const CACHE_NAME = "torat-avi-pwa-v125";
+const CACHE_NAME = "torat-avi-pwa-v126";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -22,8 +22,8 @@ const CORE_ASSETS = [
   "./site.webmanifest",
   "./assets/favicon-192.png",
   "./assets/favicon-512.png",
-  "./assets/torat-avi-logo-transparent.png",
-  "./assets/torat-avi-logo-footer-white.png",
+  "./assets/torat-avi-logo-transparent.webp",
+  "./assets/torat-avi-logo-footer-white.webp",
   "./assets/site-emerald-banner-texture.webp",
   "./assets/psakim-hero-premium-bg.jpg",
   "./assets/court-gavel.png",
@@ -32,7 +32,7 @@ const CORE_ASSETS = [
   "./assets/directory-qna-premium.webp",
   "./assets/directory-ask-rabbi-premium.webp",
   "./assets/whatsapp-community-icon.jpg",
-  "./assets/whatsapp-community-icon-transparent.png"
+  "./assets/whatsapp-community-icon-transparent.webp"
 ];
 
 self.addEventListener("install", (event) => {
