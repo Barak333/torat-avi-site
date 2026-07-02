@@ -13487,7 +13487,7 @@ body:has(.home-live-hero) main > section:not(:first-child)::after{
 .impact-mini-card:nth-child(2){--impact-bg:url("assets/impact-beit-horaa.webp");}
 .impact-mini-card:nth-child(3){--impact-bg:url("assets/impact-mediation.webp");}
 .impact-mini-card:nth-child(4){--impact-bg:url("assets/impact-women-emuna.webp");}
-.impact-mini-card:nth-child(5){--impact-bg:url("assets/impact-midrasha-girls.webp");}
+.impact-mini-card:nth-child(5){--impact-bg:url("assets/impact-midrasha-study-v2.webp");}
 .impact-mini-card:nth-child(6){--impact-bg:url("assets/impact-youth.webp");}
 .impact-mini-card:nth-child(7){--impact-bg:url("assets/impact-gemach.webp");}
 .impact-mini-card:nth-child(8){--impact-bg:url("assets/impact-kids.webp");}
@@ -24786,4 +24786,28 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
     font-size: .98rem !important;
     line-height: 1.82 !important;
   }
+}
+
+/* Site finishes - distinct article banners with restrained overlays */
+.article-shabbat-hero{
+  background:
+    linear-gradient(90deg,rgba(1,38,18,.30),rgba(0,46,23,.08),rgba(1,38,18,.34)),
+    url("assets/article-shabbat-hero-v2.webp") center/cover no-repeat!important;
+}
+.article-moadim-hero{
+  background:
+    linear-gradient(90deg,rgba(1,38,18,.32),rgba(0,46,23,.08),rgba(1,38,18,.36)),
+    url("assets/article-moadim-hero-v2.webp") center/cover no-repeat!important;
+}
+.article-hitbonenut-hero{
+  background:
+    linear-gradient(90deg,rgba(1,38,18,.34),rgba(0,46,23,.08),rgba(1,38,18,.38)),
+    url("assets/article-hitbonenut-hero-v2.webp") center/cover no-repeat!important;
+}
+.article-shabbat-hero::before,
+.article-moadim-hero::before,
+.article-hitbonenut-hero::before{
+  background:
+    radial-gradient(circle at 50% 28%,rgba(221,202,98,.12),transparent 25%),
+    linear-gradient(90deg,rgba(0,31,14,.26),rgba(0,40,20,.04),rgba(0,31,14,.30))!important;
 }

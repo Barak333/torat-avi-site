@@ -21,7 +21,7 @@
   <meta name="twitter:title" content="נפש | תורת אבי">
   <meta name="twitter:description" content="שאלות ותשובות ותוכן תורני בנושאי נפש, זוגיות, אמונה, חינוך, צמיחה והתמודדות מבית תורת אבי.">
   <meta name="twitter:image" content="https://torat-avi-site.vercel.app/assets/favicon-512.png">
-  <meta name="twitter:image:alt" content="סמל בית הוראה ובית דין תורת אבי"><link rel="stylesheet" href="styles.css?v=20260630-performance-1"><link rel="stylesheet" href="gold-donate.css?v=20260608-header-icons-gold"><link rel="stylesheet" href="emerald-banners.css?v=20260608-header-icons-gold"><link rel="stylesheet" href="contrast-restoration.css?v=20260608-header-icons-gold"><link rel="stylesheet" href="premium-buttons.css?v=20260609-growth">
+  <meta name="twitter:image:alt" content="סמל בית הוראה ובית דין תורת אבי"><link rel="stylesheet" href="styles.css?v=20260702-site-finishes-1"><link rel="stylesheet" href="gold-donate.css?v=20260608-header-icons-gold"><link rel="stylesheet" href="emerald-banners.css?v=20260608-header-icons-gold"><link rel="stylesheet" href="contrast-restoration.css?v=20260608-header-icons-gold"><link rel="stylesheet" href="premium-buttons.css?v=20260609-growth">
   <link rel="icon" href="./assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
@@ -83,12 +83,28 @@
   <main>
     <section class="page-hero levado-hero nefesh-hero"><div class="section-inner reveal"><span class="levado-hero-title">נפש</span><p class="levado-hero-subtitle">בהירות פנימית, אמונה ועבודת הלב</p></div></section>
     <section class="section levado-qna-section nefesh-qna-section"><div class="section-inner">
-      <div class="levado-section-head reveal"><h2>שאלות ותשובות מתוך "לך אמר ליבי" בענייני נפש</h2><div class="qna-search levado-search"><label for="levadoSearch">חיפוש חופשי</label><input id="levadoSearch" type="search" placeholder="חפשו לפי מילת מפתח: אמונה, פחד, עצבות, שמחה, תיקון..." /></div></div>
-      <button class="levado-help-open" type="button" data-levado-help-open>בקשת הכוונה בענייני נפש</button>
+      <div class="levado-section-head reveal"><h2>שאלות ותשובות מתוך "לך אמר ליבי" בתורת הנפש</h2><div class="qna-search levado-search"><label for="levadoSearch">חיפוש חופשי</label><input id="levadoSearch" type="search" placeholder="חפשו לפי מילת מפתח: אמונה, פחד, עצבות, שמחה, תיקון..." /></div></div>
+      <button class="levado-help-open" type="button" data-levado-help-open>בקשת הכוונה בנפש</button>
       <div class="levado-results-note" data-levado-count></div>
       <div class="levado-accordion" data-render="levado-qna"></div>
     </div></section>
   </main>
+  <div class="levado-help-modal" data-levado-help-modal hidden>
+    <div class="levado-help-dialog" role="dialog" aria-modal="true" aria-labelledby="levadoHelpTitle">
+      <button class="levado-help-close" type="button" aria-label="סגירה" data-levado-help-close>×</button>
+      <span>פנייה אישית</span>
+      <h2 id="levadoHelpTitle">זקוקים להכוונה בתורת הנפש?</h2>
+      <p>ניתן לשלוח שאלה לרב בנושא אמונה, עבודת הנפש או התמודדות אישית. הפנייה תועבר בצורה מכובדת ודיסקרטית.</p>
+      <form data-demo-form="פנייה מעמוד תורת הנפש">
+        <div class="field"><label>שם מלא</label><input name="name" autocomplete="name"></div>
+        <div class="field"><label>טלפון</label><input name="phone" autocomplete="tel"></div>
+        <div class="field"><label>אימייל</label><input name="email" type="email" autocomplete="email"></div>
+        <div class="field"><label>נושא הפנייה</label><input name="subject" value="תורת הנפש"></div>
+        <div class="field"><label>השאלה או הבקשה</label><textarea name="question"></textarea></div>
+        <button class="btn btn-primary" type="submit">שליחת פנייה לרב</button>
+      </form>
+    </div>
+  </div>
   <div class="site-search-modal" data-site-search-modal hidden>
     <div class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="siteSearchTitle">
       <button class="site-search-close" type="button" aria-label="סגירת חיפוש" data-site-search-close>×</button>
