@@ -4268,6 +4268,92 @@ body.reduce-motion .home-books-feature .book-float-wrap{
   }
 }
 
+/* Living map v2: mobile follows its own curved route and reached stations illuminate. */
+.home-journey-map-mobile{
+  display:none!important;
+}
+.journey-map-waypoints circle{
+  transition:fill .35s ease,stroke .35s ease,opacity .35s ease!important;
+}
+.journey-map-waypoints circle.is-reached{
+  fill:#f5dc7c!important;
+  stroke:#fff2b1!important;
+  opacity:1!important;
+  filter:drop-shadow(0 0 8px #ffe99b) drop-shadow(0 0 20px rgba(245,214,95,.72))!important;
+}
+.home-journey-step.is-journey-reached{
+  border-color:rgba(239,210,102,.4)!important;
+  border-inline-start-color:#edcf67!important;
+  background:
+    linear-gradient(105deg,rgba(237,207,96,.15),rgba(255,255,255,.025)),
+    radial-gradient(circle at 84% 50%,rgba(221,190,75,.15),transparent 36%)!important;
+  box-shadow:0 28px 68px rgba(0,0,0,.18),inset 0 1px rgba(255,255,255,.08)!important;
+}
+.home-journey-step.is-journey-reached .home-journey-number{
+  color:rgba(238,207,94,.28)!important;
+}
+.home-journey-step.is-journey-reached .home-journey-name{
+  color:#ffe58d!important;
+}
+.home-journey-step.is-journey-reached strong{
+  color:#fff9da!important;
+}
+.home-journey-destination{
+  transition:filter .5s ease,transform .5s ease!important;
+}
+.home-journey-destination.is-journey-reached{
+  filter:drop-shadow(0 0 24px rgba(231,198,79,.2))!important;
+  transform:translateY(-4px)!important;
+}
+.home-journey-destination.is-journey-reached strong{
+  color:#ffe98f!important;
+  text-shadow:0 0 18px rgba(246,215,95,.28),0 5px 28px rgba(0,0,0,.34)!important;
+}
+@media(max-width:860px){
+  .home-journey-map-desktop{
+    display:none!important;
+  }
+  .home-journey-map-mobile{
+    position:absolute!important;
+    z-index:3!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    display:block!important;
+    overflow:visible!important;
+    pointer-events:none!important;
+  }
+  .home-journey-grid::before{
+    display:none!important;
+    content:none!important;
+  }
+  .home-journey-grid{
+    padding:12px 36px 12px 0!important;
+  }
+  .home-journey-step,
+  .home-journey-step:nth-child(2),
+  .home-journey-step:nth-child(3),
+  .home-journey-step:nth-child(4){
+    z-index:2!important;
+    width:calc(100% - 34px)!important;
+    min-height:182px!important;
+    padding:30px 48px 30px 20px!important;
+  }
+  .home-journey-step:nth-child(even){
+    margin-inline-start:12px!important;
+  }
+  .home-journey-step::after{
+    display:none!important;
+    content:none!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .home-journey-step.is-journey-reached,
+  .home-journey-destination.is-journey-reached{
+    transition:none!important;
+  }
+}
+
 @media(max-width:480px){
   .home-books-feature .real-book-showcase{
     min-height:310px!important;
@@ -26923,5 +27009,92 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
     box-shadow:0 0 0 7px rgba(0,42,21,.9),0 0 26px rgba(244,216,112,.62)!important;
     transform:translateY(-50%)!important;
     animation:journey-node-pulse 2.4s ease-in-out infinite!important;
+  }
+}
+
+/* Final living map v2 precedence. */
+.home-journey-map-mobile{
+  display:none!important;
+}
+.journey-map-waypoints circle{
+  transition:fill .35s ease,stroke .35s ease,opacity .35s ease!important;
+}
+.journey-map-waypoints circle.is-reached{
+  fill:#f5dc7c!important;
+  stroke:#fff2b1!important;
+  opacity:1!important;
+  filter:drop-shadow(0 0 8px #ffe99b) drop-shadow(0 0 20px rgba(245,214,95,.72))!important;
+}
+.home-journey-step.is-journey-reached{
+  border-color:rgba(239,210,102,.4)!important;
+  border-inline-start-color:#edcf67!important;
+  background:
+    linear-gradient(105deg,rgba(237,207,96,.15),rgba(255,255,255,.025)),
+    radial-gradient(circle at 84% 50%,rgba(221,190,75,.15),transparent 36%)!important;
+  box-shadow:0 28px 68px rgba(0,0,0,.18),inset 0 1px rgba(255,255,255,.08)!important;
+}
+.home-journey-step.is-journey-reached .home-journey-number{
+  color:rgba(238,207,94,.28)!important;
+}
+.home-journey-step.is-journey-reached .home-journey-name{
+  color:#ffe58d!important;
+}
+.home-journey-step.is-journey-reached strong{
+  color:#fff9da!important;
+}
+.home-journey-destination{
+  transition:filter .5s ease,transform .5s ease!important;
+}
+.home-journey-destination.is-journey-reached{
+  filter:drop-shadow(0 0 24px rgba(231,198,79,.2))!important;
+  transform:translateY(-4px)!important;
+}
+.home-journey-destination.is-journey-reached strong{
+  color:#ffe98f!important;
+  text-shadow:0 0 18px rgba(246,215,95,.28),0 5px 28px rgba(0,0,0,.34)!important;
+}
+@media(max-width:860px){
+  .home-journey-map-desktop{
+    display:none!important;
+  }
+  .home-journey-map-mobile{
+    position:absolute!important;
+    z-index:3!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    display:block!important;
+    overflow:visible!important;
+    pointer-events:none!important;
+  }
+  .home-journey-grid::before{
+    display:none!important;
+    content:none!important;
+  }
+  .home-journey-grid{
+    min-height:780px!important;
+    padding:12px 36px 12px 0!important;
+  }
+  .home-journey-step,
+  .home-journey-step:nth-child(2),
+  .home-journey-step:nth-child(3),
+  .home-journey-step:nth-child(4){
+    z-index:2!important;
+    width:calc(100% - 34px)!important;
+    min-height:182px!important;
+    padding:30px 48px 30px 20px!important;
+  }
+  .home-journey-step:nth-child(even){
+    margin-inline-start:12px!important;
+  }
+  .home-journey-step::after{
+    display:none!important;
+    content:none!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .home-journey-step.is-journey-reached,
+  .home-journey-destination.is-journey-reached{
+    transition:none!important;
   }
 }

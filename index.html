@@ -76,7 +76,7 @@
   </script>
   <link rel="preload" as="image" href="assets/home-hero-beit-midrash-lesson-20260602.jpeg" fetchpriority="high">
   <link rel="preload" as="image" href="assets/home-rabbi-reading-blended.webp" type="image/webp" fetchpriority="high">
-<link rel="stylesheet" href="styles.css?v=20260706-mevakshei-living-map-1"><link rel="stylesheet" href="gold-donate.css?v=20260608-opinion-card-restored"><link rel="stylesheet" href="emerald-banners.css?v=20260608-opinion-card-restored"><link rel="stylesheet" href="contrast-restoration.css?v=20260608-opinion-card-restored"><link rel="stylesheet" href="premium-buttons.css?v=20260608-opinion-card-restored"><link rel="stylesheet" href="rabbi-opinion.css?v=20260608-opinion-card-restored">
+<link rel="stylesheet" href="styles.css?v=20260706-mevakshei-living-map-2"><link rel="stylesheet" href="gold-donate.css?v=20260608-opinion-card-restored"><link rel="stylesheet" href="emerald-banners.css?v=20260608-opinion-card-restored"><link rel="stylesheet" href="contrast-restoration.css?v=20260608-opinion-card-restored"><link rel="stylesheet" href="premium-buttons.css?v=20260608-opinion-card-restored"><link rel="stylesheet" href="rabbi-opinion.css?v=20260608-opinion-card-restored">
   <link rel="icon" href="./assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
@@ -215,18 +215,31 @@
           <strong>האדם כפי שהוא</strong>
         </div>
         <div class="home-journey-grid">
-          <svg class="home-journey-map" viewBox="0 0 1000 900" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <svg class="home-journey-map home-journey-map-desktop" viewBox="0 0 1000 900" preserveAspectRatio="none" aria-hidden="true" focusable="false">
             <path class="journey-route-shadow" d="M500 0 C500 100 390 112 408 220 S620 300 582 418 S380 520 426 630 S620 728 515 900"></path>
             <path class="journey-route-base" d="M500 0 C500 100 390 112 408 220 S620 300 582 418 S380 520 426 630 S620 728 515 900"></path>
-            <path class="journey-route-progress" d="M500 0 C500 100 390 112 408 220 S620 300 582 418 S380 520 426 630 S620 728 515 900"></path>
+            <path class="journey-route-progress" data-journey-route d="M500 0 C500 100 390 112 408 220 S620 300 582 418 S380 520 426 630 S620 728 515 900"></path>
             <g class="journey-map-waypoints">
               <circle cx="410" cy="185" r="8"></circle>
               <circle cx="585" cy="385" r="8"></circle>
               <circle cx="425" cy="585" r="8"></circle>
               <circle cx="550" cy="780" r="8"></circle>
             </g>
-            <circle class="journey-traveler-halo" cx="500" cy="0" r="18"></circle>
-            <circle class="journey-traveler" cx="500" cy="0" r="7"></circle>
+            <circle class="journey-traveler-halo" data-journey-halo cx="500" cy="0" r="18"></circle>
+            <circle class="journey-traveler" data-journey-traveler cx="500" cy="0" r="7"></circle>
+          </svg>
+          <svg class="home-journey-map home-journey-map-mobile" viewBox="0 0 340 780" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <path class="journey-route-shadow" d="M305 0 C302 78 262 92 280 172 S324 258 278 350 S250 448 286 538 S320 670 274 780"></path>
+            <path class="journey-route-base" d="M305 0 C302 78 262 92 280 172 S324 258 278 350 S250 448 286 538 S320 670 274 780"></path>
+            <path class="journey-route-progress" data-journey-route d="M305 0 C302 78 262 92 280 172 S324 258 278 350 S250 448 286 538 S320 670 274 780"></path>
+            <g class="journey-map-waypoints">
+              <circle cx="280" cy="150" r="8"></circle>
+              <circle cx="300" cy="310" r="8"></circle>
+              <circle cx="266" cy="492" r="8"></circle>
+              <circle cx="299" cy="662" r="8"></circle>
+            </g>
+            <circle class="journey-traveler-halo" data-journey-halo cx="305" cy="0" r="18"></circle>
+            <circle class="journey-traveler" data-journey-traveler cx="305" cy="0" r="7"></circle>
           </svg>
           <a class="home-journey-step reveal" href="soul-torah.html">
             <span class="home-journey-number">נ</span>
@@ -477,7 +490,7 @@
   </footer>
   <script src="content.js"></script>
   <script src="script.js?v=20260630-performance-1"></script>
-  <script src="home-journey.js?v=20260706-living-map-1"></script>
+  <script src="home-journey.js?v=20260706-living-map-2"></script>
   <script src="rabbi-opinion.js?v=20260623-alert-priority-1"></script>
 </body>
 </html>
