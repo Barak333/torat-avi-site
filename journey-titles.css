@@ -1,29 +1,32 @@
 .home-journey-step .home-journey-name {
-  position: relative !important;
-  z-index: 2 !important;
+  position: absolute !important;
+  z-index: 0 !important;
+  inset: 8px 0 auto !important;
   width: 100% !important;
-  display: flex !important;
+  display: block !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 0 !important;
-  margin: 0 0 22px !important;
-  padding: 0 0 18px !important;
-  color: #af8c2c !important;
-  background: linear-gradient(180deg, #e3c967 0%, #77550f 43%, #d2ae3d 53%, #684909 100%) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  font-family: "Noto Serif Hebrew", "Frank Ruhl Libre", "Times New Roman", serif !important;
-  font-size: clamp(2rem, 2.85vw, 2.65rem) !important;
-  font-weight: 950 !important;
-  line-height: .92 !important;
+  margin: 0 !important;
+  padding: 0 10px !important;
+  color: rgba(180, 181, 112, .24) !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: currentColor !important;
+  font-family: "Frank Ruhl Libre", "Noto Serif Hebrew", "Times New Roman", serif !important;
+  font-size: clamp(5.1rem, 7.4vw, 7.25rem) !important;
+  font-weight: 900 !important;
+  line-height: .84 !important;
   letter-spacing: 0 !important;
-  -webkit-text-stroke: .55px rgba(244, 217, 119, .2) !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+  -webkit-text-stroke: 1px rgba(4, 39, 22, .24) !important;
   text-shadow:
-    0 -1px 0 rgba(22, 13, 1, .92),
-    0 1px 0 rgba(255, 239, 165, .24),
-    0 3px 5px rgba(0, 0, 0, .38) !important;
-  filter: none !important;
+    0 1px 0 rgba(219, 211, 143, .08),
+    0 -2px 2px rgba(0, 22, 12, .36) !important;
+  opacity: .92 !important;
+  filter: saturate(.7) !important;
+  pointer-events: none !important;
 }
 
 .home-journey-step .home-journey-name::before,
@@ -35,40 +38,43 @@
 .home-journey-step {
   justify-items: center !important;
   text-align: center !important;
+  overflow: hidden !important;
 }
 
 .home-journey-step > strong,
 .home-journey-step > small {
+  position: relative !important;
+  z-index: 2 !important;
   margin-inline: auto !important;
   text-align: center !important;
 }
 
 .home-journey-step > strong {
+  margin-top: 62px !important;
   font-size: clamp(1.4rem, 1.85vw, 1.7rem) !important;
 }
 
 .home-journey-step.is-journey-reached .home-journey-name {
-  background: linear-gradient(180deg, #f0d777 0%, #896311 42%, #e4c452 53%, #73510b 100%) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  -webkit-text-stroke: .65px rgba(255, 233, 143, .28) !important;
+  color: rgba(200, 193, 111, .33) !important;
+  background: none !important;
+  -webkit-text-fill-color: currentColor !important;
+  -webkit-text-stroke: 1px rgba(4, 39, 22, .2) !important;
   text-shadow:
-    0 -1px 0 rgba(15, 8, 0, .95),
-    0 1px 0 rgba(255, 244, 184, .34),
-    0 4px 7px rgba(0, 0, 0, .42) !important;
-  filter: none !important;
+    0 1px 0 rgba(233, 222, 148, .11),
+    0 -2px 2px rgba(0, 22, 12, .34) !important;
+  filter: saturate(.75) !important;
 }
 
 @media (max-width: 520px) {
   .home-journey-step .home-journey-name {
-    gap: 0 !important;
-    margin-bottom: 18px !important;
-    padding-bottom: 14px !important;
-    font-size: 1.85rem !important;
+    inset: 12px 0 auto !important;
+    padding: 0 6px !important;
+    font-size: clamp(4rem, 20vw, 5.2rem) !important;
+    line-height: .86 !important;
   }
 
   .home-journey-step > strong {
+    margin-top: 54px !important;
     font-size: 1.34rem !important;
   }
 }
