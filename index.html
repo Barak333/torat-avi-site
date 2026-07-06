@@ -76,7 +76,7 @@
   </script>
   <link rel="preload" as="image" href="assets/home-hero-beit-midrash-lesson-20260602.jpeg" fetchpriority="high">
   <link rel="preload" as="image" href="assets/home-rabbi-reading-blended.webp" type="image/webp" fetchpriority="high">
-<link rel="stylesheet" href="styles.css?v=20260706-mevakshei-immersive-journey-1"><link rel="stylesheet" href="gold-donate.css?v=20260608-opinion-card-restored"><link rel="stylesheet" href="emerald-banners.css?v=20260608-opinion-card-restored"><link rel="stylesheet" href="contrast-restoration.css?v=20260608-opinion-card-restored"><link rel="stylesheet" href="premium-buttons.css?v=20260608-opinion-card-restored"><link rel="stylesheet" href="rabbi-opinion.css?v=20260608-opinion-card-restored">
+<link rel="stylesheet" href="styles.css?v=20260706-mevakshei-living-map-1"><link rel="stylesheet" href="gold-donate.css?v=20260608-opinion-card-restored"><link rel="stylesheet" href="emerald-banners.css?v=20260608-opinion-card-restored"><link rel="stylesheet" href="contrast-restoration.css?v=20260608-opinion-card-restored"><link rel="stylesheet" href="premium-buttons.css?v=20260608-opinion-card-restored"><link rel="stylesheet" href="rabbi-opinion.css?v=20260608-opinion-card-restored">
   <link rel="icon" href="./assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
@@ -215,30 +215,48 @@
           <strong>האדם כפי שהוא</strong>
         </div>
         <div class="home-journey-grid">
+          <svg class="home-journey-map" viewBox="0 0 1000 900" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <path class="journey-route-shadow" d="M500 0 C500 100 390 112 408 220 S620 300 582 418 S380 520 426 630 S620 728 515 900"></path>
+            <path class="journey-route-base" d="M500 0 C500 100 390 112 408 220 S620 300 582 418 S380 520 426 630 S620 728 515 900"></path>
+            <path class="journey-route-progress" d="M500 0 C500 100 390 112 408 220 S620 300 582 418 S380 520 426 630 S620 728 515 900"></path>
+            <g class="journey-map-waypoints">
+              <circle cx="410" cy="185" r="8"></circle>
+              <circle cx="585" cy="385" r="8"></circle>
+              <circle cx="425" cy="585" r="8"></circle>
+              <circle cx="550" cy="780" r="8"></circle>
+            </g>
+            <circle class="journey-traveler-halo" cx="500" cy="0" r="18"></circle>
+            <circle class="journey-traveler" cx="500" cy="0" r="7"></circle>
+          </svg>
           <a class="home-journey-step reveal" href="soul-torah.html">
             <span class="home-journey-number">נ</span>
             <span class="home-journey-name">הנפש</span>
             <strong>להבין את עצמך</strong>
+            <small>לזהות מאין אני פועל ולאן אני מבקש לצמוח</small>
           </a>
           <a class="home-journey-step reveal" href="zugiyut.html">
             <span class="home-journey-number">ז</span>
             <span class="home-journey-name">הזוגיות</span>
             <strong>לבנות את הבית</strong>
+            <small>ללמוד לפגוש באמת את האדם שמולי</small>
           </a>
           <a class="home-journey-step reveal" href="qna.html">
             <span class="home-journey-number">ה</span>
             <span class="home-journey-name">ההלכה</span>
             <strong>לחיות נכון</strong>
+            <small>להפוך אמונה וערכים למעשה יום־יומי</small>
           </a>
           <a class="home-journey-step reveal" href="beit-din.html">
             <span class="home-journey-number">ד</span>
             <span class="home-journey-name">בית הדין</span>
             <strong>לפתור סכסוכים בדרך התורה</strong>
+            <small>לעבור ממחלוקת לבירור, אחריות והכרעה</small>
           </a>
         </div>
         <div class="home-journey-destination reveal">
           <span>היעד</span>
           <strong>לחיות את התורה בתוך החיים עצמם</strong>
+          <em>בהירות · חיבור · אחריות · משמעות</em>
         </div>
       </div>
     </section>
@@ -459,6 +477,7 @@
   </footer>
   <script src="content.js"></script>
   <script src="script.js?v=20260630-performance-1"></script>
+  <script src="home-journey.js?v=20260706-living-map-1"></script>
   <script src="rabbi-opinion.js?v=20260623-alert-priority-1"></script>
 </body>
 </html>
