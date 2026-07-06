@@ -25310,3 +25310,292 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   .home-life-statement-card{min-height:300px;padding:42px 20px}
   .home-life-statement-card h2{font-size:2.55rem}
 }
+
+/* Homepage editorial luxury direction: open typography, ivory paper and fine gold rules. */
+.home-journey{
+  padding:104px 0 112px!important;
+  color:#003018!important;
+  background:
+    linear-gradient(90deg,transparent 0 7%,rgba(184,158,20,.09) 7% 7.08%,transparent 7.08% 92.92%,rgba(184,158,20,.09) 92.92% 93%,transparent 93%),
+    radial-gradient(circle at 50% 0,rgba(219,190,83,.13),transparent 32%),
+    linear-gradient(180deg,#fffdf8,#f5f1e7)!important;
+}
+.home-journey::before{
+  inset:34px 0 auto!important;
+  height:1px!important;
+  background:linear-gradient(90deg,transparent 8%,rgba(184,158,20,.58) 26%,rgba(184,158,20,.16) 50%,rgba(184,158,20,.58) 74%,transparent 92%)!important;
+  background-size:auto!important;
+  opacity:1!important;
+}
+.home-journey-heading > span{
+  color:#a17b18!important;
+}
+.home-journey-heading h2{
+  color:#003018!important;
+  font-size:clamp(2.7rem,5.2vw,4.9rem)!important;
+  text-shadow:0 1px 0 #fff!important;
+}
+.home-journey-heading p{
+  color:#607167!important;
+  font-size:1.02rem!important;
+}
+.home-journey-grid{
+  gap:0!important;
+  margin-top:68px!important;
+  border-top:1px solid rgba(184,158,20,.58)!important;
+}
+.home-journey-grid::before{
+  display:none!important;
+}
+.home-journey-step{
+  min-height:230px!important;
+  justify-items:start!important;
+  align-content:start!important;
+  gap:7px!important;
+  padding:34px 34px 22px!important;
+  color:#003018!important;
+  text-align:right!important;
+  border:0!important;
+  background:transparent!important;
+}
+.home-journey-step:not(:last-child)::after{
+  top:28px!important;
+  bottom:24px!important;
+  left:0!important;
+  width:1px!important;
+  background:linear-gradient(180deg,rgba(184,158,20,.5),rgba(0,48,24,.08),transparent)!important;
+}
+.home-journey-number{
+  width:auto!important;
+  height:auto!important;
+  display:block!important;
+  margin:0 0 24px!important;
+  border:0!important;
+  border-radius:0!important;
+  color:rgba(0,48,24,.16)!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  font-family:"Frank Ruhl Libre","Noto Serif Hebrew","Times New Roman",serif!important;
+  font-size:clamp(3.9rem,5.5vw,5.7rem)!important;
+  font-weight:500!important;
+  line-height:.7!important;
+  transition:color .22s ease,transform .22s ease!important;
+}
+.home-journey-name{
+  color:#a17b18!important;
+  font-size:.78rem!important;
+  letter-spacing:0!important;
+}
+.home-journey-step strong{
+  max-width:210px!important;
+  color:#003018!important;
+  font-size:clamp(1.32rem,1.75vw,1.58rem)!important;
+  line-height:1.3!important;
+}
+.home-journey-step:hover .home-journey-number,
+.home-journey-step:focus-visible .home-journey-number{
+  color:#b28a20!important;
+  background:transparent!important;
+  transform:translateY(-3px)!important;
+}
+.home-journey-step:hover strong,
+.home-journey-step:focus-visible strong{
+  color:#896714!important;
+}
+.home-stay{
+  padding:112px 0 130px!important;
+  background:
+    radial-gradient(circle at 8% 12%,rgba(190,153,37,.08),transparent 24%),
+    linear-gradient(180deg,#fff,#faf8f1)!important;
+}
+.home-stay-layout{
+  display:block!important;
+}
+.home-stay-heading{
+  display:grid!important;
+  justify-items:center!important;
+  text-align:center!important;
+}
+.home-stay-heading h2{
+  max-width:820px!important;
+  margin:12px auto 18px!important;
+  font-size:clamp(2.55rem,4.8vw,4.5rem)!important;
+  line-height:1.04!important;
+}
+.home-stay-heading p{
+  max-width:620px!important;
+  margin:auto!important;
+}
+.home-stay-reasons{
+  position:relative!important;
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:42px!important;
+  margin-top:74px!important;
+  padding-bottom:52px!important;
+}
+.home-stay-reasons::before{
+  content:""!important;
+  position:absolute!important;
+  top:0!important;
+  right:0!important;
+  left:0!important;
+  height:1px!important;
+  background:linear-gradient(90deg,transparent,rgba(184,158,20,.58),transparent)!important;
+}
+.home-stay-reason{
+  position:relative!important;
+  min-height:240px!important;
+  display:block!important;
+  padding:46px 18px 22px!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  text-align:center!important;
+  transform:none!important;
+}
+.home-stay-reason:nth-child(2){
+  transform:translateY(26px)!important;
+}
+.home-stay-reason:nth-child(3){
+  transform:translateY(52px)!important;
+}
+.home-stay-reason:hover{
+  border:0!important;
+  box-shadow:none!important;
+}
+.home-stay-reason > span{
+  position:absolute!important;
+  z-index:0!important;
+  top:24px!important;
+  right:50%!important;
+  grid-row:auto!important;
+  transform:translateX(50%)!important;
+  color:rgba(184,158,20,.12)!important;
+  font-size:8.5rem!important;
+  line-height:.75!important;
+}
+.home-stay-reason p,
+.home-stay-reason strong{
+  position:relative!important;
+  z-index:1!important;
+  display:block!important;
+}
+.home-stay-reason p{
+  margin:62px 0 10px!important;
+  color:#75837b!important;
+  font-size:.9rem!important;
+}
+.home-stay-reason strong{
+  max-width:310px!important;
+  margin:auto!important;
+  color:#003018!important;
+  font-size:clamp(1.45rem,2.05vw,1.9rem)!important;
+  line-height:1.25!important;
+}
+.home-life-statement{
+  padding:0!important;
+  background:#f8f5ec!important;
+}
+.home-life-statement .section-inner{
+  width:100%!important;
+  max-width:none!important;
+  padding:0!important;
+}
+.home-life-statement-card{
+  min-height:390px!important;
+  padding:72px 7vw!important;
+  border:0!important;
+  border-radius:0!important;
+  background:
+    linear-gradient(90deg,rgba(0,31,15,.98),rgba(0,64,31,.94),rgba(0,31,15,.98)),
+    url("assets/torat-avi-green-texture-clean.webp") center/cover!important;
+  box-shadow:none!important;
+}
+.home-life-statement-card > span{
+  color:#d9b84d!important;
+}
+.home-life-statement-card h2{
+  max-width:900px!important;
+  font-size:clamp(3rem,6vw,5.8rem)!important;
+  line-height:1.02!important;
+}
+.home-life-statement-card p{
+  max-width:850px!important;
+}
+@media(max-width:860px){
+  .home-journey{
+    padding:72px 0 78px!important;
+  }
+  .home-journey-grid{
+    grid-template-columns:1fr 1fr!important;
+    gap:0!important;
+    margin-top:48px!important;
+    border-top:0!important;
+  }
+  .home-journey-step{
+    min-height:190px!important;
+    padding:28px 22px!important;
+    border-top:1px solid rgba(184,158,20,.42)!important;
+  }
+  .home-journey-step::after{
+    display:none!important;
+  }
+  .home-journey-step:nth-child(odd)::after{
+    display:block!important;
+  }
+  .home-journey-number{
+    margin-bottom:20px!important;
+    font-size:4.25rem!important;
+  }
+  .home-stay{
+    padding:76px 0 86px!important;
+  }
+  .home-stay-reasons{
+    grid-template-columns:1fr!important;
+    gap:0!important;
+    margin-top:48px!important;
+    padding-bottom:0!important;
+  }
+  .home-stay-reason,
+  .home-stay-reason:nth-child(2),
+  .home-stay-reason:nth-child(3){
+    min-height:180px!important;
+    padding:30px 16px!important;
+    border-top:1px solid rgba(184,158,20,.34)!important;
+    transform:none!important;
+  }
+  .home-stay-reason > span{
+    top:21px!important;
+    font-size:6.8rem!important;
+  }
+  .home-stay-reason p{
+    margin-top:54px!important;
+  }
+  .home-life-statement-card{
+    min-height:340px!important;
+    padding:58px 24px!important;
+  }
+}
+@media(max-width:520px){
+  .home-journey-heading h2{
+    font-size:2.5rem!important;
+  }
+  .home-journey-step{
+    min-height:175px!important;
+    padding:25px 16px!important;
+  }
+  .home-journey-number{
+    font-size:3.65rem!important;
+  }
+  .home-journey-step strong{
+    font-size:1.12rem!important;
+  }
+  .home-stay-heading h2{
+    font-size:2.45rem!important;
+  }
+  .home-life-statement-card h2{
+    font-size:2.65rem!important;
+  }
+}
