@@ -36,6 +36,7 @@
 }
 
 .home-journey-step {
+  align-content: center !important;
   justify-items: center !important;
   text-align: center !important;
   overflow: hidden !important;
@@ -45,6 +46,7 @@
 .home-journey-step > small {
   position: relative !important;
   z-index: 2 !important;
+  width: 100% !important;
   margin-inline: auto !important;
   text-align: center !important;
 }
@@ -52,6 +54,10 @@
 .home-journey-step > strong {
   margin-top: 62px !important;
   font-size: clamp(1.4rem, 1.85vw, 1.7rem) !important;
+}
+
+.home-journey-step > small {
+  max-width: 360px !important;
 }
 
 .home-journey-step.is-journey-reached .home-journey-name {
