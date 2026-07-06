@@ -20,6 +20,21 @@
     linear-gradient(100deg, #003319, #00502c 50%, #003319);
 }
 
+.home-journey,
+.home-life-statement,
+.home-flow-divider[aria-labelledby="home-flow-numbers-title"],
+.home-flow-divider[aria-labelledby="home-flow-books-title"] {
+  background:
+    linear-gradient(rgba(0, 31, 17, .18), rgba(0, 18, 10, .24)),
+    url("assets/torat-avi-green-texture-clean.webp") center / cover no-repeat !important;
+  background-attachment: scroll !important;
+}
+
+.home-flow-divider[aria-labelledby="home-flow-numbers-title"],
+.home-flow-divider[aria-labelledby="home-flow-books-title"] {
+  color: #fff8dd;
+}
+
 .home-flow-divider-inner {
   width: min(1160px, 100%);
   margin: 0 auto;
