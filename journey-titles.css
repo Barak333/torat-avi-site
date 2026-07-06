@@ -5,31 +5,31 @@
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 16px !important;
+  gap: 0 !important;
   margin: 0 0 22px !important;
   padding: 0 0 18px !important;
-  color: #e2c25d !important;
-  background: linear-gradient(180deg, #fff0a3 0%, #dbb84b 48%, #9d7418 100%) !important;
+  color: #af8c2c !important;
+  background: linear-gradient(180deg, #e3c967 0%, #77550f 43%, #d2ae3d 53%, #684909 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  font-family: "Frank Ruhl Libre", "Noto Serif Hebrew", "Times New Roman", serif !important;
+  font-family: "Noto Serif Hebrew", "Frank Ruhl Libre", "Times New Roman", serif !important;
   font-size: clamp(2rem, 2.85vw, 2.65rem) !important;
   font-weight: 950 !important;
   line-height: .92 !important;
   letter-spacing: 0 !important;
-  text-shadow: 0 5px 18px rgba(0, 0, 0, .22) !important;
-  filter: drop-shadow(0 0 8px rgba(229, 195, 82, .12)) !important;
+  -webkit-text-stroke: .55px rgba(244, 217, 119, .2) !important;
+  text-shadow:
+    0 -1px 0 rgba(22, 13, 1, .92),
+    0 1px 0 rgba(255, 239, 165, .24),
+    0 3px 5px rgba(0, 0, 0, .38) !important;
+  filter: none !important;
 }
 
 .home-journey-step .home-journey-name::before,
 .home-journey-step .home-journey-name::after {
-  content: "" !important;
-  width: 34px !important;
-  height: 1px !important;
-  flex: 0 0 34px !important;
-  background: linear-gradient(90deg, transparent, rgba(232, 200, 94, .74)) !important;
-  -webkit-text-fill-color: initial !important;
+  display: none !important;
+  content: none !important;
 }
 
 .home-journey-step {
@@ -47,30 +47,25 @@
   font-size: clamp(1.4rem, 1.85vw, 1.7rem) !important;
 }
 
-.home-journey-step .home-journey-name::after {
-  background: linear-gradient(90deg, rgba(232, 200, 94, .74), transparent) !important;
-}
-
 .home-journey-step.is-journey-reached .home-journey-name {
-  background: linear-gradient(180deg, #fff8c7 0%, #f1d66d 46%, #c69b2a 100%) !important;
+  background: linear-gradient(180deg, #f0d777 0%, #896311 42%, #e4c452 53%, #73510b 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  filter: drop-shadow(0 0 10px rgba(242, 214, 107, .28)) !important;
+  -webkit-text-stroke: .65px rgba(255, 233, 143, .28) !important;
+  text-shadow:
+    0 -1px 0 rgba(15, 8, 0, .95),
+    0 1px 0 rgba(255, 244, 184, .34),
+    0 4px 7px rgba(0, 0, 0, .42) !important;
+  filter: none !important;
 }
 
 @media (max-width: 520px) {
   .home-journey-step .home-journey-name {
-    gap: 10px !important;
+    gap: 0 !important;
     margin-bottom: 18px !important;
     padding-bottom: 14px !important;
     font-size: 1.85rem !important;
-  }
-
-  .home-journey-step .home-journey-name::before,
-  .home-journey-step .home-journey-name::after {
-    width: 20px !important;
-    flex-basis: 20px !important;
   }
 
   .home-journey-step > strong {
