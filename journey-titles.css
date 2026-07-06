@@ -1,21 +1,22 @@
 .home-journey-step .home-journey-name {
   position: relative !important;
   z-index: 2 !important;
-  display: inline-flex !important;
+  width: 100% !important;
+  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 12px !important;
-  margin-bottom: 4px !important;
-  padding-inline: 2px !important;
+  gap: 16px !important;
+  margin: 0 0 22px !important;
+  padding: 0 0 18px !important;
   color: #e2c25d !important;
   background: linear-gradient(180deg, #fff0a3 0%, #dbb84b 48%, #9d7418 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   font-family: "Frank Ruhl Libre", "Noto Serif Hebrew", "Times New Roman", serif !important;
-  font-size: clamp(1.18rem, 1.55vw, 1.48rem) !important;
+  font-size: clamp(2rem, 2.85vw, 2.65rem) !important;
   font-weight: 950 !important;
-  line-height: 1 !important;
+  line-height: .92 !important;
   letter-spacing: 0 !important;
   text-shadow: 0 5px 18px rgba(0, 0, 0, .22) !important;
   filter: drop-shadow(0 0 8px rgba(229, 195, 82, .12)) !important;
@@ -24,11 +25,26 @@
 .home-journey-step .home-journey-name::before,
 .home-journey-step .home-journey-name::after {
   content: "" !important;
-  width: 22px !important;
+  width: 34px !important;
   height: 1px !important;
-  flex: 0 0 22px !important;
+  flex: 0 0 34px !important;
   background: linear-gradient(90deg, transparent, rgba(232, 200, 94, .74)) !important;
   -webkit-text-fill-color: initial !important;
+}
+
+.home-journey-step {
+  justify-items: center !important;
+  text-align: center !important;
+}
+
+.home-journey-step > strong,
+.home-journey-step > small {
+  margin-inline: auto !important;
+  text-align: center !important;
+}
+
+.home-journey-step > strong {
+  font-size: clamp(1.4rem, 1.85vw, 1.7rem) !important;
 }
 
 .home-journey-step .home-journey-name::after {
@@ -45,13 +61,19 @@
 
 @media (max-width: 520px) {
   .home-journey-step .home-journey-name {
-    gap: 8px !important;
-    font-size: 1.16rem !important;
+    gap: 10px !important;
+    margin-bottom: 18px !important;
+    padding-bottom: 14px !important;
+    font-size: 1.85rem !important;
   }
 
   .home-journey-step .home-journey-name::before,
   .home-journey-step .home-journey-name::after {
-    width: 15px !important;
-    flex-basis: 15px !important;
+    width: 20px !important;
+    flex-basis: 20px !important;
+  }
+
+  .home-journey-step > strong {
+    font-size: 1.34rem !important;
   }
 }
