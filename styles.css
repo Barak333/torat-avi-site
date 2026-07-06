@@ -25599,3 +25599,276 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
     font-size:2.65rem!important;
   }
 }
+
+/* Homepage four-gates direction: distinctive, visual and CSS-only. */
+.home-journey{
+  padding:92px 0 106px!important;
+  color:#003018!important;
+  background:
+    radial-gradient(circle at 50% -10%,rgba(211,174,56,.18),transparent 33%),
+    linear-gradient(180deg,#fffdf8 0%,#f3efe3 100%)!important;
+}
+.home-journey::before{
+  inset:0!important;
+  height:auto!important;
+  background:
+    linear-gradient(90deg,transparent 0 4%,rgba(184,158,20,.09) 4% 4.08%,transparent 4.08% 95.92%,rgba(184,158,20,.09) 95.92% 96%,transparent 96%),
+    linear-gradient(180deg,rgba(184,158,20,.42),transparent 1px)!important;
+  opacity:1!important;
+}
+.home-journey-heading > span{
+  color:#9b7717!important;
+}
+.home-journey-heading h2{
+  color:#003018!important;
+  font-size:clamp(2.7rem,5vw,4.7rem)!important;
+  text-shadow:0 1px 0 #fff!important;
+}
+.home-journey-heading p{
+  color:#65776d!important;
+}
+.home-journey-grid{
+  perspective:1200px!important;
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:22px!important;
+  margin-top:62px!important;
+  padding:0!important;
+  border:0!important;
+}
+.home-journey-grid::before{
+  display:none!important;
+}
+.home-journey-step{
+  isolation:isolate!important;
+  position:relative!important;
+  min-height:354px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:8px!important;
+  overflow:hidden!important;
+  padding:64px 24px 34px!important;
+  color:#fff!important;
+  text-align:center!important;
+  border:1px solid rgba(205,168,54,.72)!important;
+  border-radius:150px 150px 7px 7px!important;
+  background:
+    radial-gradient(circle at 50% 18%,rgba(239,212,111,.18),transparent 24%),
+    linear-gradient(145deg,#064329 0%,#002b18 54%,#001b0e 100%)!important;
+  box-shadow:
+    0 24px 48px rgba(0,39,21,.16),
+    inset 0 1px 0 rgba(255,255,255,.12),
+    inset 0 -36px 80px rgba(0,0,0,.2)!important;
+  transform:none!important;
+  transform-origin:center bottom!important;
+  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease!important;
+}
+.home-journey-step:nth-child(2){
+  background:
+    radial-gradient(circle at 50% 18%,rgba(239,212,111,.17),transparent 24%),
+    linear-gradient(145deg,#17483d 0%,#073026 56%,#002019 100%)!important;
+}
+.home-journey-step:nth-child(3){
+  background:
+    radial-gradient(circle at 50% 18%,rgba(239,212,111,.17),transparent 24%),
+    linear-gradient(145deg,#183e34 0%,#062c21 56%,#001d14 100%)!important;
+}
+.home-journey-step:nth-child(4){
+  background:
+    radial-gradient(circle at 50% 18%,rgba(239,212,111,.18),transparent 24%),
+    linear-gradient(145deg,#3a382c 0%,#183129 54%,#061e16 100%)!important;
+}
+.home-journey-step::before{
+  content:""!important;
+  position:absolute!important;
+  z-index:-1!important;
+  inset:11px!important;
+  border:1px solid rgba(239,213,113,.35)!important;
+  border-radius:140px 140px 3px 3px!important;
+  background:
+    linear-gradient(90deg,transparent 49.7%,rgba(239,213,113,.13) 50%,transparent 50.3%),
+    linear-gradient(180deg,transparent 0 58%,rgba(239,213,113,.12) 58.3%,transparent 58.6%)!important;
+  pointer-events:none!important;
+}
+.home-journey-step::after{
+  content:""!important;
+  position:absolute!important;
+  z-index:-1!important;
+  top:28px!important;
+  right:50%!important;
+  bottom:auto!important;
+  left:auto!important;
+  width:84px!important;
+  height:84px!important;
+  border:1px solid rgba(239,213,113,.24)!important;
+  border-radius:50%!important;
+  background:radial-gradient(circle,rgba(239,213,113,.11),transparent 66%)!important;
+  transform:translateX(50%)!important;
+  opacity:1!important;
+}
+.home-journey-number{
+  position:absolute!important;
+  z-index:1!important;
+  top:53px!important;
+  right:50%!important;
+  width:auto!important;
+  height:auto!important;
+  display:block!important;
+  margin:0!important;
+  border:0!important;
+  border-radius:0!important;
+  color:#e5c75e!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  transform:translateX(50%)!important;
+  font-family:"Segoe UI",Arial,sans-serif!important;
+  font-size:.76rem!important;
+  font-weight:800!important;
+  line-height:1!important;
+  letter-spacing:.14em!important;
+}
+.home-journey-name{
+  color:#e3c35c!important;
+  font-size:.8rem!important;
+  font-weight:900!important;
+}
+.home-journey-step strong{
+  max-width:210px!important;
+  color:#fff!important;
+  font-size:clamp(1.28rem,1.7vw,1.55rem)!important;
+  line-height:1.32!important;
+  text-shadow:0 2px 14px rgba(0,0,0,.3)!important;
+}
+.home-journey-step:hover,
+.home-journey-step:focus-visible{
+  border-color:#f1d879!important;
+  box-shadow:
+    0 34px 64px rgba(0,39,21,.25),
+    0 0 0 4px rgba(205,168,54,.08),
+    inset 0 1px 0 rgba(255,255,255,.18)!important;
+  transform:translateY(-9px) rotateX(1.5deg)!important;
+}
+.home-journey-step:hover .home-journey-number,
+.home-journey-step:focus-visible .home-journey-number{
+  color:#fff1af!important;
+  background:transparent!important;
+  transform:translateX(50%)!important;
+}
+.home-journey-step:hover strong,
+.home-journey-step:focus-visible strong{
+  color:#fff8d1!important;
+}
+.home-stay{
+  padding:96px 0 104px!important;
+  background:
+    linear-gradient(90deg,rgba(0,48,24,.035) 1px,transparent 1px),
+    linear-gradient(180deg,#f6f4ec,#fffdf8)!important;
+  background-size:120px 100%,auto!important;
+}
+.home-stay-heading h2{
+  color:#003018!important;
+}
+.home-stay-reasons{
+  gap:20px!important;
+  margin-top:62px!important;
+  padding-bottom:0!important;
+}
+.home-stay-reasons::before{
+  display:none!important;
+}
+.home-stay-reason,
+.home-stay-reason:nth-child(2),
+.home-stay-reason:nth-child(3){
+  min-height:230px!important;
+  display:grid!important;
+  align-content:center!important;
+  padding:38px 28px!important;
+  border:1px solid rgba(0,48,24,.1)!important;
+  border-top:3px solid #b89528!important;
+  border-radius:7px!important;
+  background:rgba(255,255,255,.78)!important;
+  box-shadow:0 18px 44px rgba(0,48,24,.07)!important;
+  transform:none!important;
+}
+.home-stay-reason > span{
+  position:static!important;
+  display:block!important;
+  margin:0 auto 18px!important;
+  color:rgba(184,158,20,.32)!important;
+  font-size:4.7rem!important;
+  line-height:.7!important;
+  transform:none!important;
+}
+.home-stay-reason p{
+  margin:0 0 9px!important;
+}
+.home-stay-reason strong{
+  font-size:clamp(1.35rem,1.85vw,1.7rem)!important;
+}
+.home-stay-reason:hover{
+  border-color:rgba(184,158,20,.4)!important;
+  border-top-color:#d8b84b!important;
+  box-shadow:0 26px 54px rgba(0,48,24,.12)!important;
+  transform:translateY(-5px)!important;
+}
+.home-life-statement-card{
+  background:
+    radial-gradient(circle at 50% 0,rgba(225,192,73,.14),transparent 32%),
+    linear-gradient(120deg,rgba(0,30,14,.99),rgba(0,66,32,.96),rgba(19,53,42,.98)),
+    url("assets/torat-avi-green-texture-clean.webp") center/cover!important;
+}
+@media(max-width:980px){
+  .home-journey-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    max-width:720px!important;
+    margin-inline:auto!important;
+  }
+}
+@media(max-width:620px){
+  .home-journey{
+    padding:68px 0 76px!important;
+  }
+  .home-journey-grid{
+    grid-template-columns:1fr!important;
+    gap:18px!important;
+    width:min(310px,88vw)!important;
+    margin-top:44px!important;
+  }
+  .home-journey-step{
+    min-height:205px!important;
+    padding:78px 24px 28px!important;
+    border-radius:145px 145px 6px 6px!important;
+  }
+  .home-journey-step::before{
+    border-radius:136px 136px 3px 3px!important;
+  }
+  .home-journey-step::after{
+    display:block!important;
+    top:24px!important;
+  }
+  .home-journey-number{
+    top:49px!important;
+  }
+  .home-journey-step strong{
+    font-size:1.3rem!important;
+  }
+  .home-stay{
+    padding:72px 0 78px!important;
+  }
+  .home-stay-reasons{
+    grid-template-columns:1fr!important;
+    gap:14px!important;
+    margin-top:44px!important;
+  }
+  .home-stay-reason,
+  .home-stay-reason:nth-child(2),
+  .home-stay-reason:nth-child(3){
+    min-height:185px!important;
+    padding:28px 20px!important;
+  }
+  .home-stay-reason > span{
+    font-size:3.7rem!important;
+  }
+}
