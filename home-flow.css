@@ -1,0 +1,101 @@
+.home-flow-divider {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  overflow: hidden;
+  padding: 34px 24px;
+}
+
+.home-flow-divider-light {
+  color: #073d23;
+  background:
+    radial-gradient(circle at 50% 0, rgba(193, 154, 39, .12), transparent 46%),
+    #fbfaf5;
+}
+
+.home-flow-divider-dark {
+  color: #fff8dd;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(203, 163, 43, .13), transparent 42%),
+    linear-gradient(100deg, #003319, #00502c 50%, #003319);
+}
+
+.home-flow-divider-inner {
+  width: min(1160px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(38px, 1fr) auto minmax(38px, 1fr);
+  align-items: center;
+  gap: 26px;
+  text-align: center;
+}
+
+.home-flow-divider-inner > span {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(190, 147, 30, .82));
+}
+
+.home-flow-divider-inner > span:last-child {
+  background: linear-gradient(90deg, rgba(190, 147, 30, .82), transparent);
+}
+
+.home-flow-divider-inner > span::after {
+  content: "";
+  display: block;
+  width: 7px;
+  height: 7px;
+  margin: -3px 0 0 auto;
+  border: 1px solid #c39a2d;
+  background: currentColor;
+  transform: rotate(45deg);
+}
+
+.home-flow-divider-inner > span:last-child::after {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.home-flow-divider small {
+  display: block;
+  margin-bottom: 5px;
+  color: #b08a24;
+  font-size: .78rem;
+  font-weight: 800;
+}
+
+.home-flow-divider h2 {
+  margin: 0;
+  font-family: "Frank Ruhl Libre", "Noto Serif Hebrew", serif;
+  font-size: clamp(1.5rem, 2.2vw, 2.15rem);
+  font-weight: 850;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.home-flow-divider-light h2 {
+  color: #073d23;
+}
+
+.home-flow-divider-dark h2 {
+  color: #f7df85;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, .28);
+}
+
+@media (max-width: 620px) {
+  .home-flow-divider {
+    padding: 27px 16px;
+  }
+
+  .home-flow-divider-inner {
+    grid-template-columns: minmax(20px, 1fr) minmax(0, auto) minmax(20px, 1fr);
+    gap: 12px;
+  }
+
+  .home-flow-divider h2 {
+    font-size: 1.42rem;
+  }
+
+  .home-flow-divider small {
+    font-size: .7rem;
+  }
+}
