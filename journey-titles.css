@@ -36,6 +36,10 @@
 }
 
 .home-journey-step {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
   align-content: center !important;
   justify-items: center !important;
   text-align: center !important;
@@ -47,6 +51,7 @@
   position: relative !important;
   z-index: 2 !important;
   width: 100% !important;
+  max-width: none !important;
   margin-inline: auto !important;
   text-align: center !important;
 }
@@ -57,7 +62,7 @@
 }
 
 .home-journey-step > small {
-  max-width: 360px !important;
+  max-width: none !important;
 }
 
 .home-journey-step.is-journey-reached .home-journey-name {
@@ -72,6 +77,14 @@
 }
 
 @media (max-width: 520px) {
+  .home-journey-step,
+  .home-journey-step:nth-child(2),
+  .home-journey-step:nth-child(3),
+  .home-journey-step:nth-child(4) {
+    padding-right: 22px !important;
+    padding-left: 22px !important;
+  }
+
   .home-journey-step .home-journey-name {
     inset: 12px 0 auto !important;
     padding: 0 6px !important;
