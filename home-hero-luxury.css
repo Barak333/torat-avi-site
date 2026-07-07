@@ -60,24 +60,24 @@
 }
 
 .home-live-hero .home-hero-panel .home-mevakshei-title {
-  color: #e5bd48 !important;
-  background:
-    linear-gradient(180deg, #fff6bc 0%, #f2d167 23%, #d2a12d 48%, #b17b13 68%, #f4d66c 100%) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  -webkit-text-stroke: .65px rgba(48, 30, 4, .9) !important;
+  color: #B08A24 !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: #B08A24 !important;
+  -webkit-text-stroke: 0 !important;
   font-family: "Frank Ruhl Libre", "Noto Serif Hebrew", "Times New Roman", serif !important;
-  font-size: clamp(82px, 8.8vw, 132px) !important;
+  font-size: clamp(80px, 8.4vw, 126px) !important;
   font-weight: 950 !important;
-  line-height: .9 !important;
+  line-height: 1.02 !important;
   text-shadow:
-    0 1px 0 rgba(255, 245, 190, .44),
-    0 3px 0 rgba(54, 34, 4, .92),
-    0 8px 18px rgba(0, 0, 0, .62),
-    0 22px 46px rgba(0, 0, 0, .46),
-    0 0 22px rgba(248, 213, 101, .18) !important;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, .46)) !important;
+    0 1px 0 rgba(255, 236, 170, .55),
+    0 2px 0 rgba(53, 34, 6, .72),
+    0 5px 12px rgba(0, 0, 0, .66),
+    0 18px 38px rgba(0, 0, 0, .48),
+    0 0 18px rgba(176, 138, 36, .2) !important;
+  filter: none !important;
+  overflow: visible !important;
 }
 
 .home-live-hero .home-hero-panel .home-mevakshei-tagline {
@@ -96,12 +96,17 @@
 }
 
 .home-live-hero .home-hero-panel .home-mevakshei-tagline::after {
-  width: min(520px, 76vw) !important;
-  height: 16px !important;
-  bottom: 0 !important;
-  background: radial-gradient(circle at 50% 50%, #fff0a9 0 4px, transparent 5px), linear-gradient(90deg, transparent, #9f771b 14%, #ffe895 50%, #9f771b 86%, transparent) !important;
-  opacity: .95 !important;
-  filter: drop-shadow(0 0 14px rgba(244, 216, 112, .34)) !important;
+  width: min(420px, 68vw) !important;
+  height: 18px !important;
+  bottom: -2px !important;
+  background:
+    radial-gradient(circle at 50% 50%, #fff3b5 0 3px, #B08A24 4px, transparent 5px),
+    radial-gradient(circle at 43% 50%, #B08A24 0 2px, transparent 3px),
+    radial-gradient(circle at 57% 50%, #B08A24 0 2px, transparent 3px),
+    linear-gradient(90deg, transparent 0%, rgba(176, 138, 36, .22) 15%, rgba(255, 229, 139, .78) 50%, rgba(176, 138, 36, .22) 85%, transparent 100%) !important;
+  border-radius: 999px !important;
+  opacity: .86 !important;
+  filter: drop-shadow(0 0 10px rgba(176, 138, 36, .26)) !important;
 }
 
 .home-live-hero .home-hero-panel .home-mevakshei-essence {
@@ -137,9 +142,9 @@
   }
 
   .home-live-hero .home-hero-panel .home-mevakshei-title {
-    font-size: clamp(58px, 15vw, 78px) !important;
-    line-height: .92 !important;
-    -webkit-text-stroke: .45px rgba(48, 30, 4, .9) !important;
+    font-size: clamp(56px, 14.5vw, 76px) !important;
+    line-height: 1.03 !important;
+    -webkit-text-stroke: 0 !important;
   }
 
   .home-live-hero .home-hero-panel .home-mevakshei-tagline {
@@ -150,8 +155,8 @@
   }
 
   .home-live-hero .home-hero-panel .home-mevakshei-tagline::after {
-    width: min(300px, 76vw) !important;
-    height: 12px !important;
+    width: min(280px, 72vw) !important;
+    height: 14px !important;
   }
 
   .home-live-hero .home-hero-panel .home-mevakshei-essence {
