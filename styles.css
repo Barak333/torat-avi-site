@@ -28704,7 +28704,7 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 }
 
 .about-testimony-card{
-  width:min(1440px,92vw)!important;
+  width:min(1320px,86vw)!important;
   margin-inline:auto!important;
 }
 
@@ -28795,7 +28795,7 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 
 @media(min-width:900px){
   .about-testimony-card blockquote{
-    padding-inline:clamp(18px,4vw,70px)!important;
+    padding-inline:clamp(42px,6vw,120px)!important;
   }
 }
 
@@ -28805,7 +28805,7 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   }
 
   .about-testimony-card{
-    width:min(92vw,620px)!important;
+    width:min(88vw,620px)!important;
   }
 
   .about-testimony-card h2{
