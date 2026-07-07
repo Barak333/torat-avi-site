@@ -28851,17 +28851,17 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 
 .about-story-section.about-story-leaders{
   background:
-    linear-gradient(135deg,rgba(2,31,16,.95),rgba(0,48,24,.88)),
-    url("assets/page-watermark.svg") center/cover no-repeat!important;
-  border-block:1px solid rgba(221,202,98,.3)!important;
+    radial-gradient(circle at 18% 12%,rgba(184,158,20,.1),transparent 32%),
+    linear-gradient(180deg,#fffdf8,#f7f0df)!important;
+  border-block:1px solid rgba(184,158,20,.18)!important;
 }
 
 .about-testimony-light{
   background:
-    radial-gradient(circle at 50% 0,rgba(184,158,20,.12),transparent 34%),
-    linear-gradient(180deg,#fffdf8,#f7f0df)!important;
-  color:#003018!important;
-  border-block-color:rgba(184,158,20,.18)!important;
+    radial-gradient(circle at 50% 0,rgba(221,202,98,.18),transparent 34%),
+    linear-gradient(135deg,#002514,#004225)!important;
+  color:#fff8de!important;
+  border-block-color:rgba(221,202,98,.32)!important;
 }
 
 .about-story-section.about-story-life{
@@ -28891,10 +28891,14 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   color:#fff4cf!important;
 }
 
-.about-story-section.about-story-leaders .about-main-card h2,
+.about-story-section.about-story-leaders .about-main-card h2{
+  color:#003018!important;
+  text-shadow:none!important;
+}
+
 .about-story-section.about-story-leaders .about-main-card p{
-  color:#fffdf2!important;
-  text-shadow:0 8px 24px rgba(0,0,0,.24)!important;
+  color:#1d3c2b!important;
+  text-shadow:none!important;
 }
 
 .about-story-section.about-story-life .about-main-card{
