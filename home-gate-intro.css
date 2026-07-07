@@ -1,0 +1,421 @@
+.home-gate-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: #f4d77a;
+  background: #020806;
+  direction: rtl;
+  perspective: 1500px;
+  contain: layout paint style;
+}
+
+.home-gate-intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 38% 28%, rgba(255, 224, 132, .2) 0 1px, transparent 2px),
+    radial-gradient(circle at 62% 36%, rgba(255, 224, 132, .18) 0 1px, transparent 2px),
+    radial-gradient(circle at 48% 68%, rgba(255, 224, 132, .16) 0 1px, transparent 2px),
+    radial-gradient(circle at 71% 70%, rgba(255, 224, 132, .14) 0 1px, transparent 2px);
+  background-size: 260px 260px, 330px 330px, 410px 410px, 500px 500px;
+  opacity: .72;
+  pointer-events: none;
+}
+
+html.gate-intro-active,
+body.gate-intro-active {
+  overflow: hidden;
+}
+
+.home-gate-intro.is-hidden {
+  display: none;
+}
+
+.home-gate-intro.is-revealing {
+  opacity: 0;
+  transform: scale(1.08);
+  transition: opacity .9s ease, transform 1.1s cubic-bezier(.16, .84, .28, 1);
+  pointer-events: none;
+}
+
+.gate-intro-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(229, 184, 79, .18), transparent 22%),
+    radial-gradient(circle at 50% 58%, rgba(3, 85, 43, .32), transparent 42%),
+    linear-gradient(115deg, rgba(0, 7, 5, .98), rgba(0, 38, 19, .95) 46%, rgba(1, 6, 5, .99)),
+    url("assets/torat-avi-green-texture-clean.webp") center / cover no-repeat;
+}
+
+.gate-intro-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, .74), transparent 32%, transparent 68%, rgba(0, 0, 0, .74)),
+    radial-gradient(ellipse at 50% 48%, transparent 0 30%, rgba(0, 0, 0, .58) 78%);
+}
+
+.gate-intro-world {
+  position: relative;
+  width: min(860px, 92vw);
+  height: min(720px, 82vh);
+  display: grid;
+  place-items: center;
+  transform-style: preserve-3d;
+  transform: translate3d(0, 16px, 0) scale(.95);
+  opacity: 0;
+  will-change: transform, opacity, filter;
+}
+
+.home-gate-intro.is-ready .gate-intro-world {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  transition: opacity .45s ease, transform .7s cubic-bezier(.18, .8, .24, 1);
+}
+
+.gate-intro-light {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  width: min(310px, 42vw);
+  height: min(440px, 52vh);
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at center, rgba(255, 238, 168, .9) 0%, rgba(230, 177, 69, .38) 24%, rgba(0, 73, 35, .22) 50%, transparent 74%);
+  filter: blur(18px);
+  opacity: .16;
+  transform: translateX(-50%) translateZ(-140px) scale(.65);
+  will-change: transform, opacity;
+}
+
+.gate-intro-frame {
+  position: relative;
+  width: min(560px, 78vw);
+  height: min(520px, 62vh);
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 34px 60px rgba(0, 0, 0, .62));
+  will-change: transform, opacity;
+}
+
+.gate-intro-frame::before {
+  content: "";
+  position: absolute;
+  top: 20%;
+  right: -7%;
+  bottom: -3%;
+  left: -7%;
+  border: 1px solid rgba(176, 138, 36, .34);
+  border-radius: 210px 210px 10px 10px;
+  background:
+    radial-gradient(circle at 50% 8%, rgba(255, 232, 154, .1), transparent 34%),
+    repeating-linear-gradient(0deg, rgba(255, 230, 150, .06) 0 1px, transparent 1px 42px),
+    repeating-linear-gradient(90deg, rgba(255, 230, 150, .045) 0 1px, transparent 1px 58px),
+    linear-gradient(180deg, rgba(18, 23, 18, .92), rgba(5, 8, 6, .97));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 229, 145, .1),
+    inset 0 42px 70px rgba(255, 224, 133, .05),
+    inset 0 -38px 80px rgba(0, 0, 0, .6);
+  opacity: .78;
+  transform: translateZ(-24px);
+}
+
+.gate-intro-arch {
+  position: absolute;
+  inset: -44px 4% auto;
+  height: 48%;
+  border: 9px solid rgba(176, 138, 36, .88);
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+  background:
+    linear-gradient(180deg, rgba(255, 230, 145, .12), transparent 45%),
+    linear-gradient(90deg, rgba(6, 13, 10, .98), rgba(26, 29, 22, .96), rgba(6, 13, 10, .98));
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 231, 154, .22),
+    inset 0 -26px 44px rgba(0, 0, 0, .62),
+    0 0 34px rgba(176, 138, 36, .24);
+}
+
+.gate-intro-arch-line {
+  position: absolute;
+  inset: 18px 22px auto;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 232, 150, .8), transparent);
+}
+
+.gate-intro-arch-crown {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(255, 232, 150, .86);
+  transform: translateX(-50%) rotate(45deg);
+  background: linear-gradient(135deg, #fff0aa, #9b741d);
+  box-shadow: 0 0 24px rgba(255, 226, 135, .35);
+}
+
+.gate-intro-pillar {
+  position: absolute;
+  top: 28%;
+  width: 11%;
+  height: 73%;
+  border: 2px solid rgba(176, 138, 36, .58);
+  border-radius: 18px 18px 4px 4px;
+  background:
+    linear-gradient(90deg, rgba(255, 228, 142, .12), transparent 24%, rgba(0, 0, 0, .34) 75%),
+    repeating-linear-gradient(180deg, rgba(255, 230, 150, .08) 0 8px, transparent 8px 36px),
+    linear-gradient(180deg, #131913, #060907);
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, .58), 0 0 24px rgba(176, 138, 36, .13);
+}
+
+.gate-intro-pillar-right {
+  right: -3%;
+}
+
+.gate-intro-pillar-left {
+  left: -3%;
+}
+
+.gate-intro-door {
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+  height: 72%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 2px solid rgba(176, 138, 36, .8);
+  background:
+    radial-gradient(circle at 50% 38%, rgba(176, 138, 36, .2), transparent 22%),
+    linear-gradient(90deg, rgba(255, 230, 150, .08), transparent 22%, rgba(0, 0, 0, .34) 88%),
+    repeating-linear-gradient(90deg, rgba(255, 218, 112, .08) 0 2px, transparent 2px 46px),
+    linear-gradient(180deg, #111712, #050806 76%, #020302);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 229, 145, .18),
+    inset 0 -32px 46px rgba(0, 0, 0, .64),
+    0 0 28px rgba(0, 0, 0, .44);
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.gate-intro-door::before {
+  content: "";
+  position: absolute;
+  inset: 7% 9%;
+  border-radius: 140px 140px 12px 12px;
+  background:
+    linear-gradient(90deg, transparent 48%, rgba(255, 231, 148, .42) 49% 51%, transparent 52%),
+    radial-gradient(circle at 50% 42%, rgba(255, 227, 140, .14), transparent 28%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 230, 148, .2),
+    inset 0 0 28px rgba(0, 0, 0, .38);
+}
+
+.gate-intro-door::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 0 34%, rgba(255, 255, 255, .12) 38%, transparent 43% 100%);
+  opacity: .36;
+  mix-blend-mode: screen;
+}
+
+.gate-intro-door-right {
+  right: 0;
+  border-left-width: 1px;
+  border-radius: 170px 0 0 8px;
+  transform-origin: 100% 50%;
+}
+
+.gate-intro-door-left {
+  left: 0;
+  border-right-width: 1px;
+  border-radius: 0 170px 8px 0;
+  transform-origin: 0 50%;
+}
+
+.gate-door-ornament {
+  position: absolute;
+  inset: 12% 13%;
+  border: 1px solid rgba(255, 228, 140, .45);
+  border-radius: 999px 999px 18px 18px;
+  box-shadow: inset 0 0 22px rgba(176, 138, 36, .14);
+}
+
+.gate-door-ornament::before,
+.gate-door-ornament::after {
+  content: "";
+  position: absolute;
+  inset: 16% 20%;
+  border: 1px solid rgba(176, 138, 36, .38);
+  border-radius: 50%;
+}
+
+.gate-door-ornament::after {
+  inset: 33% 36%;
+  border-radius: 0;
+  transform: rotate(45deg);
+  background: rgba(176, 138, 36, .18);
+}
+
+.gate-door-rail {
+  position: absolute;
+  top: 50%;
+  width: 58%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 230, 148, .72), transparent);
+  box-shadow: 0 0 18px rgba(255, 226, 139, .28);
+}
+
+.gate-intro-door strong {
+  position: relative;
+  z-index: 2;
+  color: #B08A24;
+  font-family: "Frank Ruhl Libre", "Noto Serif Hebrew", serif;
+  font-size: clamp(1.35rem, 4vw, 2.55rem);
+  text-shadow: 0 2px 0 rgba(0, 0, 0, .76), 0 0 18px rgba(255, 226, 133, .2);
+}
+
+.gate-intro-path {
+  position: absolute;
+  bottom: -16%;
+  left: 50%;
+  width: min(470px, 64vw);
+  height: 58%;
+  transform: translateX(-50%) translateZ(-220px) rotateX(62deg);
+  transform-origin: 50% 100%;
+  opacity: .52;
+  overflow: hidden;
+}
+
+.gate-intro-path::before {
+  content: "";
+  position: absolute;
+  inset: 0 34% 0;
+  background:
+    repeating-linear-gradient(180deg, rgba(255, 229, 146, .32) 0 2px, transparent 2px 42px),
+    linear-gradient(90deg, transparent, rgba(255, 225, 139, .42), transparent);
+  clip-path: polygon(42% 0, 58% 0, 100% 100%, 0 100%);
+}
+
+.gate-intro-path span {
+  position: absolute;
+  left: 50%;
+  width: 58%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 232, 150, .64), transparent);
+  transform: translateX(-50%);
+}
+
+.gate-intro-path span:nth-child(1) { top: 22%; }
+.gate-intro-path span:nth-child(2) { top: 48%; width: 72%; }
+.gate-intro-path span:nth-child(3) { top: 76%; width: 92%; }
+
+.gate-intro-caption {
+  position: absolute;
+  bottom: max(18px, 4vh);
+  left: 50%;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  transform: translateX(-50%);
+  text-align: center;
+  text-shadow: 0 12px 28px rgba(0, 0, 0, .72);
+  opacity: .98;
+}
+
+.gate-intro-caption span {
+  color: #B08A24;
+  font-family: "Frank Ruhl Libre", "Noto Serif Hebrew", serif;
+  font-size: clamp(2rem, 4.4vw, 4.1rem);
+  font-weight: 950;
+  line-height: .9;
+}
+
+.gate-intro-caption small {
+  color: rgba(255, 249, 219, .92);
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  font-weight: 800;
+}
+
+.home-gate-intro.is-opening .gate-intro-light {
+  opacity: .84;
+  transform: translateX(-50%) translateZ(-80px) scale(1.2);
+  transition: opacity 1.1s ease, transform 1.3s cubic-bezier(.18, .78, .2, 1);
+}
+
+.home-gate-intro.is-opening .gate-intro-door-right {
+  transform: rotateY(-76deg) translateZ(6px);
+  transition: transform 1.55s cubic-bezier(.18, .76, .18, 1);
+}
+
+.home-gate-intro.is-opening .gate-intro-door-left {
+  transform: rotateY(76deg) translateZ(6px);
+  transition: transform 1.55s cubic-bezier(.18, .76, .18, 1);
+}
+
+.home-gate-intro.is-dolly .gate-intro-world {
+  transform: translate3d(0, -3vh, 360px) scale(1.9);
+  filter: saturate(1.06) brightness(1.08);
+  transition: transform 1.75s cubic-bezier(.13, .82, .2, 1), filter 1.2s ease;
+}
+
+.home-gate-intro.is-dolly .gate-intro-caption {
+  opacity: 0;
+  transform: translateX(-50%) translateY(18px);
+  transition: opacity .55s ease, transform .7s ease;
+}
+
+.home-gate-intro.is-dolly .gate-intro-bg {
+  transform: scale(1.08);
+  filter: blur(2px) brightness(1.08);
+  transition: transform 1.8s cubic-bezier(.13, .82, .2, 1), filter 1.4s ease;
+}
+
+.home-gate-intro.is-revealing .gate-intro-light {
+  opacity: 1;
+  transform: translateX(-50%) translateZ(120px) scale(2.2);
+  transition: opacity .6s ease, transform .9s ease;
+}
+
+@media (max-width: 680px) {
+  .gate-intro-world {
+    width: 96vw;
+    height: 78vh;
+  }
+
+  .gate-intro-frame {
+    width: min(390px, 82vw);
+    height: min(470px, 58vh);
+  }
+
+  .gate-intro-arch {
+    border-width: 7px;
+    top: -34px;
+  }
+
+  .gate-intro-pillar {
+    width: 12%;
+  }
+
+  .gate-intro-door strong {
+    font-size: clamp(1.05rem, 6vw, 1.75rem);
+  }
+
+  .gate-intro-caption {
+    bottom: max(18px, 3vh);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-gate-intro {
+    display: none !important;
+  }
+}
