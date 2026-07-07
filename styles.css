@@ -28834,6 +28834,36 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   }
 }
 
+/* Use the Mevakshei Panecha logo consistently across all site headers. */
+.site-header .brand-logo-panel:has(.brand-logo-img[src$="mevakshei-panecha-nav-logo.webp"]){
+  width:clamp(148px,13vw,188px)!important;
+  height:54px!important;
+  overflow:visible!important;
+  border-radius:999px!important;
+  background:rgba(255,253,248,.9)!important;
+  border:1px solid rgba(214,183,93,.42)!important;
+}
+
+.site-header .brand-logo-img[src$="mevakshei-panecha-nav-logo.webp"]{
+  width:100%!important;
+  height:100%!important;
+  max-height:54px!important;
+  object-fit:contain!important;
+  transform:scale(1.2)!important;
+  transform-origin:center center!important;
+}
+
+@media(max-width:760px){
+  .site-header .brand-logo-panel:has(.brand-logo-img[src$="mevakshei-panecha-nav-logo.webp"]){
+    width:min(54vw,178px)!important;
+    height:50px!important;
+  }
+
+  .site-header .brand-logo-img[src$="mevakshei-panecha-nav-logo.webp"]{
+    max-height:50px!important;
+  }
+}
+
 /* About page color rhythm between adjacent sections. */
 .about-story-section.about-story-opening{
   background:
