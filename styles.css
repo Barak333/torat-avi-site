@@ -28581,3 +28581,97 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
     margin-bottom:7px!important;
   }
 }
+
+/* About testimonials compact wide layout. */
+.about-testimony-section{
+  min-height:auto!important;
+  padding-block:clamp(38px,4vw,64px)!important;
+}
+
+.about-testimony-card{
+  width:min(1280px,94vw)!important;
+}
+
+.about-testimony-card blockquote{
+  min-height:0!important;
+  display:grid!important;
+  grid-template-columns:minmax(260px,.36fr) minmax(0,1fr)!important;
+  grid-auto-rows:auto!important;
+  align-items:center!important;
+  gap:clamp(18px,3vw,42px)!important;
+  padding:clamp(24px,3vw,42px) clamp(24px,4vw,62px)!important;
+  text-align:right!important;
+}
+
+.about-testimony-card h2{
+  grid-column:1!important;
+  grid-row:1 / span 20!important;
+  align-self:center!important;
+  margin:0!important;
+  max-width:100%!important;
+  font-size:clamp(2.15rem,4.6vw,5rem)!important;
+  line-height:.98!important;
+  text-align:center!important;
+}
+
+.about-testimony-card h2::after{
+  width:min(210px,40vw)!important;
+  margin:20px auto 0!important;
+}
+
+.about-testimony-card p,
+.about-testimony-card cite{
+  grid-column:2!important;
+  max-width:none!important;
+  margin:0 0 6px!important;
+  font-size:clamp(.92rem,1vw,1.04rem)!important;
+  line-height:1.58!important;
+  text-align:right!important;
+}
+
+.about-testimony-card cite{
+  margin-top:10px!important;
+}
+
+.about-testimony-card blockquote::before{
+  top:-12px!important;
+  right:24px!important;
+  font-size:clamp(6rem,10vw,11rem)!important;
+}
+
+.about-testimony-card blockquote::after{
+  bottom:-36px!important;
+  left:28px!important;
+  font-size:clamp(4.8rem,8vw,8rem)!important;
+}
+
+@media(max-width:760px){
+  .about-testimony-section{
+    padding-block:34px!important;
+  }
+
+  .about-testimony-card{
+    width:min(94vw,620px)!important;
+  }
+
+  .about-testimony-card blockquote{
+    grid-template-columns:1fr!important;
+    gap:14px!important;
+    padding:28px 18px!important;
+    text-align:center!important;
+  }
+
+  .about-testimony-card h2{
+    grid-column:1!important;
+    grid-row:auto!important;
+    font-size:clamp(1.85rem,9vw,3rem)!important;
+  }
+
+  .about-testimony-card p,
+  .about-testimony-card cite{
+    grid-column:1!important;
+    font-size:.9rem!important;
+    line-height:1.5!important;
+    text-align:center!important;
+  }
+}
