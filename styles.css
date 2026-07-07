@@ -28202,3 +28202,187 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   display:none!important;
   content:none!important;
 }
+
+/* About page narrative split and testimony dividers. */
+.about-story-section.about-story-opening,
+.about-story-section.about-story-leaders,
+.about-story-section.about-story-life,
+.about-testimony-section{
+  position:relative!important;
+  overflow:hidden!important;
+  padding-block:clamp(70px,7vw,112px)!important;
+}
+
+.about-story-section.about-story-opening{
+  min-height:auto!important;
+  display:block!important;
+  background:
+    radial-gradient(circle at 50% 0,rgba(184,158,20,.14),transparent 34%),
+    linear-gradient(180deg,#fffdf8,#f7f0df)!important;
+  border-block:0!important;
+}
+
+.about-story-section.about-story-leaders{
+  min-height:auto!important;
+  display:block!important;
+  background:
+    radial-gradient(circle at 18% 12%,rgba(0,48,24,.08),transparent 32%),
+    linear-gradient(180deg,#f4ead2,#fffaf0)!important;
+  border-block:1px solid rgba(184,158,20,.2)!important;
+}
+
+.about-story-section.about-story-life{
+  min-height:auto!important;
+  display:block!important;
+  background:
+    linear-gradient(135deg,rgba(2,31,16,.95),rgba(0,48,24,.88)),
+    url("assets/page-watermark.svg") center/cover no-repeat!important;
+  border-block:1px solid rgba(221,202,98,.3)!important;
+}
+
+.about-story-section.about-story-opening::before,
+.about-story-section.about-story-opening::after,
+.about-story-section.about-story-leaders::before,
+.about-story-section.about-story-leaders::after,
+.about-story-section.about-story-life::before,
+.about-story-section.about-story-life::after{
+  display:none!important;
+  content:none!important;
+}
+
+.about-story-section.about-story-opening .about-main-card,
+.about-story-section.about-story-leaders .about-main-card{
+  max-width:960px!important;
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  color:#143924!important;
+  backdrop-filter:none!important;
+}
+
+.about-story-section.about-story-opening .about-main-card h2,
+.about-story-section.about-story-leaders .about-main-card h2{
+  max-width:820px!important;
+  color:#003018!important;
+  text-shadow:none!important;
+}
+
+.about-story-section.about-story-opening .about-main-card p,
+.about-story-section.about-story-leaders .about-main-card p{
+  color:#1d3c2b!important;
+  text-shadow:none!important;
+  font-size:clamp(1.08rem,1.2vw,1.24rem)!important;
+  line-height:2.05!important;
+}
+
+.about-story-section.about-story-life .about-main-card{
+  max-width:940px!important;
+  padding:clamp(32px,4.6vw,58px)!important;
+  background:linear-gradient(180deg,rgba(3,38,19,.78),rgba(3,38,19,.58))!important;
+  border:1px solid rgba(221,202,98,.28)!important;
+  box-shadow:0 24px 70px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.08)!important;
+}
+
+.about-story-section.about-story-life .about-main-card h2{
+  color:#fffdf2!important;
+}
+
+.about-story-section.about-story-life .about-main-card p{
+  color:rgba(255,255,255,.9)!important;
+}
+
+.about-testimony-section{
+  isolation:isolate!important;
+}
+
+.about-testimony-dark{
+  background:
+    radial-gradient(circle at 50% 0,rgba(221,202,98,.18),transparent 30%),
+    linear-gradient(180deg,#042817,#003018)!important;
+  color:#fffdf2!important;
+}
+
+.about-testimony-light{
+  background:
+    linear-gradient(180deg,rgba(255,253,248,.9),rgba(246,239,222,.94)),
+    radial-gradient(circle at 50% 0,rgba(184,158,20,.15),transparent 35%)!important;
+  color:#173a28!important;
+}
+
+.about-testimony-gold{
+  background:
+    radial-gradient(circle at 50% 0,rgba(255,255,255,.2),transparent 32%),
+    linear-gradient(135deg,#b8942d,#8f6c18)!important;
+  color:#fff8de!important;
+}
+
+.about-testimony-card{
+  width:min(900px,90vw)!important;
+  margin-inline:auto!important;
+  text-align:center!important;
+}
+
+.about-testimony-card blockquote{
+  margin:0!important;
+  padding:clamp(30px,4vw,54px)!important;
+  border:1px solid rgba(221,202,98,.32)!important;
+  border-radius:8px!important;
+  background:rgba(255,253,248,.08)!important;
+  box-shadow:0 22px 62px rgba(0,0,0,.12)!important;
+}
+
+.about-testimony-light .about-testimony-card blockquote{
+  background:rgba(255,255,255,.66)!important;
+  border-color:rgba(184,158,20,.24)!important;
+}
+
+.about-testimony-card h2{
+  margin:0 0 24px!important;
+  color:inherit!important;
+  font-family:"Frank Ruhl Libre","Noto Serif Hebrew","Times New Roman",serif!important;
+  font-size:clamp(2rem,4vw,3.45rem)!important;
+  font-weight:900!important;
+  line-height:1.05!important;
+  letter-spacing:0!important;
+}
+
+.about-testimony-card h2::after{
+  content:""!important;
+  display:block!important;
+  width:min(260px,54vw)!important;
+  height:1px!important;
+  margin:20px auto 0!important;
+  background:linear-gradient(90deg,transparent,currentColor,transparent)!important;
+  opacity:.45!important;
+}
+
+.about-testimony-card p,
+.about-testimony-card cite{
+  display:block!important;
+  max-width:620px!important;
+  margin:0 auto 10px!important;
+  color:inherit!important;
+  font-size:clamp(1.04rem,1.25vw,1.22rem)!important;
+  line-height:1.8!important;
+  font-style:normal!important;
+}
+
+.about-testimony-card cite{
+  margin-top:22px!important;
+  color:#d9c772!important;
+  font-weight:800!important;
+}
+
+@media(max-width:760px){
+  .about-story-section.about-story-opening,
+  .about-story-section.about-story-leaders,
+  .about-story-section.about-story-life,
+  .about-testimony-section{
+    padding-block:54px!important;
+  }
+
+  .about-testimony-card blockquote{
+    padding:28px 18px!important;
+  }
+}
