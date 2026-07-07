@@ -4354,16 +4354,6 @@ body.reduce-motion .home-books-feature .book-float-wrap{
   }
 }
 
-@media(max-width:480px){
-  .home-books-feature .real-book-showcase{
-    min-height:310px!important;
-  }
-
-  .home-books-feature .book-float-wrap{
-    width:min(330px,86vw)!important;
-  }
-}
-
 /* Dedicated donation page refinement */
 .donation-hero{
   min-height:420px;
@@ -27097,4 +27087,1118 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   .home-journey-destination.is-journey-reached{
     transition:none!important;
   }
+}
+
+/* Homepage nav brand logo replacement. */
+.site-header .home-mevakshei-brand-link{
+  min-width:0!important;
+  width:auto!important;
+  max-width:clamp(148px,13vw,188px)!important;
+  margin-inline-start:auto!important;
+  margin-inline-end:12px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+
+.site-header .home-mevakshei-nav-logo-panel{
+  width:clamp(148px,13vw,188px)!important;
+  height:54px!important;
+  display:grid!important;
+  place-items:center!important;
+  padding:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+
+.site-header .home-mevakshei-nav-logo-img{
+  width:100%!important;
+  height:100%!important;
+  max-height:54px!important;
+  object-fit:contain!important;
+  display:block!important;
+  transform:scale(1.2)!important;
+  transform-origin:center!important;
+  filter:drop-shadow(0 8px 14px rgba(0,32,17,.16));
+}
+
+@media(max-width:760px){
+  .site-header .home-mevakshei-brand-link{
+    width:min(52vw,168px)!important;
+    max-width:min(52vw,168px)!important;
+    margin-inline:auto!important;
+  }
+
+  .site-header .home-mevakshei-nav-logo-panel{
+    width:100%!important;
+    height:50px!important;
+  }
+
+  .site-header .home-mevakshei-nav-logo-img{
+    max-height:50px!important;
+  }
+}
+
+/* Premium refinement for "התורה פוגשת את החיים" section only. */
+.home-mevakshei-intro{
+  isolation:isolate!important;
+  overflow:hidden!important;
+  padding:104px 0 112px!important;
+  background:
+    radial-gradient(circle at 50% 0,rgba(199,155,69,.18),transparent 30%),
+    linear-gradient(180deg,rgba(255,253,248,.98),rgba(246,242,231,.98))!important;
+}
+
+.home-mevakshei-intro::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:0!important;
+  pointer-events:none!important;
+  background:
+    linear-gradient(90deg,transparent 0 8%,rgba(0,48,24,.035) 8.1% 8.25%,transparent 8.35% 91.65%,rgba(0,48,24,.035) 91.75% 91.9%,transparent 92%),
+    radial-gradient(circle at 50% 100%,rgba(134,165,143,.16),transparent 32%)!important;
+}
+
+.home-mevakshei-intro .section-inner{
+  position:relative!important;
+  z-index:1!important;
+}
+
+.home-mevakshei-intro-card{
+  position:relative!important;
+  width:min(980px,100%)!important;
+  min-height:390px!important;
+  display:grid!important;
+  justify-items:center!important;
+  align-content:center!important;
+  gap:0!important;
+  margin:auto!important;
+  padding:58px clamp(24px,5vw,76px)!important;
+  text-align:center!important;
+  border-top:1px solid rgba(184,158,20,.52)!important;
+  border-bottom:1px solid rgba(184,158,20,.36)!important;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,253,248,.46)),
+    radial-gradient(circle at 50% 0,rgba(255,244,223,.72),transparent 42%)!important;
+  box-shadow:0 24px 70px rgba(0,48,24,.075)!important;
+}
+
+.home-mevakshei-intro-card::before,
+.home-mevakshei-intro-card::after{
+  content:""!important;
+  position:absolute!important;
+  left:50%!important;
+  transform:translateX(-50%)!important;
+  pointer-events:none!important;
+}
+
+.home-mevakshei-intro-card::before{
+  top:28px!important;
+  width:min(330px,54vw)!important;
+  height:1px!important;
+  background:linear-gradient(90deg,transparent,#0b6a3c,#c7a33a,#0b6a3c,transparent)!important;
+}
+
+.home-mevakshei-intro-card::after{
+  top:22px!important;
+  width:11px!important;
+  height:11px!important;
+  border:1px solid rgba(184,158,20,.76)!important;
+  background:#fffdf8!important;
+  transform:translateX(-50%) rotate(45deg)!important;
+  box-shadow:0 0 0 8px rgba(255,253,248,.92),0 0 24px rgba(184,158,20,.22)!important;
+}
+
+.home-mevakshei-intro-card h2{
+  margin:0 0 30px!important;
+  padding:0 0 23px!important;
+  color:#003018!important;
+  font-family:"Frank Ruhl Libre","Noto Serif Hebrew","Times New Roman",serif!important;
+  font-size:clamp(2.55rem,5vw,4.95rem)!important;
+  font-weight:950!important;
+  line-height:1!important;
+  letter-spacing:0!important;
+  text-shadow:0 1px 0 #fff,0 18px 42px rgba(0,48,24,.09)!important;
+}
+
+.home-mevakshei-intro-card h2::after{
+  width:min(190px,42vw)!important;
+  height:3px!important;
+  background:linear-gradient(90deg,transparent,#0b6a3c,#c7a33a,transparent)!important;
+  box-shadow:0 9px 22px rgba(184,158,20,.14)!important;
+}
+
+.home-mevakshei-intro-card p{
+  max-width:760px!important;
+  margin:0 auto 12px!important;
+  color:#314f43!important;
+  font-size:clamp(1.12rem,1.55vw,1.3rem)!important;
+  font-weight:500!important;
+  line-height:1.95!important;
+}
+
+.home-mevakshei-intro-card strong{
+  max-width:760px!important;
+  margin:18px auto 0!important;
+  color:#003018!important;
+  font-family:"Frank Ruhl Libre","Noto Serif Hebrew","Times New Roman",serif!important;
+  font-size:clamp(1.28rem,1.95vw,1.62rem)!important;
+  font-weight:900!important;
+  line-height:1.42!important;
+}
+
+.home-mevakshei-intro-link{
+  min-height:50px!important;
+  margin-top:34px!important;
+  padding:11px 30px!important;
+  border:1px solid rgba(184,158,20,.66)!important;
+  border-radius:999px!important;
+  color:#003018!important;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.42),transparent),
+    linear-gradient(135deg,#f6df81,#c79b45)!important;
+  box-shadow:0 16px 36px rgba(153,116,22,.17),inset 0 1px 0 rgba(255,255,255,.62)!important;
+  font-size:1rem!important;
+  font-weight:900!important;
+  transition:transform .22s ease,box-shadow .22s ease,filter .22s ease!important;
+}
+
+.home-mevakshei-intro-link:hover,
+.home-mevakshei-intro-link:focus-visible{
+  transform:translateY(-3px)!important;
+  filter:saturate(1.04)!important;
+  box-shadow:0 22px 44px rgba(153,116,22,.24),inset 0 1px 0 rgba(255,255,255,.72)!important;
+}
+
+.home-mevakshei-intro-card.reveal{
+  transform:translateY(22px) scale(.985);
+}
+
+.home-mevakshei-intro-card.reveal.is-visible{
+  transform:translateY(0) scale(1);
+}
+
+@media(max-width:860px){
+  .home-mevakshei-intro{
+    padding:72px 0 82px!important;
+  }
+
+  .home-mevakshei-intro-card{
+    min-height:0!important;
+    padding:50px 20px 46px!important;
+  }
+
+  .home-mevakshei-intro-card h2{
+    margin-bottom:24px!important;
+    font-size:clamp(2.25rem,10vw,3.2rem)!important;
+  }
+
+  .home-mevakshei-intro-card p{
+    font-size:1.02rem!important;
+    line-height:1.82!important;
+  }
+
+  .home-mevakshei-intro-card strong{
+    font-size:1.18rem!important;
+  }
+
+  .home-mevakshei-intro-link{
+    width:min(280px,100%)!important;
+  }
+}
+
+/* Open layout refinement for "התורה פוגשת את החיים" - no card background inside the section. */
+.home-mevakshei-intro-card{
+  min-height:0!important;
+  padding:32px clamp(18px,4vw,54px)!important;
+  border-top:0!important;
+  border-bottom:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+
+.home-mevakshei-intro-card::before{
+  top:0!important;
+  width:min(250px,46vw)!important;
+  background:linear-gradient(90deg,transparent,#0b6a3c,#c7a33a,transparent)!important;
+}
+
+.home-mevakshei-intro-card::after{
+  top:-5px!important;
+  background:#f8f4ea!important;
+  box-shadow:0 0 0 8px #f8f4ea,0 0 20px rgba(184,158,20,.16)!important;
+}
+
+@media(max-width:860px){
+  .home-mevakshei-intro-card{
+    padding:30px 18px!important;
+  }
+}
+
+/* Journey origin and destination typography refinement only. */
+.home-journey-origin,
+.home-journey-destination{
+  width:min(760px,92%)!important;
+  max-width:92%!important;
+  display:grid!important;
+  justify-items:center!important;
+  gap:8px!important;
+  margin-inline:auto!important;
+  text-align:center!important;
+}
+
+.home-journey-origin{
+  margin-top:54px!important;
+  padding:18px 32px 30px!important;
+}
+
+.home-journey-destination{
+  margin-top:18px!important;
+  padding:34px 32px 0!important;
+}
+
+.home-journey-origin span,
+.home-journey-destination span{
+  position:relative!important;
+  display:inline-grid!important;
+  grid-auto-flow:column!important;
+  align-items:center!important;
+  gap:12px!important;
+  color:#f0d777!important;
+  font-family:"Frank Ruhl Libre","Noto Serif Hebrew","Times New Roman",serif!important;
+  font-size:clamp(1rem,1.35vw,1.24rem)!important;
+  font-weight:900!important;
+  line-height:1.1!important;
+  text-shadow:0 3px 18px rgba(0,0,0,.28)!important;
+}
+
+.home-journey-origin span::before,
+.home-journey-origin span::after,
+.home-journey-destination span::before,
+.home-journey-destination span::after{
+  content:""!important;
+  width:38px!important;
+  height:1px!important;
+  background:linear-gradient(90deg,transparent,rgba(240,215,119,.82))!important;
+}
+
+.home-journey-origin span::after,
+.home-journey-destination span::after{
+  background:linear-gradient(90deg,rgba(240,215,119,.82),transparent)!important;
+}
+
+.home-journey-origin strong,
+.home-journey-destination strong{
+  max-width:760px!important;
+  margin:0!important;
+  color:#fff9df!important;
+  font-family:"Frank Ruhl Libre","Noto Serif Hebrew","Times New Roman",serif!important;
+  font-weight:950!important;
+  letter-spacing:0!important;
+  text-align:center!important;
+  text-shadow:0 6px 28px rgba(0,0,0,.34)!important;
+}
+
+.home-journey-origin strong{
+  font-size:clamp(1.75rem,2.7vw,2.65rem)!important;
+  line-height:1.12!important;
+}
+
+.home-journey-destination strong{
+  color:#f7dd7d!important;
+  font-size:clamp(2.15rem,3.8vw,3.7rem)!important;
+  line-height:1.12!important;
+}
+
+.home-journey-destination em{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex-wrap:wrap!important;
+  gap:10px!important;
+  margin:18px auto 0!important;
+  padding:10px 22px!important;
+  border:1px solid rgba(240,215,119,.32)!important;
+  border-radius:999px!important;
+  color:#fff5c9!important;
+  background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.025))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 14px 36px rgba(0,0,0,.14)!important;
+  font-style:normal!important;
+  font-size:clamp(.98rem,1.25vw,1.12rem)!important;
+  font-weight:850!important;
+  line-height:1.45!important;
+  text-align:center!important;
+}
+
+@media(max-width:860px){
+  .home-journey-origin{
+    margin-top:42px!important;
+    padding:14px 18px 24px!important;
+  }
+
+  .home-journey-destination{
+    padding:28px 18px 0!important;
+  }
+
+  .home-journey-origin span,
+  .home-journey-destination span{
+    font-size:1rem!important;
+  }
+
+  .home-journey-origin span::before,
+  .home-journey-origin span::after,
+  .home-journey-destination span::before,
+  .home-journey-destination span::after{
+    width:24px!important;
+  }
+
+  .home-journey-origin strong{
+    font-size:1.7rem!important;
+  }
+
+  .home-journey-destination strong{
+    font-size:2.15rem!important;
+  }
+
+  .home-journey-destination em{
+    max-width:310px!important;
+    padding:10px 16px!important;
+  }
+}
+
+/* "תורת חיים" title styling only. */
+.home-life-statement-card > .home-life-title{
+  width:min(1040px,100%)!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:clamp(28px,7vw,120px)!important;
+  margin:0 auto -6px!important;
+  color:#b9d8c4!important;
+  font-family:"Frank Ruhl Libre","Noto Serif Hebrew","Times New Roman",serif!important;
+  font-size:clamp(4rem,11vw,9rem)!important;
+  font-weight:900!important;
+  line-height:.88!important;
+  white-space:nowrap!important;
+  text-shadow:none!important;
+}
+
+.home-life-statement-card > .home-life-title::before,
+.home-life-statement-card > .home-life-title::after{
+  content:""!important;
+  flex:1 1 0!important;
+  min-width:34px!important;
+  height:1px!important;
+  background:linear-gradient(90deg,transparent,rgba(7,61,35,.58))!important;
+}
+
+.home-life-statement-card > .home-life-title::after{
+  background:linear-gradient(90deg,rgba(7,61,35,.58),transparent)!important;
+}
+
+.home-life-title span:first-child{
+  order:-1!important;
+}
+
+.home-life-title span:last-child{
+  order:1!important;
+}
+
+@media(max-width:860px){
+  .home-life-statement-card > .home-life-title{
+    justify-content:center!important;
+    gap:18px!important;
+    margin-bottom:0!important;
+    font-size:clamp(3.1rem,17vw,5.8rem)!important;
+  }
+
+  .home-life-statement-card > .home-life-title::before,
+  .home-life-statement-card > .home-life-title::after{
+    display:none!important;
+  }
+}
+
+/* Place "תורת" and "חיים" around the central statement only. */
+.home-life-statement{
+  background:#003018!important;
+}
+
+.home-life-statement-card{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  grid-template-rows:auto auto auto!important;
+  align-items:center!important;
+  justify-items:center!important;
+  column-gap:clamp(24px,5vw,82px)!important;
+  row-gap:20px!important;
+  min-height:440px!important;
+  background:
+    linear-gradient(90deg,rgba(0,24,12,.38),rgba(0,48,24,.08),rgba(0,24,12,.38)),
+    url("assets/home-life-green-bg.webp") center/cover no-repeat!important;
+}
+
+.home-life-statement-card::before,
+.home-life-statement-card::after{
+  display:none!important;
+  content:none!important;
+}
+
+.home-life-statement-card > .home-life-title{
+  grid-column:1!important;
+  grid-row:1!important;
+  width:min(1040px,100%)!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:.16em!important;
+  margin:0 auto -4px!important;
+  color:rgba(178,190,126,.38)!important;
+  font-family:"Frank Ruhl Libre","Noto Serif Hebrew","Times New Roman",serif!important;
+  font-size:clamp(4.6rem,12vw,10rem)!important;
+  font-weight:900!important;
+  line-height:.78!important;
+  white-space:nowrap!important;
+  text-shadow:0 1px 0 rgba(255,245,190,.08),0 12px 32px rgba(0,0,0,.18)!important;
+}
+
+.home-life-statement-card > .home-life-title::before,
+.home-life-statement-card > .home-life-title::after{
+  display:none!important;
+  content:none!important;
+}
+
+.home-life-title span:first-child{
+  grid-column:auto!important;
+  grid-row:1!important;
+  justify-self:auto!important;
+  color:inherit!important;
+}
+
+.home-life-title span:last-child{
+  grid-column:auto!important;
+  grid-row:1!important;
+  justify-self:auto!important;
+  color:inherit!important;
+}
+
+.home-life-statement-card h2{
+  grid-column:1!important;
+  grid-row:2!important;
+  margin:0!important;
+  justify-self:center!important;
+  text-align:center!important;
+  font-size:clamp(2.45rem,4.25vw,4.15rem)!important;
+}
+
+.home-life-statement-card p{
+  grid-column:1 / -1!important;
+  grid-row:3!important;
+  margin:0 auto!important;
+  text-align:center!important;
+}
+
+@media(max-width:860px){
+  .home-life-statement-card{
+    grid-template-columns:1fr!important;
+    grid-template-rows:auto auto auto!important;
+    row-gap:16px!important;
+    min-height:420px!important;
+  }
+
+  .home-life-statement-card > .home-life-title{
+    display:flex!important;
+    grid-column:1!important;
+    grid-row:1!important;
+    gap:.16em!important;
+    font-size:clamp(3.5rem,19vw,6.2rem)!important;
+  }
+
+  .home-life-title span:first-child,
+  .home-life-title span:last-child,
+  .home-life-statement-card h2,
+  .home-life-statement-card p{
+    grid-column:1!important;
+  }
+
+  .home-life-statement-card h2{
+    grid-row:2!important;
+  }
+
+  .home-life-statement-card p{
+    grid-row:3!important;
+  }
+}
+
+/* Redesign "יותר מתשובה אחת" section only. */
+.home-stay{
+  padding:108px 0 118px!important;
+  background:
+    radial-gradient(circle at 50% 0,rgba(199,155,69,.12),transparent 30%),
+    linear-gradient(180deg,#fffdf8,#f4f0e5)!important;
+}
+
+.home-stay-layout{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  justify-items:center!important;
+  gap:58px!important;
+}
+
+.home-stay-heading{
+  width:min(860px,100%)!important;
+  display:grid!important;
+  justify-items:center!important;
+  text-align:center!important;
+}
+
+.home-stay-heading > span{
+  color:#b08a24!important;
+  font-size:.82rem!important;
+  font-weight:900!important;
+}
+
+.home-stay-heading h2{
+  max-width:900px!important;
+  margin:10px auto 18px!important;
+  color:#003018!important;
+  font-family:"Frank Ruhl Libre","Noto Serif Hebrew","Times New Roman",serif!important;
+  font-size:clamp(2.7rem,5vw,4.85rem)!important;
+  font-weight:950!important;
+  line-height:1!important;
+  text-align:center!important;
+}
+
+.home-stay-heading p{
+  max-width:680px!important;
+  margin:0 auto!important;
+  color:#52685e!important;
+  font-size:clamp(1.05rem,1.45vw,1.2rem)!important;
+  line-height:1.85!important;
+  text-align:center!important;
+}
+
+.home-stay-reasons{
+  width:min(1060px,100%)!important;
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:24px!important;
+  margin:0!important;
+  padding:0!important;
+}
+
+.home-stay-reasons::before{
+  display:none!important;
+  content:none!important;
+}
+
+.home-stay-reason,
+.home-stay-reason:nth-child(2),
+.home-stay-reason:nth-child(3){
+  position:relative!important;
+  min-height:250px!important;
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  grid-template-rows:auto auto!important;
+  align-content:center!important;
+  justify-items:center!important;
+  row-gap:12px!important;
+  padding:46px 30px 38px!important;
+  border:1px solid rgba(0,48,24,.12)!important;
+  border-top:3px solid rgba(184,158,20,.78)!important;
+  border-bottom:1px solid rgba(184,158,20,.22)!important;
+  border-radius:0!important;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,253,248,.64)),
+    radial-gradient(circle at 50% 0,rgba(199,155,69,.15),transparent 42%)!important;
+  box-shadow:0 24px 60px rgba(0,48,24,.08)!important;
+  text-align:center!important;
+  transform:none!important;
+  overflow:hidden!important;
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease!important;
+}
+
+.home-stay-reason:last-child{
+  border-bottom:1px solid rgba(184,158,20,.22)!important;
+}
+
+.home-stay-reason > span{
+  position:absolute!important;
+  inset:18px auto auto 22px!important;
+  grid-row:auto!important;
+  align-self:auto!important;
+  margin:0!important;
+  color:rgba(184,158,20,.14)!important;
+  font-family:"Frank Ruhl Libre","Noto Serif Hebrew","Times New Roman",serif!important;
+  font-size:7rem!important;
+  font-weight:900!important;
+  line-height:.8!important;
+  transform:none!important;
+}
+
+.home-stay-reason p,
+.home-stay-reason strong{
+  position:relative!important;
+  z-index:1!important;
+  display:block!important;
+  max-width:280px!important;
+  margin-inline:auto!important;
+  text-align:center!important;
+}
+
+.home-stay-reason p{
+  margin:0!important;
+  color:#536b60!important;
+  font-size:clamp(1rem,1.25vw,1.1rem)!important;
+  font-weight:650!important;
+  line-height:1.7!important;
+}
+
+.home-stay-reason strong{
+  margin:0!important;
+  color:#003018!important;
+  font-family:"Frank Ruhl Libre","Noto Serif Hebrew","Times New Roman",serif!important;
+  font-size:clamp(1.52rem,2vw,1.95rem)!important;
+  font-weight:900!important;
+  line-height:1.22!important;
+}
+
+.home-stay-reason:hover,
+.home-stay-reason:focus-within{
+  border-top-color:#0b6a3c!important;
+  border-color:rgba(11,106,60,.24)!important;
+  box-shadow:0 30px 76px rgba(0,48,24,.13)!important;
+  transform:translateY(-5px)!important;
+}
+
+@media(max-width:860px){
+  .home-stay{
+    padding:78px 0 88px!important;
+  }
+
+  .home-stay-layout{
+    gap:38px!important;
+  }
+
+  .home-stay-reasons{
+    grid-template-columns:1fr!important;
+    gap:16px!important;
+  }
+
+  .home-stay-reason,
+  .home-stay-reason:nth-child(2),
+  .home-stay-reason:nth-child(3){
+    min-height:210px!important;
+    padding:40px 24px 34px!important;
+  }
+
+  .home-stay-reason > span{
+    font-size:5.7rem!important;
+  }
+}
+
+/* Reference-style redesign for "יותר מתשובה אחת" section only. */
+.home-stay{
+  overflow:hidden!important;
+  padding:112px 0 126px!important;
+  background:
+    linear-gradient(180deg,rgba(255,253,247,.9),rgba(255,250,238,.96)),
+    radial-gradient(circle at 50% 12%,rgba(199,155,69,.13),transparent 30%),
+    url("assets/library-light.svg") center/cover no-repeat!important;
+}
+
+.home-stay::after{
+  content:""!important;
+  position:absolute!important;
+  right:-10%!important;
+  left:-10%!important;
+  bottom:-70px!important;
+  height:150px!important;
+  border-top:2px solid rgba(184,132,28,.72)!important;
+  border-radius:50% 50% 0 0!important;
+  background:#003018!important;
+  pointer-events:none!important;
+}
+
+.home-stay-layout{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  justify-items:center!important;
+  gap:62px!important;
+}
+
+.home-stay-heading{
+  width:min(980px,100%)!important;
+  display:grid!important;
+  justify-items:center!important;
+  text-align:center!important;
+}
+
+.home-stay-heading > span{
+  position:relative!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:18px!important;
+  color:#a97917!important;
+  font-family:"Frank Ruhl Libre","Noto Serif Hebrew","Times New Roman",serif!important;
+  font-size:clamp(1.05rem,1.45vw,1.32rem)!important;
+  font-weight:800!important;
+  line-height:1!important;
+}
+
+.home-stay-heading > span::before,
+.home-stay-heading > span::after{
+  content:""!important;
+  width:116px!important;
+  height:1px!important;
+  background:linear-gradient(90deg,transparent,#b88622)!important;
+}
+
+.home-stay-heading > span::after{
+  background:linear-gradient(90deg,#b88622,transparent)!important;
+}
+
+.home-stay-heading h2{
+  max-width:980px!important;
+  margin:22px auto 24px!important;
+  color:#003018!important;
+  font-family:"Frank Ruhl Libre","Noto Serif Hebrew","Times New Roman",serif!important;
+  font-size:clamp(3.2rem,6.6vw,6.8rem)!important;
+  font-weight:950!important;
+  line-height:.95!important;
+  text-align:center!important;
+  text-shadow:0 3px 0 rgba(255,255,255,.84),0 18px 30px rgba(0,48,24,.16)!important;
+}
+
+.home-stay-heading p{
+  position:relative!important;
+  max-width:820px!important;
+  margin:0 auto!important;
+  padding-top:22px!important;
+  color:#333a34!important;
+  font-size:clamp(1.15rem,1.65vw,1.38rem)!important;
+  line-height:1.8!important;
+  text-align:center!important;
+}
+
+.home-stay-heading p::before,
+.home-stay-heading p::after{
+  content:""!important;
+  position:absolute!important;
+  top:0!important;
+  left:50%!important;
+  transform:translateX(-50%)!important;
+  height:1px!important;
+}
+
+.home-stay-heading p::before{
+  width:150px!important;
+  background:linear-gradient(90deg,transparent,#b88622,transparent)!important;
+}
+
+.home-stay-heading p::after{
+  top:-5px!important;
+  width:10px!important;
+  height:10px!important;
+  border:1px solid rgba(184,132,28,.8)!important;
+  background:#fff8e8!important;
+  transform:translateX(-50%) rotate(45deg)!important;
+}
+
+.home-stay-reasons{
+  width:min(1180px,100%)!important;
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:30px!important;
+  margin:0!important;
+  padding:0 0 10px!important;
+}
+
+.home-stay-reasons::before{
+  display:none!important;
+  content:none!important;
+}
+
+.home-stay-reason,
+.home-stay-reason:nth-child(2),
+.home-stay-reason:nth-child(3){
+  position:relative!important;
+  min-height:310px!important;
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  align-content:center!important;
+  justify-items:center!important;
+  gap:12px!important;
+  padding:92px 32px 42px!important;
+  border:1px solid rgba(184,132,28,.32)!important;
+  border-top:3px solid #a97917!important;
+  border-bottom:10px solid #003018!important;
+  border-radius:8px!important;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.82),rgba(255,250,238,.94)),
+    radial-gradient(circle at 50% 0,rgba(184,132,28,.13),transparent 42%)!important;
+  box-shadow:0 18px 44px rgba(0,48,24,.13)!important;
+  text-align:center!important;
+  transform:none!important;
+  overflow:visible!important;
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease!important;
+}
+
+.home-stay-reason::before{
+  content:""!important;
+  position:absolute!important;
+  top:26px!important;
+  right:50%!important;
+  width:86px!important;
+  height:86px!important;
+  border:3px solid #d6b75d!important;
+  border-radius:50%!important;
+  background:
+    radial-gradient(circle at 50% 42%,rgba(255,255,255,.1),transparent 26%),
+    linear-gradient(145deg,#003018,#062a19)!important;
+  box-shadow:0 0 0 5px rgba(255,250,238,.95),0 14px 28px rgba(0,48,24,.22)!important;
+  transform:translateX(50%)!important;
+}
+
+.home-stay-reason::after{
+  content:""!important;
+  position:absolute!important;
+  top:54px!important;
+  right:50%!important;
+  width:38px!important;
+  height:38px!important;
+  background:#d6b75d!important;
+  transform:translateX(50%)!important;
+  -webkit-mask:center/contain no-repeat;
+  mask:center/contain no-repeat;
+}
+
+.home-stay-reason:nth-child(1)::after{
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 19.5A2.5 2.5 0 0 1 6.5 17H20'/%3E%3Cpath d='M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z'/%3E%3C/svg%3E")!important;
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 19.5A2.5 2.5 0 0 1 6.5 17H20'/%3E%3Cpath d='M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z'/%3E%3C/svg%3E")!important;
+}
+
+.home-stay-reason:nth-child(2)::after{
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 11l9-8 9 8'/%3E%3Cpath d='M5 10v10h14V10'/%3E%3Cpath d='M9 20v-6h6v6'/%3E%3C/svg%3E")!important;
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 11l9-8 9 8'/%3E%3Cpath d='M5 10v10h14V10'/%3E%3Cpath d='M9 20v-6h6v6'/%3E%3C/svg%3E")!important;
+}
+
+.home-stay-reason:nth-child(3)::after{
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 22c1.8-4 4.4-6 8-6s6.2 2 8 6'/%3E%3C/svg%3E")!important;
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 22c1.8-4 4.4-6 8-6s6.2 2 8 6'/%3E%3C/svg%3E")!important;
+}
+
+.home-stay-reason > span{
+  position:absolute!important;
+  top:34px!important;
+  right:32px!important;
+  left:auto!important;
+  margin:0!important;
+  color:rgba(169,121,23,.72)!important;
+  font-family:"Frank Ruhl Libre","Noto Serif Hebrew","Times New Roman",serif!important;
+  font-size:4.3rem!important;
+  font-weight:900!important;
+  line-height:.8!important;
+  transform:none!important;
+}
+
+.home-stay-reason p,
+.home-stay-reason strong{
+  position:relative!important;
+  z-index:2!important;
+  max-width:310px!important;
+  margin-inline:auto!important;
+  text-align:center!important;
+}
+
+.home-stay-reason p{
+  margin:0!important;
+  color:#26362f!important;
+  font-size:clamp(1.02rem,1.25vw,1.14rem)!important;
+  font-weight:500!important;
+  line-height:1.75!important;
+}
+
+.home-stay-reason strong{
+  margin:0!important;
+  color:#003018!important;
+  font-family:"Frank Ruhl Libre","Noto Serif Hebrew","Times New Roman",serif!important;
+  font-size:clamp(1.75rem,2.25vw,2.35rem)!important;
+  font-weight:900!important;
+  line-height:1.15!important;
+}
+
+.home-stay-reason:hover,
+.home-stay-reason:focus-within{
+  border-color:rgba(0,48,24,.28)!important;
+  border-top-color:#003018!important;
+  box-shadow:0 28px 66px rgba(0,48,24,.18)!important;
+  transform:translateY(-5px)!important;
+}
+
+@media(max-width:900px){
+  .home-stay{
+    padding:84px 0 102px!important;
+  }
+
+  .home-stay-heading > span::before,
+  .home-stay-heading > span::after{
+    width:46px!important;
+  }
+
+  .home-stay-heading h2{
+    font-size:clamp(2.7rem,11vw,4.2rem)!important;
+  }
+
+  .home-stay-reasons{
+    grid-template-columns:1fr!important;
+    gap:24px!important;
+  }
+
+  .home-stay-reason,
+  .home-stay-reason:nth-child(2),
+  .home-stay-reason:nth-child(3){
+    min-height:280px!important;
+    padding:88px 24px 38px!important;
+  }
+}
+
+/* Compact the redesigned "יותר מתשובה אחת" section slightly. */
+.home-stay{
+  padding:86px 0 98px!important;
+}
+
+.home-stay-layout{
+  gap:44px!important;
+}
+
+.home-stay-heading h2{
+  margin:18px auto 18px!important;
+  font-size:clamp(2.8rem,5.5vw,5.65rem)!important;
+}
+
+.home-stay-heading p{
+  padding-top:16px!important;
+  font-size:clamp(1.05rem,1.45vw,1.24rem)!important;
+}
+
+.home-stay-reasons{
+  gap:24px!important;
+}
+
+.home-stay-reason,
+.home-stay-reason:nth-child(2),
+.home-stay-reason:nth-child(3){
+  min-height:270px!important;
+  padding:82px 28px 34px!important;
+}
+
+.home-stay-reason::before{
+  top:22px!important;
+  width:76px!important;
+  height:76px!important;
+}
+
+.home-stay-reason::after{
+  top:48px!important;
+  width:32px!important;
+  height:32px!important;
+}
+
+.home-stay-reason > span{
+  top:30px!important;
+  font-size:3.75rem!important;
+}
+
+.home-stay-reason strong{
+  font-size:clamp(1.55rem,2vw,2.08rem)!important;
+}
+
+@media(max-width:900px){
+  .home-stay{
+    padding:70px 0 86px!important;
+  }
+
+  .home-stay-layout{
+    gap:34px!important;
+  }
+
+  .home-stay-reason,
+  .home-stay-reason:nth-child(2),
+  .home-stay-reason:nth-child(3){
+    min-height:246px!important;
+    padding:78px 22px 32px!important;
+  }
+}
+
+/* Footer Mevakshei Panecha logo replacement. */
+.site-footer .home-footer-mevakshei{
+  display:flex!important;
+  align-items:flex-start!important;
+  justify-content:center!important;
+  text-align:center!important;
+  width:100%!important;
+  padding-inline:0!important;
+}
+
+.site-footer .footer-mevakshei-logo{
+  width:min(220px,100%)!important;
+  height:auto!important;
+  max-height:136px!important;
+  object-fit:contain!important;
+  display:block!important;
+  transform:translateX(118px)!important;
+  filter:drop-shadow(0 10px 18px rgba(0,0,0,.22))!important;
+}
+
+@media(max-width:760px){
+  .site-footer .home-footer-mevakshei{
+    justify-content:center!important;
+  }
+
+  .site-footer .footer-mevakshei-logo{
+    width:min(210px,70vw)!important;
+    transform:none!important;
+  }
+}
+
+@media(min-width:761px){
+  .site-footer .footer-grid.footer-grid-wide{
+    grid-template-columns:minmax(260px,1.45fr) .8fr .9fr 1.05fr 1.05fr 1fr!important;
+  }
+
+  .site-footer .home-footer-mevakshei{
+    justify-self:stretch!important;
+    justify-content:center!important;
+  }
+}
+
+/* Exact main banner artwork requested for the homepage hero. */
+.portal-ticker{
+  display:none!important;
+}
+
+.home-live-hero{
+  display:block!important;
+  position:relative!important;
+  width:100%!important;
+  min-height:0!important;
+  height:auto!important;
+  aspect-ratio:1672 / 941!important;
+  padding:0!important;
+  margin:0!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+  background:url("assets/home-main-banner-exact.webp") center top / 100% 100% no-repeat!important;
+}
+
+.home-live-hero::before,
+.home-live-hero::after,
+.home-live-hero .horaa-hero-seal,
+.home-live-hero .horaa-hero-gates,
+.home-live-hero .home-rabbi-portrait,
+.home-live-hero .home-live-grid{
+  display:none!important;
+  content:none!important;
 }
