@@ -60,6 +60,7 @@
 }
 
 .home-live-hero .home-hero-panel .home-mevakshei-title {
+  position: relative !important;
   color: #B08A24 !important;
   background: none !important;
   -webkit-background-clip: initial !important;
@@ -75,9 +76,25 @@
     0 2px 0 rgba(53, 34, 6, .72),
     0 5px 12px rgba(0, 0, 0, .66),
     0 18px 38px rgba(0, 0, 0, .48),
-    0 0 18px rgba(176, 138, 36, .2) !important;
-  filter: none !important;
+    0 0 16px rgba(176, 138, 36, .26),
+    0 0 34px rgba(255, 221, 128, .2) !important;
+  filter:
+    drop-shadow(0 0 8px rgba(255, 232, 153, .18))
+    drop-shadow(0 0 24px rgba(176, 138, 36, .24))
+    drop-shadow(0 16px 30px rgba(0, 0, 0, .34)) !important;
   overflow: visible !important;
+}
+
+.home-live-hero .home-hero-panel .home-mevakshei-title::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 10% -8% 18% !important;
+  z-index: -1 !important;
+  background:
+    radial-gradient(ellipse at 50% 48%, rgba(255, 232, 153, .3) 0%, rgba(176, 138, 36, .16) 36%, transparent 72%) !important;
+  filter: blur(18px) !important;
+  opacity: .85 !important;
+  pointer-events: none !important;
 }
 
 .home-live-hero .home-hero-panel .home-mevakshei-tagline {
@@ -96,17 +113,20 @@
 }
 
 .home-live-hero .home-hero-panel .home-mevakshei-tagline::after {
-  width: min(420px, 68vw) !important;
-  height: 18px !important;
-  bottom: -2px !important;
+  width: min(430px, 70vw) !important;
+  height: 24px !important;
+  bottom: -5px !important;
   background:
-    radial-gradient(circle at 50% 50%, #fff3b5 0 3px, #B08A24 4px, transparent 5px),
-    radial-gradient(circle at 43% 50%, #B08A24 0 2px, transparent 3px),
-    radial-gradient(circle at 57% 50%, #B08A24 0 2px, transparent 3px),
-    linear-gradient(90deg, transparent 0%, rgba(176, 138, 36, .22) 15%, rgba(255, 229, 139, .78) 50%, rgba(176, 138, 36, .22) 85%, transparent 100%) !important;
+    radial-gradient(circle at 50% 50%, #fff4bf 0 4px, #B08A24 5px, transparent 6px),
+    radial-gradient(circle at 43% 50%, rgba(255, 235, 166, .95) 0 2px, transparent 3px),
+    radial-gradient(circle at 57% 50%, rgba(255, 235, 166, .95) 0 2px, transparent 3px),
+    linear-gradient(90deg, transparent 0%, rgba(176, 138, 36, .06) 10%, rgba(255, 231, 149, .72) 48%, rgba(255, 231, 149, .72) 52%, rgba(176, 138, 36, .06) 90%, transparent 100%),
+    linear-gradient(90deg, transparent 12%, rgba(176, 138, 36, .42) 34%, transparent 49%, transparent 51%, rgba(176, 138, 36, .42) 66%, transparent 88%) !important;
   border-radius: 999px !important;
-  opacity: .86 !important;
-  filter: drop-shadow(0 0 10px rgba(176, 138, 36, .26)) !important;
+  opacity: .82 !important;
+  filter:
+    drop-shadow(0 0 10px rgba(255, 230, 150, .32))
+    drop-shadow(0 0 22px rgba(176, 138, 36, .18)) !important;
 }
 
 .home-live-hero .home-hero-panel .home-mevakshei-essence {
@@ -155,8 +175,9 @@
   }
 
   .home-live-hero .home-hero-panel .home-mevakshei-tagline::after {
-    width: min(280px, 72vw) !important;
-    height: 14px !important;
+    width: min(275px, 72vw) !important;
+    height: 18px !important;
+    bottom: -4px !important;
   }
 
   .home-live-hero .home-hero-panel .home-mevakshei-essence {
