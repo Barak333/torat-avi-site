@@ -1,0 +1,112 @@
+/* Final homepage hero luxury typography. */
+.home-live-hero .home-mevakshei-hero-panel {
+  gap: 0 !important;
+}
+
+.home-live-hero .home-mevakshei-kicker {
+  width: min(430px, 70vw) !important;
+  margin-bottom: 26px !important;
+  opacity: .98 !important;
+}
+
+.home-live-hero .home-mevakshei-kicker span {
+  height: 2px !important;
+  background: linear-gradient(90deg, transparent, rgba(183, 132, 25, .38), #ffe899, rgba(183, 132, 25, .38)) !important;
+  box-shadow: 0 0 18px rgba(246, 213, 110, .2) !important;
+}
+
+.home-live-hero .home-mevakshei-kicker span:last-child {
+  background: linear-gradient(90deg, rgba(183, 132, 25, .38), #ffe899, rgba(183, 132, 25, .38), transparent) !important;
+}
+
+.home-live-hero .home-mevakshei-kicker i {
+  width: 13px !important;
+  height: 13px !important;
+  border-color: #ffe99e !important;
+  background: linear-gradient(135deg, #fff2b8, #b98b22 58%, #f7d66e) !important;
+  box-shadow: 0 0 20px rgba(255, 226, 133, .48), 0 0 44px rgba(183, 132, 25, .22) !important;
+}
+
+.home-live-hero .home-hero-panel .home-mevakshei-title {
+  color: #f7d979 !important;
+  background: linear-gradient(180deg, #fff9cc 0%, #f4d970 23%, #c29324 48%, #76500e 68%, #f6d976 88%, #fff3b0 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  -webkit-text-stroke: 1px rgba(76, 48, 6, .82) !important;
+  font-size: clamp(78px, 9.2vw, 142px) !important;
+  line-height: .82 !important;
+  text-shadow: 0 1px 0 rgba(255, 244, 190, .42), 0 4px 0 rgba(69, 43, 5, .82), 0 18px 42px rgba(0, 0, 0, .52), 0 0 30px rgba(242, 204, 87, .18) !important;
+  filter: drop-shadow(0 0 16px rgba(255, 226, 128, .2)) drop-shadow(0 20px 34px rgba(0, 0, 0, .28)) !important;
+}
+
+.home-live-hero .home-hero-panel .home-mevakshei-tagline {
+  margin: 34px auto 0 !important;
+  padding: 0 0 28px !important;
+  color: #fff7d7 !important;
+  -webkit-text-fill-color: #fff7d7 !important;
+  font-size: clamp(32px, 3.7vw, 54px) !important;
+  font-weight: 900 !important;
+  line-height: 1.05 !important;
+  text-shadow: 0 2px 0 rgba(0, 31, 15, .72), 0 12px 30px rgba(0, 0, 0, .48), 0 0 22px rgba(244, 216, 112, .2) !important;
+}
+
+.home-live-hero .home-hero-panel .home-mevakshei-tagline::after {
+  width: min(520px, 76vw) !important;
+  height: 16px !important;
+  bottom: 0 !important;
+  background: radial-gradient(circle at 50% 50%, #fff0a9 0 4px, transparent 5px), linear-gradient(90deg, transparent, #9f771b 14%, #ffe895 50%, #9f771b 86%, transparent) !important;
+  opacity: .95 !important;
+  filter: drop-shadow(0 0 14px rgba(244, 216, 112, .34)) !important;
+}
+
+.home-live-hero .home-hero-panel .home-mevakshei-essence {
+  margin-top: 18px !important;
+  color: rgba(255, 255, 255, .92) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, .92) !important;
+  font-size: clamp(1.05rem, 1.45vw, 1.24rem) !important;
+  text-shadow: 0 8px 24px rgba(0, 0, 0, .4) !important;
+}
+
+.home-live-hero .home-mevakshei-hero-panel .portal-actions {
+  margin-top: 34px !important;
+}
+
+.home-live-hero .home-mevakshei-hero-panel .home-horaa-search {
+  display: none !important;
+}
+
+@media (max-width: 680px) {
+  .home-live-hero .home-mevakshei-kicker {
+    width: min(280px, 70vw) !important;
+    margin-bottom: 18px !important;
+  }
+
+  .home-live-hero .home-hero-panel .home-mevakshei-title {
+    font-size: clamp(58px, 16vw, 86px) !important;
+    line-height: .86 !important;
+    -webkit-text-stroke: .7px rgba(76, 48, 6, .82) !important;
+  }
+
+  .home-live-hero .home-hero-panel .home-mevakshei-tagline {
+    margin-top: 22px !important;
+    padding-bottom: 22px !important;
+    font-size: clamp(25px, 7vw, 36px) !important;
+    line-height: 1.08 !important;
+  }
+
+  .home-live-hero .home-hero-panel .home-mevakshei-tagline::after {
+    width: min(300px, 76vw) !important;
+    height: 12px !important;
+  }
+
+  .home-live-hero .home-hero-panel .home-mevakshei-essence {
+    max-width: 310px !important;
+    margin-top: 12px !important;
+    font-size: .95rem !important;
+  }
+
+  .home-live-hero .home-mevakshei-hero-panel .portal-actions {
+    margin-top: 24px !important;
+  }
+}
