@@ -1339,14 +1339,27 @@ body.gate-intro-active {
   mask-image: linear-gradient(90deg, #000 0%, #000 62%, rgba(0, 0, 0, .68) 78%, transparent 100%);
 }
 
+.home-restored-banner-darkness {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 3 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  background:
+    linear-gradient(180deg, rgba(0, 18, 11, .72), rgba(0, 36, 22, .78) 45%, rgba(0, 14, 9, .76)),
+    rgba(0, 30, 18, .68) !important;
+  pointer-events: none !important;
+}
+
 .home-restored-banner::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 2;
   background:
-    linear-gradient(180deg, rgba(0, 21, 12, .88), rgba(0, 39, 23, .82) 48%, rgba(0, 17, 10, .9)),
-    linear-gradient(90deg, rgba(0, 18, 11, .92), rgba(0, 58, 34, .78) 28%, rgba(0, 44, 26, .76) 50%, rgba(0, 58, 34, .78) 72%, rgba(0, 18, 11, .92));
+    linear-gradient(180deg, rgba(0, 24, 14, .84), rgba(0, 42, 25, .84)),
+    linear-gradient(90deg, rgba(0, 16, 10, .84), rgba(0, 55, 33, .72) 50%, rgba(0, 16, 10, .84));
   pointer-events: none;
 }
 
@@ -1356,14 +1369,14 @@ body.gate-intro-active {
   inset: 0;
   z-index: 3;
   background:
-    linear-gradient(90deg, rgba(0, 0, 0, .72), rgba(0, 0, 0, .18) 22%, rgba(0, 0, 0, .2) 78%, rgba(0, 0, 0, .72)),
-    radial-gradient(ellipse at 50% 30%, rgba(0, 52, 31, .22), rgba(0, 0, 0, .68) 84%);
+    linear-gradient(180deg, rgba(0, 0, 0, .24), rgba(0, 0, 0, .34)),
+    rgba(0, 30, 18, .42);
   pointer-events: none;
 }
 
 .home-restored-banner-content {
   position: relative;
-  z-index: 4;
+  z-index: 5;
   width: min(940px, 92vw);
   margin: clamp(72px, 10vh, 118px) auto 0;
   display: flex;
@@ -1375,15 +1388,8 @@ body.gate-intro-active {
 }
 
 .home-restored-banner-content::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: -30px -8% -28px;
-  border-radius: 50%;
-  background:
-    radial-gradient(ellipse at 50% 45%, rgba(1, 18, 11, .72) 0%, rgba(2, 32, 19, .54) 46%, rgba(2, 32, 19, .18) 70%, transparent 82%);
-  filter: blur(.2px);
-  pointer-events: none;
+  display: none;
+  content: none;
 }
 
 .home-restored-banner-content h1 {
@@ -1479,10 +1485,16 @@ body.gate-intro-active {
     mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .78) 20%, #000 100%);
   }
 
+  .home-restored-banner-darkness {
+    background:
+      linear-gradient(180deg, rgba(0, 18, 11, .78), rgba(0, 36, 22, .82) 45%, rgba(0, 14, 9, .8)),
+      rgba(0, 30, 18, .72) !important;
+  }
+
   .home-restored-banner::before {
     background:
-      linear-gradient(180deg, rgba(0, 21, 12, .9), rgba(0, 45, 27, .84) 45%, rgba(0, 16, 10, .92)),
-      linear-gradient(90deg, rgba(0, 18, 11, .92), rgba(0, 58, 34, .78) 50%, rgba(0, 18, 11, .92));
+      linear-gradient(180deg, rgba(0, 24, 14, .88), rgba(0, 42, 25, .88)),
+      linear-gradient(90deg, rgba(0, 16, 10, .88), rgba(0, 55, 33, .78) 50%, rgba(0, 16, 10, .88));
   }
 
   .home-restored-banner-content {
