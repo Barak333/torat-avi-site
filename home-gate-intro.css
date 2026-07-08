@@ -767,10 +767,10 @@ body.gate-intro-active {
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(0, 22, 14, .5) 0%, rgba(0, 28, 18, .18) 36%, rgba(0, 18, 13, .34) 100%),
-    linear-gradient(180deg, rgba(0, 22, 14, .18), rgba(0, 28, 18, .72)),
+    linear-gradient(90deg, rgba(0, 20, 13, .68) 0%, rgba(0, 24, 16, .36) 38%, rgba(0, 16, 11, .58) 100%),
+    linear-gradient(180deg, rgba(0, 18, 12, .42), rgba(0, 22, 14, .86)),
     url("assets/home-banner-beit-midrash.webp") center center / cover no-repeat;
-  filter: saturate(.94) contrast(1.04) brightness(.82);
+  filter: saturate(.9) contrast(1.08) brightness(.62);
   transform: scale(1.015);
 }
 
@@ -781,9 +781,9 @@ body.gate-intro-active {
   z-index: 2;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at 21% 47%, rgba(238, 203, 111, .22), transparent 24%),
-    linear-gradient(90deg, rgba(0, 20, 13, .12) 0%, rgba(0, 44, 27, .4) 38%, rgba(0, 22, 14, .66) 100%),
-    radial-gradient(ellipse at center, transparent 36%, rgba(0, 0, 0, .48) 100%);
+    radial-gradient(ellipse at 21% 47%, rgba(238, 203, 111, .16), transparent 24%),
+    linear-gradient(90deg, rgba(0, 20, 13, .22) 0%, rgba(0, 36, 23, .48) 38%, rgba(0, 18, 12, .78) 100%),
+    radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, .68) 100%);
 }
 
 .home-image-banner-title {
@@ -794,7 +794,7 @@ body.gate-intro-active {
   transform: translateX(-50%);
   margin: 0;
   padding: 0 clamp(36px, 5vw, 76px);
-  color: #d6ae43;
+  color: #f4d66f;
   font-family: "Frank Ruhl Libre", "Noto Serif Hebrew", serif;
   font-size: clamp(3rem, 6.4vw, 6.25rem);
   font-weight: 900;
@@ -802,32 +802,28 @@ body.gate-intro-active {
   letter-spacing: 0;
   white-space: nowrap;
   text-align: center;
-  background: linear-gradient(180deg, #fff0a6 0%, #d8ad3d 43%, #8b641a 100%);
+  background:
+    linear-gradient(180deg, #fffce0 0%, #ffe98a 22%, #f5c94b 46%, #b47812 76%, #fff1a1 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: clamp(1px, .1vw, 1.6px) rgba(80, 45, 4, .92);
   filter:
-    drop-shadow(0 2px 0 rgba(71, 43, 6, .85))
-    drop-shadow(0 12px 22px rgba(0, 0, 0, .44))
-    drop-shadow(0 0 18px rgba(245, 208, 96, .14));
-}
-
-.home-image-banner-title::before,
-.home-image-banner-title::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: clamp(54px, 8vw, 126px);
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(219, 174, 63, .86), transparent);
+    drop-shadow(0 1px 0 #fff9c9)
+    drop-shadow(0 2px 0 rgba(95, 53, 5, .95))
+    drop-shadow(0 5px 4px rgba(0, 0, 0, .62))
+    drop-shadow(0 0 10px rgba(255, 229, 117, .72))
+    drop-shadow(0 0 26px rgba(255, 196, 42, .38));
 }
 
 .home-image-banner-title::before {
-  right: 100%;
-}
-
-.home-image-banner-title::after {
-  left: 100%;
+  content: "";
+  position: absolute;
+  inset: -18px -24px -20px;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 48%, rgba(255, 207, 66, .28), rgba(255, 207, 66, .08) 34%, transparent 70%);
+  filter: blur(2px);
 }
 
 .home-image-banner::after {
@@ -888,7 +884,11 @@ body.gate-intro-active {
   }
 
   .home-image-banner-bg {
-    background-position: 58% center;
+    background:
+      linear-gradient(180deg, rgba(0, 18, 12, .3) 0%, rgba(0, 18, 12, .18) 36%, rgba(0, 18, 12, .84) 100%),
+      url("assets/home-banner-beit-midrash.webp") 60% top / auto 58% no-repeat,
+      linear-gradient(180deg, #031d14, #02140d);
+    filter: saturate(.9) contrast(1.08) brightness(.66);
   }
 
   .home-image-banner-title {
@@ -906,9 +906,21 @@ body.gate-intro-active {
   }
 
   .home-image-banner-rabbi {
-    width: min(82vw, 360px);
-    background-position: 20% center;
-    opacity: .96;
-    transform: translateY(-5%);
+    top: auto;
+    bottom: 0;
+    width: 100%;
+    height: 58%;
+    background:
+      linear-gradient(180deg, rgba(2, 24, 16, .9) 0%, rgba(2, 24, 16, .08) 28%, rgba(2, 24, 16, .78) 100%),
+      linear-gradient(90deg, rgba(2, 24, 16, .08), rgba(2, 24, 16, .58) 72%, rgba(2, 24, 16, .88) 100%),
+      url("assets/home-banner-rabbi-left.webp") 2% center / auto 100% no-repeat;
+    opacity: .98;
+    transform: none;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .9) 18%, #000 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .9) 18%, #000 100%);
+  }
+
+  .home-image-banner-title::after {
+    display: none;
   }
 }
