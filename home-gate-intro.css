@@ -789,11 +789,12 @@ body.gate-intro-active {
 .home-image-banner-logo {
   position: absolute;
   z-index: 5;
-  top: clamp(28px, 4.8vw, 76px);
-  right: clamp(34px, 6vw, 104px);
-  width: clamp(180px, 16vw, 265px);
+  top: clamp(24px, 4vw, 58px);
+  left: 50%;
+  width: clamp(140px, 11.5vw, 190px);
   height: auto;
   object-fit: contain;
+  transform: translateX(-50%);
   filter:
     drop-shadow(0 18px 28px rgba(0, 0, 0, .34))
     drop-shadow(0 0 16px rgba(238, 203, 111, .12));
@@ -862,10 +863,11 @@ body.gate-intro-active {
   }
 
   .home-image-banner-logo {
-    top: 18px;
-    right: 16px;
-    width: clamp(132px, 38vw, 178px);
-    transform: none;
+    top: 10px;
+    left: 50%;
+    right: auto;
+    width: clamp(96px, 28vw, 128px);
+    transform: translateX(-50%);
   }
 
   .home-image-banner-rabbi {
