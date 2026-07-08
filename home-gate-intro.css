@@ -1336,9 +1336,9 @@ body.gate-intro-active {
   object-position: center center;
   opacity: 1;
   filter:
-    brightness(1.82)
-    contrast(1.18)
-    saturate(1.04)
+    brightness(1.4)
+    contrast(1.11)
+    saturate(1)
     drop-shadow(22px 24px 50px rgba(0, 0, 0, .66));
   -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 64%, rgba(0, 0, 0, .84) 82%, transparent 100%);
   mask-image: linear-gradient(90deg, #000 0%, #000 64%, rgba(0, 0, 0, .84) 82%, transparent 100%);
@@ -1351,10 +1351,10 @@ body.gate-intro-active {
   z-index: 5;
   width: min(48vw, 700px);
   background:
-    radial-gradient(ellipse at 35% 52%, rgba(255, 229, 157, .34), rgba(255, 229, 157, .12) 32%, transparent 64%),
-    linear-gradient(90deg, rgba(255, 242, 190, .1), transparent 76%);
+    radial-gradient(ellipse at 35% 52%, rgba(255, 229, 157, .16), rgba(255, 229, 157, .06) 32%, transparent 64%),
+    linear-gradient(90deg, rgba(255, 242, 190, .04), transparent 76%);
   mix-blend-mode: screen;
-  opacity: .92;
+  opacity: .58;
   pointer-events: none;
   -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 62%, rgba(0, 0, 0, .55) 80%, transparent 100%);
   mask-image: linear-gradient(90deg, #000 0%, #000 62%, rgba(0, 0, 0, .55) 80%, transparent 100%);
@@ -1503,9 +1503,9 @@ body.gate-intro-active {
     object-position: center 38%;
     opacity: 1;
     filter:
-      brightness(1.86)
-      contrast(1.18)
-      saturate(1.04)
+      brightness(1.42)
+      contrast(1.11)
+      saturate(1)
       drop-shadow(0 -18px 48px rgba(0, 0, 0, .68));
     -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .55) 9%, rgba(0, 0, 0, .94) 22%, #000 100%);
     mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .55) 9%, rgba(0, 0, 0, .94) 22%, #000 100%);
@@ -1516,8 +1516,8 @@ body.gate-intro-active {
     width: 100%;
     height: 46%;
     background:
-      radial-gradient(ellipse at 46% 58%, rgba(255, 229, 157, .3), rgba(255, 229, 157, .1) 36%, transparent 68%),
-      linear-gradient(180deg, transparent 0%, rgba(255, 242, 190, .12) 42%, transparent 100%);
+      radial-gradient(ellipse at 46% 58%, rgba(255, 229, 157, .14), rgba(255, 229, 157, .05) 36%, transparent 68%),
+      linear-gradient(180deg, transparent 0%, rgba(255, 242, 190, .05) 42%, transparent 100%);
     -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .64) 18%, #000 100%);
     mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .64) 18%, #000 100%);
   }
