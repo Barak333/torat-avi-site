@@ -752,3 +752,92 @@ body.gate-intro-active {
     width: 70vw !important;
   }
 }
+
+/* Fresh homepage image banner - beit midrash background with highlighted rabbi portrait. */
+.home-image-banner {
+  position: relative;
+  min-height: clamp(420px, 48vw, 720px);
+  overflow: hidden;
+  isolation: isolate;
+  background: #031d14;
+}
+
+.home-image-banner-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(0, 22, 14, .5) 0%, rgba(0, 28, 18, .18) 36%, rgba(0, 18, 13, .34) 100%),
+    linear-gradient(180deg, rgba(0, 22, 14, .18), rgba(0, 28, 18, .72)),
+    url("assets/home-banner-beit-midrash.webp") center center / cover no-repeat;
+  filter: saturate(.94) contrast(1.04) brightness(.82);
+  transform: scale(1.015);
+}
+
+.home-image-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 21% 47%, rgba(238, 203, 111, .22), transparent 24%),
+    linear-gradient(90deg, rgba(0, 20, 13, .12) 0%, rgba(0, 44, 27, .4) 38%, rgba(0, 22, 14, .66) 100%),
+    radial-gradient(ellipse at center, transparent 36%, rgba(0, 0, 0, .48) 100%);
+}
+
+.home-image-banner::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+  height: clamp(70px, 9vw, 130px);
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(3, 29, 20, .9));
+}
+
+.home-image-banner-rabbi {
+  position: absolute;
+  z-index: 3;
+  left: max(10px, calc((100vw - 1260px) / 2));
+  bottom: clamp(34px, 6vw, 96px);
+  width: clamp(300px, 33vw, 500px);
+  aspect-ratio: 1;
+  background: url("assets/home-banner-rabbi-left.webp") center center / cover no-repeat;
+  transform: translateY(-9%);
+  filter:
+    drop-shadow(28px 30px 46px rgba(0, 0, 0, .48))
+    drop-shadow(0 0 28px rgba(238, 203, 111, .16))
+    saturate(1.06)
+    contrast(1.08)
+    brightness(1.03);
+  -webkit-mask-image: radial-gradient(ellipse at 42% 50%, #000 0 45%, rgba(0, 0, 0, .78) 58%, transparent 75%);
+  mask-image: radial-gradient(ellipse at 42% 50%, #000 0 45%, rgba(0, 0, 0, .78) 58%, transparent 75%);
+}
+
+.home-image-banner-rabbi::before {
+  content: "";
+  position: absolute;
+  inset: -18%;
+  z-index: -1;
+  background: radial-gradient(ellipse at 52% 46%, rgba(246, 213, 121, .24), transparent 58%);
+}
+
+@media (max-width: 760px) {
+  .home-image-banner {
+    min-height: clamp(520px, 138vw, 720px);
+  }
+
+  .home-image-banner-bg {
+    background-position: 58% center;
+  }
+
+  .home-image-banner-rabbi {
+    left: -40px;
+    bottom: clamp(176px, 46vw, 250px);
+    width: clamp(280px, 75vw, 390px);
+    transform: translateY(-12%);
+  }
+}
