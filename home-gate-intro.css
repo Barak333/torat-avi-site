@@ -795,10 +795,10 @@ body.gate-intro-active {
   margin: 0;
   padding: 0 clamp(36px, 5vw, 76px);
   color: #f4d66f;
-  font-family: "Frank Ruhl Libre", "Noto Serif Hebrew", serif;
-  font-size: clamp(3rem, 6.4vw, 6.25rem);
-  font-weight: 900;
-  line-height: .92;
+  font-family: "BannerShmulik", "Guttman Stam", "Stam", "David", "Frank Ruhl Libre", serif;
+  font-size: clamp(4rem, 7.4vw, 7.8rem);
+  font-weight: 700;
+  line-height: .78;
   letter-spacing: 0;
   white-space: nowrap;
   text-align: center;
@@ -807,13 +807,14 @@ body.gate-intro-active {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: clamp(1px, .1vw, 1.6px) rgba(80, 45, 4, .92);
+  -webkit-text-stroke: clamp(1.2px, .14vw, 2.2px) rgba(72, 41, 5, .94);
   filter:
-    drop-shadow(0 1px 0 #fff9c9)
-    drop-shadow(0 2px 0 rgba(95, 53, 5, .95))
-    drop-shadow(0 5px 4px rgba(0, 0, 0, .62))
-    drop-shadow(0 0 10px rgba(255, 229, 117, .72))
-    drop-shadow(0 0 26px rgba(255, 196, 42, .38));
+    drop-shadow(0 1px 0 #fff8c7)
+    drop-shadow(2px 3px 0 rgba(126, 82, 16, .92))
+    drop-shadow(7px 9px 0 rgba(236, 236, 236, .22))
+    drop-shadow(0 7px 8px rgba(0, 0, 0, .66))
+    drop-shadow(0 0 13px rgba(255, 229, 117, .78))
+    drop-shadow(0 0 30px rgba(255, 196, 42, .42));
 }
 
 .home-image-banner-title::before {
@@ -892,11 +893,12 @@ body.gate-intro-active {
   }
 
   .home-image-banner-title {
-    top: 18px;
+    top: 20px;
     left: 50%;
     right: auto;
-    padding: 0 22px;
-    font-size: clamp(2.15rem, 11.5vw, 3.35rem);
+    width: 96vw;
+    padding: 0;
+    font-size: clamp(2.2rem, 10.8vw, 3.15rem);
     transform: translateX(-50%);
   }
 
@@ -922,5 +924,97 @@ body.gate-intro-active {
 
   .home-image-banner-title::after {
     display: none;
+  }
+}
+
+.home-restored-banner {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: 420px;
+  aspect-ratio: 1680 / 827;
+  background: #02180f;
+}
+
+.home-restored-banner-media {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+}
+
+.home-restored-banner-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+.home-restored-banner-cta {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  top: 79%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: min(470px, 42vw);
+  min-height: clamp(56px, 5vw, 78px);
+  padding: 0 clamp(24px, 3vw, 44px);
+  border: 2px solid rgba(255, 232, 144, .78);
+  border-radius: 18px;
+  color: #062719;
+  text-decoration: none;
+  background:
+    linear-gradient(180deg, #fff4ab 0%, #e7bf3f 44%, #b98717 100%);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, .42),
+    inset 0 -4px 0 rgba(112, 72, 4, .24),
+    0 0 24px rgba(235, 191, 68, .34),
+    0 16px 34px rgba(0, 0, 0, .34);
+  transform: translate(-50%, -50%);
+  transition: transform .28s ease, box-shadow .28s ease, filter .28s ease;
+}
+
+.home-restored-banner-cta span {
+  position: relative;
+  z-index: 1;
+  font-family: "BannerAsakim", "Frank Ruhl Libre", "Noto Serif Hebrew", serif;
+  font-size: clamp(1.3rem, 2.2vw, 2rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0;
+  text-shadow: 0 1px 0 rgba(255, 246, 185, .72);
+  white-space: nowrap;
+}
+
+.home-restored-banner-cta:hover,
+.home-restored-banner-cta:focus-visible {
+  transform: translate(-50%, -53%);
+  filter: brightness(1.06);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, .5),
+    inset 0 -4px 0 rgba(112, 72, 4, .22),
+    0 0 34px rgba(244, 205, 78, .52),
+    0 20px 42px rgba(0, 0, 0, .4);
+}
+
+@media (max-width: 760px) {
+  .home-restored-banner {
+    min-height: 640px;
+    aspect-ratio: 864 / 1554;
+  }
+
+  .home-restored-banner-cta {
+    top: 78%;
+    width: min(300px, 78vw);
+    min-height: 58px;
+    border-radius: 16px;
+    padding: 0 18px;
+  }
+
+  .home-restored-banner-cta span {
+    font-size: clamp(1.05rem, 5.2vw, 1.45rem);
   }
 }
