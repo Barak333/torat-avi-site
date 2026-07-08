@@ -1369,13 +1369,13 @@ body.gate-intro-active {
   height: 100% !important;
   background:
     linear-gradient(90deg,
-      rgba(0, 18, 11, .08) 0%,
-      rgba(0, 20, 12, .18) 23%,
-      rgba(0, 16, 10, .58) 30%,
-      rgba(0, 12, 8, .82) 42%,
-      rgba(0, 8, 5, .94) 67%,
-      rgba(0, 4, 3, .98) 100%),
-    linear-gradient(180deg, rgba(0, 12, 8, .22), rgba(0, 22, 13, .42) 45%, rgba(0, 8, 5, .6)) !important;
+      rgba(0, 18, 11, .06) 0%,
+      rgba(0, 20, 12, .14) 23%,
+      rgba(0, 16, 10, .44) 30%,
+      rgba(0, 12, 8, .62) 42%,
+      rgba(0, 8, 5, .71) 67%,
+      rgba(0, 4, 3, .74) 100%),
+    linear-gradient(180deg, rgba(0, 12, 8, .17), rgba(0, 22, 13, .32) 45%, rgba(0, 8, 5, .45)) !important;
   pointer-events: none !important;
 }
 
@@ -1385,8 +1385,8 @@ body.gate-intro-active {
   inset: 0;
   z-index: 2;
   background:
-    linear-gradient(180deg, rgba(0, 24, 14, .62), rgba(0, 42, 25, .7)),
-    linear-gradient(90deg, rgba(0, 16, 10, .34), rgba(0, 42, 25, .68) 50%, rgba(0, 10, 6, .9));
+    linear-gradient(180deg, rgba(0, 24, 14, .47), rgba(0, 42, 25, .53)),
+    linear-gradient(90deg, rgba(0, 16, 10, .26), rgba(0, 42, 25, .51) 50%, rgba(0, 10, 6, .68));
   pointer-events: none;
 }
 
@@ -1396,8 +1396,8 @@ body.gate-intro-active {
   inset: 0;
   z-index: 3;
   background:
-    linear-gradient(90deg, transparent 0%, rgba(0, 16, 10, .32) 28%, rgba(0, 10, 7, .72) 55%, rgba(0, 3, 2, .88) 100%),
-    linear-gradient(180deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .42));
+    linear-gradient(90deg, transparent 0%, rgba(0, 16, 10, .24) 28%, rgba(0, 10, 7, .54) 55%, rgba(0, 3, 2, .66) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, .15), rgba(0, 0, 0, .32));
   pointer-events: none;
 }
 
@@ -1488,7 +1488,8 @@ body.gate-intro-active {
 
 @media (max-width: 760px) {
   .home-restored-banner {
-    min-height: 760px;
+    min-height: 510px;
+    place-items: start center;
   }
 
   .home-restored-banner-images {
@@ -1505,8 +1506,8 @@ body.gate-intro-active {
   .home-restored-banner-img-left {
     inset: auto 0 0 0;
     width: 100%;
-    height: 46%;
-    object-position: center 38%;
+    height: 36%;
+    object-position: center 32%;
     opacity: 1;
     filter:
       brightness(1.21)
@@ -1520,7 +1521,7 @@ body.gate-intro-active {
   .home-restored-banner-images::after {
     inset: auto 0 0 0;
     width: 100%;
-    height: 46%;
+    height: 36%;
     background:
       radial-gradient(ellipse at 46% 58%, rgba(255, 229, 157, .14), rgba(255, 229, 157, .05) 36%, transparent 68%),
       linear-gradient(180deg, transparent 0%, rgba(255, 242, 190, .05) 42%, transparent 100%);
@@ -1531,45 +1532,50 @@ body.gate-intro-active {
   .home-restored-banner-darkness {
     background:
       linear-gradient(180deg,
-        rgba(0, 18, 11, .18) 0%,
-        rgba(0, 24, 14, .38) 34%,
-        rgba(0, 31, 18, .72) 58%,
-        rgba(0, 12, 8, .9) 100%),
-      linear-gradient(90deg, rgba(0, 18, 11, .2), rgba(0, 42, 25, .46), rgba(0, 18, 11, .72)) !important;
+        rgba(0, 18, 11, .14) 0%,
+        rgba(0, 24, 14, .29) 34%,
+        rgba(0, 31, 18, .54) 58%,
+        rgba(0, 12, 8, .68) 100%),
+      linear-gradient(90deg, rgba(0, 18, 11, .15), rgba(0, 42, 25, .35), rgba(0, 18, 11, .54)) !important;
   }
 
   .home-restored-banner::before {
     background:
-      linear-gradient(180deg, rgba(0, 24, 14, .56), rgba(0, 42, 25, .66)),
-      linear-gradient(90deg, rgba(0, 16, 10, .3), rgba(0, 55, 33, .54) 50%, rgba(0, 16, 10, .76));
+      linear-gradient(180deg, rgba(0, 24, 14, .42), rgba(0, 42, 25, .5)),
+      linear-gradient(90deg, rgba(0, 16, 10, .23), rgba(0, 55, 33, .41) 50%, rgba(0, 16, 10, .57));
   }
 
   .home-restored-banner-content {
-    width: min(350px, 94vw);
-    margin-top: 54px;
+    width: min(350px, 92vw);
+    margin: 38px auto 0;
+    align-items: center;
+    text-align: center;
   }
 
   .home-restored-banner-content h1 {
-    font-size: clamp(2.9rem, 11.2vw, 3.55rem);
+    font-size: clamp(2.35rem, 10.2vw, 3.05rem);
     line-height: .95;
+    text-align: center;
   }
 
   .home-restored-banner-tagline {
-    margin-top: 18px;
-    font-size: clamp(1.6rem, 7vw, 2.15rem);
+    margin-top: 14px;
+    font-size: clamp(1.38rem, 6.2vw, 1.9rem);
     line-height: 1.05;
+    text-align: center;
   }
 
   .home-restored-banner-line {
-    margin-top: 16px;
-    font-size: clamp(1.12rem, 4.7vw, 1.42rem);
+    margin-top: 12px;
+    font-size: clamp(1rem, 4.25vw, 1.26rem);
     line-height: 1.22;
+    text-align: center;
   }
 
   .home-restored-banner-content .home-restored-banner-cta {
-    min-width: min(292px, 82vw);
-    min-height: 54px;
-    margin-top: 32px;
+    min-width: min(280px, 78vw);
+    min-height: 48px;
+    margin: 24px auto 0;
   }
 
   .home-restored-banner-content .home-restored-banner-cta span {
