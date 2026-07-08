@@ -753,6 +753,286 @@ body.gate-intro-active {
   }
 }
 
+/* Restore the original Torat Avi homepage banner. */
+.home-live-hero {
+  display: grid !important;
+  align-items: center !important;
+  position: relative !important;
+  min-height: 680px !important;
+  height: auto !important;
+  padding: 0 0 138px !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+  color: #fff !important;
+  background:
+    linear-gradient(90deg, rgba(2, 32, 16, .95) 0%, rgba(4, 55, 24, .88) 16%, rgba(0, 48, 24, .58) 34%, rgba(0, 48, 24, .4) 58%, rgba(3, 31, 18, .88) 100%),
+    radial-gradient(ellipse at 50% 28%, rgba(221, 202, 98, .12), transparent 24%),
+    url("assets/beit-midrash-hero.webp") center / cover no-repeat !important;
+}
+
+.home-live-hero::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  background:
+    linear-gradient(90deg, rgba(0, 20, 9, .44) 0%, rgba(0, 34, 15, .22) 24%, rgba(0, 0, 0, 0) 42%),
+    linear-gradient(180deg, rgba(0, 0, 0, .08), rgba(0, 0, 0, .22) 70%, rgba(3, 31, 18, .72)) !important;
+}
+
+.home-live-hero::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  inset: auto 0 0 !important;
+  z-index: 1 !important;
+  height: 160px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: linear-gradient(180deg, transparent, rgba(251, 247, 239, .98)) !important;
+  box-shadow: none !important;
+  pointer-events: none !important;
+}
+
+.home-live-hero .hero-banner-copy,
+.home-live-hero .hero-banner-ornament,
+.home-live-hero .hero-banner-tagline,
+.home-live-hero .hero-banner-message,
+.home-live-hero .hero-banner-cta {
+  display: none !important;
+}
+
+.home-live-grid {
+  position: relative !important;
+  z-index: 3 !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  place-items: center !important;
+  max-width: 1180px !important;
+  padding: 82px 0 138px !important;
+  text-align: center !important;
+}
+
+.home-hero-panel {
+  position: relative !important;
+  display: grid !important;
+  justify-items: center !important;
+  max-width: 1040px !important;
+  margin: auto !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  clip-path: none !important;
+  box-shadow: none !important;
+}
+
+.home-live-hero .horaa-hero-crown {
+  width: min(430px, 62vw) !important;
+  height: 42px !important;
+  margin: 0 auto 16px !important;
+  opacity: .86 !important;
+}
+
+.home-live-hero .home-hero-panel h1 {
+  display: grid !important;
+  justify-items: center !important;
+  gap: 18px !important;
+  max-width: none !important;
+  margin: 0 auto !important;
+  font-family: "Times New Roman", "David", serif !important;
+  line-height: 1 !important;
+}
+
+.home-live-hero .hero-main-logo-wrap {
+  display: block !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  line-height: 0 !important;
+}
+
+.home-live-hero .hero-main-logo {
+  display: block !important;
+  width: auto !important;
+  height: clamp(86px, 7.2vw, 124px) !important;
+  max-width: min(560px, 46vw) !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 16px 28px rgba(0, 0, 0, .34)) drop-shadow(0 0 16px rgba(221, 202, 98, .12)) !important;
+}
+
+.home-live-hero .home-hero-panel h1 strong {
+  display: block !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  color: #fffdf2 !important;
+  border: 0 !important;
+  background: transparent !important;
+  font-family: "Times New Roman", "David", serif !important;
+  font-size: clamp(1.25rem, 1.8vw, 1.72rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.08 !important;
+  text-shadow: 0 2px 0 rgba(0, 31, 10, .6), 0 12px 24px rgba(0, 0, 0, .38) !important;
+}
+
+.home-live-hero .home-hero-panel h1 strong::before,
+.home-live-hero .home-hero-panel h1 strong::after {
+  display: none !important;
+  content: none !important;
+}
+
+.home-live-hero .home-hero-panel p {
+  display: block !important;
+  position: relative !important;
+  margin: 14px auto 0 !important;
+  padding-bottom: 30px !important;
+  color: #fff2bd !important;
+  font-size: clamp(1.05rem, 1.45vw, 1.3rem) !important;
+  font-weight: 900 !important;
+  text-align: center !important;
+  text-shadow: 0 2px 0 rgba(0, 31, 10, .6), 0 12px 24px rgba(0, 0, 0, .38) !important;
+}
+
+.home-live-hero .home-hero-panel p::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  left: 50% !important;
+  bottom: 0 !important;
+  width: min(430px, 70vw) !important;
+  height: 18px !important;
+  transform: translateX(-50%) !important;
+  background:
+    radial-gradient(circle at 25% 50%, #d5a844 0 4px, transparent 5px),
+    radial-gradient(circle at 50% 50%, #fff7d8 0 4px, transparent 5px),
+    radial-gradient(circle at 75% 50%, #d5a844 0 4px, transparent 5px),
+    linear-gradient(90deg, transparent 0%, rgba(198, 150, 57, .82) 18%, rgba(255, 242, 184, .86) 50%, rgba(198, 150, 57, .82) 82%, transparent 100%) !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 2px !important;
+  background-position: center !important;
+  opacity: .92 !important;
+}
+
+.home-live-hero .home-horaa-search {
+  display: flex !important;
+  align-items: center !important;
+  width: min(780px, 42vw) !important;
+  min-height: 58px !important;
+  margin: 20px auto 0 !important;
+  position: relative !important;
+  z-index: 8 !important;
+}
+
+.home-live-hero .home-hero-panel .portal-actions {
+  display: flex !important;
+  justify-content: center !important;
+  margin-top: 38px !important;
+}
+
+.home-live-hero .home-hero-panel .portal-actions .btn {
+  min-height: 50px !important;
+  padding: 0 32px !important;
+  border: 1px solid rgba(255, 255, 255, .82) !important;
+  border-radius: 999px !important;
+  color: #fff !important;
+  background: rgba(255, 255, 255, .08) !important;
+  box-shadow: none !important;
+}
+
+.home-rabbi-portrait {
+  display: block !important;
+  position: absolute !important;
+  left: max(0px, calc((100vw - 1180px) / 2)) !important;
+  right: auto !important;
+  bottom: -130px !important;
+  z-index: 2 !important;
+  width: auto !important;
+  height: clamp(460px, 46vw, 720px) !important;
+  max-width: 46vw !important;
+  object-fit: contain !important;
+  opacity: .82 !important;
+  filter: drop-shadow(26px 28px 44px rgba(0, 0, 0, .44)) saturate(.95) brightness(.94) !important;
+  pointer-events: none !important;
+}
+
+.home-live-hero .horaa-hero-seal,
+.home-live-hero .horaa-hero-gates {
+  display: block !important;
+}
+
+@media (max-width: 980px) {
+  .home-live-hero {
+    min-height: 600px !important;
+    padding-bottom: 96px !important;
+  }
+
+  .home-live-grid {
+    padding: 60px 0 96px !important;
+  }
+
+  .home-live-hero .home-horaa-search {
+    width: min(560px, 86vw) !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .home-live-hero {
+    min-height: 640px !important;
+    padding-bottom: 70px !important;
+    background:
+      linear-gradient(180deg, rgba(0, 48, 24, .92) 0%, rgba(4, 64, 28, .84) 48%, rgba(2, 30, 14, .9) 100%),
+      linear-gradient(90deg, rgba(0, 24, 10, .4), rgba(0, 0, 0, 0) 48%),
+      url("assets/beit-midrash-hero.webp") center / cover no-repeat !important;
+  }
+
+  .home-live-grid {
+    padding: 42px 0 70px !important;
+  }
+
+  .home-live-hero .hero-main-logo {
+    height: clamp(64px, 17vw, 88px) !important;
+    max-width: 82vw !important;
+  }
+
+  .home-live-hero .home-hero-panel h1 {
+    gap: 14px !important;
+  }
+
+  .home-live-hero .home-hero-panel h1 strong {
+    font-size: .82rem !important;
+  }
+
+  .home-live-hero .home-hero-panel p {
+    font-size: .86rem !important;
+    margin-top: 9px !important;
+    padding-bottom: 22px !important;
+  }
+
+  .home-live-hero .home-hero-panel p::after {
+    width: min(300px, 76vw) !important;
+    height: 14px !important;
+  }
+
+  .home-live-hero .home-horaa-search {
+    width: min(330px, 88vw) !important;
+    min-height: 52px !important;
+    margin-top: 18px !important;
+  }
+
+  .home-rabbi-portrait {
+    left: 50% !important;
+    right: auto !important;
+    bottom: -8px !important;
+    height: 285px !important;
+    max-height: 285px !important;
+    max-width: 92vw !important;
+    transform: translateX(-50%) !important;
+    opacity: .86 !important;
+    filter: drop-shadow(18px 20px 34px rgba(0, 0, 0, .46)) saturate(.94) brightness(.92) !important;
+  }
+}
+
 /* Fresh homepage image banner - beit midrash background with highlighted rabbi portrait. */
 .home-image-banner {
   position: relative;
@@ -1016,5 +1296,226 @@ body.gate-intro-active {
 
   .home-restored-banner-cta span {
     font-size: clamp(1.25rem, 5.8vw, 2.2rem);
+  }
+}
+
+.home-restored-banner {
+  min-height: clamp(620px, 76vh, 820px);
+  aspect-ratio: auto;
+  display: grid;
+  place-items: start center;
+  background: #02180f;
+}
+
+.home-restored-banner-images {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+}
+
+.home-restored-banner-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(.95) contrast(1.04);
+}
+
+.home-restored-banner-img-right {
+  inset: 0;
+  z-index: 1;
+  object-position: 62% center;
+}
+
+.home-restored-banner-img-left {
+  inset: 0 auto 0 0;
+  z-index: 2;
+  width: min(47vw, 690px);
+  object-position: center center;
+  opacity: .96;
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 62%, rgba(0, 0, 0, .68) 78%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 0%, #000 62%, rgba(0, 0, 0, .68) 78%, transparent 100%);
+}
+
+.home-restored-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    radial-gradient(ellipse at 50% 23%, rgba(255, 226, 136, .12), transparent 34%),
+    linear-gradient(180deg, rgba(1, 18, 11, .6), rgba(2, 28, 17, .46) 42%, rgba(1, 13, 9, .74)),
+    linear-gradient(90deg, rgba(1, 24, 15, .78), rgba(2, 34, 21, .5) 28%, rgba(1, 20, 13, .42) 50%, rgba(2, 34, 21, .46) 72%, rgba(1, 24, 15, .72));
+  pointer-events: none;
+}
+
+.home-restored-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, .55), transparent 18%, transparent 82%, rgba(0, 0, 0, .55)),
+    radial-gradient(ellipse at 50% 30%, rgba(0, 0, 0, .08), rgba(0, 0, 0, .54) 82%);
+  pointer-events: none;
+}
+
+.home-restored-banner-content {
+  position: relative;
+  z-index: 4;
+  width: min(940px, 92vw);
+  margin: clamp(72px, 10vh, 118px) auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #f3dc93;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, .74);
+}
+
+.home-restored-banner-content::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -30px -8% -28px;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(1, 18, 11, .72) 0%, rgba(2, 32, 19, .54) 46%, rgba(2, 32, 19, .18) 70%, transparent 82%);
+  filter: blur(.2px);
+  pointer-events: none;
+}
+
+.home-restored-banner-content h1 {
+  margin: 0;
+  color: #b08a24;
+  background: linear-gradient(180deg, #fff1ba 0%, #d9b85d 24%, #b08a24 56%, #7a5514 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Frank Ruhl Libre", "David Libre", "Noto Serif Hebrew", "Times New Roman", serif;
+  font-size: clamp(5rem, 9vw, 9.2rem);
+  font-weight: 950;
+  line-height: .9;
+  letter-spacing: 0;
+  -webkit-text-stroke: .8px rgba(55, 35, 6, .28);
+  text-shadow:
+    0 1px 0 rgba(255, 240, 180, .38),
+    0 3px 0 rgba(45, 28, 5, .55),
+    0 12px 24px rgba(0, 0, 0, .64),
+    0 0 18px rgba(176, 138, 36, .18);
+}
+
+.home-restored-banner-tagline {
+  margin: clamp(20px, 3vw, 32px) 0 0;
+  color: #f7e8bb;
+  font-family: "Frank Ruhl Libre", "David Libre", "Noto Serif Hebrew", "Times New Roman", serif;
+  font-size: clamp(2.35rem, 4.2vw, 4.45rem);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+.home-restored-banner-line {
+  margin: clamp(18px, 2.2vw, 26px) 0 0;
+  color: #fff8df;
+  font-family: "Frank Ruhl Libre", "David Libre", "Noto Serif Hebrew", "Times New Roman", serif;
+  font-size: clamp(1.45rem, 2vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-shadow:
+    0 2px 0 rgba(0, 25, 13, .88),
+    0 7px 18px rgba(0, 0, 0, .72);
+}
+
+.home-restored-banner-content .home-restored-banner-cta {
+  position: relative;
+  inset: auto;
+  left: auto;
+  bottom: auto;
+  z-index: 1;
+  width: auto;
+  min-width: min(430px, 82vw);
+  min-height: clamp(54px, 4.8vw, 68px);
+  margin-top: clamp(34px, 4.5vw, 54px);
+  transform: none;
+  border-radius: 999px;
+}
+
+.home-restored-banner-content .home-restored-banner-cta:hover,
+.home-restored-banner-content .home-restored-banner-cta:focus-visible {
+  transform: translateY(-3px);
+}
+
+.home-restored-banner-content .home-restored-banner-cta span {
+  font-family: "Frank Ruhl Libre", "David Libre", "Noto Serif Hebrew", "Times New Roman", serif;
+  font-size: clamp(1.1rem, 1.55vw, 1.45rem);
+}
+
+@media (max-width: 760px) {
+  .home-restored-banner {
+    min-height: 760px;
+  }
+
+  .home-restored-banner-images {
+    display: block;
+  }
+
+  .home-restored-banner-img-right {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-position: 58% center;
+  }
+
+  .home-restored-banner-img-left {
+    inset: auto 0 0 0;
+    width: 100%;
+    height: 46%;
+    object-position: center 38%;
+    opacity: .94;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .78) 20%, #000 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .78) 20%, #000 100%);
+  }
+
+  .home-restored-banner::before {
+    background:
+      radial-gradient(ellipse at 50% 20%, rgba(255, 226, 136, .14), transparent 36%),
+      linear-gradient(180deg, rgba(1, 18, 11, .72), rgba(2, 28, 17, .5) 45%, rgba(1, 13, 9, .82)),
+      linear-gradient(90deg, rgba(1, 24, 15, .74), rgba(2, 34, 21, .42) 50%, rgba(1, 24, 15, .74));
+  }
+
+  .home-restored-banner-content {
+    width: min(350px, 94vw);
+    margin-top: 54px;
+  }
+
+  .home-restored-banner-content h1 {
+    font-size: clamp(2.9rem, 11.2vw, 3.55rem);
+    line-height: .95;
+  }
+
+  .home-restored-banner-tagline {
+    margin-top: 18px;
+    font-size: clamp(1.6rem, 7vw, 2.15rem);
+    line-height: 1.05;
+  }
+
+  .home-restored-banner-line {
+    margin-top: 16px;
+    font-size: clamp(1.12rem, 4.7vw, 1.42rem);
+    line-height: 1.22;
+  }
+
+  .home-restored-banner-content .home-restored-banner-cta {
+    min-width: min(292px, 82vw);
+    min-height: 54px;
+    margin-top: 32px;
+  }
+
+  .home-restored-banner-content .home-restored-banner-cta span {
+    font-size: clamp(.96rem, 4vw, 1.12rem);
   }
 }
