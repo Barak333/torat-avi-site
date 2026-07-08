@@ -429,32 +429,184 @@ body.gate-intro-active {
   display: block !important;
 }
 
+@font-face {
+  font-family: "BannerShmulik";
+  src: url("assets/fonts/shmulikclm.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BannerAsakim";
+  src: url("assets/fonts/asakim-bold.woff") format("woff");
+  font-display: swap;
+}
+
 .home-live-hero {
   display: block !important;
   position: relative !important;
   width: 100% !important;
   min-height: 0 !important;
-  height: clamp(470px, 47vw, 780px) !important;
+  height: clamp(470px, 47vw, 760px) !important;
   aspect-ratio: auto !important;
   padding: 0 !important;
   margin: 0 !important;
   overflow: hidden !important;
   isolation: isolate !important;
-  background: url("assets/home-main-banner-desktop-new.webp?v=20260708-clear-banner-1") center top / 100% 100% no-repeat !important;
+  background:
+    linear-gradient(180deg, rgba(1, 25, 17, .14), rgba(1, 25, 17, .58)),
+    url("assets/home-main-banner-live-desktop.webp?v=20260708-live-banner-1") center center / cover no-repeat !important;
 }
 
-.home-live-hero::before,
-.home-live-hero::after,
-main > .home-live-hero::before,
-main > .home-live-hero::after {
-  display: none !important;
-  content: none !important;
+.home-live-hero::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, .3), transparent 24%, transparent 76%, rgba(0, 0, 0, .36)),
+    radial-gradient(circle at 50% 38%, rgba(10, 73, 43, .38), transparent 36%) !important;
+}
+
+.home-live-hero::after {
+  content: "" !important;
+  position: absolute !important;
+  left: -7% !important;
+  right: -7% !important;
+  bottom: -58px !important;
+  z-index: 2 !important;
+  height: clamp(120px, 10vw, 165px) !important;
+  border-top: 3px solid #d9ad46 !important;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0 !important;
+  background: linear-gradient(180deg, rgba(0, 34, 22, .95), #02180f) !important;
+  box-shadow:
+    0 -2px 0 rgba(255, 231, 147, .4),
+    0 -18px 32px rgba(0, 0, 0, .36) !important;
+  pointer-events: none !important;
+}
+
+.home-live-hero .hero-banner-copy {
+  position: absolute !important;
+  top: 14.5% !important;
+  left: 50% !important;
+  z-index: 5 !important;
+  width: min(980px, 68vw) !important;
+  transform: translateX(-50%) !important;
+  text-align: center !important;
+  color: #f3dfb7 !important;
+}
+
+.home-live-hero .hero-banner-ornament {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: min(420px, 36vw) !important;
+  height: 28px !important;
+  margin: 0 auto clamp(14px, 1.5vw, 22px) !important;
+}
+
+.home-live-hero .hero-banner-ornament::before,
+.home-live-hero .hero-banner-ornament::after {
+  content: "" !important;
+  display: block !important;
+  flex: 1 1 auto !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, transparent, #d5a940, #ffe28a, #d5a940, transparent) !important;
+}
+
+.home-live-hero .hero-banner-ornament::after {
+  margin-inline-start: 22px !important;
+}
+
+.home-live-hero .hero-banner-ornament::before {
+  margin-inline-end: 22px !important;
+}
+
+.home-live-hero .hero-banner-ornament {
+  background:
+    radial-gradient(circle, transparent 8px, #efc861 9px 10px, transparent 11px),
+    conic-gradient(from 45deg, transparent 0 12.5%, #efc861 12.5% 14.5%, transparent 14.5% 37.5%, #efc861 37.5% 39.5%, transparent 39.5% 62.5%, #efc861 62.5% 64.5%, transparent 64.5% 87.5%, #efc861 87.5% 89.5%, transparent 89.5%) center / 38px 38px no-repeat !important;
+}
+
+.home-live-hero h1 {
+  margin: 0 0 clamp(14px, 1.7vw, 26px) !important;
+  color: #eec45a !important;
+  font-family: "BannerShmulik", "David", serif !important;
+  font-size: clamp(4.8rem, 6.2vw, 7.4rem) !important;
+  font-weight: 900 !important;
+  line-height: .82 !important;
+  letter-spacing: 0 !important;
+  white-space: nowrap !important;
+  text-shadow:
+    0 3px 0 #8d5f14,
+    0 10px 24px rgba(0, 0, 0, .64),
+    0 0 24px rgba(255, 218, 105, .24) !important;
+}
+
+.home-live-hero .hero-banner-tagline {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: clamp(16px, 2vw, 28px) !important;
+  margin: 0 0 clamp(18px, 2vw, 30px) !important;
+  color: #f2e5c8 !important;
+  font-family: "BannerAsakim", "Frank Ruhl Libre", "Noto Serif Hebrew", serif !important;
+  font-size: clamp(2rem, 3vw, 3.5rem) !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, .72) !important;
+}
+
+.home-live-hero .hero-banner-tagline::before,
+.home-live-hero .hero-banner-tagline::after {
+  content: "" !important;
+  width: clamp(46px, 7vw, 108px) !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, transparent, #d5a940, #ffe28a, #d5a940, transparent) !important;
+}
+
+.home-live-hero .hero-banner-message {
+  position: relative !important;
+  width: min(760px, 52vw) !important;
+  margin: 0 auto !important;
+  padding: clamp(14px, 1.3vw, 20px) clamp(26px, 3.3vw, 54px) !important;
+  border: 2px solid rgba(222, 174, 66, .95) !important;
+  border-radius: 8px !important;
+  color: #f3dfb4 !important;
+  background: linear-gradient(180deg, rgba(0, 49, 30, .62), rgba(0, 27, 18, .44)) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 234, 158, .16),
+    0 14px 34px rgba(0, 0, 0, .3) !important;
+  font-family: "BannerAsakim", "Frank Ruhl Libre", "Noto Serif Hebrew", serif !important;
+  font-size: clamp(1.45rem, 2.1vw, 2.45rem) !important;
+  font-weight: 900 !important;
+  line-height: 1.18 !important;
+  text-shadow: 0 3px 15px rgba(0, 0, 0, .62) !important;
+}
+
+.home-live-hero .hero-banner-message::before,
+.home-live-hero .hero-banner-message::after {
+  content: "◆" !important;
+  position: absolute !important;
+  top: 50% !important;
+  color: #e2b346 !important;
+  font-size: 1.15rem !important;
+  transform: translateY(-50%) !important;
+  text-shadow: 0 0 12px rgba(255, 223, 122, .35) !important;
+}
+
+.home-live-hero .hero-banner-message::before {
+  right: -14px !important;
+}
+
+.home-live-hero .hero-banner-message::after {
+  left: -14px !important;
 }
 
 .home-live-hero .hero-banner-cta {
   display: flex !important;
   position: absolute !important;
-  top: 74.6% !important;
+  top: 79.5% !important;
   left: 50% !important;
   z-index: 8 !important;
   align-items: center !important;
@@ -531,14 +683,49 @@ main > .home-live-hero::after {
 
 @media (max-width: 760px) {
   .home-live-hero {
-    height: clamp(620px, 190vw, 980px) !important;
-    background-image: url("assets/home-main-banner-mobile-new.webp?v=20260708-clear-banner-1") !important;
-    background-size: 100% 100% !important;
+    height: clamp(660px, 182vw, 970px) !important;
+    background-image:
+      linear-gradient(180deg, rgba(1, 25, 17, .04), rgba(1, 25, 17, .62)),
+      url("assets/home-main-banner-live-mobile.webp?v=20260708-live-banner-1") !important;
+    background-size: cover !important;
     background-position: center top !important;
   }
 
+  .home-live-hero .hero-banner-copy {
+    top: 34.5% !important;
+    width: 92vw !important;
+  }
+
+  .home-live-hero .hero-banner-ornament {
+    width: 58vw !important;
+    margin-bottom: 14px !important;
+  }
+
+  .home-live-hero h1 {
+    font-size: clamp(5.2rem, 18vw, 8.8rem) !important;
+    margin-bottom: 14px !important;
+    white-space: normal !important;
+  }
+
+  .home-live-hero .hero-banner-tagline {
+    gap: 14px !important;
+    margin-bottom: 18px !important;
+    font-size: clamp(1.75rem, 7vw, 3.15rem) !important;
+  }
+
+  .home-live-hero .hero-banner-tagline::before,
+  .home-live-hero .hero-banner-tagline::after {
+    width: clamp(28px, 10vw, 68px) !important;
+  }
+
+  .home-live-hero .hero-banner-message {
+    width: min(84vw, 640px) !important;
+    padding: 16px 24px !important;
+    font-size: clamp(1.35rem, 5.2vw, 2.25rem) !important;
+  }
+
   .home-live-hero .hero-banner-cta {
-    top: 76.8% !important;
+    top: 78.8% !important;
     left: 50% !important;
     width: min(590px, 70vw) !important;
     height: clamp(48px, 10.5vw, 68px) !important;
@@ -555,9 +742,13 @@ main > .home-live-hero::after {
     background-position: center top !important;
   }
 
+  .home-live-hero .hero-banner-copy {
+    top: 33.5% !important;
+  }
+
   .home-live-hero .hero-banner-cta {
     left: 50% !important;
-    top: 77.2% !important;
+    top: 79.5% !important;
     width: 70vw !important;
   }
 }
