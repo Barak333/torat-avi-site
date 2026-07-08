@@ -1673,8 +1673,8 @@ body.gate-intro-active {
   .site-header .home-announcement-strip .horaa-strip-inner {
     min-height: 38px !important;
     display: grid !important;
-    grid-template-columns: .75fr 1fr 1.15fr !important;
-    grid-template-areas: "ask message phone" !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-areas: "ask phone" !important;
     justify-content: center !important;
     gap: 6px !important;
     width: 100% !important;
@@ -1683,10 +1683,7 @@ body.gate-intro-active {
   }
 
   .site-header .home-announcement-strip .horaa-message {
-    display: block !important;
-    max-width: 100% !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+    display: none !important;
   }
 
   .site-header .home-announcement-strip a,
