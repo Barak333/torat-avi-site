@@ -1310,7 +1310,7 @@ body.gate-intro-active {
 .home-restored-banner-images {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: auto;
   display: block;
 }
 
@@ -1334,14 +1334,30 @@ body.gate-intro-active {
   z-index: 4;
   width: min(47vw, 690px);
   object-position: center center;
-  opacity: .98;
+  opacity: 1;
   filter:
-    brightness(1.42)
-    contrast(1.12)
-    saturate(.96)
-    drop-shadow(24px 24px 48px rgba(0, 0, 0, .58));
-  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 58%, rgba(0, 0, 0, .82) 78%, transparent 100%);
-  mask-image: linear-gradient(90deg, #000 0%, #000 58%, rgba(0, 0, 0, .82) 78%, transparent 100%);
+    brightness(1.82)
+    contrast(1.18)
+    saturate(1.04)
+    drop-shadow(22px 24px 50px rgba(0, 0, 0, .66));
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 64%, rgba(0, 0, 0, .84) 82%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 0%, #000 64%, rgba(0, 0, 0, .84) 82%, transparent 100%);
+}
+
+.home-restored-banner-images::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  z-index: 5;
+  width: min(48vw, 700px);
+  background:
+    radial-gradient(ellipse at 35% 52%, rgba(255, 229, 157, .34), rgba(255, 229, 157, .12) 32%, transparent 64%),
+    linear-gradient(90deg, rgba(255, 242, 190, .1), transparent 76%);
+  mix-blend-mode: screen;
+  opacity: .92;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 62%, rgba(0, 0, 0, .55) 80%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 0%, #000 62%, rgba(0, 0, 0, .55) 80%, transparent 100%);
 }
 
 .home-restored-banner-darkness {
@@ -1485,14 +1501,25 @@ body.gate-intro-active {
     width: 100%;
     height: 46%;
     object-position: center 38%;
-    opacity: .96;
+    opacity: 1;
     filter:
-      brightness(1.45)
-      contrast(1.12)
-      saturate(.96)
-      drop-shadow(0 -18px 44px rgba(0, 0, 0, .58));
-    -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .52) 9%, rgba(0, 0, 0, .92) 22%, #000 100%);
-    mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .52) 9%, rgba(0, 0, 0, .92) 22%, #000 100%);
+      brightness(1.86)
+      contrast(1.18)
+      saturate(1.04)
+      drop-shadow(0 -18px 48px rgba(0, 0, 0, .68));
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .55) 9%, rgba(0, 0, 0, .94) 22%, #000 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .55) 9%, rgba(0, 0, 0, .94) 22%, #000 100%);
+  }
+
+  .home-restored-banner-images::after {
+    inset: auto 0 0 0;
+    width: 100%;
+    height: 46%;
+    background:
+      radial-gradient(ellipse at 46% 58%, rgba(255, 229, 157, .3), rgba(255, 229, 157, .1) 36%, transparent 68%),
+      linear-gradient(180deg, transparent 0%, rgba(255, 242, 190, .12) 42%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .64) 18%, #000 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .64) 18%, #000 100%);
   }
 
   .home-restored-banner-darkness {
