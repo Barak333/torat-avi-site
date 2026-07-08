@@ -1345,9 +1345,9 @@ body.gate-intro-active {
   inset: 0;
   z-index: 2;
   background:
-    radial-gradient(ellipse at 50% 23%, rgba(255, 226, 136, .12), transparent 34%),
-    linear-gradient(180deg, rgba(1, 18, 11, .6), rgba(2, 28, 17, .46) 42%, rgba(1, 13, 9, .74)),
-    linear-gradient(90deg, rgba(1, 24, 15, .78), rgba(2, 34, 21, .5) 28%, rgba(1, 20, 13, .42) 50%, rgba(2, 34, 21, .46) 72%, rgba(1, 24, 15, .72));
+    radial-gradient(ellipse at 50% 23%, rgba(255, 226, 136, .1), transparent 34%),
+    linear-gradient(180deg, rgba(0, 31, 18, .82), rgba(0, 54, 31, .68) 42%, rgba(0, 22, 13, .86)),
+    linear-gradient(90deg, rgba(0, 28, 17, .9), rgba(0, 75, 43, .66) 28%, rgba(0, 52, 31, .62) 50%, rgba(0, 75, 43, .66) 72%, rgba(0, 28, 17, .9));
   pointer-events: none;
 }
 
