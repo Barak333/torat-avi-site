@@ -1582,3 +1582,130 @@ body.gate-intro-active {
     font-size: clamp(.96rem, 4vw, 1.12rem);
   }
 }
+
+/* Final homepage hero tone and restored announcement strip. */
+.home-restored-banner-darkness {
+  background:
+    linear-gradient(90deg,
+      rgba(0, 48, 24, .12) 0%,
+      rgba(0, 68, 36, .22) 24%,
+      rgba(0, 82, 45, .42) 34%,
+      rgba(0, 70, 38, .58) 54%,
+      rgba(0, 50, 29, .66) 78%,
+      rgba(0, 34, 20, .72) 100%),
+    radial-gradient(circle at 46% 38%, rgba(42, 147, 89, .22), transparent 46%),
+    linear-gradient(180deg, rgba(0, 58, 30, .2), rgba(0, 74, 40, .34) 48%, rgba(0, 44, 25, .42)) !important;
+}
+
+.home-restored-banner::before {
+  background:
+    linear-gradient(180deg, rgba(0, 74, 38, .54), rgba(0, 90, 48, .58)),
+    linear-gradient(90deg, rgba(0, 45, 23, .34), rgba(0, 116, 63, .5) 50%, rgba(0, 50, 29, .62)) !important;
+}
+
+.home-restored-banner::after {
+  background:
+    linear-gradient(90deg, transparent 0%, rgba(0, 68, 36, .26) 28%, rgba(0, 82, 45, .42) 56%, rgba(0, 42, 25, .56) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, .06), rgba(0, 34, 20, .24)) !important;
+}
+
+.site-header .home-announcement-strip {
+  display: block !important;
+  min-height: 46px !important;
+  background: linear-gradient(90deg, #00451f 0%, #005f2d 50%, #00451f 100%) !important;
+  color: #fff7d8 !important;
+  border-bottom: 1px solid rgba(214, 183, 93, .42) !important;
+  box-shadow: 0 10px 24px rgba(0, 48, 24, .12) !important;
+}
+
+.site-header .home-announcement-strip .horaa-strip-inner {
+  min-height: 46px !important;
+  display: grid !important;
+  grid-template-columns: minmax(170px, 1fr) auto minmax(220px, 1fr) !important;
+  grid-template-areas: "ask message phone" !important;
+  align-items: center !important;
+  justify-items: center !important;
+  gap: 22px !important;
+  width: min(1180px, calc(100% - 32px)) !important;
+  margin: 0 auto !important;
+  padding: 6px 0 !important;
+  direction: ltr !important;
+  font-family: "Frank Ruhl Libre", "Noto Serif Hebrew", "Times New Roman", serif !important;
+}
+
+.site-header .home-announcement-strip .horaa-strip-inner > * {
+  direction: rtl !important;
+}
+
+.site-header .home-announcement-strip a,
+.site-header .home-announcement-strip strong {
+  color: #fff7d8 !important;
+  font-size: clamp(.98rem, 1.35vw, 1.16rem) !important;
+  font-weight: 900 !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, .28) !important;
+  white-space: nowrap !important;
+}
+
+.site-header .home-announcement-strip a:first-child {
+  grid-area: ask !important;
+  justify-self: start !important;
+}
+
+.site-header .home-announcement-strip .horaa-message {
+  grid-area: message !important;
+  color: #d9b85d !important;
+}
+
+.site-header .home-announcement-strip .horaa-phone {
+  grid-area: phone !important;
+  justify-self: end !important;
+}
+
+@media (max-width: 900px) {
+  .site-header .home-announcement-strip {
+    min-height: 38px !important;
+  }
+
+  .site-header .home-announcement-strip .horaa-strip-inner {
+    min-height: 38px !important;
+    display: grid !important;
+    grid-template-columns: .75fr 1fr 1.15fr !important;
+    grid-template-areas: "ask message phone" !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    width: 100% !important;
+    padding: 6px 12px !important;
+    overflow: hidden !important;
+  }
+
+  .site-header .home-announcement-strip .horaa-message {
+    display: block !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .site-header .home-announcement-strip a,
+  .site-header .home-announcement-strip strong {
+    font-size: clamp(.68rem, 3vw, .86rem) !important;
+    white-space: nowrap !important;
+  }
+
+  .home-restored-banner-darkness {
+    background:
+      linear-gradient(180deg,
+        rgba(0, 76, 40, .24) 0%,
+        rgba(0, 92, 50, .36) 34%,
+        rgba(0, 72, 40, .46) 60%,
+        rgba(0, 48, 27, .54) 100%),
+      linear-gradient(90deg, rgba(0, 48, 24, .22), rgba(0, 116, 63, .38), rgba(0, 48, 24, .46)) !important;
+  }
+
+  .home-restored-banner::before {
+    background:
+      linear-gradient(180deg, rgba(0, 74, 38, .48), rgba(0, 90, 48, .52)),
+      linear-gradient(90deg, rgba(0, 45, 23, .24), rgba(0, 116, 63, .4), rgba(0, 50, 29, .52)) !important;
+  }
+}
