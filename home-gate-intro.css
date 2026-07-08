@@ -1585,28 +1585,15 @@ body.gate-intro-active {
 
 /* Final homepage hero tone and restored announcement strip. */
 .home-restored-banner-darkness {
-  background:
-    linear-gradient(90deg,
-      rgba(0, 42, 28, .24) 0%,
-      rgba(0, 74, 48, .4) 24%,
-      rgba(0, 102, 67, .7) 38%,
-      rgba(0, 88, 58, .83) 58%,
-      rgba(0, 62, 42, .9) 80%,
-      rgba(0, 44, 30, .96) 100%),
-    radial-gradient(circle at 46% 30%, rgba(15, 142, 91, .5), rgba(0, 100, 66, .24) 34%, transparent 58%),
-    linear-gradient(180deg, rgba(0, 64, 42, .24), rgba(0, 90, 59, .42) 46%, rgba(0, 54, 36, .58)) !important;
+  background: rgba(0, 0, 0, .55) !important;
 }
 
 .home-restored-banner::before {
-  background:
-    linear-gradient(180deg, rgba(0, 78, 52, .64), rgba(0, 104, 70, .72)),
-    linear-gradient(90deg, rgba(0, 48, 32, .42), rgba(0, 124, 82, .65) 50%, rgba(0, 58, 40, .76)) !important;
+  background: transparent !important;
 }
 
 .home-restored-banner::after {
-  background:
-    linear-gradient(90deg, transparent 0%, rgba(0, 78, 52, .28) 28%, rgba(0, 104, 70, .48) 56%, rgba(0, 54, 36, .66) 100%),
-    linear-gradient(180deg, rgba(0, 32, 22, .06), rgba(0, 54, 36, .28)) !important;
+  background: transparent !important;
 }
 
 .site-header .home-announcement-strip {
@@ -1693,19 +1680,59 @@ body.gate-intro-active {
   }
 
   .home-restored-banner-darkness {
-    background:
-      linear-gradient(180deg,
-        rgba(0, 78, 52, .3) 0%,
-        rgba(0, 108, 72, .48) 34%,
-        rgba(0, 88, 58, .64) 60%,
-        rgba(0, 58, 40, .76) 100%),
-      radial-gradient(circle at 52% 20%, rgba(15, 142, 91, .36), transparent 52%),
-      linear-gradient(90deg, rgba(0, 50, 34, .28), rgba(0, 124, 82, .48), rgba(0, 54, 36, .6)) !important;
+    background: rgba(0, 0, 0, .55) !important;
   }
 
   .home-restored-banner::before {
-    background:
-      linear-gradient(180deg, rgba(0, 78, 52, .58), rgba(0, 104, 70, .66)),
-      linear-gradient(90deg, rgba(0, 48, 32, .3), rgba(0, 124, 82, .52), rgba(0, 58, 40, .7)) !important;
+    background: transparent !important;
+  }
+}
+
+/* Absolute final homepage hero shade: black 55%, no emerald wash. */
+.home-restored-banner-darkness {
+  background: rgba(0, 0, 0, .55) !important;
+}
+
+.home-restored-banner::before,
+.home-restored-banner::after {
+  background: transparent !important;
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+main > .home-restored-banner::before,
+main > .home-restored-banner::after,
+main > section.home-restored-banner::before,
+main > section.home-restored-banner::after {
+  background: transparent !important;
+  background-image: none !important;
+  background-color: transparent !important;
+  animation: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+@media (max-width: 900px) {
+  .home-restored-banner-darkness {
+    background: rgba(0, 0, 0, .55) !important;
+  }
+
+  .home-restored-banner::before,
+  .home-restored-banner::after {
+    background: transparent !important;
+    background-image: none !important;
+    background-color: transparent !important;
+  }
+
+  main > .home-restored-banner::before,
+  main > .home-restored-banner::after,
+  main > section.home-restored-banner::before,
+  main > section.home-restored-banner::after {
+    background: transparent !important;
+    background-image: none !important;
+    background-color: transparent !important;
+    animation: none !important;
+    filter: none !important;
+    opacity: 1 !important;
   }
 }
