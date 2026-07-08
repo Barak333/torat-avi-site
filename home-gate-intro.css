@@ -1546,8 +1546,10 @@ body.gate-intro-active {
   }
 
   .home-restored-banner-content {
+    position: absolute;
+    inset: auto 0 calc(36% + 4px) 0;
     width: min(350px, 92vw);
-    margin: 38px auto 0;
+    margin: 0 auto;
     align-items: center;
     text-align: center;
   }
