@@ -1587,34 +1587,34 @@ body.gate-intro-active {
 .home-restored-banner-darkness {
   background:
     linear-gradient(90deg,
-      rgba(0, 42, 28, .2) 0%,
-      rgba(0, 74, 48, .33) 24%,
-      rgba(0, 102, 67, .58) 38%,
-      rgba(0, 88, 58, .69) 58%,
-      rgba(0, 62, 42, .75) 80%,
-      rgba(0, 44, 30, .83) 100%),
-    radial-gradient(circle at 46% 30%, rgba(15, 142, 91, .42), rgba(0, 100, 66, .2) 34%, transparent 58%),
-    linear-gradient(180deg, rgba(0, 64, 42, .2), rgba(0, 90, 59, .35) 46%, rgba(0, 54, 36, .48)) !important;
+      rgba(0, 42, 28, .24) 0%,
+      rgba(0, 74, 48, .4) 24%,
+      rgba(0, 102, 67, .7) 38%,
+      rgba(0, 88, 58, .83) 58%,
+      rgba(0, 62, 42, .9) 80%,
+      rgba(0, 44, 30, .96) 100%),
+    radial-gradient(circle at 46% 30%, rgba(15, 142, 91, .5), rgba(0, 100, 66, .24) 34%, transparent 58%),
+    linear-gradient(180deg, rgba(0, 64, 42, .24), rgba(0, 90, 59, .42) 46%, rgba(0, 54, 36, .58)) !important;
 }
 
 .home-restored-banner::before {
   background:
-    linear-gradient(180deg, rgba(0, 78, 52, .53), rgba(0, 104, 70, .6)),
-    linear-gradient(90deg, rgba(0, 48, 32, .35), rgba(0, 124, 82, .54) 50%, rgba(0, 58, 40, .63)) !important;
+    linear-gradient(180deg, rgba(0, 78, 52, .64), rgba(0, 104, 70, .72)),
+    linear-gradient(90deg, rgba(0, 48, 32, .42), rgba(0, 124, 82, .65) 50%, rgba(0, 58, 40, .76)) !important;
 }
 
 .home-restored-banner::after {
   background:
-    linear-gradient(90deg, transparent 0%, rgba(0, 78, 52, .23) 28%, rgba(0, 104, 70, .4) 56%, rgba(0, 54, 36, .55) 100%),
-    linear-gradient(180deg, rgba(0, 32, 22, .05), rgba(0, 54, 36, .23)) !important;
+    linear-gradient(90deg, transparent 0%, rgba(0, 78, 52, .28) 28%, rgba(0, 104, 70, .48) 56%, rgba(0, 54, 36, .66) 100%),
+    linear-gradient(180deg, rgba(0, 32, 22, .06), rgba(0, 54, 36, .28)) !important;
 }
 
 .site-header .home-announcement-strip {
   display: block !important;
   min-height: 46px !important;
   background:
-    radial-gradient(circle at 50% 0%, rgba(0, 126, 82, .34), transparent 58%),
-    linear-gradient(90deg, #002f20 0%, #005236 44%, #003b29 100%) !important;
+    radial-gradient(circle at 50% 0%, rgba(0, 102, 68, .34), transparent 58%),
+    linear-gradient(90deg, #002618 0%, #00442c 44%, #002f20 100%) !important;
   color: #fff7d8 !important;
   border-bottom: 1px solid rgba(214, 183, 93, .42) !important;
   box-shadow: 0 10px 24px rgba(0, 48, 24, .12) !important;
@@ -1698,17 +1698,17 @@ body.gate-intro-active {
   .home-restored-banner-darkness {
     background:
       linear-gradient(180deg,
-        rgba(0, 78, 52, .25) 0%,
-        rgba(0, 108, 72, .4) 34%,
-        rgba(0, 88, 58, .53) 60%,
-        rgba(0, 58, 40, .63) 100%),
-      radial-gradient(circle at 52% 20%, rgba(15, 142, 91, .3), transparent 52%),
-      linear-gradient(90deg, rgba(0, 50, 34, .23), rgba(0, 124, 82, .4), rgba(0, 54, 36, .5)) !important;
+        rgba(0, 78, 52, .3) 0%,
+        rgba(0, 108, 72, .48) 34%,
+        rgba(0, 88, 58, .64) 60%,
+        rgba(0, 58, 40, .76) 100%),
+      radial-gradient(circle at 52% 20%, rgba(15, 142, 91, .36), transparent 52%),
+      linear-gradient(90deg, rgba(0, 50, 34, .28), rgba(0, 124, 82, .48), rgba(0, 54, 36, .6)) !important;
   }
 
   .home-restored-banner::before {
     background:
-      linear-gradient(180deg, rgba(0, 78, 52, .48), rgba(0, 104, 70, .55)),
-      linear-gradient(90deg, rgba(0, 48, 32, .25), rgba(0, 124, 82, .43), rgba(0, 58, 40, .58)) !important;
+      linear-gradient(180deg, rgba(0, 78, 52, .58), rgba(0, 104, 70, .66)),
+      linear-gradient(90deg, rgba(0, 48, 32, .3), rgba(0, 124, 82, .52), rgba(0, 58, 40, .7)) !important;
   }
 }
