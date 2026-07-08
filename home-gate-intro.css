@@ -786,6 +786,20 @@ body.gate-intro-active {
     radial-gradient(ellipse at center, transparent 36%, rgba(0, 0, 0, .48) 100%);
 }
 
+.home-image-banner-logo {
+  position: absolute;
+  z-index: 5;
+  top: clamp(28px, 4.8vw, 76px);
+  right: clamp(34px, 6vw, 104px);
+  width: clamp(180px, 16vw, 265px);
+  height: auto;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 18px 28px rgba(0, 0, 0, .34))
+    drop-shadow(0 0 16px rgba(238, 203, 111, .12));
+  opacity: .94;
+}
+
 .home-image-banner::after {
   content: "";
   position: absolute;
@@ -801,20 +815,23 @@ body.gate-intro-active {
 .home-image-banner-rabbi {
   position: absolute;
   z-index: 3;
-  left: max(10px, calc((100vw - 1260px) / 2));
-  bottom: clamp(34px, 6vw, 96px);
-  width: clamp(300px, 33vw, 500px);
-  aspect-ratio: 1;
-  background: url("assets/home-banner-rabbi-left.webp") center center / cover no-repeat;
-  transform: translateY(-9%);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: clamp(430px, 43vw, 650px);
+  background:
+    linear-gradient(90deg, rgba(2, 24, 16, .03), rgba(2, 24, 16, .14) 54%, rgba(2, 24, 16, .88) 100%),
+    linear-gradient(180deg, rgba(2, 24, 16, .42) 0%, transparent 15%, transparent 76%, rgba(2, 24, 16, .74) 100%),
+    url("assets/home-banner-rabbi-left.webp") 24% center / cover no-repeat;
+  opacity: .98;
+  transform: translateY(-3%);
   filter:
-    drop-shadow(28px 30px 46px rgba(0, 0, 0, .48))
-    drop-shadow(0 0 28px rgba(238, 203, 111, .16))
+    drop-shadow(24px 28px 42px rgba(0, 0, 0, .32))
     saturate(1.06)
-    contrast(1.08)
-    brightness(1.03);
-  -webkit-mask-image: radial-gradient(ellipse at 42% 50%, #000 0 45%, rgba(0, 0, 0, .78) 58%, transparent 75%);
-  mask-image: radial-gradient(ellipse at 42% 50%, #000 0 45%, rgba(0, 0, 0, .78) 58%, transparent 75%);
+    contrast(1.04)
+    brightness(.98);
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 48%, rgba(0, 0, 0, .62) 76%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 0%, #000 48%, rgba(0, 0, 0, .62) 76%, transparent 100%);
 }
 
 .home-image-banner-rabbi::before {
@@ -823,6 +840,16 @@ body.gate-intro-active {
   inset: -18%;
   z-index: -1;
   background: radial-gradient(ellipse at 52% 46%, rgba(246, 213, 121, .24), transparent 58%);
+}
+
+.home-image-banner-rabbi::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(2, 24, 16, .4), transparent 18%, transparent 72%, rgba(2, 24, 16, .76)),
+    linear-gradient(90deg, transparent 0%, rgba(2, 24, 16, .18) 58%, rgba(2, 24, 16, .88) 100%);
+  pointer-events: none;
 }
 
 @media (max-width: 760px) {
@@ -834,10 +861,17 @@ body.gate-intro-active {
     background-position: 58% center;
   }
 
+  .home-image-banner-logo {
+    top: 18px;
+    right: 16px;
+    width: clamp(132px, 38vw, 178px);
+    transform: none;
+  }
+
   .home-image-banner-rabbi {
-    left: -40px;
-    bottom: clamp(176px, 46vw, 250px);
-    width: clamp(280px, 75vw, 390px);
-    transform: translateY(-12%);
+    width: min(82vw, 360px);
+    background-position: 20% center;
+    opacity: .96;
+    transform: translateY(-5%);
   }
 }
