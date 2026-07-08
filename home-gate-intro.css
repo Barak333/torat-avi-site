@@ -786,19 +786,48 @@ body.gate-intro-active {
     radial-gradient(ellipse at center, transparent 36%, rgba(0, 0, 0, .48) 100%);
 }
 
-.home-image-banner-logo {
+.home-image-banner-title {
   position: absolute;
   z-index: 5;
-  top: clamp(24px, 4vw, 58px);
+  top: clamp(30px, 4.3vw, 66px);
   left: 50%;
-  width: clamp(140px, 11.5vw, 190px);
-  height: auto;
-  object-fit: contain;
   transform: translateX(-50%);
+  margin: 0;
+  padding: 0 clamp(36px, 5vw, 76px);
+  color: #d6ae43;
+  font-family: "Frank Ruhl Libre", "Noto Serif Hebrew", serif;
+  font-size: clamp(3rem, 6.4vw, 6.25rem);
+  font-weight: 900;
+  line-height: .92;
+  letter-spacing: 0;
+  white-space: nowrap;
+  text-align: center;
+  background: linear-gradient(180deg, #fff0a6 0%, #d8ad3d 43%, #8b641a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   filter:
-    drop-shadow(0 18px 28px rgba(0, 0, 0, .34))
-    drop-shadow(0 0 16px rgba(238, 203, 111, .12));
-  opacity: .94;
+    drop-shadow(0 2px 0 rgba(71, 43, 6, .85))
+    drop-shadow(0 12px 22px rgba(0, 0, 0, .44))
+    drop-shadow(0 0 18px rgba(245, 208, 96, .14));
+}
+
+.home-image-banner-title::before,
+.home-image-banner-title::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: clamp(54px, 8vw, 126px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(219, 174, 63, .86), transparent);
+}
+
+.home-image-banner-title::before {
+  right: 100%;
+}
+
+.home-image-banner-title::after {
+  left: 100%;
 }
 
 .home-image-banner::after {
@@ -862,12 +891,18 @@ body.gate-intro-active {
     background-position: 58% center;
   }
 
-  .home-image-banner-logo {
-    top: 10px;
+  .home-image-banner-title {
+    top: 18px;
     left: 50%;
     right: auto;
-    width: clamp(96px, 28vw, 128px);
+    padding: 0 22px;
+    font-size: clamp(2.15rem, 11.5vw, 3.35rem);
     transform: translateX(-50%);
+  }
+
+  .home-image-banner-title::before,
+  .home-image-banner-title::after {
+    width: clamp(28px, 10vw, 46px);
   }
 
   .home-image-banner-rabbi {
