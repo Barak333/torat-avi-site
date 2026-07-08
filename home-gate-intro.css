@@ -440,7 +440,7 @@ body.gate-intro-active {
   margin: 0 !important;
   overflow: hidden !important;
   isolation: isolate !important;
-  background: url("assets/home-main-banner-desktop-new.webp") center top / 100% 100% no-repeat !important;
+  background: url("assets/home-main-banner-desktop-new.webp?v=20260708-clear-banner-1") center top / 100% 100% no-repeat !important;
 }
 
 .home-live-hero::before,
@@ -532,7 +532,7 @@ main > .home-live-hero::after {
 @media (max-width: 760px) {
   .home-live-hero {
     height: clamp(620px, 190vw, 980px) !important;
-    background-image: url("assets/home-main-banner-mobile-new.webp") !important;
+    background-image: url("assets/home-main-banner-mobile-new.webp?v=20260708-clear-banner-1") !important;
     background-size: 100% 100% !important;
     background-position: center top !important;
   }
