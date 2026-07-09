@@ -69,6 +69,91 @@ document.addEventListener("visibilitychange", () => {
   }
 });
 
+function numberToHebrewLetters(number, { omitThousands = false } = {}) {
+  const ones = ["", "א", "ב", "ג", "ד", "ה", "ו", "ז", "ח", "ט"];
+  const tens = ["", "י", "כ", "ל", "מ", "נ", "ס", "ע", "פ", "צ"];
+  const hundreds = ["", "ק", "ר", "ש", "ת"];
+  let value = Number(number);
+
+  if (!Number.isFinite(value) || value <= 0) return "";
+  value = Math.floor(value);
+  if (omitThousands) value %= 1000;
+
+  const parts = [];
+  while (value >= 400) {
+    parts.push("ת");
+    value -= 400;
+  }
+
+  const hundred = Math.floor(value / 100);
+  if (hundred) parts.push(hundreds[hundred]);
+  value %= 100;
+
+  if (value === 15) {
+    parts.push("טו");
+  } else if (value === 16) {
+    parts.push("טז");
+  } else {
+    const ten = Math.floor(value / 10);
+    const one = value % 10;
+    if (ten) parts.push(tens[ten]);
+    if (one) parts.push(ones[one]);
+  }
+
+  const letters = parts.join("");
+  if (letters.length <= 1) return `${letters}׳`;
+  return `${letters.slice(0, -1)}״${letters.slice(-1)}`;
+}
+
+function readHebrewDateParts(date) {
+  const numericFormatter = new Intl.DateTimeFormat("en-u-ca-hebrew", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "Asia/Jerusalem"
+  });
+  const monthFormatter = new Intl.DateTimeFormat("he-IL-u-ca-hebrew", {
+    month: "long",
+    timeZone: "Asia/Jerusalem"
+  });
+  const parts = numericFormatter.formatToParts(date);
+  const getPart = (type) => parts.find((part) => part.type === type)?.value || "";
+
+  return {
+    day: Number(getPart("day")),
+    month: monthFormatter.format(date),
+    year: Number(getPart("year"))
+  };
+}
+
+function formatLiveHebrewDate(date = new Date()) {
+  try {
+    const weekday = new Intl.DateTimeFormat("he-IL", {
+      weekday: "short",
+      timeZone: "Asia/Jerusalem"
+    }).format(date);
+    const hebrewDate = readHebrewDateParts(date);
+    const day = numberToHebrewLetters(hebrewDate.day);
+    const year = numberToHebrewLetters(hebrewDate.year, { omitThousands: true });
+
+    return `${weekday}, ${day} ב${hebrewDate.month} ה׳${year}`;
+  } catch {
+    return "";
+  }
+}
+
+function hydrateAnnouncementHebrewDate() {
+  const text = formatLiveHebrewDate();
+  if (!text) return;
+
+  document.querySelectorAll(".horaa-message").forEach((message) => {
+    message.textContent = text;
+    message.setAttribute("aria-label", `התאריך העברי היום: ${text}`);
+  });
+}
+
+hydrateAnnouncementHebrewDate();
+
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("./service-worker.js").catch(() => {});
