@@ -1591,7 +1591,7 @@ body.gate-intro-active {
 
   .home-restored-banner-content {
     position: absolute;
-    inset: auto 0 calc(36% + 4px) 0;
+    inset: 29px 0 auto 0;
     width: min(350px, 92vw);
     margin: 0 auto;
     align-items: center;
@@ -1599,21 +1599,21 @@ body.gate-intro-active {
   }
 
   .home-restored-banner-content h1 {
-    font-size: clamp(2.35rem, 10.2vw, 3.05rem);
+    font-size: clamp(2.725rem, 10.2vw, 3.425rem);
     line-height: .95;
     text-align: center;
   }
 
   .home-restored-banner-tagline {
     margin-top: 14px;
-    font-size: clamp(1.38rem, 6.2vw, 1.9rem);
+    font-size: clamp(1.755rem, 6.2vw, 2.275rem);
     line-height: 1.05;
     text-align: center;
   }
 
   .home-restored-banner-line {
     margin-top: 12px;
-    font-size: clamp(1rem, 4.25vw, 1.26rem);
+    font-size: clamp(1.375rem, 4.25vw, 1.635rem);
     line-height: 1.22;
     text-align: center;
   }
@@ -1625,7 +1625,7 @@ body.gate-intro-active {
   }
 
   .home-restored-banner-content .home-restored-banner-cta span {
-    font-size: clamp(.96rem, 4vw, 1.12rem);
+    font-size: clamp(1.335rem, 4vw, 1.495rem);
   }
 }
 
@@ -1644,7 +1644,7 @@ body.gate-intro-active {
 
 .site-header .home-announcement-strip {
   display: block !important;
-  min-height: 46px !important;
+  min-height: 50px !important;
   background:
     radial-gradient(circle at 50% 0%, rgba(0, 102, 68, .34), transparent 58%),
     linear-gradient(90deg, #002618 0%, #00442c 44%, #002f20 100%) !important;
@@ -1654,7 +1654,7 @@ body.gate-intro-active {
 }
 
 .site-header .home-announcement-strip .horaa-strip-inner {
-  min-height: 46px !important;
+  min-height: 50px !important;
   display: grid !important;
   grid-template-columns: minmax(170px, 1fr) auto minmax(220px, 1fr) !important;
   grid-template-areas: "ask message phone" !important;
@@ -1663,7 +1663,7 @@ body.gate-intro-active {
   gap: 22px !important;
   width: min(1180px, calc(100% - 32px)) !important;
   margin: 0 auto !important;
-  padding: 6px 0 !important;
+  padding: 3px 0 !important;
   direction: ltr !important;
   font-family: "Frank Ruhl Libre", "Noto Serif Hebrew", "Times New Roman", serif !important;
 }
@@ -1675,9 +1675,9 @@ body.gate-intro-active {
 .site-header .home-announcement-strip a,
 .site-header .home-announcement-strip strong {
   color: #fff7d8 !important;
-  font-size: clamp(.98rem, 1.35vw, 1.16rem) !important;
+  font-size: clamp(1.2rem, 1.75vw, 1.48rem) !important;
   font-weight: 900 !important;
-  line-height: 1.25 !important;
+  line-height: 1.05 !important;
   text-align: center !important;
   text-shadow: 0 2px 10px rgba(0, 0, 0, .28) !important;
   white-space: nowrap !important;
@@ -1711,7 +1711,7 @@ body.gate-intro-active {
     justify-content: center !important;
     gap: 6px !important;
     width: 100% !important;
-    padding: 6px 12px !important;
+    padding: 2px 12px !important;
     overflow: hidden !important;
   }
 
@@ -1721,7 +1721,8 @@ body.gate-intro-active {
 
   .site-header .home-announcement-strip a,
   .site-header .home-announcement-strip strong {
-    font-size: clamp(.68rem, 3vw, .86rem) !important;
+    font-size: clamp(1rem, 4.4vw, 1.22rem) !important;
+    line-height: 1 !important;
     white-space: nowrap !important;
   }
 

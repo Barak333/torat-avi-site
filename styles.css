@@ -4239,6 +4239,207 @@ body.reduce-motion .home-books-feature .book-float-wrap{
   }
 }
 
+/* Global announcement strip typography match. */
+.site-header .horaa-top-strip {
+  min-height: 50px !important;
+}
+
+.site-header .horaa-strip-inner {
+  min-height: 50px !important;
+  padding-top: 3px !important;
+  padding-bottom: 3px !important;
+}
+
+.site-header .horaa-top-strip a,
+.site-header .horaa-top-strip strong,
+.site-header .horaa-phone,
+.site-header .horaa-message {
+  font-size: clamp(1.2rem, 1.75vw, 1.48rem) !important;
+  line-height: 1.05 !important;
+}
+
+@media (max-width: 900px) {
+  .site-header .horaa-top-strip {
+    min-height: 38px !important;
+  }
+
+  .site-header .horaa-strip-inner {
+    min-height: 38px !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+  }
+
+  .site-header .horaa-top-strip a,
+  .site-header .horaa-top-strip strong,
+  .site-header .horaa-phone,
+  .site-header .horaa-message {
+    font-size: clamp(1rem, 4.4vw, 1.22rem) !important;
+    line-height: 1 !important;
+  }
+}
+
+/* Mobile announcement strip exact two-item layout - final override. */
+@media (max-width: 900px) {
+  .site-header .horaa-top-strip {
+    min-height: 38px !important;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(0, 102, 68, .34), transparent 58%),
+      linear-gradient(90deg, #002618 0%, #00442c 44%, #002f20 100%) !important;
+  }
+
+  .site-header .horaa-strip-inner {
+    width: 100% !important;
+    min-height: 38px !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-areas: "ask phone" !important;
+    align-items: center !important;
+    justify-items: stretch !important;
+    gap: 0 !important;
+    padding: 0 10px !important;
+    margin: 0 !important;
+    direction: ltr !important;
+  }
+
+  .site-header .horaa-message {
+    display: none !important;
+  }
+
+  .site-header .horaa-strip-inner > a:not(.horaa-phone) {
+    grid-area: ask !important;
+    justify-self: start !important;
+    text-align: left !important;
+  }
+
+  .site-header .horaa-phone {
+    grid-area: phone !important;
+    justify-self: end !important;
+    text-align: right !important;
+  }
+
+  .site-header .horaa-strip-inner > a,
+  .site-header .horaa-phone {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #fff7d8 !important;
+    font-size: clamp(1.08rem, 4.6vw, 1.28rem) !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    direction: rtl !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .28) !important;
+  }
+}
+
+/* Mobile announcement strip exact two-item layout - final override. */
+@media (max-width: 900px) {
+  .site-header .horaa-top-strip {
+    min-height: 38px !important;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(0, 102, 68, .34), transparent 58%),
+      linear-gradient(90deg, #002618 0%, #00442c 44%, #002f20 100%) !important;
+  }
+
+  .site-header .horaa-strip-inner {
+    width: 100% !important;
+    min-height: 38px !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-areas: "ask phone" !important;
+    align-items: center !important;
+    justify-items: stretch !important;
+    gap: 0 !important;
+    padding: 0 10px !important;
+    margin: 0 !important;
+    direction: ltr !important;
+  }
+
+  .site-header .horaa-message {
+    display: none !important;
+  }
+
+  .site-header .horaa-strip-inner > a:not(.horaa-phone) {
+    grid-area: ask !important;
+    justify-self: start !important;
+    text-align: left !important;
+  }
+
+  .site-header .horaa-phone {
+    grid-area: phone !important;
+    justify-self: end !important;
+    text-align: right !important;
+  }
+
+  .site-header .horaa-strip-inner > a,
+  .site-header .horaa-phone {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #fff7d8 !important;
+    font-size: clamp(1.08rem, 4.6vw, 1.28rem) !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    direction: rtl !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .28) !important;
+  }
+}
+
+/* Mobile announcement strip exact two-item layout. */
+@media (max-width: 900px) {
+  .site-header .horaa-top-strip {
+    min-height: 38px !important;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(0, 102, 68, .34), transparent 58%),
+      linear-gradient(90deg, #002618 0%, #00442c 44%, #002f20 100%) !important;
+  }
+
+  .site-header .horaa-strip-inner {
+    width: 100% !important;
+    min-height: 38px !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-areas: "ask phone" !important;
+    align-items: center !important;
+    justify-items: stretch !important;
+    gap: 0 !important;
+    padding: 0 10px !important;
+    margin: 0 !important;
+    direction: ltr !important;
+  }
+
+  .site-header .horaa-message {
+    display: none !important;
+  }
+
+  .site-header .horaa-strip-inner > a:not(.horaa-phone) {
+    grid-area: ask !important;
+    justify-self: start !important;
+    text-align: left !important;
+  }
+
+  .site-header .horaa-phone {
+    grid-area: phone !important;
+    justify-self: end !important;
+    text-align: right !important;
+  }
+
+  .site-header .horaa-strip-inner > a,
+  .site-header .horaa-phone {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #fff7d8 !important;
+    font-size: clamp(1.08rem, 4.6vw, 1.28rem) !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    direction: rtl !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .28) !important;
+  }
+}
+
 @media(max-width:860px){
   .home-books-feature .real-book-showcase{
     width:100%!important;
@@ -28945,4 +29146,97 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 .about-story-section.about-story-life .about-main-card p{
   color:#1d3c2b!important;
   text-shadow:none!important;
+}
+
+/* Global announcement strip typography match - final override. */
+.site-header .horaa-top-strip {
+  min-height: 50px !important;
+}
+
+.site-header .horaa-strip-inner {
+  min-height: 50px !important;
+  padding-top: 3px !important;
+  padding-bottom: 3px !important;
+}
+
+.site-header .horaa-top-strip a,
+.site-header .horaa-top-strip strong,
+.site-header .horaa-phone,
+.site-header .horaa-message {
+  font-size: clamp(1.2rem, 1.75vw, 1.48rem) !important;
+  line-height: 1.05 !important;
+}
+
+@media (max-width: 900px) {
+  .site-header .horaa-top-strip {
+    min-height: 38px !important;
+  }
+
+  .site-header .horaa-strip-inner {
+    min-height: 38px !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+  }
+
+  .site-header .horaa-top-strip a,
+  .site-header .horaa-top-strip strong,
+  .site-header .horaa-phone,
+  .site-header .horaa-message {
+    font-size: clamp(1rem, 4.4vw, 1.22rem) !important;
+    line-height: 1 !important;
+  }
+}
+
+/* Mobile announcement strip exact two-item layout - final override. */
+@media (max-width: 900px) {
+  .site-header .horaa-top-strip {
+    min-height: 38px !important;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(0, 102, 68, .34), transparent 58%),
+      linear-gradient(90deg, #002618 0%, #00442c 44%, #002f20 100%) !important;
+  }
+
+  .site-header .horaa-strip-inner {
+    width: 100% !important;
+    min-height: 38px !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-areas: "ask phone" !important;
+    align-items: center !important;
+    justify-items: stretch !important;
+    gap: 0 !important;
+    padding: 0 10px !important;
+    margin: 0 !important;
+    direction: ltr !important;
+  }
+
+  .site-header .horaa-message {
+    display: none !important;
+  }
+
+  .site-header .horaa-strip-inner > a:not(.horaa-phone) {
+    grid-area: ask !important;
+    justify-self: start !important;
+    text-align: left !important;
+  }
+
+  .site-header .horaa-phone {
+    grid-area: phone !important;
+    justify-self: end !important;
+    text-align: right !important;
+  }
+
+  .site-header .horaa-strip-inner > a,
+  .site-header .horaa-phone {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #fff7d8 !important;
+    font-size: clamp(1.08rem, 4.6vw, 1.28rem) !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    direction: rtl !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .28) !important;
+  }
 }
