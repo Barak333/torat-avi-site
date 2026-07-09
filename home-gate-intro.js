@@ -56,6 +56,9 @@
     later(360, function () {
       overlay.classList.add("is-opening");
     });
-    later(1680, finish);
+    later(1680, function () {
+      overlay.classList.add("is-dolly");
+    });
+    later(2240, finish);
   });
 })();

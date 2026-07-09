@@ -380,8 +380,8 @@ body.gate-intro-active {
 }
 
 .home-gate-intro.is-dolly .gate-intro-world {
-  transform: translate3d(0, -3vh, 360px) scale(1.9);
-  transition: transform .9s cubic-bezier(.13, .82, .2, 1);
+  transform: translate3d(0, -2vh, 240px) scale(1.55);
+  transition: transform .56s cubic-bezier(.13, .82, .2, 1);
 }
 
 .home-gate-intro.is-dolly .gate-intro-caption {
@@ -391,8 +391,8 @@ body.gate-intro-active {
 }
 
 .home-gate-intro.is-dolly .gate-intro-bg {
-  transform: scale(1.08);
-  transition: transform .9s cubic-bezier(.13, .82, .2, 1);
+  transform: scale(1.04);
+  transition: transform .56s cubic-bezier(.13, .82, .2, 1);
 }
 
 .home-gate-intro.is-revealing .gate-intro-light {
