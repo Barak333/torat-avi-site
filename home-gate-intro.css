@@ -37,8 +37,8 @@ body.gate-intro-active {
 
 .home-gate-intro.is-revealing {
   opacity: 0;
-  transform: scale(1.08);
-  transition: opacity .48s ease, transform .56s cubic-bezier(.16, .84, .28, 1);
+  transform: scale(1.02);
+  transition: opacity .24s ease, transform .26s cubic-bezier(.16, .84, .28, 1);
   pointer-events: none;
 }
 

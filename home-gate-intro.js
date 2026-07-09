@@ -42,7 +42,7 @@
       }
     }
     overlay.classList.add("is-revealing");
-    later(560, function () {
+    later(260, function () {
       timers.forEach(window.clearTimeout);
       document.documentElement.classList.remove("gate-intro-active");
       document.body.classList.remove("gate-intro-active");
@@ -56,9 +56,6 @@
     later(360, function () {
       overlay.classList.add("is-opening");
     });
-    later(1480, function () {
-      overlay.classList.add("is-dolly");
-    });
-    later(2360, finish);
+    later(1680, finish);
   });
 })();
