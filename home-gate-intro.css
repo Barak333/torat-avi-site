@@ -1421,8 +1421,10 @@ body.gate-intro-active {
 
 .home-restored-banner-content h1 {
   margin: 0;
-  color: #b08a24;
-  background: linear-gradient(180deg, #fff1ba 0%, #d9b85d 24%, #b08a24 56%, #7a5514 100%);
+  color: #f7d978;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(255, 255, 242, .98) 0 12%, transparent 34%),
+    linear-gradient(180deg, #fffdf0 0%, #fff1b8 22%, #f4cf65 52%, #b9831f 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1431,12 +1433,14 @@ body.gate-intro-active {
   font-weight: 950;
   line-height: .9;
   letter-spacing: 0;
-  -webkit-text-stroke: .8px rgba(55, 35, 6, .28);
+  -webkit-text-stroke: .45px rgba(88, 55, 7, .2);
+  filter: drop-shadow(0 0 10px rgba(255, 228, 137, .28));
   text-shadow:
-    0 1px 0 rgba(255, 240, 180, .38),
-    0 3px 0 rgba(45, 28, 5, .55),
-    0 12px 24px rgba(0, 0, 0, .64),
-    0 0 18px rgba(176, 138, 36, .18);
+    0 1px 0 rgba(255, 255, 238, .68),
+    0 2px 0 rgba(94, 57, 8, .34),
+    0 12px 26px rgba(0, 0, 0, .56),
+    0 0 18px rgba(255, 221, 118, .34),
+    0 0 42px rgba(244, 207, 101, .22);
 }
 
 .home-restored-banner-tagline {
