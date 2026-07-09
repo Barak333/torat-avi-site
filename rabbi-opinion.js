@@ -197,9 +197,16 @@
     dock?.classList.add("is-settled");
     window.dispatchEvent(new CustomEvent("toratavi:rabbi-opinion-resolved"));
   } else {
-    window.addEventListener("load", () => {
+    const openAfterGate = () => {
+      const gateIntro = document.querySelector("[data-home-gate-intro]");
+      if (gateIntro && !gateIntro.classList.contains("is-hidden")) {
+        window.addEventListener("toratavi:gate-intro-finished", open, { once: true });
+        return;
+      }
       open();
-    }, { once: true });
+    };
+
+    window.addEventListener("load", openAfterGate, { once: true });
   }
 
   window.addEventListener("toratavi:returned-after-inactivity", () => {

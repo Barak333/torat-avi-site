@@ -387,7 +387,7 @@ body.gate-intro-active {
 .home-gate-intro.is-dolly .gate-intro-caption {
   opacity: 0;
   transform: translate3d(0, 14px, 0) scale(.98);
-  transition: opacity .28s ease, transform .4s ease;
+  transition: opacity .18s ease, transform .28s ease;
 }
 
 .home-gate-intro.is-dolly .gate-intro-bg {

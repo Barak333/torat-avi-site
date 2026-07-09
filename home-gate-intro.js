@@ -16,6 +16,7 @@
   function hideImmediately() {
     overlay.classList.add("is-hidden");
     overlay.remove();
+    window.dispatchEvent(new CustomEvent("toratavi:gate-intro-finished"));
   }
 
   if (reducedMotion || (!forcePreview && storage && storage.getItem(key) === "1")) {
@@ -46,17 +47,18 @@
       document.documentElement.classList.remove("gate-intro-active");
       document.body.classList.remove("gate-intro-active");
       overlay.remove();
+      window.dispatchEvent(new CustomEvent("toratavi:gate-intro-finished"));
     });
   }
 
   window.requestAnimationFrame(function () {
     overlay.classList.add("is-ready");
-    later(180, function () {
+    later(360, function () {
       overlay.classList.add("is-opening");
     });
-    later(1280, function () {
+    later(1480, function () {
       overlay.classList.add("is-dolly");
     });
-    later(2380, finish);
+    later(2360, finish);
   });
 })();
