@@ -1422,13 +1422,16 @@ body.gate-intro-active {
 .home-restored-banner-content h1 {
   margin: 0;
   position: relative;
-  color: #fff2b9;
+  display: inline-block;
+  isolation: isolate;
+  color: #f6d46d;
   background:
-    radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 1) 0 8%, transparent 19%),
-    radial-gradient(circle at 72% 28%, rgba(255, 242, 176, .98) 0 9%, transparent 22%),
-    radial-gradient(circle at 42% 72%, rgba(255, 255, 238, .82) 0 7%, transparent 19%),
-    repeating-linear-gradient(118deg, transparent 0 19px, rgba(255, 255, 255, .34) 20px 22px, transparent 23px 42px),
-    linear-gradient(154deg, #fffdf3 0%, #ffeaa2 18%, #f6c84d 34%, #fff4c9 49%, #c98f21 66%, #fff1a6 82%, #98600f 100%);
+    radial-gradient(ellipse at 48% 8%, rgba(255, 255, 255, .96) 0 8%, transparent 27%),
+    linear-gradient(115deg, transparent 0 17%, rgba(255, 255, 255, .46) 18%, transparent 21% 47%, rgba(255, 255, 255, .28) 49%, transparent 53% 100%),
+    linear-gradient(72deg, rgba(118, 77, 13, .32) 0 1px, transparent 2px 34px),
+    linear-gradient(146deg, #fff8d9 0%, #e0b74f 18%, #fff0a8 36%, #a86d13 53%, #f8d76d 72%, #6f4308 100%);
+  background-size: 100% 100%, 180% 100%, 48px 100%, 100% 100%;
+  background-position: center, 76% 0, center, center;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1437,18 +1440,47 @@ body.gate-intro-active {
   font-weight: 950;
   line-height: .9;
   letter-spacing: 0;
-  -webkit-text-stroke: 1.1px rgba(80, 45, 2, .34);
-  filter:
-    drop-shadow(0 0 10px rgba(255, 245, 196, .54))
-    drop-shadow(0 0 26px rgba(255, 206, 72, .44))
-    drop-shadow(0 0 54px rgba(255, 190, 31, .28));
+  -webkit-text-stroke: .75px rgba(74, 43, 4, .34);
+  filter: drop-shadow(0 20px 22px rgba(0, 0, 0, .48));
   text-shadow:
-    0 1px 0 rgba(255, 255, 255, .86),
-    0 3px 0 rgba(92, 54, 4, .52),
-    0 9px 16px rgba(0, 0, 0, .5),
-    0 0 20px rgba(255, 244, 185, .58),
-    0 0 48px rgba(255, 206, 72, .42),
-    0 0 92px rgba(255, 183, 28, .28);
+    0 1px 0 rgba(255, 252, 223, .8),
+    0 2px 0 rgba(77, 44, 4, .56),
+    0 0 20px rgba(255, 224, 122, .42),
+    0 0 58px rgba(244, 184, 40, .24);
+}
+
+.home-restored-banner-content h1::before,
+.home-restored-banner-content h1::after {
+  content: attr(data-title);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.home-restored-banner-content h1::before {
+  z-index: -1;
+  color: rgba(255, 215, 96, .42);
+  -webkit-text-fill-color: rgba(255, 215, 96, .42);
+  -webkit-text-stroke: 9px rgba(255, 206, 83, .12);
+  text-shadow:
+    0 0 18px rgba(255, 231, 156, .5),
+    0 0 44px rgba(234, 171, 43, .42),
+    0 0 92px rgba(175, 111, 15, .34);
+  filter: blur(.3px);
+}
+
+.home-restored-banner-content h1::after {
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .82) 0 12%, transparent 29%),
+    linear-gradient(105deg, transparent 0 35%, rgba(255, 255, 255, .62) 41%, transparent 48% 100%);
+  background-size: 100% 100%, 220% 100%;
+  background-position: center, 82% center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: .68;
+  mix-blend-mode: screen;
 }
 
 .home-restored-banner-tagline {
