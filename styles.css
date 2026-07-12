@@ -29329,3 +29329,78 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 .journey-testimony-toggle{margin-top:12px;padding:3px 0;border:0;border-bottom:1px solid rgba(154,112,21,.42);background:transparent;color:#826016;font:800 .78rem/1.4 inherit;cursor:pointer}
 .journey-testimony-toggle:hover{color:#073323;border-color:#073323}
 @media(max-width:640px){.journey-testimony,.journey-testimony-gold{margin:28px 0}.journey-testimony-inner{width:calc(100% - 24px);padding:21px 0}.journey-testimony blockquote{max-height:5.2em}.journey-testimony h2{font-size:1.2rem}.journey-testimony-eyebrow::before,.journey-testimony-eyebrow::after{width:18px}}
+
+/* About testimonies v2 - one restrained emerald and cream design language. */
+.about-testimony-section,
+.about-testimony-dark,
+.about-testimony-light,
+.about-testimony-gold{
+  --about-testimony-bg:#0b3d2b;
+  --about-testimony-ink:#fbf8ef;
+  --about-testimony-muted:rgba(251,248,239,.82);
+  --about-testimony-line:rgba(251,248,239,.42);
+  padding-block:clamp(58px,7vw,94px)!important;
+  border:0!important;
+  background:#0b3d2b!important;
+  color:var(--about-testimony-ink)!important;
+}
+.about-testimony-light{
+  --about-testimony-bg:#fbf8ef;
+  --about-testimony-ink:#0b3d2b;
+  --about-testimony-muted:rgba(11,61,43,.78);
+  --about-testimony-line:rgba(11,61,43,.30);
+  background:#fbf8ef!important;
+}
+.about-testimony-card{
+  width:min(1120px,88vw)!important;
+}
+.about-testimony-card blockquote{
+  padding-inline:0!important;
+}
+.about-testimony-card h2{
+  gap:clamp(20px,4vw,58px)!important;
+  margin-bottom:clamp(24px,3vw,38px)!important;
+  color:var(--about-testimony-ink)!important;
+  font-size:clamp(2rem,3.7vw,4rem)!important;
+  font-weight:800!important;
+  letter-spacing:-.015em!important;
+  text-shadow:none!important;
+}
+.about-testimony-card h2::before,
+.about-testimony-card h2::after{
+  height:1px!important;
+  background:linear-gradient(90deg,transparent,var(--about-testimony-line))!important;
+}
+.about-testimony-card h2::after{
+  transform:scaleX(-1)!important;
+}
+.about-testimony-card p,
+.about-testimony-card cite{
+  color:var(--about-testimony-muted)!important;
+  font-size:clamp(1rem,1.18vw,1.16rem)!important;
+  line-height:1.9!important;
+}
+.about-testimony-card p::after{
+  content:"  ·  ";
+  color:var(--about-testimony-line)!important;
+  font-weight:400!important;
+}
+.about-testimony-card p:last-of-type::after{content:""}
+.about-testimony-card cite{
+  margin-top:18px!important;
+  color:var(--about-testimony-ink)!important;
+  font-size:.9rem!important;
+  font-weight:700!important;
+}
+@media(max-width:760px){
+  .about-testimony-section,
+  .about-testimony-dark,
+  .about-testimony-light,
+  .about-testimony-gold{padding-block:48px!important}
+  .about-testimony-card{width:min(86vw,620px)!important}
+  .about-testimony-card h2{font-size:clamp(1.8rem,9vw,2.7rem)!important}
+  .about-testimony-card h2::before,
+  .about-testimony-card h2::after{width:min(190px,58vw)!important}
+  .about-testimony-card p{font-size:.96rem!important;line-height:1.68!important}
+  .about-testimony-card p::after{content:""}
+}
