@@ -29307,19 +29307,16 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   overflow:visible;
   border:0;
   border-radius:0;
-  background:
-    radial-gradient(circle at 86% 50%,rgba(225,190,92,.18),transparent 36%),
-    radial-gradient(circle at 12% 50%,rgba(19,92,65,.09),transparent 32%),
-    linear-gradient(90deg,rgba(247,244,231,.35),#fbf6e6 25%,#fffaf0 50%,#f2f7f1 78%,rgba(242,247,241,.35));
+  background:linear-gradient(90deg,transparent 0%,rgba(249,247,240,.72) 12%,#faf8f2 50%,rgba(249,247,240,.72) 88%,transparent 100%);
   box-shadow:none;
   color:#073323;
 }
-.journey-testimony::before,.journey-testimony::after{content:"";position:absolute;inset:auto 0;width:auto;height:1px;border:0;border-radius:0;background:linear-gradient(90deg,transparent,rgba(174,133,38,.52),rgba(8,72,48,.22),transparent);opacity:1}
+.journey-testimony::before,.journey-testimony::after{content:"";position:absolute;inset:auto 5%;width:auto;height:1px;border:0;border-radius:0;background:linear-gradient(90deg,transparent 0%,rgba(177,139,47,.18) 18%,#b38b2f 50%,rgba(177,139,47,.18) 82%,transparent 100%);opacity:1}
 .journey-testimony::before{top:0}.journey-testimony::after{bottom:0}
 .journey-testimony-inner{width:min(920px,calc(100% - 34px));padding:clamp(24px,3.5vw,38px) 0;text-align:center}
-.journey-testimony-eyebrow,.journey-testimony-gold .journey-testimony-eyebrow{color:#9a7015;font-size:.7rem;letter-spacing:.13em}
+.journey-testimony-eyebrow,.journey-testimony-gold .journey-testimony-eyebrow{color:#9a7628;font-size:.68rem;letter-spacing:.16em}
 .journey-testimony-eyebrow::before,.journey-testimony-eyebrow::after{width:28px;background:currentColor}
-.journey-testimony h2,.journey-testimony-gold h2{margin:8px 0 10px;color:#073323;font-size:clamp(1.2rem,2vw,1.65rem);line-height:1.2}
+.journey-testimony h2,.journey-testimony-gold h2{margin:9px 0 10px;color:#103d2c;font-size:clamp(1.18rem,2vw,1.58rem);font-weight:800;line-height:1.2}
 .journey-testimony blockquote,.journey-testimony-gold blockquote{max-height:4.9em;overflow:hidden;margin:0;color:#234d3b;transition:max-height .45s ease}
 .journey-testimony.is-expanded blockquote{max-height:1200px}
 .journey-testimony blockquote p,.journey-testimony-gold blockquote p{display:inline;margin:0;color:inherit;font-size:clamp(.98rem,1.35vw,1.12rem);line-height:1.65}
