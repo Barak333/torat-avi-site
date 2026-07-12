@@ -456,6 +456,22 @@ body.gate-intro-active {
   display: block !important;
 }
 
+/* A true seamless loop: the row contains two identical consecutive messages. */
+.portal-ticker .ticker-row {
+  gap: 72px !important;
+  animation: homeTickerLoop 34s linear infinite !important;
+  will-change: transform;
+}
+
+.portal-ticker .ticker-row > span {
+  flex: 0 0 auto;
+}
+
+@keyframes homeTickerLoop {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(50% + 36px)); }
+}
+
 @font-face {
   font-family: "BannerShmulik";
   src: url("assets/fonts/shmulikclm.woff") format("woff");
