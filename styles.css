@@ -29408,26 +29408,12 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 /* Fine gold jewelry for the About testimonies. */
 .about-testimony-section{
   --about-testimony-gold:#c8a44a;
-}
-.about-testimony-card blockquote::before{
-  content:"◆"!important;
-  display:grid!important;
   position:relative!important;
-  inset:auto!important;
-  place-items:center!important;
-  width:34px!important;
-  height:34px!important;
-  margin:0 auto clamp(17px,2vw,26px)!important;
-  border:1px solid rgba(200,164,74,.52)!important;
-  border-radius:50%!important;
-  color:var(--about-testimony-gold)!important;
-  background:#003018!important;
-  font-size:.48rem!important;
-  line-height:1!important;
-  transform:rotate(45deg)!important;
+  overflow:hidden!important;
 }
 .about-testimony-card blockquote::before{
-  text-indent:0!important;
+  content:none!important;
+  display:none!important;
 }
 .about-testimony-card h2::before,
 .about-testimony-card h2::after{
@@ -29440,13 +29426,30 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   color:#d7bc76!important;
 }
 .about-testimony-card blockquote::after{
+  content:none!important;
+  display:none!important;
+}
+.about-testimony-section::before,
+.about-testimony-section::after{
   content:"״"!important;
   display:block!important;
   position:absolute!important;
-  inset:auto 50% -34px auto!important;
-  color:rgba(200,164,74,.18)!important;
+  z-index:0!important;
+  color:rgba(200,164,74,.34)!important;
   font-family:"Frank Ruhl Libre","Noto Serif Hebrew",serif!important;
-  font-size:4.8rem!important;
-  line-height:1!important;
-  transform:translateX(50%)!important;
+  font-size:clamp(4.8rem,8vw,8rem)!important;
+  font-weight:900!important;
+  line-height:.7!important;
+  pointer-events:none!important;
+}
+.about-testimony-section::before{
+  inset:clamp(18px,3vw,38px) clamp(22px,5vw,78px) auto auto!important;
+}
+.about-testimony-section::after{
+  inset:auto auto clamp(6px,1.5vw,20px) clamp(22px,5vw,78px)!important;
+  transform:rotate(180deg)!important;
+}
+.about-testimony-card{
+  position:relative!important;
+  z-index:1!important;
 }
