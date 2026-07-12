@@ -1,4 +1,4 @@
-const CACHE_NAME = "torat-avi-pwa-v135";
+const CACHE_NAME = "torat-avi-pwa-v136";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -11,14 +11,12 @@ const CORE_ASSETS = [
   "./styles.css",
   "./beit-din.css",
   "./beit-din-booking.js",
-  "./weekly-qna.js",
   "./premium-buttons.css",
   "./nefesh-qna.js",
   "./nefesh-growth-qna.js",
   "./emuna-qna.js",
   "./rabbi-opinion.css",
   "./rabbi-opinion.js",
-  "./script.js",
   "./site.webmanifest",
   "./assets/favicon-192.png",
   "./assets/favicon-512.png",
@@ -59,6 +57,15 @@ self.addEventListener("fetch", (event) => {
   if (url.origin !== self.location.origin) return;
 
   if (url.pathname.startsWith("/api/") || url.pathname.startsWith("/media/")) {
+    event.respondWith(fetch(request));
+    return;
+  }
+
+  if (
+    url.pathname.endsWith("/qna.html") ||
+    url.pathname.endsWith("/weekly-qna.js") ||
+    url.pathname.endsWith("/script.js")
+  ) {
     event.respondWith(fetch(request));
     return;
   }

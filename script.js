@@ -1680,7 +1680,7 @@ function initializeWeeklyQuestionAlert() {
     }
 
     const loader = document.createElement("script");
-    loader.src = "weekly-qna.js?v=20260624-weekly-qna-10";
+      loader.src = "weekly-qna.js?v=20260712-pizza-scooter-republish-1";
     loader.addEventListener("load", showWeeklyQuestionAlert);
     document.head.append(loader);
   });
