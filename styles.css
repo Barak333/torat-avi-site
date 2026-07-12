@@ -29431,22 +29431,24 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 }
 .about-testimony-section::before,
 .about-testimony-section::after{
-  content:"״"!important;
+  content:"“"!important;
   display:block!important;
   position:absolute!important;
-  z-index:0!important;
-  color:rgba(216,184,93,.72)!important;
+  z-index:3!important;
+  color:#d8b85d!important;
   font-family:"Frank Ruhl Libre","Noto Serif Hebrew",serif!important;
-  font-size:clamp(5.4rem,8.5vw,8.6rem)!important;
+  font-size:clamp(6rem,9vw,9rem)!important;
   font-weight:900!important;
   line-height:.7!important;
   pointer-events:none!important;
+  text-shadow:0 4px 18px rgba(0,0,0,.28)!important;
 }
 .about-testimony-section::before{
-  inset:clamp(18px,3vw,38px) clamp(22px,5vw,78px) auto auto!important;
+  inset:clamp(26px,3.5vw,48px) clamp(28px,5vw,82px) auto auto!important;
 }
 .about-testimony-section::after{
-  inset:auto auto clamp(6px,1.5vw,20px) clamp(22px,5vw,78px)!important;
+  content:"”"!important;
+  inset:auto auto clamp(18px,2.5vw,34px) clamp(28px,5vw,82px)!important;
   transform:rotate(180deg)!important;
 }
 .about-testimony-card{
@@ -29456,5 +29458,8 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 
 /* Every green field on About uses the site's single emerald surface. */
 .about-derech-section{
+  background:#003018 var(--site-emerald-texture) center / cover no-repeat!important;
+}
+.about-worlds-section{
   background:#003018 var(--site-emerald-texture) center / cover no-repeat!important;
 }
