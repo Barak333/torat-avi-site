@@ -456,6 +456,11 @@ body.gate-intro-active {
   display: block !important;
 }
 
+.portal-ticker .ticker-window {
+  width: 100% !important;
+  max-width: none !important;
+}
+
 /* A true seamless loop: the row contains two identical consecutive messages. */
 .portal-ticker .ticker-row {
   gap: 72px !important;
