@@ -22786,10 +22786,7 @@ body.scrolled .back-to-top:hover{
   justify-content:space-between;
   gap:12px;
   color:inherit;
-  background:
-    radial-gradient(circle at 86% 50%,rgba(225,190,92,.10),transparent 34%),
-    radial-gradient(circle at 12% 50%,rgba(19,92,65,.055),transparent 30%),
-    linear-gradient(90deg,rgba(250,247,237,.18),rgba(251,247,231,.72) 24%,rgba(255,253,247,.84) 50%,rgba(246,249,242,.64) 78%,rgba(246,249,242,.12));
+  background:transparent;
   font:inherit;
   text-align:inherit;
   cursor:default;
@@ -29310,7 +29307,10 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   overflow:visible;
   border:0;
   border-radius:0;
-  background:transparent;
+  background:
+    radial-gradient(circle at 86% 50%,rgba(225,190,92,.18),transparent 36%),
+    radial-gradient(circle at 12% 50%,rgba(19,92,65,.09),transparent 32%),
+    linear-gradient(90deg,rgba(247,244,231,.35),#fbf6e6 25%,#fffaf0 50%,#f2f7f1 78%,rgba(242,247,241,.35));
   box-shadow:none;
   color:#073323;
 }
