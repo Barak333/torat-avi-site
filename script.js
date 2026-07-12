@@ -1761,7 +1761,17 @@ function renderLevadoQuestions() {
     });
     const cite = document.createElement("cite");
     cite.textContent = "עדות אנונימית · מבקשי פניך";
-    inner.append(eyebrow, title, quote, cite);
+    const toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "journey-testimony-toggle";
+    toggle.textContent = "לקריאת העדות";
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.addEventListener("click", () => {
+      const expanded = section.classList.toggle("is-expanded");
+      toggle.textContent = expanded ? "סגירת העדות" : "לקריאת העדות";
+      toggle.setAttribute("aria-expanded", String(expanded));
+    });
+    inner.append(eyebrow, title, quote, cite, toggle);
     section.appendChild(inner);
     return section;
   };

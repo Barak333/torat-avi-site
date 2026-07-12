@@ -29300,3 +29300,32 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 .journey-testimony-gold h2,.journey-testimony-gold blockquote,.journey-testimony-gold blockquote p,.journey-testimony-gold blockquote .journey-testimony-highlight{color:#073323}
 .journey-testimony-gold .journey-testimony-eyebrow,.journey-testimony-gold cite{color:#9a7015}
 @media(max-width:640px){.journey-testimony{margin:36px -4px;border-radius:24px 6px}.journey-testimony::after{inset:10px}.journey-testimony-inner{width:calc(100% - 38px);padding:46px 0}.journey-testimony-eyebrow::before,.journey-testimony-eyebrow::after{width:24px}.journey-testimony blockquote p{line-height:1.62}}
+
+/* Journey testimonies v2 - slim editorial dividers inspired by the home flow separators. */
+.journey-testimony,.journey-testimony-gold{
+  margin:clamp(34px,5vw,58px) 0;
+  overflow:visible;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  color:#073323;
+}
+.journey-testimony::before,.journey-testimony::after{content:"";position:absolute;inset:auto 0;width:auto;height:1px;border:0;border-radius:0;background:linear-gradient(90deg,transparent,rgba(174,133,38,.52),rgba(8,72,48,.22),transparent);opacity:1}
+.journey-testimony::before{top:0}.journey-testimony::after{bottom:0}
+.journey-testimony-inner{width:min(920px,calc(100% - 34px));padding:clamp(24px,3.5vw,38px) 0;text-align:center}
+.journey-testimony-eyebrow,.journey-testimony-gold .journey-testimony-eyebrow{color:#9a7015;font-size:.7rem;letter-spacing:.13em}
+.journey-testimony-eyebrow::before,.journey-testimony-eyebrow::after{width:28px;background:currentColor}
+.journey-testimony h2,.journey-testimony-gold h2{margin:8px 0 10px;color:#073323;font-size:clamp(1.2rem,2vw,1.65rem);line-height:1.2}
+.journey-testimony blockquote,.journey-testimony-gold blockquote{max-height:4.9em;overflow:hidden;margin:0;color:#234d3b;transition:max-height .45s ease}
+.journey-testimony.is-expanded blockquote{max-height:1200px}
+.journey-testimony blockquote p,.journey-testimony-gold blockquote p{display:inline;margin:0;color:inherit;font-size:clamp(.98rem,1.35vw,1.12rem);line-height:1.65}
+.journey-testimony blockquote p::after{content:"  "}
+.journey-testimony:not(.is-expanded) blockquote p{display:none}
+.journey-testimony:not(.is-expanded) blockquote .journey-testimony-highlight{display:inline}
+.journey-testimony blockquote .journey-testimony-highlight,.journey-testimony-gold blockquote .journey-testimony-highlight{margin:0;color:#073323;font:800 clamp(1.02rem,1.45vw,1.18rem)/1.65 "Frank Ruhl Libre","Noto Serif Hebrew",serif}
+.journey-testimony cite,.journey-testimony-gold cite{display:none;margin:13px 0 0;color:#8b6a20;font-size:.75rem}
+.journey-testimony.is-expanded cite{display:block}
+.journey-testimony-toggle{margin-top:12px;padding:3px 0;border:0;border-bottom:1px solid rgba(154,112,21,.42);background:transparent;color:#826016;font:800 .78rem/1.4 inherit;cursor:pointer}
+.journey-testimony-toggle:hover{color:#073323;border-color:#073323}
+@media(max-width:640px){.journey-testimony,.journey-testimony-gold{margin:28px 0}.journey-testimony-inner{width:calc(100% - 24px);padding:21px 0}.journey-testimony blockquote{max-height:5.2em}.journey-testimony h2{font-size:1.2rem}.journey-testimony-eyebrow::before,.journey-testimony-eyebrow::after{width:18px}}
