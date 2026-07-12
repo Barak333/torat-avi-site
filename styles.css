@@ -29335,21 +29335,21 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 .about-testimony-dark,
 .about-testimony-light,
 .about-testimony-gold{
-  --about-testimony-bg:#0b3d2b;
+  --about-testimony-bg:#003018;
   --about-testimony-ink:#fbf8ef;
   --about-testimony-muted:rgba(251,248,239,.82);
   --about-testimony-line:rgba(251,248,239,.42);
   padding-block:clamp(58px,7vw,94px)!important;
   border:0!important;
-  background:#0b3d2b!important;
+  background:#003018!important;
   color:var(--about-testimony-ink)!important;
 }
 .about-testimony-light{
-  --about-testimony-bg:#fbf8ef;
-  --about-testimony-ink:#0b3d2b;
-  --about-testimony-muted:rgba(11,61,43,.78);
-  --about-testimony-line:rgba(11,61,43,.30);
-  background:#fbf8ef!important;
+  --about-testimony-bg:#003018;
+  --about-testimony-ink:#fbf8ef;
+  --about-testimony-muted:rgba(251,248,239,.82);
+  --about-testimony-line:rgba(251,248,239,.42);
+  background:#003018!important;
 }
 .about-testimony-card{
   width:min(1120px,88vw)!important;
