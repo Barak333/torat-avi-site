@@ -29404,3 +29404,49 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   .about-testimony-card p{font-size:.96rem!important;line-height:1.68!important}
   .about-testimony-card p::after{content:""}
 }
+
+/* Fine gold jewelry for the About testimonies. */
+.about-testimony-section{
+  --about-testimony-gold:#c8a44a;
+}
+.about-testimony-card blockquote::before{
+  content:"◆"!important;
+  display:grid!important;
+  position:relative!important;
+  inset:auto!important;
+  place-items:center!important;
+  width:34px!important;
+  height:34px!important;
+  margin:0 auto clamp(17px,2vw,26px)!important;
+  border:1px solid rgba(200,164,74,.52)!important;
+  border-radius:50%!important;
+  color:var(--about-testimony-gold)!important;
+  background:#003018!important;
+  font-size:.48rem!important;
+  line-height:1!important;
+  transform:rotate(45deg)!important;
+}
+.about-testimony-card blockquote::before{
+  text-indent:0!important;
+}
+.about-testimony-card h2::before,
+.about-testimony-card h2::after{
+  background:linear-gradient(90deg,transparent,rgba(200,164,74,.92))!important;
+}
+.about-testimony-card h2{
+  text-decoration-color:var(--about-testimony-gold)!important;
+}
+.about-testimony-card cite{
+  color:#d7bc76!important;
+}
+.about-testimony-card blockquote::after{
+  content:"״"!important;
+  display:block!important;
+  position:absolute!important;
+  inset:auto 50% -34px auto!important;
+  color:rgba(200,164,74,.18)!important;
+  font-family:"Frank Ruhl Libre","Noto Serif Hebrew",serif!important;
+  font-size:4.8rem!important;
+  line-height:1!important;
+  transform:translateX(50%)!important;
+}
