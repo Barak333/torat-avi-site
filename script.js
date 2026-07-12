@@ -1717,6 +1717,54 @@ function renderLevadoQuestions() {
   if (!target || !items.length) return;
   const search = document.getElementById("levadoSearch");
   const count = document.querySelector("[data-levado-count]");
+  const pageFile = decodeURIComponent(window.location.pathname.split("/").pop() || "").toLowerCase();
+  const testimonyPage = ({
+    "zugiyut.html": "zugiyut",
+    "children-education.html": "children",
+    "emuna.html": "emuna",
+    "soul-torah.html": "soul",
+    "growth.html": "growth",
+    "levado.html": "levado"
+  })[pageFile];
+  let testimonies = window.journeyTestimonials?.[testimonyPage] || [];
+  if (testimonyPage === "growth") {
+    testimonies = testimonies.filter((_, index) => index === 1 || index === 5).map((item, index) => ({ ...item, after: index === 0 ? 3 : 6 }));
+  }
+  if (testimonyPage === "soul") {
+    testimonies = testimonies.map((item) => ({ ...item, after: Math.min(item.after, items.length) }));
+  }
+  if (testimonyPage === "levado") {
+    const growthOverflow = (window.journeyTestimonials?.growth || [])
+      .filter((_, index) => index !== 1 && index !== 5)
+      .map((item, index) => ({ ...item, after: 84 + (index * 12) }));
+    testimonies = [...testimonies, ...growthOverflow];
+  }
+
+  const createJourneyTestimony = (item) => {
+    const section = document.createElement("aside");
+    section.className = `journey-testimony journey-testimony-${item.kind || "story"}`;
+    section.setAttribute("aria-label", `סיפור מהדרך: ${item.title}`);
+    const inner = document.createElement("div");
+    inner.className = "journey-testimony-inner";
+    const eyebrow = document.createElement("span");
+    eyebrow.className = "journey-testimony-eyebrow";
+    eyebrow.textContent = item.kind === "gold" ? "מילים שנשארות" : "סיפור מהדרך";
+    const title = document.createElement("h2");
+    title.textContent = item.title;
+    const quote = document.createElement("blockquote");
+    const paragraphs = String(item.text || "").split(/\n\s*\n/).filter(Boolean);
+    paragraphs.forEach((text, index) => {
+      const paragraph = document.createElement("p");
+      paragraph.textContent = text.replace(/\n+/g, " ");
+      if (index === paragraphs.length - 1) paragraph.className = "journey-testimony-highlight";
+      quote.appendChild(paragraph);
+    });
+    const cite = document.createElement("cite");
+    cite.textContent = "עדות אנונימית · מבקשי פניך";
+    inner.append(eyebrow, title, quote, cite);
+    section.appendChild(inner);
+    return section;
+  };
 
   const render = () => {
     const query = (search?.value || "").trim().toLowerCase();
@@ -1762,6 +1810,11 @@ function renderLevadoQuestions() {
 
       article.append(button, body);
       target.appendChild(article);
+      if (!query) {
+        testimonies.filter((testimony) => testimony.after === index + 1).forEach((testimony) => {
+          target.appendChild(createJourneyTestimony(testimony));
+        });
+      }
     });
     if (count) count.textContent = `${filtered.length} שאלות מוצגות`;
   };
