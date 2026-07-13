@@ -29465,6 +29465,11 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 }
 
 /* Lavi - refined site design and development signature. */
+@font-face{
+  font-family:"Lavi Signature";
+  src:url("assets/fonts/shmulikclm.woff") format("woff");
+  font-display:swap;
+}
 .site-footer .footer-lavi-credit{
   position:relative;
   display:inline-flex;
@@ -29485,6 +29490,7 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   white-space:nowrap;
   text-decoration:none;
   transition:transform .2s ease,filter .2s ease;
+  margin-top:5px;
 }
 .site-footer .footer-lavi-role{
   order:2;
@@ -29508,10 +29514,10 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   position:relative;
   padding:0;
   color:#e5c86f;
-  font-family:"Frank Ruhl Libre","Noto Serif Hebrew",serif;
-  font-size:1.48rem;
-  font-weight:900;
-  letter-spacing:.09em;
+  font-family:"Lavi Signature","Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  font-size:1.72rem;
+  font-weight:700;
+  letter-spacing:.035em;
   line-height:1;
   text-shadow:0 6px 20px rgba(0,0,0,.3),0 0 18px rgba(214,183,93,.10);
 }
