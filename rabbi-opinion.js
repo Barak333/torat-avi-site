@@ -7,29 +7,21 @@
   const dockCard = dock?.querySelector(".rabbi-opinion-dock-card");
   const closeButtons = Array.from(modal.querySelectorAll("[data-rabbi-opinion-close]"));
   const countdown = modal.querySelector("[data-rabbi-opinion-countdown]");
-  const lastShownKey = "toratAviRabbiOpinionLastShownV1";
-  const returnTimeout = 2 * 60 * 1000;
   const readingTime = 5;
   let unlocked = false;
   let previousFocus = null;
   let countdownTimer = null;
   let closing = false;
+  let lockedElements = [];
 
-  const readLastShown = () => {
-    try {
-      return Number(window.localStorage.getItem(lastShownKey)) || 0;
-    } catch {
-      return 0;
-    }
+  const lockSite = () => {
+    lockedElements = Array.from(document.body.children).filter((element) => element !== modal);
+    lockedElements.forEach((element) => { element.inert = true; });
   };
 
-  const rememberShown = () => {
-    try {
-      window.localStorage.setItem(lastShownKey, String(Date.now()));
-      window.localStorage.removeItem("toratAviRabbiOpinionReadV1");
-    } catch {
-      // The popup still works normally when storage is unavailable.
-    }
+  const unlockSite = () => {
+    lockedElements.forEach((element) => { element.inert = false; });
+    lockedElements = [];
   };
 
   const unlock = () => {
@@ -47,6 +39,8 @@
     modal.dataset.opinionResolved = "true";
     modal.classList.remove("is-visible", "is-docking");
     document.body.classList.remove("rabbi-opinion-open");
+    document.documentElement.classList.remove("rabbi-opinion-pending");
+    unlockSite();
     previousFocus?.focus?.();
     window.dispatchEvent(new CustomEvent("toratavi:rabbi-opinion-resolved"));
   };
@@ -150,13 +144,13 @@
       button.disabled = true;
       button.setAttribute("aria-hidden", "true");
     });
-    rememberShown();
     modal.dataset.opinionResolved = "false";
     window.dispatchEvent(new CustomEvent("toratavi:rabbi-opinion-opened"));
     previousFocus = document.activeElement;
     modal.hidden = false;
     modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("rabbi-opinion-open");
+    lockSite();
 
     void modal.offsetWidth;
     modal.classList.add("is-visible", "is-reading");
@@ -180,34 +174,20 @@
     if (modal.hidden) return;
     if (event.key === "Escape") {
       event.preventDefault();
-      close();
+      event.stopImmediatePropagation();
     }
   });
 
-  const visitState = window.toratAviVisitState;
-  const shouldOpen = !readLastShown()
-    || !visitState
-    || visitState.inactivityMs >= (visitState.timeoutMs || returnTimeout);
+  const openAfterGate = () => {
+    const gateIntro = document.querySelector("[data-home-gate-intro]");
+    if (gateIntro && !gateIntro.classList.contains("is-hidden")) {
+      window.addEventListener("toratavi:gate-intro-finished", open, { once: true });
+      return;
+    }
+    open();
+  };
 
-  if (!shouldOpen) {
-    modal.hidden = true;
-    modal.setAttribute("aria-hidden", "true");
-    modal.dataset.opinionResolved = "true";
-    dock?.removeAttribute("hidden");
-    dock?.classList.add("is-settled");
-    window.dispatchEvent(new CustomEvent("toratavi:rabbi-opinion-resolved"));
-  } else {
-    const openAfterGate = () => {
-      const gateIntro = document.querySelector("[data-home-gate-intro]");
-      if (gateIntro && !gateIntro.classList.contains("is-hidden")) {
-        window.addEventListener("toratavi:gate-intro-finished", open, { once: true });
-        return;
-      }
-      open();
-    };
-
-    window.addEventListener("load", openAfterGate, { once: true });
-  }
+  window.addEventListener("load", openAfterGate, { once: true });
 
   window.addEventListener("toratavi:returned-after-inactivity", () => {
     open();

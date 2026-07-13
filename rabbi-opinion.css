@@ -1,4 +1,13 @@
 /* Premium delayed statement modal on the home page. */
+html.rabbi-opinion-pending,
+html.rabbi-opinion-pending body{
+  background:#00170d!important;
+}
+
+html.rabbi-opinion-pending body > :not(.home-gate-intro):not(.rabbi-opinion-modal){
+  visibility:hidden!important;
+}
+
 .rabbi-opinion-modal {
   position: fixed;
   inset: 0;
@@ -18,15 +27,21 @@
 .rabbi-opinion-modal.is-visible {
   opacity: 1;
   visibility: visible;
+  transition: none;
+}
+
+html.rabbi-opinion-pending .rabbi-opinion-modal.is-visible,
+html.rabbi-opinion-pending .rabbi-opinion-modal.is-visible *{
+  visibility:visible;
 }
 
 .rabbi-opinion-backdrop {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 50% 42%, rgba(4, 78, 43, .42), transparent 42%),
-    rgba(0, 14, 8, .82);
-  backdrop-filter: blur(10px) saturate(.8);
+    radial-gradient(circle at 50% 42%, rgba(16, 95, 58, .44), transparent 42%),
+    linear-gradient(135deg,#00170d,#003018 52%,#00170d);
+  backdrop-filter:none;
 }
 
 .rabbi-opinion-dialog {
