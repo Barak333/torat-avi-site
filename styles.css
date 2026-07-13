@@ -29467,66 +29467,79 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 /* Lavi - refined site design and development signature. */
 .site-footer .footer-lavi-credit{
   position:relative;
-  display:flex;
-  width:100%;
-  flex-direction:column-reverse;
+  display:inline-flex;
+  width:auto;
+  flex-direction:row;
   align-items:center;
   justify-content:center;
-  gap:8px;
-  min-height:92px;
-  padding:22px 20px 16px;
+  gap:14px;
+  min-height:46px;
+  padding:8px 4px 9px;
   border:0;
   border-radius:0;
   color:rgba(255,253,244,.58);
   background:transparent;
   box-shadow:none;
-  font-size:.76rem;
+  font-size:.7rem;
   line-height:1;
   white-space:nowrap;
+  text-decoration:none;
+  transition:transform .2s ease,filter .2s ease;
 }
 .site-footer .footer-lavi-role{
+  order:2;
+  position:relative;
+  padding-inline-start:14px;
   color:rgba(255,253,244,.72);
-  font-weight:650;
-  letter-spacing:.18em;
+  font-weight:600;
+  letter-spacing:.08em;
+}
+.site-footer .footer-lavi-role::before{
+  content:"";
+  position:absolute;
+  inset:50% 0 auto auto;
+  width:1px;
+  height:17px;
+  background:rgba(214,183,93,.48);
+  transform:translateY(-50%);
 }
 .site-footer .footer-lavi-brand{
+  order:1;
   position:relative;
   padding:0;
   color:#e5c86f;
   font-family:"Frank Ruhl Libre","Noto Serif Hebrew",serif;
-  font-size:clamp(2rem,3vw,2.75rem);
+  font-size:1.48rem;
   font-weight:900;
-  letter-spacing:.12em;
+  letter-spacing:.09em;
   line-height:1;
-  text-shadow:0 8px 28px rgba(0,0,0,.34),0 0 24px rgba(214,183,93,.12);
+  text-shadow:0 6px 20px rgba(0,0,0,.3),0 0 18px rgba(214,183,93,.10);
 }
 .site-footer .footer-lavi-brand::before{
   content:none;
 }
 .site-footer .footer-lavi-credit::before,
 .site-footer .footer-lavi-credit::after{
-  content:"";
-  position:absolute;
-  inset-inline:12%;
-  height:1px;
-  background:linear-gradient(90deg,transparent,rgba(214,183,93,.68),transparent);
+  content:none;
 }
-.site-footer .footer-lavi-credit::before{top:0}
-.site-footer .footer-lavi-credit::after{bottom:0;opacity:.4}
+.site-footer .footer-lavi-credit:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.16);
+}
 .site-footer .footer-bottom{
   display:grid;
   grid-template-columns:1fr;
   justify-items:center;
   text-align:center;
 }
-.site-footer .footer-bottom > span:not(.footer-lavi-credit){
+.site-footer .footer-bottom > span{
   color:rgba(255,255,255,.46);
   font-size:.72rem;
 }
 @media(max-width:640px){
   .site-footer .footer-lavi-credit{
     margin-inline:auto;
-    min-height:82px;
-    padding-block:19px 14px;
+    min-height:42px;
+    padding-block:7px 8px;
   }
 }
