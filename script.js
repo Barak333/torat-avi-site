@@ -1680,7 +1680,7 @@ function initializeWeeklyQuestionAlert() {
     }
 
     const loader = document.createElement("script");
-      loader.src = "weekly-qna.js?v=20260713-nefesh-addiction-1";
+      loader.src = "weekly-qna.js?v=20260713-inheritance-case-1";
     loader.addEventListener("load", showWeeklyQuestionAlert);
     document.head.append(loader);
   });

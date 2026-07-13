@@ -472,6 +472,112 @@ body.gate-intro-active {
   to { transform: translateX(calc(50% + 36px)); }
 }
 
+/* A compact editorial window into the distinctive work of the beit din. */
+.home-case-window {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(30px, 3.6vw, 48px) 0;
+  color: #fbf8ef;
+  background: #003018 var(--site-emerald-texture) center / cover no-repeat;
+  border-block: 1px solid rgba(210, 178, 88, .54);
+}
+
+.home-case-window::before,
+.home-case-window::after {
+  content: "";
+  position: absolute;
+  inset-inline: 5%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(210, 178, 88, .72), transparent);
+}
+
+.home-case-window::before { top: 11px; }
+.home-case-window::after { bottom: 11px; }
+
+.home-case-window-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(240px, .9fr) minmax(300px, 1.15fr) minmax(220px, .8fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 68px);
+  width: min(1240px, 90vw);
+}
+
+.home-case-window-heading span {
+  display: block;
+  margin-bottom: 7px;
+  color: #d7b965;
+  font-size: .72rem;
+  font-weight: 850;
+  letter-spacing: .09em;
+}
+
+.home-case-window-heading h2 {
+  margin: 0;
+  color: #fbf8ef;
+  font-family: "Frank Ruhl Libre", "Noto Serif Hebrew", serif;
+  font-size: clamp(1.55rem, 2.45vw, 2.6rem);
+  font-weight: 850;
+  line-height: 1.12;
+}
+
+.home-case-window blockquote {
+  position: relative;
+  margin: 0;
+  padding-inline: clamp(20px, 3vw, 40px);
+  border-inline: 1px solid rgba(210, 178, 88, .38);
+  color: #fffaf0;
+  font-family: "Frank Ruhl Libre", "Noto Serif Hebrew", serif;
+  font-size: clamp(1.5rem, 2.45vw, 2.7rem);
+  font-weight: 800;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.home-case-window-action p {
+  margin: 0 0 12px;
+  color: rgba(251, 248, 239, .78);
+  font-size: .94rem;
+  line-height: 1.65;
+}
+
+.home-case-window-action a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 4px 18px 6px;
+  border: 1px solid rgba(210, 178, 88, .74);
+  border-radius: 999px;
+  color: #fbf8ef;
+  background: rgba(255, 255, 255, .035);
+  font-size: .86rem;
+  font-weight: 850;
+  text-decoration: none;
+  transition: background .2s ease, color .2s ease;
+}
+
+.home-case-window-action a:hover {
+  color: #003018;
+  background: #fbf8ef;
+}
+
+@media (max-width: 820px) {
+  .home-case-window { padding: 36px 0; }
+  .home-case-window-inner {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    text-align: center;
+  }
+  .home-case-window blockquote {
+    padding: 15px 8px;
+    border-inline: 0;
+    border-block: 1px solid rgba(210, 178, 88, .32);
+  }
+  .home-case-window-action p { max-width: 38rem; margin-inline: auto; }
+}
+
 @font-face {
   font-family: "BannerShmulik";
   src: url("assets/fonts/shmulikclm.woff") format("woff");
