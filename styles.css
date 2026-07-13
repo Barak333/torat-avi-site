@@ -29466,45 +29466,67 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 
 /* Lavi - refined site design and development signature. */
 .site-footer .footer-lavi-credit{
-  display:inline-flex;
+  position:relative;
+  display:flex;
+  width:100%;
+  flex-direction:column-reverse;
   align-items:center;
-  gap:13px;
-  min-height:28px;
-  padding:0;
+  justify-content:center;
+  gap:8px;
+  min-height:92px;
+  padding:22px 20px 16px;
   border:0;
   border-radius:0;
   color:rgba(255,253,244,.58);
   background:transparent;
   box-shadow:none;
-  font-size:.68rem;
+  font-size:.76rem;
   line-height:1;
   white-space:nowrap;
 }
 .site-footer .footer-lavi-role{
-  font-weight:500;
-  letter-spacing:.055em;
+  color:rgba(255,253,244,.72);
+  font-weight:650;
+  letter-spacing:.18em;
 }
 .site-footer .footer-lavi-brand{
   position:relative;
-  padding-inline-start:15px;
-  color:#e1c574;
+  padding:0;
+  color:#e5c86f;
   font-family:"Frank Ruhl Libre","Noto Serif Hebrew",serif;
-  font-size:1.16rem;
-  font-weight:850;
-  letter-spacing:.075em;
-  text-shadow:0 5px 18px rgba(0,0,0,.22);
+  font-size:clamp(2rem,3vw,2.75rem);
+  font-weight:900;
+  letter-spacing:.12em;
+  line-height:1;
+  text-shadow:0 8px 28px rgba(0,0,0,.34),0 0 24px rgba(214,183,93,.12);
 }
 .site-footer .footer-lavi-brand::before{
+  content:none;
+}
+.site-footer .footer-lavi-credit::before,
+.site-footer .footer-lavi-credit::after{
   content:"";
   position:absolute;
-  inset:50% 0 auto auto;
-  width:1px;
-  height:18px;
-  background:linear-gradient(transparent,rgba(214,183,93,.58),transparent);
-  transform:translateY(-50%);
+  inset-inline:12%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(214,183,93,.68),transparent);
+}
+.site-footer .footer-lavi-credit::before{top:0}
+.site-footer .footer-lavi-credit::after{bottom:0;opacity:.4}
+.site-footer .footer-bottom{
+  display:grid;
+  grid-template-columns:1fr;
+  justify-items:center;
+  text-align:center;
+}
+.site-footer .footer-bottom > span:not(.footer-lavi-credit){
+  color:rgba(255,255,255,.46);
+  font-size:.72rem;
 }
 @media(max-width:640px){
   .site-footer .footer-lavi-credit{
     margin-inline:auto;
+    min-height:82px;
+    padding-block:19px 14px;
   }
 }
