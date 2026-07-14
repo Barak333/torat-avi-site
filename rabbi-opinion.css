@@ -8,6 +8,10 @@ html.rabbi-opinion-pending body > :not(.home-gate-intro):not(.rabbi-opinion-moda
   visibility:hidden!important;
 }
 
+html.rabbi-opinion-pending body.rabbi-opinion-open > :not(.home-gate-intro):not(.rabbi-opinion-modal){
+  visibility:visible!important;
+}
+
 .rabbi-opinion-modal {
   position: fixed;
   inset: 0;
@@ -39,9 +43,10 @@ html.rabbi-opinion-pending .rabbi-opinion-modal.is-visible *{
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 50% 42%, rgba(16, 95, 58, .44), transparent 42%),
-    linear-gradient(135deg,#00170d,#003018 52%,#00170d);
-  backdrop-filter:none;
+    radial-gradient(circle at 50% 42%, rgba(8, 72, 42, .18), transparent 48%),
+    rgba(0, 18, 10, .58);
+  -webkit-backdrop-filter: blur(15px) brightness(.48) saturate(.72);
+  backdrop-filter: blur(15px) brightness(.48) saturate(.72);
 }
 
 .rabbi-opinion-dialog {
