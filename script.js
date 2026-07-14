@@ -1680,7 +1680,7 @@ function initializeWeeklyQuestionAlert() {
     }
 
     const loader = document.createElement("script");
-      loader.src = "weekly-qna.js?v=20260713-ribbit-neighbors-1";
+      loader.src = "weekly-qna.js?v=20260714-pizza-agent-gift-1";
     loader.addEventListener("load", showWeeklyQuestionAlert);
     document.head.append(loader);
   });
