@@ -4555,6 +4555,46 @@ body.reduce-motion .home-books-feature .book-float-wrap{
   }
 }
 
+/* The rabbi leads the living journey in place of the former light dot. */
+.journey-traveler-marker{
+  pointer-events:none!important;
+  filter:drop-shadow(0 7px 12px rgba(0,0,0,.42))!important;
+}
+.journey-traveler-portrait{
+  clip-path:circle(29px at center)!important;
+  filter:drop-shadow(0 0 5px rgba(255,244,184,.92)) drop-shadow(0 0 17px rgba(244,210,88,.82))!important;
+}
+.journey-traveler-frame{
+  fill:rgba(3,46,27,.96)!important;
+  stroke:#f4da72!important;
+  stroke-width:2.2!important;
+  vector-effect:non-scaling-stroke!important;
+  filter:drop-shadow(0 0 5px #ffeaa0) drop-shadow(0 0 15px rgba(244,210,88,.78))!important;
+  animation:journey-rabbi-frame-glow 2.2s ease-in-out infinite!important;
+}
+.journey-traveler-marker .journey-traveler-halo{
+  fill:rgba(246,218,110,.12)!important;
+  stroke:rgba(255,235,151,.55)!important;
+  stroke-width:1.2!important;
+  vector-effect:non-scaling-stroke!important;
+  transform-box:fill-box!important;
+  transform-origin:center!important;
+  filter:drop-shadow(0 0 8px rgba(255,232,142,.88)) drop-shadow(0 0 24px rgba(240,200,62,.7))!important;
+  animation:journey-rabbi-halo 2.2s ease-in-out infinite!important;
+}
+@keyframes journey-rabbi-halo{
+  0%,100%{transform:scale(.84);opacity:.42}
+  50%{transform:scale(1.22);opacity:1}
+}
+@keyframes journey-rabbi-frame-glow{
+  0%,100%{stroke-opacity:.72;filter:drop-shadow(0 0 4px rgba(255,234,145,.65)) drop-shadow(0 0 12px rgba(240,200,62,.52))}
+  50%{stroke-opacity:1;filter:drop-shadow(0 0 8px #fff1ad) drop-shadow(0 0 24px rgba(244,210,88,.95))}
+}
+@media(prefers-reduced-motion:reduce){
+  .journey-traveler-marker .journey-traveler-halo,
+  .journey-traveler-frame{animation:none!important}
+}
+
 /* Dedicated donation page refinement */
 .donation-hero{
   min-height:420px;
