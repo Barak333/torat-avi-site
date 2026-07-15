@@ -7,15 +7,14 @@
       const route = map.querySelector("[data-journey-route]");
       const traveler = map.querySelector("[data-journey-traveler]");
       const halo = map.querySelector("[data-journey-halo]");
-      const marker = map.querySelector("[data-journey-marker]");
       const waypoints = [...map.querySelectorAll(".journey-map-waypoints circle")];
 
-      if (!route || !traveler || !halo || !marker || typeof route.getTotalLength !== "function") return null;
+      if (!route || !traveler || !halo || typeof route.getTotalLength !== "function") return null;
 
       const length = route.getTotalLength();
       const viewHeight = map.viewBox?.baseVal?.height || 900;
       route.style.strokeDasharray = `${length}`;
-      return { map, route, traveler, halo, marker, waypoints, length, viewHeight };
+      return { map, route, traveler, halo, waypoints, length, viewHeight };
     })
     .filter(Boolean);
 
@@ -53,10 +52,13 @@
     const progress = Math.min(1, Math.max(0, (focusLine - rect.top) / rect.height));
 
     maps.forEach((mapData) => {
-      const { route, marker, waypoints, length } = mapData;
+      const { route, traveler, halo, waypoints, length } = mapData;
       const { distance, point } = locateByVerticalProgress(mapData, progress);
       route.style.strokeDashoffset = `${length - distance}`;
-      marker.setAttribute("transform", `translate(${point.x} ${point.y})`);
+      traveler.setAttribute("cx", point.x);
+      traveler.setAttribute("cy", point.y);
+      halo.setAttribute("cx", point.x);
+      halo.setAttribute("cy", point.y);
       waypoints.forEach((waypoint, index) => {
         waypoint.classList.toggle("is-reached", progress >= thresholds[index]);
       });
@@ -77,10 +79,13 @@
   };
 
   if (reducedMotion.matches) {
-    maps.forEach(({ route, marker, waypoints, length }) => {
+    maps.forEach(({ route, traveler, halo, waypoints, length }) => {
       route.style.strokeDashoffset = "0";
       const point = route.getPointAtLength(length);
-      marker.setAttribute("transform", `translate(${point.x} ${point.y})`);
+      traveler.setAttribute("cx", point.x);
+      traveler.setAttribute("cy", point.y);
+      halo.setAttribute("cx", point.x);
+      halo.setAttribute("cy", point.y);
       waypoints.forEach((waypoint) => waypoint.classList.add("is-reached"));
     });
     steps.forEach((step) => step.classList.add("is-journey-reached"));
