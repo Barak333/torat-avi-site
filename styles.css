@@ -29549,3 +29549,52 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
     padding-block:7px 8px;
   }
 }
+
+/* Required legal consent before purchase or donation. */
+.transaction-consent{
+  position:relative;
+  display:grid;
+  grid-template-columns:22px minmax(0,1fr);
+  align-items:start;
+  gap:11px;
+  margin:18px 0 16px;
+  padding:15px 16px;
+  border:1px solid rgba(178,139,42,.28);
+  border-radius:10px;
+  background:linear-gradient(135deg,rgba(255,253,244,.96),rgba(246,239,214,.8));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.82),0 8px 20px rgba(67,48,7,.06);
+  color:#234437;
+  font-size:.84rem;
+  font-weight:700;
+  line-height:1.65;
+  cursor:pointer;
+}
+.transaction-consent input[type="checkbox"]{
+  width:19px;
+  height:19px;
+  margin:3px 0 0;
+  accent-color:#087242;
+  cursor:pointer;
+}
+.transaction-consent a{
+  color:#7d5a0d;
+  font-weight:900;
+  text-decoration:underline;
+  text-decoration-color:rgba(150,108,16,.38);
+  text-underline-offset:3px;
+}
+.transaction-consent a:hover{
+  color:#075c36;
+  text-decoration-color:currentColor;
+}
+.transaction-consent:has(input:checked){
+  border-color:rgba(7,114,66,.42);
+  background:linear-gradient(135deg,rgba(247,253,248,.98),rgba(225,242,229,.86));
+  box-shadow:inset 3px 0 0 #087242,0 8px 20px rgba(4,85,48,.08);
+}
+@media(max-width:640px){
+  .transaction-consent{
+    padding:13px 14px;
+    font-size:.8rem;
+  }
+}
