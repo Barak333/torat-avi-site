@@ -98,26 +98,41 @@
 })();
 
 (() => {
-  const consoleElement = document.querySelector("[data-ij-lens-console]");
-  if (!consoleElement) return;
+  const daf = document.querySelector("[data-ij-daf]");
+  if (!daf) return;
 
-  const tabs = [...consoleElement.querySelectorAll("[data-ij-lens]")];
-  const panels = [...consoleElement.querySelectorAll("[data-ij-lens-panel]")];
+  const passages = [...daf.querySelectorAll("[data-ij-passage]")];
+  const notes = [...daf.querySelectorAll("[data-ij-daf-note]")];
+  const conclusion = daf.querySelector("[data-ij-daf-conclusion]");
+  const conclusions = {
+    trigger: "העומס מסביר את נקודת הפתיחה - אך אינו גוזר את סוף המעשה.",
+    reaction: "הכעס הוא גם מעשה שיש עליו אחריות וגם מנגנון שמבקש הבנה ותיקון.",
+    return: "החרטה פותחת את שער התשובה - והעבודה המעשית הופכת אותה לבחירה חדשה."
+  };
 
-  function selectLens(name) {
-    tabs.forEach((tab) => {
-      const active = tab.dataset.ijLens === name;
-      tab.setAttribute("aria-selected", String(active));
-      tab.classList.toggle("is-active", active);
+  function selectPassage(name, focus = false) {
+    daf.dataset.activePassage = name;
+    passages.forEach((passage) => {
+      const active = passage.dataset.ijPassage === name;
+      passage.classList.toggle("is-active", active);
+      passage.setAttribute("aria-selected", String(active));
+      passage.tabIndex = active ? 0 : -1;
+      if (active && focus) passage.focus();
     });
-    panels.forEach((panel) => {
-      const active = panel.dataset.ijLensPanel === name;
-      panel.hidden = !active;
-      panel.classList.toggle("is-active", active);
-    });
-    consoleElement.dataset.activeLens = name;
+    notes.forEach((note) => note.classList.toggle("is-active", note.dataset.ijDafNote === name));
+    if (conclusion) conclusion.textContent = conclusions[name];
   }
 
-  tabs.forEach((tab) => tab.addEventListener("click", () => selectLens(tab.dataset.ijLens)));
-  selectLens("din");
+  passages.forEach((passage, index) => {
+    passage.addEventListener("click", () => selectPassage(passage.dataset.ijPassage));
+    passage.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) return;
+      event.preventDefault();
+      const direction = ["ArrowLeft", "ArrowDown"].includes(event.key) ? 1 : -1;
+      const nextIndex = (index + direction + passages.length) % passages.length;
+      selectPassage(passages[nextIndex].dataset.ijPassage, true);
+    });
+  });
+
+  selectPassage("trigger");
 })();
