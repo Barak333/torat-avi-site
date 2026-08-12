@@ -29603,27 +29603,31 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 .main-nav .nav-inner-judge{
   position:relative!important;
   isolation:isolate!important;
-  min-height:43px!important;
-  margin-inline:5px!important;
-  padding:0 17px!important;
+  min-width:164px!important;
+  min-height:56px!important;
+  margin-inline:8px!important;
+  padding:7px 25px 6px!important;
   display:inline-flex!important;
+  flex-direction:column!important;
   align-items:center!important;
   justify-content:center!important;
-  gap:7px!important;
+  gap:2px!important;
   overflow:visible!important;
-  border:1px solid rgba(222,190,77,.86)!important;
-  border-radius:9px!important;
-  color:#fff9d5!important;
+  border:1px solid #d7b953!important;
+  border-radius:5px!important;
+  color:#fffdf2!important;
   background:
-    radial-gradient(circle at 50% 0%,rgba(236,207,102,.2),transparent 58%),
-    linear-gradient(135deg,#001d10,#075b36 58%,#002617)!important;
+    linear-gradient(115deg,transparent 0 12%,rgba(255,255,255,.08) 31%,transparent 48%),
+    radial-gradient(circle at 50% -20%,rgba(246,219,119,.2),transparent 56%),
+    linear-gradient(145deg,#002b19,#00623a 52%,#002b1a)!important;
   box-shadow:
-    0 9px 22px rgba(0,47,26,.22),
-    0 0 0 3px rgba(205,169,53,.08),
-    inset 0 1px 0 rgba(255,255,255,.15)!important;
-  font-weight:950!important;
-  letter-spacing:.01em!important;
-  text-shadow:0 1px 8px rgba(0,0,0,.32)!important;
+    0 10px 22px rgba(0,48,27,.25),
+    0 0 0 3px rgba(218,187,79,.1),
+    inset 0 1px 0 rgba(255,255,255,.18),
+    inset 0 -10px 22px rgba(0,20,11,.14)!important;
+  font:900 1.02rem/1.05 "Frank Ruhl Libre","Noto Serif Hebrew",serif!important;
+  letter-spacing:.025em!important;
+  text-shadow:0 2px 10px rgba(0,0,0,.42)!important;
   transform:translateY(0)!important;
   transition:transform .22s ease,box-shadow .22s ease,filter .22s ease!important;
 }
@@ -29634,37 +29638,55 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   z-index:-1!important;
   width:auto!important;
   height:auto!important;
-  border:1px solid rgba(237,211,119,.24)!important;
-  border-radius:6px!important;
+  border:1px solid rgba(247,224,142,.34)!important;
+  border-radius:2px!important;
   background:transparent!important;
   opacity:1!important;
   transform:none!important;
 }
 .main-nav .nav-inner-judge::after{
-  content:""!important;
+  content:"◆"!important;
   position:absolute!important;
-  right:13%!important;
-  bottom:-5px!important;
-  left:13%!important;
-  width:auto!important;
-  height:1px!important;
+  right:50%!important;
+  bottom:-7px!important;
+  left:auto!important;
+  width:18px!important;
+  height:13px!important;
   border:0!important;
-  border-radius:999px!important;
-  background:linear-gradient(90deg,transparent,#f1d66d,transparent)!important;
-  box-shadow:0 0 10px rgba(238,207,98,.7)!important;
-  opacity:.82!important;
-  transform:none!important;
+  border-radius:0!important;
+  color:#e7cb69!important;
+  background:#fff!important;
+  font-size:.5rem!important;
+  line-height:13px!important;
+  text-align:center!important;
+  text-shadow:0 0 7px rgba(214,178,56,.7)!important;
+  box-shadow:none!important;
+  opacity:1!important;
+  transform:translateX(50%)!important;
 }
+.main-nav .nav-inner-judge span{display:block!important;white-space:nowrap!important}
 .main-nav .nav-inner-judge small{
-  padding:2px 5px!important;
-  border-radius:4px!important;
-  color:#173923!important;
-  background:linear-gradient(180deg,#fff0a0,#d8b33e)!important;
-  font-size:.52rem!important;
-  font-weight:950!important;
-  line-height:1.25!important;
-  box-shadow:0 2px 8px rgba(0,0,0,.2)!important;
+  position:relative!important;
+  padding:3px 18px 0!important;
+  border-radius:0!important;
+  color:#efd878!important;
+  background:transparent!important;
+  font:800 .54rem/1.1 Arial,sans-serif!important;
+  letter-spacing:.06em!important;
+  white-space:nowrap!important;
+  box-shadow:none!important;
 }
+.main-nav .nav-inner-judge small::before,
+.main-nav .nav-inner-judge small::after{
+  content:"";
+  position:absolute;
+  top:55%;
+  width:12px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#d9bc59);
+}
+.main-nav .nav-inner-judge small::before{right:0}
+.main-nav .nav-inner-judge small::after{left:0;transform:scaleX(-1)}
 .main-nav .nav-inner-judge:hover,
 .main-nav .nav-inner-judge[aria-current="page"]{
   color:#fff!important;
@@ -29676,9 +29698,9 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   .main-nav .nav-inner-judge{
     order:-1!important;
     width:100%!important;
-    min-height:54px!important;
-    margin:3px 0 8px!important;
-    font-size:1.08rem!important;
+    min-height:64px!important;
+    margin:4px 0 10px!important;
+    font-size:1.14rem!important;
     border-bottom:1px solid rgba(222,190,77,.86)!important;
   }
 }
