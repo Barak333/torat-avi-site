@@ -30122,7 +30122,9 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 }
 
 /* Inner Judge - Heichal HaBirur concept. */
-.ij-court-hero .section-inner{max-width:970px}
+.ij-court-hero .section-inner{max-width:900px}
+.ij-article-hero{min-height:390px}
+.ij-article-hero .article-hero-title{font-size:clamp(3rem,6.2vw,5.55rem)}
 .ij-court-file{border-color:rgba(238,216,139,.36);background:rgba(0,29,17,.56);letter-spacing:.06em}
 .ij-court-hero .article-hero-subtitle{max-width:900px;color:#fff8df;font:800 clamp(1.25rem,2.5vw,1.9rem)/1.5 "Frank Ruhl Libre","Noto Serif Hebrew",serif}
 .ij-court-hero-cta{border-radius:50px;padding-inline:31px}
@@ -30145,7 +30147,7 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 .ij-heichal{
   position:relative;
   isolation:isolate;
-  padding:clamp(90px,11vw,155px) 0 clamp(105px,12vw,170px);
+  padding:clamp(72px,8vw,115px) 0 clamp(82px,9vw,125px);
   overflow:hidden;
   background:
     radial-gradient(circle at 50% 48%,rgba(216,178,61,.13),transparent 29%),
@@ -30155,18 +30157,18 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 }
 .ij-heichal::before,.ij-heichal::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;width:clamp(20px,4vw,70px);border-inline:1px solid rgba(167,127,24,.15);background:linear-gradient(90deg,rgba(224,209,168,.18),transparent)}
 .ij-heichal::before{right:3%}.ij-heichal::after{left:3%;transform:scaleX(-1)}
-.ij-heichal-head{max-width:880px;margin:0 auto 62px;text-align:center}
+.ij-heichal-head{max-width:800px;margin:0 auto 48px;text-align:center}
 .ij-heichal-head>span{color:#a47b0d;font-size:.72rem;font-weight:950;letter-spacing:.18em}
-.ij-heichal-head h2{margin:12px 0 0;color:#063c27;font:950 clamp(3.25rem,7vw,6.4rem)/.96 "Frank Ruhl Libre","Noto Serif Hebrew",serif}
-.ij-heichal-head p{margin:15px 0 0;color:#a47b0d;font:900 clamp(1.45rem,3vw,2.4rem)/1.25 "Frank Ruhl Libre",serif}
-.ij-heichal-head::after{content:"";width:min(310px,60%);height:1px;margin:30px auto 0;display:block;background:linear-gradient(90deg,transparent,#b68d1e,transparent)}
+.ij-heichal-head h2{margin:10px 0 0;color:#063c27;font:950 clamp(2.75rem,5.4vw,4.85rem)/1 "Frank Ruhl Libre","Noto Serif Hebrew",serif}
+.ij-heichal-head p{margin:12px 0 0;color:#a47b0d;font:900 clamp(1.2rem,2.3vw,1.85rem)/1.3 "Frank Ruhl Libre",serif}
+.ij-heichal-head::after{content:"";width:min(270px,56%);height:1px;margin:23px auto 0;display:block;background:linear-gradient(90deg,transparent,#b68d1e,transparent)}
 .ij-heichal-stage{
   position:relative;
-  min-height:590px;
-  padding:105px clamp(32px,5vw,78px) 75px;
+  min-height:500px;
+  padding:88px clamp(30px,4vw,60px) 58px;
   display:grid;
-  grid-template-columns:1fr 260px 1fr;
-  gap:clamp(30px,5vw,75px);
+  grid-template-columns:1fr 220px 1fr;
+  gap:clamp(25px,4vw,58px);
   align-items:center;
   overflow:hidden;
   color:#fff;
@@ -30182,58 +30184,59 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 .ij-heichal-stage::after{content:"";position:absolute;right:50%;bottom:35px;width:54%;height:1px;background:linear-gradient(90deg,transparent,#d6b852,transparent);transform:translateX(50%)}
 .ij-heichal-arch{position:absolute;right:50%;top:35px;width:46%;height:105px;border:1px solid rgba(225,198,103,.24);border-bottom:0;border-radius:50% 50% 0 0 / 100% 100% 0 0;transform:translateX(50%)}
 .ij-heichal-arch::before{content:"מושב הדיין הפנימי";position:absolute;right:50%;top:30px;padding:0 20px;color:#d9bd5f;background:#00402a;font-size:.66rem;font-weight:900;letter-spacing:.15em;white-space:nowrap;transform:translateX(50%)}
-.ij-heichal-side{position:relative;z-index:1;min-height:295px;padding:35px 30px;border-block:1px solid rgba(231,206,120,.2)}
+.ij-heichal-side{position:relative;z-index:1;min-height:255px;padding:30px 25px;border-block:1px solid rgba(231,206,120,.2)}
 .ij-heichal-side::before{content:"";position:absolute;top:0;bottom:0;width:1px;background:linear-gradient(transparent,rgba(231,206,120,.38),transparent)}
-.ij-heichal-law{padding-right:44px}.ij-heichal-law::before{right:0}
-.ij-heichal-soul{padding-left:44px}.ij-heichal-soul::before{left:0}
+.ij-heichal-law{padding-right:36px}.ij-heichal-law::before{right:0}
+.ij-heichal-soul{padding-left:36px}.ij-heichal-soul::before{left:0}
 .ij-heichal-side small{color:#d7bb5d;font-size:.68rem;font-weight:950;letter-spacing:.14em}
-.ij-heichal-side h3{margin:9px 0 14px;color:#fff;font:950 clamp(2rem,3.2vw,3rem)/1 "Frank Ruhl Libre",serif}
+.ij-heichal-side h3{margin:8px 0 12px;color:#fff;font:950 clamp(1.65rem,2.5vw,2.35rem)/1.05 "Frank Ruhl Libre",serif}
 .ij-heichal-side p{margin:0;color:rgba(255,255,255,.67);line-height:1.8}
-.ij-heichal-side ul{margin:26px 0 0;padding:0;display:flex;gap:8px;flex-wrap:wrap;list-style:none}
+.ij-heichal-side ul{margin:20px 0 0;padding:0;display:flex;gap:7px;flex-wrap:wrap;list-style:none}
 .ij-heichal-side li{padding:6px 11px;border:1px solid rgba(223,198,106,.25);color:#efd980;font-size:.72rem}
 .ij-pattern-stand{position:relative;z-index:2;text-align:center}
 .ij-pattern-stand>small{display:block;margin-bottom:19px;color:rgba(255,255,255,.57);font-size:.68rem;letter-spacing:.12em}
-.ij-pattern-stand>div{position:relative;width:238px;height:238px;margin:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid #d5b64d;border-radius:50%;background:radial-gradient(circle,rgba(9,99,65,.96),rgba(0,42,26,.96) 68%);box-shadow:0 0 0 13px rgba(215,183,77,.055),0 0 70px rgba(223,192,82,.14),inset 0 0 45px rgba(0,0,0,.18)}
+.ij-pattern-stand>div{position:relative;width:202px;height:202px;margin:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid #d5b64d;border-radius:50%;background:radial-gradient(circle,rgba(9,99,65,.96),rgba(0,42,26,.96) 68%);box-shadow:0 0 0 11px rgba(215,183,77,.055),0 0 60px rgba(223,192,82,.14),inset 0 0 40px rgba(0,0,0,.18)}
 .ij-pattern-stand>div::before,.ij-pattern-stand>div::after{content:"";position:absolute;border:1px solid rgba(218,187,83,.22);border-radius:50%}
 .ij-pattern-stand>div::before{inset:18px}.ij-pattern-stand>div::after{inset:37px;border-style:dashed;animation:ijPatternOrbit 24s linear infinite}
 .ij-pattern-stand span,.ij-pattern-stand strong,.ij-pattern-stand em{position:relative;z-index:1;display:block}
 .ij-pattern-stand span{color:rgba(255,255,255,.54);font-size:.72rem}
-.ij-pattern-stand strong{margin:4px 0;color:#f1d66e;font:950 clamp(2.5rem,4vw,3.5rem)/1 "Frank Ruhl Libre",serif;text-shadow:0 0 28px rgba(231,198,78,.2)}
+.ij-pattern-stand strong{margin:4px 0;color:#f1d66e;font:950 clamp(2.15rem,3.2vw,2.85rem)/1 "Frank Ruhl Libre",serif;text-shadow:0 0 28px rgba(231,198,78,.2)}
 .ij-pattern-stand em{color:#fff;font:900 1rem "Frank Ruhl Libre",serif;font-style:normal}
-.ij-pattern-stand>i{width:1px;height:78px;margin:auto;display:block;background:linear-gradient(#d5b64d,rgba(213,182,77,.1))}
+.ij-pattern-stand>i{width:1px;height:58px;margin:auto;display:block;background:linear-gradient(#d5b64d,rgba(213,182,77,.1))}
 @keyframes ijPatternOrbit{to{transform:rotate(360deg)}}
-.ij-truth-verdict{position:relative;width:min(860px,90%);margin:-28px auto 0;padding:37px clamp(30px,6vw,75px);z-index:3;border:1px solid #c29a2b;background:#fffdf7;text-align:center;box-shadow:0 22px 50px rgba(0,48,29,.13)}
+.ij-truth-verdict{position:relative;width:min(790px,88%);margin:-22px auto 0;padding:30px clamp(28px,5vw,58px);z-index:3;border:1px solid #c29a2b;background:#fffdf7;text-align:center;box-shadow:0 22px 50px rgba(0,48,29,.13)}
 .ij-truth-verdict::before{content:"";position:absolute;right:50%;top:-9px;width:17px;height:17px;background:#d2ad3c;transform:translateX(50%) rotate(45deg);box-shadow:0 0 0 5px #fffdf7}
 .ij-truth-verdict>span{color:#a17a0f;font-size:.7rem;font-weight:950;letter-spacing:.14em}
-.ij-truth-verdict h3{margin:9px 0;color:#073e28;font:950 clamp(1.85rem,3.4vw,2.8rem)/1.25 "Frank Ruhl Libre",serif}
+.ij-truth-verdict h3{margin:8px 0;color:#073e28;font:950 clamp(1.55rem,2.7vw,2.2rem)/1.28 "Frank Ruhl Libre",serif}
 .ij-truth-verdict p{max-width:690px;margin:0 auto;color:#64756b;line-height:1.8}
 
 .ij-voice-process{position:relative;padding-top:0;background:linear-gradient(145deg,#001a10,#004e32 50%,#001a10)}
-.ij-voice-manifesto{margin-inline:calc(50% - 50vw);padding:clamp(70px,9vw,125px) max(6vw,calc((100vw - 1180px)/2));display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:#f3ecdc;color:#073c27}
-.ij-voice-manifesto p{position:relative;margin:0;padding:18px clamp(20px,3vw,48px);font:950 clamp(2.1rem,4.3vw,4.25rem)/1.08 "Frank Ruhl Libre",serif}
+.ij-voice-manifesto{max-width:1180px;margin:0 auto;padding:clamp(42px,5.5vw,72px) 0;display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:#f3ecdc;color:#073c27}
+.ij-voice-manifesto p{position:relative;margin:0;padding:15px clamp(18px,2.4vw,34px);font:950 clamp(1.65rem,3vw,2.9rem)/1.12 "Frank Ruhl Libre",serif}
 .ij-voice-manifesto p:not(:last-child){border-left:1px solid #cdbb8e}
 .ij-voice-manifesto p::after{content:"";position:absolute;right:clamp(20px,3vw,48px);bottom:0;width:52px;height:3px;background:#b68d1e}
 .ij-voice-manifesto p:last-child{color:#fff;background:#005235;box-shadow:0 24px 55px rgba(0,45,27,.18)}
 .ij-voice-manifesto p:last-child::after{background:#e0c35e}
 .ij-voice-manifesto small{display:block;margin-bottom:14px;color:#a37b10;font:950 .69rem/1.2 "Noto Sans Hebrew",Arial,sans-serif;letter-spacing:.12em}
 .ij-voice-manifesto p:last-child small{color:#e1c65f}
-.ij-voice-process .ij-court-heading{margin-top:clamp(80px,10vw,135px)}
+.ij-voice-process .ij-court-heading{margin-top:clamp(62px,7vw,92px)}
+.ij-voice-process .ij-court-heading h2{font-size:clamp(2.15rem,3.8vw,3.55rem)}
 .ij-voice-process .ij-court-process-list{border:0;gap:1px;background:rgba(225,197,97,.25)}
-.ij-voice-process .ij-court-process-list li{border:0;background:rgba(0,38,23,.86)}
+.ij-voice-process .ij-court-process-list li{min-height:215px;padding:32px 27px;border:0;background:rgba(0,38,23,.86)}
 .ij-voice-process .ij-court-process-list li:nth-child(2){background:rgba(2,75,48,.9)}
 .ij-voice-process .ij-court-process-list b{border-radius:50%;transform:none}
-.ij-voice-process .ij-court-process-list strong{font-size:1.6rem}
+.ij-voice-process .ij-court-process-list strong{font-size:1.4rem}
 .ij-court-trust{background:#d2ad3c}
 .ij-court-trust .ij-court-seal{border-radius:50%;transform:none}
 
-.ij-questionnaire{padding-top:clamp(100px,12vw,165px);background:radial-gradient(circle at 50% 6%,rgba(206,167,50,.13),transparent 22%),#f4ecda}
+.ij-questionnaire{padding-top:clamp(78px,9vw,120px);background:radial-gradient(circle at 50% 6%,rgba(206,167,50,.13),transparent 22%),#f4ecda}
 .ij-questionnaire-head::before{content:"◆";width:auto;height:auto;border:0;background:transparent;box-shadow:none;color:#b38a19;font-size:1rem}
 .ij-questionnaire-head>span{letter-spacing:.2em}
-.ij-questionnaire-head h2{font-size:clamp(3.1rem,6vw,5.7rem)}
+.ij-questionnaire-head h2{font-size:clamp(2.55rem,4.7vw,4.35rem)}
 .ij-questionnaire-head p{max-width:650px;margin:18px auto 0}
 .ij-questionnaire-shell{
   position:relative;
-  max-width:1240px;
+  max-width:1160px;
   grid-template-columns:285px 1fr;
   border:1px solid #ae8520;
   border-radius:5px 13px 13px 5px;
@@ -30244,7 +30247,7 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 .ij-questionnaire-rail{padding:54px 34px;color:#153f2c;background:linear-gradient(90deg,#eee4cc,#fffaf0 21%,#f8f0df);border-left:1px solid #cab67d;box-shadow:inset 9px 0 20px rgba(81,61,14,.055)}
 .ij-questionnaire-rail::before{inset:15px;border:1px solid rgba(167,128,28,.2)}
 .ij-rail-title small{color:#9e7610;letter-spacing:.13em}
-.ij-rail-title strong{color:#073e28;font-size:2rem}
+.ij-rail-title strong{color:#073e28;font-size:1.72rem}
 .ij-rail-title p{margin:13px 0 0;color:#738078;font-size:.78rem;line-height:1.7}
 .ij-rail-emblem{border-block-color:#d9c99f;color:#496356}
 .ij-rail-emblem b{border-color:#b38a19;color:#98710d;background:#fffaf0}
@@ -30256,17 +30259,17 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 .ij-questionnaire-rail li.is-complete b{color:#fff;background:#b99020}
 .ij-questionnaire-rail li:not(:last-child)::after{background:#d4c18e}
 .ij-rail-progress{color:#858e88}.ij-rail-progress strong{color:#144630}.ij-rail-progress i{background:#ded2b4}.ij-rail-progress em{background:#00613b}
-.ij-questionnaire-form{min-height:760px;padding:218px 66px 55px;background:linear-gradient(90deg,#fff,#fffefa 84%,#f5edda)}
+.ij-questionnaire-form{min-height:700px;padding:203px 54px 48px;background:linear-gradient(90deg,#fff,#fffefa 84%,#f5edda)}
 .ij-protocol-header{padding:29px 48px 25px;border-bottom:1px solid #d7c597;background:linear-gradient(90deg,#fff,#fffdf7 80%,#f2e8d2)}
 .ij-protocol-header>span{color:#a17a0f;letter-spacing:.18em}
-.ij-protocol-header>strong{font-size:2rem}
+.ij-protocol-header>strong{font-size:1.72rem}
 .ij-protocol-header>small{color:#7a857e;font-weight:700}
 .ij-protocol-header>div:last-child{border-top-color:#e2d8bf}
 .ij-form-step-head{padding-right:0;border-right:0}
 .ij-form-step-head::before{right:0;top:auto;bottom:-2px;width:85px;height:3px;background:linear-gradient(90deg,#b58e1e,#075c39)}
 .ij-form-step-head::after{content:"ספר הבירור";color:rgba(0,70,41,.04)}
 .ij-form-step-head>span{color:#9a7410;letter-spacing:.08em}
-.ij-form-step-head h3{font-size:clamp(2.45rem,4.4vw,3.65rem)}
+.ij-form-step-head h3{font-size:clamp(2rem,3.45vw,2.9rem)}
 .ij-questionnaire-form input,.ij-questionnaire-form select,.ij-questionnaire-form textarea{border-width:0 0 1px;background:rgba(255,253,247,.55)}
 .ij-questionnaire-form input:focus,.ij-questionnaire-form select:focus,.ij-questionnaire-form textarea:focus{border-color:#087047;box-shadow:inset 0 -2px #087047;background:#fff}
 .ij-inquiry-chapters{border:1px solid #cdb879;border-radius:3px;background:#fffdf8}
@@ -30278,38 +30281,38 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 .ij-form-prev{border-color:#bba66e;background:#fffdf8}
 
 @media(max-width:980px){
-  .ij-heichal-stage{grid-template-columns:1fr 200px 1fr;gap:25px;padding-inline:30px}
-  .ij-pattern-stand>div{width:190px;height:190px}
+  .ij-heichal-stage{grid-template-columns:1fr 180px 1fr;gap:22px;padding-inline:26px}
+  .ij-pattern-stand>div{width:170px;height:170px}
   .ij-heichal-side{padding-inline:24px}
   .ij-questionnaire-shell{grid-template-columns:250px 1fr}
   .ij-questionnaire-shell::before{right:250px}
   .ij-questionnaire-form{padding-inline:42px}
 }
 @media(max-width:800px){
-  .ij-heichal-stage{min-height:0;padding:95px 28px 60px;grid-template-columns:1fr;gap:24px;border-radius:100px 100px 4px 4px / 55px 55px 4px 4px}
+  .ij-heichal-stage{min-height:0;padding:82px 26px 52px;grid-template-columns:1fr;gap:20px;border-radius:100px 100px 4px 4px / 55px 55px 4px 4px}
   .ij-heichal-arch{width:75%;height:75px}.ij-heichal-arch::before{top:21px}
   .ij-pattern-stand{order:-1}.ij-pattern-stand>i{height:30px}
   .ij-heichal-side{min-height:0;text-align:center;border:1px solid rgba(231,206,120,.18)}
   .ij-heichal-side::before{display:none}.ij-heichal-side ul{justify-content:center}
-  .ij-voice-manifesto{grid-template-columns:1fr;padding:60px 25px}
-  .ij-voice-manifesto p{padding:33px 26px}.ij-voice-manifesto p:not(:last-child){border-left:0;border-bottom:1px solid #cdbb8e}
+  .ij-voice-manifesto{grid-template-columns:1fr;padding:42px 22px}
+  .ij-voice-manifesto p{padding:26px 23px}.ij-voice-manifesto p:not(:last-child){border-left:0;border-bottom:1px solid #cdbb8e}
   .ij-questionnaire-shell{grid-template-columns:1fr;border-radius:8px}
   .ij-questionnaire-shell::before{display:none}
   .ij-questionnaire-rail{border-left:0;border-bottom:1px solid #cbb679}
   .ij-questionnaire-rail ol{grid-template-columns:repeat(3,1fr)}
-  .ij-questionnaire-form{padding-top:218px;background:#fffefa}
+  .ij-questionnaire-form{padding-top:203px;background:#fffefa}
 }
 @media(max-width:520px){
   .ij-opening-statement{gap:9px;padding-inline:10px;font-size:.61rem}.ij-opening-statement i{width:14px}.ij-opening-statement strong{font-size:.85rem}
-  .ij-heichal{padding-top:75px}.ij-heichal-head{margin-bottom:42px}.ij-heichal-head h2{font-size:3.2rem}
-  .ij-heichal-stage{padding-inline:15px}.ij-heichal-side{padding:27px 20px}.ij-pattern-stand>div{width:180px;height:180px}
-  .ij-truth-verdict{width:94%;padding:32px 21px}.ij-truth-verdict h3{font-size:1.7rem}
-  .ij-voice-manifesto p{font-size:2.25rem}
+  .ij-heichal{padding-top:62px}.ij-heichal-head{margin-bottom:34px}.ij-heichal-head h2{font-size:2.65rem}
+  .ij-heichal-stage{padding-inline:14px}.ij-heichal-side{padding:23px 18px}.ij-pattern-stand>div{width:158px;height:158px}
+  .ij-truth-verdict{width:94%;padding:26px 19px}.ij-truth-verdict h3{font-size:1.48rem}
+  .ij-voice-manifesto p{font-size:1.75rem}
   .ij-court-trust .ij-court-seal{transform:none;margin-bottom:8px}
   .ij-questionnaire-rail{padding:38px 24px}.ij-rail-title{text-align:center}.ij-rail-title strong{font-size:1.75rem}
-  .ij-questionnaire-form{padding:224px 19px 35px}
-  .ij-protocol-header{padding:24px 13px 20px}.ij-protocol-header>strong{font-size:1.55rem}
+  .ij-questionnaire-form{padding:202px 19px 32px}
+  .ij-protocol-header{padding:21px 13px 17px}.ij-protocol-header>strong{font-size:1.4rem}
   .ij-protocol-header>div:last-child{font-size:.58rem}
-  .ij-form-step-head h3{font-size:2.25rem}
+  .ij-form-step-head h3{font-size:1.9rem}
 }
 @media(prefers-reduced-motion:reduce){.ij-pattern-stand>div::after{animation:none}}
