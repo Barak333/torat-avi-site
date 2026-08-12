@@ -29598,3 +29598,106 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
     font-size:.8rem;
   }
 }
+
+/* Primary navigation gateway - "הדיין הפנימי". */
+.main-nav .nav-inner-judge{
+  position:relative!important;
+  isolation:isolate!important;
+  min-height:43px!important;
+  margin-inline:5px!important;
+  padding:0 17px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:7px!important;
+  overflow:visible!important;
+  border:1px solid rgba(222,190,77,.86)!important;
+  border-radius:9px!important;
+  color:#fff9d5!important;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(236,207,102,.2),transparent 58%),
+    linear-gradient(135deg,#001d10,#075b36 58%,#002617)!important;
+  box-shadow:
+    0 9px 22px rgba(0,47,26,.22),
+    0 0 0 3px rgba(205,169,53,.08),
+    inset 0 1px 0 rgba(255,255,255,.15)!important;
+  font-weight:950!important;
+  letter-spacing:.01em!important;
+  text-shadow:0 1px 8px rgba(0,0,0,.32)!important;
+  transform:translateY(0)!important;
+  transition:transform .22s ease,box-shadow .22s ease,filter .22s ease!important;
+}
+.main-nav .nav-inner-judge::before{
+  content:""!important;
+  position:absolute!important;
+  inset:4px!important;
+  z-index:-1!important;
+  width:auto!important;
+  height:auto!important;
+  border:1px solid rgba(237,211,119,.24)!important;
+  border-radius:6px!important;
+  background:transparent!important;
+  opacity:1!important;
+  transform:none!important;
+}
+.main-nav .nav-inner-judge::after{
+  content:""!important;
+  position:absolute!important;
+  right:13%!important;
+  bottom:-5px!important;
+  left:13%!important;
+  width:auto!important;
+  height:1px!important;
+  border:0!important;
+  border-radius:999px!important;
+  background:linear-gradient(90deg,transparent,#f1d66d,transparent)!important;
+  box-shadow:0 0 10px rgba(238,207,98,.7)!important;
+  opacity:.82!important;
+  transform:none!important;
+}
+.main-nav .nav-inner-judge small{
+  padding:2px 5px!important;
+  border-radius:4px!important;
+  color:#173923!important;
+  background:linear-gradient(180deg,#fff0a0,#d8b33e)!important;
+  font-size:.52rem!important;
+  font-weight:950!important;
+  line-height:1.25!important;
+  box-shadow:0 2px 8px rgba(0,0,0,.2)!important;
+}
+.main-nav .nav-inner-judge:hover,
+.main-nav .nav-inner-judge[aria-current="page"]{
+  color:#fff!important;
+  filter:brightness(1.12)!important;
+  transform:translateY(-2px)!important;
+  box-shadow:0 14px 30px rgba(0,47,26,.3),0 0 20px rgba(222,190,77,.25),inset 0 1px 0 rgba(255,255,255,.2)!important;
+}
+@media(max-width:900px){
+  .main-nav .nav-inner-judge{
+    order:-1!important;
+    width:100%!important;
+    min-height:54px!important;
+    margin:3px 0 8px!important;
+    font-size:1.08rem!important;
+    border-bottom:1px solid rgba(222,190,77,.86)!important;
+  }
+}
+
+/* Temporary foundation for the dedicated page, pending its full build. */
+.inner-judge-foundation{
+  min-height:calc(100vh - 260px);
+  display:grid;
+  place-items:center;
+  padding:clamp(80px,12vw,150px) 22px;
+  color:#fffdf2;
+  text-align:center;
+  background:
+    radial-gradient(circle at 50% 34%,rgba(225,194,81,.15),transparent 30%),
+    linear-gradient(135deg,rgba(0,22,12,.98),rgba(2,72,41,.94),rgba(0,26,15,.98)),
+    url("assets/torat-avi-green-texture-clean.webp") center/cover;
+}
+.inner-judge-foundation-inner{width:min(780px,100%)}
+.inner-judge-foundation .eyebrow{color:#e8cb63;font-weight:900;letter-spacing:.12em}
+.inner-judge-foundation h1{margin:14px 0;color:#f4dc78;font:950 clamp(3.2rem,8vw,6.8rem)/1 "Frank Ruhl Libre","Noto Serif Hebrew",serif;text-shadow:0 7px 30px rgba(0,0,0,.4),0 0 28px rgba(231,199,82,.16)}
+.inner-judge-foundation p{max-width:590px;margin:0 auto;color:rgba(255,255,255,.76);font-size:clamp(1.05rem,2vw,1.28rem);line-height:1.8}
+.inner-judge-foundation-line{width:min(290px,60%);height:1px;margin:32px auto 0;background:linear-gradient(90deg,transparent,#e7c95f,transparent);box-shadow:0 0 12px rgba(231,201,95,.5)}

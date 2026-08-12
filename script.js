@@ -2114,6 +2114,7 @@ const siteSearchPages = [
   { title: "תורת הנפש", url: "soul-torah.html" },
   { title: "צמיחה", url: "growth.html" },
   { title: "אמונה", url: "emuna.html" },
+  { title: "הדיין הפנימי", url: "inner-judge.html" },
   { title: "עדכונים וקבצים", url: "updates.html" },
 ];
 
