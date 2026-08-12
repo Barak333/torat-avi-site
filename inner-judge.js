@@ -67,7 +67,7 @@
     previous.hidden = current === 1;
     next.hidden = current === steps.length;
     progress.style.width = `${(current / steps.length) * 100}%`;
-    progressLabel.textContent = `שער ${hebrewSteps[current - 1]} מתוך ${hebrewSteps[steps.length - 1]}`;
+    progressLabel.textContent = `שלב ${hebrewSteps[current - 1]} מתוך ${hebrewSteps[steps.length - 1]}`;
     document.querySelectorAll("[data-ij-status-stage]").forEach((node) => { node.textContent = stageNames[current - 1]; });
     shell.scrollIntoView({ behavior: "smooth", block: "start" });
   }
@@ -95,4 +95,29 @@
 
   restoreDraft();
   showStep(1);
+})();
+
+(() => {
+  const consoleElement = document.querySelector("[data-ij-lens-console]");
+  if (!consoleElement) return;
+
+  const tabs = [...consoleElement.querySelectorAll("[data-ij-lens]")];
+  const panels = [...consoleElement.querySelectorAll("[data-ij-lens-panel]")];
+
+  function selectLens(name) {
+    tabs.forEach((tab) => {
+      const active = tab.dataset.ijLens === name;
+      tab.setAttribute("aria-selected", String(active));
+      tab.classList.toggle("is-active", active);
+    });
+    panels.forEach((panel) => {
+      const active = panel.dataset.ijLensPanel === name;
+      panel.hidden = !active;
+      panel.classList.toggle("is-active", active);
+    });
+    consoleElement.dataset.activeLens = name;
+  }
+
+  tabs.forEach((tab) => tab.addEventListener("click", () => selectLens(tab.dataset.ijLens)));
+  selectLens("din");
 })();
