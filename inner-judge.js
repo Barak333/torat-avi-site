@@ -10,7 +10,28 @@
   const progress = shell.querySelector("[data-ij-progress-bar]");
   const progressLabel = shell.querySelector("[data-ij-progress-label]");
   const storageKey = "toratAviInnerJudgeDraft";
+  const caseKey = "toratAviInnerJudgeCase";
+  const hebrewSteps = ["א", "ב", "ג", "ד", "ה"];
+  const stageNames = ["מסירת פרטים", "תיאור המציאות", "שמיעת העדויות", "טענת הלב", "חתימה והגשה"];
   let current = 1;
+
+  function getCaseDetails() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(caseKey) || "null");
+      if (saved?.number && saved?.date) return saved;
+    } catch (_) {}
+    const now = new Date();
+    const dayCode = `${String(now.getFullYear()).slice(-2)}${String(now.getMonth() + 1).padStart(2, "0")}${String(now.getDate()).padStart(2, "0")}`;
+    const details = { number: `${dayCode}-${String(Math.floor(1000 + Math.random() * 9000))}`, date: now.toLocaleDateString("he-IL") };
+    localStorage.setItem(caseKey, JSON.stringify(details));
+    return details;
+  }
+
+  const caseDetails = getCaseDetails();
+  document.querySelectorAll("[data-ij-case-number]").forEach((node) => { node.textContent = caseDetails.number; });
+  document.querySelectorAll("[data-ij-open-date]").forEach((node) => { node.textContent = caseDetails.date; });
+  const signatureDate = form.querySelector("[data-ij-signature-date]");
+  if (signatureDate) signatureDate.value = caseDetails.date;
 
   function saveDraft() {
     const values = {};
@@ -46,7 +67,8 @@
     previous.hidden = current === 1;
     next.hidden = current === steps.length;
     progress.style.width = `${(current / steps.length) * 100}%`;
-    progressLabel.textContent = `שלב ${current} מתוך ${steps.length}`;
+    progressLabel.textContent = `סדר ${hebrewSteps[current - 1]} מתוך ה`;
+    document.querySelectorAll("[data-ij-status-stage]").forEach((node) => { node.textContent = stageNames[current - 1]; });
     shell.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
@@ -54,6 +76,7 @@
     const fields = [...steps[current - 1].querySelectorAll("input, select, textarea")];
     const invalid = fields.find((field) => !field.checkValidity());
     if (!invalid) return true;
+    invalid.closest("details")?.setAttribute("open", "");
     invalid.reportValidity();
     invalid.focus({ preventScroll: true });
     invalid.scrollIntoView({ behavior: "smooth", block: "center" });
