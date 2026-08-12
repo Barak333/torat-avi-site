@@ -29864,3 +29864,42 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   .ij-process::before,.ij-pdf::before{display:none}
 }
 @media(prefers-reduced-motion:reduce){.ij-inquiry-stage::after{animation:none}}
+
+/* Inner Judge inquiry - restrained editorial reconstruction. */
+.ij-questions{
+  padding:clamp(95px,11vw,150px) 0;
+  background:linear-gradient(115deg,#f4efe2 0 32%,#fffdf8 32% 100%);
+}
+.ij-questions::before{inset:30px 3%;border-color:rgba(177,141,31,.14)}
+.ij-questions::after{
+  content:"?";
+  right:auto;
+  left:4%;
+  top:auto;
+  bottom:-55px;
+  width:auto;
+  height:auto;
+  color:rgba(0,67,39,.035);
+  background:none;
+  font:950 24rem/1 "Frank Ruhl Libre",serif;
+}
+.ij-inquiry-intro{max-width:1080px;margin:0 auto 65px;display:grid;grid-template-columns:1.2fr .8fr;gap:8vw;align-items:end}
+.ij-inquiry-intro h2{margin:0;color:#073b25;font:900 clamp(2.8rem,5.7vw,5.25rem)/1.02 "Frank Ruhl Libre","Noto Serif Hebrew",serif}
+.ij-inquiry-intro>p:last-child{margin:0 0 7px;padding-right:27px;border-right:1px solid #c8a137;color:#66766c;font-size:1.08rem;line-height:1.85}
+.ij-inquiry-editorial{max-width:1100px;margin:auto;display:grid;grid-template-columns:.82fr 1.18fr;border:1px solid rgba(171,135,26,.3);background:#fff;box-shadow:0 26px 65px rgba(0,55,31,.09)}
+.ij-inquiry-thesis{position:relative;min-height:570px;padding:58px 50px;display:flex;flex-direction:column;justify-content:center;color:#fff;background:radial-gradient(circle at 90% 10%,rgba(222,194,92,.14),transparent 28%),linear-gradient(145deg,#00613b,#003722 68%,#00291a)}
+.ij-inquiry-thesis::before{content:"";position:absolute;inset:13px;border:1px solid rgba(231,205,110,.22)}
+.ij-inquiry-thesis::after{content:"◆";position:absolute;right:50%;bottom:-9px;width:23px;height:18px;color:#d5b54b;background:#fffdf8;font-size:.55rem;line-height:18px;text-align:center;transform:translateX(50%)}
+.ij-inquiry-thesis>span{position:relative;color:#dfc35e;font-size:.72rem;font-weight:900;letter-spacing:.12em}
+.ij-inquiry-thesis blockquote{position:relative;margin:25px 0;color:#fff;font:900 clamp(2rem,3.5vw,3.35rem)/1.16 "Frank Ruhl Libre",serif}
+.ij-inquiry-thesis blockquote em{display:block;margin-top:17px;color:#f0d46e;font-size:.7em;font-style:normal;line-height:1.35}
+.ij-inquiry-thesis p{position:relative;margin:auto 0 0;color:rgba(255,255,255,.63);font-size:.88rem;line-height:1.65}
+.ij-inquiry-lines{margin:0;padding:27px 45px;display:flex;flex-direction:column;justify-content:center;list-style:none;counter-reset:none}
+.ij-inquiry-lines li{position:relative;min-height:78px;padding:19px 0;display:grid;grid-template-columns:118px 1fr;gap:22px;align-items:center;border-bottom:1px solid #e4dcc5;transition:padding .22s ease,background .22s ease}
+.ij-inquiry-lines li:last-child{border-bottom:0}.ij-inquiry-lines li::after{content:"";position:absolute;right:0;bottom:-1px;width:0;height:1px;background:#b78f1d;transition:width .3s ease}.ij-inquiry-lines li:hover{padding-inline:12px;background:#fbf8ef}.ij-inquiry-lines li:hover::after{width:100%}
+.ij-inquiry-lines b{color:#b28a17;font:800 .68rem Arial,sans-serif;letter-spacing:.04em}.ij-inquiry-lines b small{display:block;margin-top:5px;color:#12452e;font:900 .8rem "Noto Sans Hebrew",Arial,sans-serif;letter-spacing:0}
+.ij-inquiry-lines span{color:#294e3c;font:900 clamp(1.02rem,1.7vw,1.25rem)/1.45 "Frank Ruhl Libre",serif}
+.ij-inquiry-closing{max-width:740px;margin:47px auto 0;color:#244d39;font:900 clamp(1.2rem,2vw,1.5rem)/1.6 "Frank Ruhl Libre",serif;text-align:center}
+.ij-inquiry-closing::before,.ij-inquiry-closing::after{content:"";display:inline-block;width:45px;height:1px;margin:0 15px;vertical-align:middle;background:linear-gradient(90deg,transparent,#bd9625)}.ij-inquiry-closing::after{transform:scaleX(-1)}
+@media(max-width:800px){.ij-inquiry-intro{grid-template-columns:1fr;gap:22px;text-align:center}.ij-inquiry-intro>p:last-child{max-width:650px;margin:auto;padding:0 0 20px;border-right:0;border-bottom:1px solid #c8a137}.ij-inquiry-editorial{grid-template-columns:1fr}.ij-inquiry-thesis{min-height:430px;text-align:center}.ij-inquiry-thesis p{margin-top:30px}.ij-inquiry-lines{padding:18px 25px}}
+@media(max-width:520px){.ij-questions{background:#fffdf8}.ij-inquiry-thesis{min-height:390px;padding:48px 30px}.ij-inquiry-lines li{grid-template-columns:78px 1fr;gap:12px}.ij-inquiry-lines{padding-inline:18px}.ij-inquiry-closing::before,.ij-inquiry-closing::after{width:20px;margin-inline:7px}}
