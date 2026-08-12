@@ -11,8 +11,8 @@
   const progressLabel = shell.querySelector("[data-ij-progress-label]");
   const storageKey = "toratAviInnerJudgeDraft";
   const caseKey = "toratAviInnerJudgeCase";
-  const hebrewSteps = ["א", "ב", "ג", "ד", "ה"];
-  const stageNames = ["מסירת פרטים", "תיאור המציאות", "שמיעת העדויות", "טענת הלב", "חתימה והגשה"];
+  const hebrewSteps = ["א", "ב", "ג"];
+  const stageNames = ["מסירת פרטים", "שאלון הבירור", "חתימה והגשה"];
   let current = 1;
 
   function getCaseDetails() {
@@ -67,7 +67,7 @@
     previous.hidden = current === 1;
     next.hidden = current === steps.length;
     progress.style.width = `${(current / steps.length) * 100}%`;
-    progressLabel.textContent = `סדר ${hebrewSteps[current - 1]} מתוך ה`;
+    progressLabel.textContent = `סדר ${hebrewSteps[current - 1]} מתוך ${hebrewSteps[steps.length - 1]}`;
     document.querySelectorAll("[data-ij-status-stage]").forEach((node) => { node.textContent = stageNames[current - 1]; });
     shell.scrollIntoView({ behavior: "smooth", block: "start" });
   }
