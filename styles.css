@@ -29604,9 +29604,9 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   position:relative!important;
   isolation:isolate!important;
   min-width:164px!important;
-  min-height:56px!important;
+  min-height:52px!important;
   margin-inline:8px!important;
-  padding:7px 25px 6px!important;
+  padding:7px 25px!important;
   display:inline-flex!important;
   flex-direction:column!important;
   align-items:center!important;
@@ -29625,7 +29625,7 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
     0 0 0 3px rgba(218,187,79,.1),
     inset 0 1px 0 rgba(255,255,255,.18),
     inset 0 -10px 22px rgba(0,20,11,.14)!important;
-  font:900 1.02rem/1.05 "Frank Ruhl Libre","Noto Serif Hebrew",serif!important;
+  font:900 1.08rem/1 "Frank Ruhl Libre","Noto Serif Hebrew",serif!important;
   letter-spacing:.025em!important;
   text-shadow:0 2px 10px rgba(0,0,0,.42)!important;
   transform:translateY(0)!important;
@@ -29665,28 +29665,6 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   transform:translateX(50%)!important;
 }
 .main-nav .nav-inner-judge span{display:block!important;white-space:nowrap!important}
-.main-nav .nav-inner-judge small{
-  position:relative!important;
-  padding:3px 18px 0!important;
-  border-radius:0!important;
-  color:#efd878!important;
-  background:transparent!important;
-  font:800 .54rem/1.1 Arial,sans-serif!important;
-  letter-spacing:.06em!important;
-  white-space:nowrap!important;
-  box-shadow:none!important;
-}
-.main-nav .nav-inner-judge small::before,
-.main-nav .nav-inner-judge small::after{
-  content:"";
-  position:absolute;
-  top:55%;
-  width:12px;
-  height:1px;
-  background:linear-gradient(90deg,transparent,#d9bc59);
-}
-.main-nav .nav-inner-judge small::before{right:0}
-.main-nav .nav-inner-judge small::after{left:0;transform:scaleX(-1)}
 .main-nav .nav-inner-judge:hover,
 .main-nav .nav-inner-judge[aria-current="page"]{
   color:#fff!important;
@@ -29702,7 +29680,7 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   .main-nav .nav-inner-judge{
     order:-1!important;
     width:100%!important;
-    min-height:64px!important;
+    min-height:58px!important;
     margin:4px 0 10px!important;
     font-size:1.14rem!important;
     border-bottom:1px solid rgba(222,190,77,.86)!important;
