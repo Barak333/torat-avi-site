@@ -1,5 +1,5 @@
 const RABBI_EMAIL = process.env.INNER_JUDGE_RABBI_EMAIL || "Hraraviby@gmail.com";
-const LOGO_URL = process.env.INNER_JUDGE_LOGO_URL || "https://www.torat-avi.co.il/assets/torat-avi-logo-footer-white.webp";
+const LOGO_URL = process.env.INNER_JUDGE_LOGO_URL || "https://www.torat-avi.co.il/assets/mevakshei-panecha-nav-logo.webp";
 const SITE_URL = "https://www.torat-avi.co.il";
 
 const fields = [
@@ -66,7 +66,7 @@ function emailShell(content, previewText = "") {
     <tr><td align="center" style="padding:34px 14px;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:680px;border-collapse:collapse;background:#fffdf8;border:1px solid #d7c68f;box-shadow:0 18px 44px rgba(0,49,29,.12);">
         <tr><td align="center" style="padding:30px 28px 25px;background:#00452d;border-bottom:4px solid #c9a63a;">
-          <img src="${LOGO_URL}" width="255" alt="מבקשי פניך" style="display:block;width:255px;max-width:82%;height:auto;margin:0 auto 20px;">
+          <img src="${LOGO_URL}" width="250" height="153" alt="מבקשי פניך" style="display:block;width:250px;max-width:82%;height:auto;margin:0 auto 20px;border:0;outline:none;text-decoration:none;">
           <div style="color:#efd574;font-size:13px;font-weight:700;letter-spacing:.5px;">הדיין הפנימי • מבקשי פניך - הרב איתי בן יוסף</div>
         </td></tr>
         <tr><td style="padding:42px 38px 38px;">${content}</td></tr>
