@@ -30399,3 +30399,92 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   .ij-questionnaire-head h2{font-size:2.55rem}.ij-questionnaire-rail{padding:34px 22px}.ij-questionnaire-rail ol span{display:none}.ij-protocol-header{padding:22px 18px 18px}.ij-protocol-header>strong{font-size:1.25rem}.ij-protocol-header>small{font-size:.59rem}.ij-protocol-header>div:last-child{gap:5px}.ij-protocol-header b{font-size:.58rem}.ij-form-step{padding:29px 19px 0}.ij-form-step-head h3{font-size:1.85rem}.ij-form-actions{margin-inline:19px}.ij-inquiry-chapters>details>summary{grid-template-columns:72px 1fr;padding:16px 13px}.ij-chapter-fields{padding-inline:13px}
 }
 @media(prefers-reduced-motion:reduce){.ij-depth-ring-3::before{animation:none}.ij-lens-panel{animation:none}}
+
+/* Inner Judge - Compass of Inquiry, a custom three-direction instrument. */
+.ij-compass-head{grid-template-columns:230px 1fr;align-items:center}
+.ij-compass-head h2{font-size:clamp(3rem,5.4vw,4.9rem)}
+.ij-compass-head h2::after{content:"";display:inline-block;width:10px;height:10px;margin-right:12px;border:1px solid #b68d1e;transform:rotate(45deg);vertical-align:middle}
+.ij-compass-console{
+  --compass-accent:#dbbb52;
+  position:relative;
+  max-width:1180px;
+  min-height:610px;
+  display:grid;
+  grid-template-columns:minmax(440px, .92fr) minmax(520px, 1.08fr);
+  overflow:hidden;
+  border:1px solid #a77e16;
+  border-radius:34px 6px 34px 6px;
+  background:#002d1c;
+  box-shadow:0 35px 90px rgba(0,45,27,.22),0 0 0 8px rgba(183,142,28,.045);
+}
+.ij-compass-console[data-active-lens="nefesh"]{--compass-accent:#8ed4b1}
+.ij-compass-console[data-active-lens="torah"]{--compass-accent:#f1d778}
+.ij-compass-console::before{content:"";position:absolute;z-index:5;right:calc(50% - 37px);top:50%;width:74px;height:74px;border:1px solid rgba(218,187,82,.35);border-radius:50%;background:#003823;transform:translate(50%,-50%);pointer-events:none;box-shadow:0 0 0 7px rgba(216,185,79,.04)}
+.ij-compass-console::after{content:"אמת";position:absolute;z-index:6;right:calc(50% - 37px);top:50%;color:#e1c65e;font:900 .73rem "Frank Ruhl Libre",serif;letter-spacing:.07em;transform:translate(50%,-50%);pointer-events:none}
+.ij-compass-instrument{
+  position:relative;
+  min-height:610px;
+  isolation:isolate;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 49%,rgba(25,133,88,.3),transparent 18%),
+    radial-gradient(circle at 50% 50%,transparent 0 37%,rgba(220,192,93,.06) 37.2% 37.5%,transparent 37.8%),
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px),
+    linear-gradient(145deg,#001d12,#00412a 58%,#001f14);
+  background-size:auto,auto,40px 40px,40px 40px,auto;
+}
+.ij-compass-instrument::before{content:"";position:absolute;inset:18px;border:1px solid rgba(223,197,102,.16);border-radius:25px 4px 25px 4px;pointer-events:none}
+.ij-compass-instrument::after{content:"מצפן הבירור";position:absolute;right:28px;top:28px;color:rgba(231,207,121,.56);font-size:.61rem;font-weight:950;letter-spacing:.15em}
+.ij-compass-map{position:absolute;z-index:-1;inset:28px;width:calc(100% - 56px);height:calc(100% - 56px);overflow:visible}
+.ij-compass-triangle{fill:rgba(0,86,55,.07);stroke:rgba(224,198,101,.25);stroke-width:1.2}
+.ij-compass-orbit{fill:none;stroke:rgba(229,204,111,.18);stroke-width:1;stroke-dasharray:3 7}.ij-compass-orbit-inner{stroke:rgba(255,255,255,.09);stroke-dasharray:none}
+.ij-compass-axis{fill:none;stroke:rgba(255,255,255,.08);stroke-width:1.5;stroke-dasharray:4 7;transition:stroke .35s ease,stroke-width .35s ease,filter .35s ease}
+.ij-compass-console[data-active-lens="din"] .ij-axis-din,.ij-compass-console[data-active-lens="nefesh"] .ij-axis-nefesh,.ij-compass-console[data-active-lens="torah"] .ij-axis-torah{stroke:var(--compass-accent);stroke-width:2.8;stroke-dasharray:none;filter:url(#ijGlow)}
+.ij-compass-point{position:absolute;z-index:4;width:116px;min-height:82px;padding:10px 8px;border:1px solid rgba(224,198,101,.3);border-radius:50%;color:rgba(255,255,255,.6);background:rgba(0,46,29,.88);text-align:center;cursor:pointer;box-shadow:0 12px 25px rgba(0,0,0,.15);transition:transform .3s ease,color .3s ease,border-color .3s ease,background .3s ease,box-shadow .3s ease}
+.ij-compass-point>span,.ij-compass-point>b,.ij-compass-point>small{display:block}.ij-compass-point>span{color:var(--compass-accent);font:800 .58rem Arial}.ij-compass-point>b{margin-top:2px;color:inherit;font:950 1.35rem "Frank Ruhl Libre",serif}.ij-compass-point>small{margin-top:1px;color:inherit;font-size:.59rem;opacity:.75}
+.ij-compass-point:hover{color:#fff;transform:translateY(-3px)}.ij-compass-point[aria-selected="true"]{color:#0a3522;border-color:var(--compass-accent);background:var(--compass-accent);box-shadow:0 0 0 9px color-mix(in srgb,var(--compass-accent) 13%,transparent),0 15px 32px rgba(0,0,0,.23)}.ij-compass-point[aria-selected="true"]>span{color:#23462f}.ij-compass-point:focus-visible{outline:2px solid #fff;outline-offset:4px}
+.ij-point-torah{right:50%;top:4.8%;transform:translateX(50%)}.ij-point-torah:hover{transform:translate(50%,-3px)}
+.ij-point-din{right:4.2%;bottom:9%}.ij-point-nefesh{left:4.2%;bottom:9%}
+.ij-compass-case{position:absolute;z-index:3;right:50%;top:49.5%;width:174px;height:174px;padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid #d5b54c;border-radius:50%;color:#fff;background:radial-gradient(circle at 50% 35%,#08734d,#00271a 72%);text-align:center;transform:translate(50%,-50%);box-shadow:0 0 0 11px rgba(217,187,80,.055),0 0 52px rgba(218,187,81,.15),inset 0 0 35px rgba(0,0,0,.22)}
+.ij-compass-case::before,.ij-compass-case::after{content:"";position:absolute;border:1px solid rgba(225,199,103,.2);border-radius:50%}.ij-compass-case::before{inset:14px}.ij-compass-case::after{inset:29px;border-style:dashed;animation:ijCompassCase 25s linear infinite}
+.ij-compass-case span,.ij-compass-case strong,.ij-compass-case small{position:relative;z-index:1}.ij-compass-case span{color:#dcc15f;font-size:.61rem;font-weight:950;letter-spacing:.1em}.ij-compass-case strong{margin:5px 0;color:#fff;font:950 1.75rem/1.02 "Frank Ruhl Libre",serif}.ij-compass-case small{color:rgba(255,255,255,.56);font-size:.66rem}.ij-compass-case i{position:absolute;right:50%;bottom:-38px;width:1px;height:27px;background:linear-gradient(var(--compass-accent),transparent);transition:background .3s ease}
+.ij-compass-hint{position:absolute;right:50%;bottom:27px;margin:0;color:rgba(255,255,255,.38);font-size:.62rem;letter-spacing:.11em;transform:translateX(50%)}
+@keyframes ijCompassCase{to{transform:rotate(360deg)}}
+.ij-compass-dossier{min-width:0;display:flex;flex-direction:column;background:#fffdfa}
+.ij-compass-dossier .ij-case-brief{grid-column:auto;padding:25px 34px;display:block;color:#fff;background:linear-gradient(90deg,#00563a,#003421);border-bottom:1px solid rgba(221,193,91,.28)}
+.ij-compass-dossier .ij-case-brief span{display:block}.ij-compass-dossier .ij-case-brief p{margin:8px 0 0;max-width:600px}.ij-compass-dossier .ij-case-brief small{display:block;margin-top:7px}
+.ij-compass-dossier .ij-lens-panels{flex:1;min-height:0;background:#fffdfa}
+.ij-compass-dossier .ij-lens-panel{min-height:400px;padding:38px 42px 25px;display:flex;flex-direction:column;background:radial-gradient(circle at 0 100%,color-mix(in srgb,var(--compass-accent) 14%,transparent),transparent 29%),#fffdfa}
+.ij-compass-dossier .ij-lens-panel[hidden]{display:none!important}.ij-compass-dossier .ij-lens-panel header{padding-bottom:21px}.ij-compass-dossier .ij-lens-panel header>span{color:#97710e}.ij-compass-dossier .ij-lens-panel h3{font-size:clamp(1.55rem,2.35vw,2.15rem)}
+.ij-compass-dossier .ij-lens-panel dl{margin-top:23px}.ij-compass-dossier .ij-lens-panel dl>div{padding-inline:16px}.ij-compass-dossier .ij-lens-panel dl>div:first-child{padding-right:0}.ij-compass-dossier .ij-lens-panel footer{margin-top:auto;padding:16px 19px;display:grid;grid-template-columns:100px 1fr;gap:15px;align-items:center;border-right:3px solid var(--compass-accent);background:#f4eedf}.ij-compass-dossier .ij-lens-panel footer span{color:#93700f;font-size:.62rem;font-weight:950}.ij-compass-dossier .ij-lens-panel footer strong{color:#16432f;font:900 1rem "Frank Ruhl Libre",serif}
+.ij-compass-dossier .ij-path-ruling{grid-column:auto;padding:18px 28px;background:linear-gradient(90deg,#efd878,#cba536)}
+
+@media(max-width:1000px){
+  .ij-compass-console{grid-template-columns:minmax(390px,.85fr) minmax(450px,1.15fr)}
+  .ij-compass-console::before,.ij-compass-console::after{display:none}
+  .ij-compass-point{width:100px;min-height:75px}.ij-compass-case{width:155px;height:155px}.ij-compass-case strong{font-size:1.55rem}
+  .ij-compass-dossier .ij-lens-panel{padding-inline:30px}.ij-compass-dossier .ij-lens-panel dl{grid-template-columns:1fr}.ij-compass-dossier .ij-lens-panel dl>div{padding:10px 0;border-left:0;border-bottom:1px solid #e1d7bd}.ij-compass-dossier .ij-lens-panel dl>div:last-child{border-bottom:0}
+}
+@media(max-width:820px){
+  .ij-compass-head{grid-template-columns:1fr}.ij-compass-head>div:first-child{max-width:240px}
+  .ij-compass-console{min-height:0;grid-template-columns:1fr;border-radius:25px 5px 25px 5px}
+  .ij-compass-instrument{min-height:520px;border-bottom:1px solid rgba(220,191,91,.28)}
+  .ij-compass-dossier .ij-lens-panel{min-height:0}.ij-compass-dossier .ij-lens-panel dl{grid-template-columns:repeat(3,1fr)}.ij-compass-dossier .ij-lens-panel dl>div{padding:4px 14px;border-bottom:0;border-left:1px solid #e1d7bd}.ij-compass-dossier .ij-lens-panel dl>div:last-child{border-left:0}
+}
+@media(max-width:560px){
+  .ij-compass-head h2{font-size:2.8rem}.ij-compass-head h2::after{width:8px;height:8px}
+  .ij-compass-console{width:100%;border-radius:19px 4px 19px 4px}
+  .ij-compass-instrument{min-height:430px}
+  .ij-compass-instrument::before{inset:9px;border-radius:14px 3px 14px 3px}.ij-compass-instrument::after{right:17px;top:17px}
+  .ij-compass-map{inset:24px 5px;width:calc(100% - 10px);height:calc(100% - 48px)}
+  .ij-compass-point{width:78px;min-height:65px;padding:7px 4px}.ij-compass-point>b{font-size:1.05rem}.ij-compass-point>small{font-size:.51rem}.ij-compass-point>span{font-size:.5rem}
+  .ij-point-torah{top:6%}.ij-point-din{right:2.5%;bottom:9%}.ij-point-nefesh{left:2.5%;bottom:9%}
+  .ij-compass-case{top:49%;width:132px;height:132px;padding:16px}.ij-compass-case strong{font-size:1.35rem}.ij-compass-case::before{inset:10px}.ij-compass-case::after{inset:23px}.ij-compass-hint{bottom:18px}
+  .ij-compass-dossier .ij-case-brief{padding:22px 20px}.ij-compass-dossier .ij-case-brief p{font-size:.91rem}
+  .ij-compass-dossier .ij-lens-panel{padding:27px 20px 20px}.ij-compass-dossier .ij-lens-panel h3{font-size:1.45rem}
+  .ij-compass-dossier .ij-lens-panel dl{grid-template-columns:1fr}.ij-compass-dossier .ij-lens-panel dl>div{padding:11px 0;border-left:0;border-bottom:1px solid #e1d7bd}.ij-compass-dossier .ij-lens-panel dl>div:last-child{border-bottom:0}
+  .ij-compass-dossier .ij-lens-panel footer{grid-template-columns:1fr;gap:5px;padding:14px 15px}
+  .ij-compass-dossier .ij-path-ruling{padding:16px 19px;display:block}.ij-compass-dossier .ij-path-ruling p{margin-top:9px;gap:7px;flex-wrap:wrap}.ij-compass-dossier .ij-path-ruling p i{width:8px}
+}
+@media(prefers-reduced-motion:reduce){.ij-compass-case::after{animation:none}}
