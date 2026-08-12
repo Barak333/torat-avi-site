@@ -11341,13 +11341,16 @@ body:has(.home-live-hero) main > section:not(:first-child)::after{
   gap:12px!important;
 }
 .footer-logo-img{
-  width:min(230px,100%)!important;
-  max-height:108px!important;
+  width:min(220px,100%)!important;
+  height:auto!important;
+  max-height:136px!important;
   object-fit:contain!important;
+  display:block!important;
   padding:0!important;
   border-radius:0!important;
   background:transparent!important;
   box-shadow:none!important;
+  filter:drop-shadow(0 10px 18px rgba(0,0,0,.22))!important;
 }
 .footer-brand-logo p{
   margin:0!important;
