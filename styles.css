@@ -29718,7 +29718,7 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 .ij-hero-visual{position:absolute;inset:0;background:url("assets/inner-judge-hero-v1.png") left center/cover no-repeat;animation:ijHeroBreath 10s ease-in-out infinite alternate}
 .ij-hero-glow{position:absolute;inset:auto 15% 10% auto;width:430px;height:430px;border-radius:50%;background:rgba(216,185,79,.07);filter:blur(65px);z-index:1}
 .ij-hero-inner{position:relative;z-index:2;width:100%}
-.ij-hero-copy{width:min(610px,52%);margin-right:0;margin-left:auto;padding:95px 0 110px;text-align:right}
+.ij-hero-copy{width:min(570px,48%);margin-right:clamp(22px,4vw,60px);margin-left:auto;padding:95px 0 110px;text-align:right}
 .ij-hero .ij-kicker{color:#e0c55f}
 .ij-hero h1{margin:0 0 20px;color:#f5d96e;font:950 clamp(4rem,8.5vw,7.8rem)/.9 "Frank Ruhl Libre","Noto Serif Hebrew",serif;text-shadow:0 6px 35px rgba(0,0,0,.5)}
 .ij-hero-lead{max-width:600px;margin:0;color:#fffdf3;font:800 clamp(1.45rem,2.7vw,2.2rem)/1.35 "Frank Ruhl Libre","Noto Serif Hebrew",serif}
