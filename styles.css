@@ -29690,6 +29690,10 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 .main-nav .nav-inner-judge:hover,
 .main-nav .nav-inner-judge[aria-current="page"]{
   color:#fff!important;
+  background:
+    linear-gradient(115deg,transparent 0 12%,rgba(255,255,255,.11) 31%,transparent 48%),
+    radial-gradient(circle at 50% -20%,rgba(246,219,119,.25),transparent 56%),
+    linear-gradient(145deg,#002b19,#087044 52%,#002b1a)!important;
   filter:brightness(1.12)!important;
   transform:translateY(-2px)!important;
   box-shadow:0 14px 30px rgba(0,47,26,.3),0 0 20px rgba(222,190,77,.25),inset 0 1px 0 rgba(255,255,255,.2)!important;
