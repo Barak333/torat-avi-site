@@ -9,11 +9,15 @@
   const previous = form.querySelector("[data-ij-prev]");
   const progress = shell.querySelector("[data-ij-progress-bar]");
   const progressLabel = shell.querySelector("[data-ij-progress-label]");
+  const submitButton = form.querySelector("[data-ij-submit]");
+  const submitMessage = form.querySelector("[data-ij-submit-message]");
   const storageKey = "toratAviInnerJudgeDraft";
   const caseKey = "toratAviInnerJudgeCase";
+  const successKey = "toratAviInnerJudgeSuccess";
   const hebrewSteps = ["א", "ב", "ג"];
-  const stageNames = ["מסירת פרטים", "שאלון הבירור", "חתימה והגשה"];
+  const stageNames = ["פרטים אישיים", "שאלון העומק", "אישור ושליחה"];
   let current = 1;
+  let deliveryReady = false;
 
   function getCaseDetails() {
     try {
@@ -52,7 +56,7 @@
     } catch (_) {}
   }
 
-  function showStep(number) {
+  function showStep(number, shouldScroll = true) {
     current = Math.max(1, Math.min(steps.length, number));
     steps.forEach((step) => {
       const active = Number(step.dataset.ijStep) === current;
@@ -69,7 +73,7 @@
     progress.style.width = `${(current / steps.length) * 100}%`;
     progressLabel.textContent = `שלב ${hebrewSteps[current - 1]} מתוך ${hebrewSteps[steps.length - 1]}`;
     document.querySelectorAll("[data-ij-status-stage]").forEach((node) => { node.textContent = stageNames[current - 1]; });
-    shell.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (shouldScroll) shell.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   function validateCurrentStep() {
@@ -91,48 +95,69 @@
   previous.addEventListener("click", () => showStep(current - 1));
   form.addEventListener("input", saveDraft);
   form.addEventListener("change", saveDraft);
-  form.addEventListener("submit", (event) => event.preventDefault());
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!validateCurrentStep() || !submitButton || !deliveryReady) return;
 
-  restoreDraft();
-  showStep(1);
-})();
+    submitButton.disabled = true;
+    submitButton.classList.add("is-sending");
+    submitButton.textContent = "השאלון נשלח כעת...";
+    if (submitMessage) {
+      submitMessage.className = "ij-submit-message";
+      submitMessage.textContent = "נא להמתין, אנו מעבירים את תשובותיכם לעיונו של הרב.";
+    }
 
-(() => {
-  const daf = document.querySelector("[data-ij-daf]");
-  if (!daf) return;
+    const values = Object.fromEntries(new FormData(form).entries());
+    values.privacyConsent = form.elements.namedItem("privacyConsent")?.checked === true;
+    values.caseNumber = caseDetails.number;
+    values.openDate = caseDetails.date;
 
-  const passages = [...daf.querySelectorAll("[data-ij-passage]")];
-  const notes = [...daf.querySelectorAll("[data-ij-daf-note]")];
-  const conclusion = daf.querySelector("[data-ij-daf-conclusion]");
-  const conclusions = {
-    trigger: "העומס מסביר את נקודת הפתיחה - אך אינו גוזר את סוף המעשה.",
-    reaction: "הכעס הוא גם מעשה שיש עליו אחריות וגם מנגנון שמבקש הבנה ותיקון.",
-    return: "החרטה פותחת את שער התשובה - והעבודה המעשית הופכת אותה לבחירה חדשה."
-  };
+    try {
+      const response = await fetch("/api/inner-judge-submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values)
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.ok) throw new Error(result.message || "לא ניתן היה להשלים את השליחה.");
 
-  function selectPassage(name, focus = false) {
-    daf.dataset.activePassage = name;
-    passages.forEach((passage) => {
-      const active = passage.dataset.ijPassage === name;
-      passage.classList.toggle("is-active", active);
-      passage.setAttribute("aria-selected", String(active));
-      passage.tabIndex = active ? 0 : -1;
-      if (active && focus) passage.focus();
-    });
-    notes.forEach((note) => note.classList.toggle("is-active", note.dataset.ijDafNote === name));
-    if (conclusion) conclusion.textContent = conclusions[name];
-  }
-
-  passages.forEach((passage, index) => {
-    passage.addEventListener("click", () => selectPassage(passage.dataset.ijPassage));
-    passage.addEventListener("keydown", (event) => {
-      if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) return;
-      event.preventDefault();
-      const direction = ["ArrowLeft", "ArrowDown"].includes(event.key) ? 1 : -1;
-      const nextIndex = (index + direction + passages.length) % passages.length;
-      selectPassage(passages[nextIndex].dataset.ijPassage, true);
-    });
+      sessionStorage.setItem(successKey, JSON.stringify({
+        caseNumber: result.caseNumber || caseDetails.number,
+        submittedAt: result.submittedAt || new Date().toLocaleDateString("he-IL"),
+        email: values.email,
+        fullName: values.fullName
+      }));
+      localStorage.removeItem(storageKey);
+      localStorage.removeItem(caseKey);
+      window.location.assign(`inner-judge-success.html?case=${encodeURIComponent(result.caseNumber || caseDetails.number)}`);
+    } catch (error) {
+      submitButton.disabled = false;
+      submitButton.classList.remove("is-sending");
+      submitButton.textContent = "שליחת השאלון לעיון הרב";
+      if (submitMessage) {
+        submitMessage.className = "ij-submit-message is-error";
+        submitMessage.textContent = error.message || "אירעה תקלה בשליחה. התשובות נשמרו במכשיר ואפשר לנסות שוב.";
+      }
+    }
   });
 
-  selectPassage("trigger");
+  async function checkDeliveryStatus() {
+    if (!submitButton) return;
+    try {
+      const response = await fetch("/api/inner-judge-submit", { headers: { Accept: "application/json" } });
+      const result = await response.json();
+      deliveryReady = response.ok && result.configured === true;
+    } catch (_) {
+      deliveryReady = false;
+    }
+    submitButton.disabled = !deliveryReady;
+    submitButton.textContent = deliveryReady ? "שליחת השאלון לעיון הרב" : "מערכת השליחה תיפתח לאחר חיבור הדואר";
+    if (!deliveryReady && submitMessage) {
+      submitMessage.textContent = "אפשר למלא את השאלון ולשמור טיוטה במכשיר, אך השליחה עדיין אינה פעילה.";
+    }
+  }
+
+  restoreDraft();
+  showStep(1, false);
+  checkDeliveryStatus();
 })();

@@ -30553,3 +30553,73 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 }
 @keyframes ijDafNoteIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.ij-daf-notes article.is-active,.ij-daf-torah-notes article.is-active{animation:none}}
+
+/* Inner Judge - simplified page and live submission. */
+.ij-court-hero .section-inner{max-width:860px}
+.ij-court-hero .article-hero-title{font-size:clamp(3.25rem,6vw,5.25rem)}
+.ij-court-hero .article-hero-subtitle{max-width:730px;font-size:clamp(1rem,1.8vw,1.28rem);line-height:1.7}
+.ij-hero-privacy{margin-top:4px;color:rgba(255,255,255,.64);font-size:.7rem}
+
+.ij-simple-intro{position:relative;padding:clamp(68px,8vw,105px) 0 55px;overflow:hidden;background:#fbf8ef}
+.ij-simple-intro::before{content:"";position:absolute;inset:24px;border:1px solid rgba(163,124,20,.1);pointer-events:none}
+.ij-simple-copy{max-width:790px;margin:auto;text-align:center}
+.ij-simple-copy>span{color:#9a7512;font-size:.68rem;font-weight:950;letter-spacing:.15em}
+.ij-simple-copy h2{margin:9px 0 17px;color:#063f29;font:950 clamp(2.45rem,4.5vw,3.9rem)/1.08 "Frank Ruhl Libre","Noto Serif Hebrew",serif}
+.ij-simple-copy p{margin:0;color:#5e7066;font-size:1rem;line-height:1.85}
+.ij-simple-copy>strong{max-width:660px;margin:26px auto 0;padding:16px 25px;display:block;border-block:1px solid #cdb873;color:#184b35;font:900 clamp(1.15rem,2vw,1.42rem)/1.55 "Frank Ruhl Libre",serif}
+.ij-simple-flow{max-width:900px;margin:45px auto 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);list-style:none;border:1px solid #d6c89f;background:#fff}
+.ij-simple-flow li{position:relative;min-height:94px;padding:19px 22px;display:flex;align-items:center;justify-content:center;gap:13px;color:#164732;text-align:center}
+.ij-simple-flow li+li{border-right:1px solid #ded3b6}
+.ij-simple-flow li:not(:last-child)::after{content:"‹";position:absolute;z-index:1;left:-11px;top:50%;width:22px;height:22px;display:grid;place-items:center;border:1px solid #c6a13a;border-radius:50%;color:#8e6909;background:#fbf8ef;font:900 1rem Arial;transform:translateY(-50%)}
+.ij-simple-flow b{width:34px;height:34px;flex:0 0 34px;display:grid;place-items:center;border:1px solid #b89124;border-radius:50%;color:#9a7410;font:900 .95rem "Frank Ruhl Libre",serif}
+.ij-simple-flow span{font-weight:900;line-height:1.45}
+.ij-simple-disclaimer{margin:23px auto 0;color:#7a867f;font-size:.72rem;text-align:center}
+
+.ij-questionnaire{padding:clamp(65px,7vw,95px) 0;background:#f2ecde;background-size:auto}
+.ij-questionnaire-head{margin-bottom:34px}
+.ij-questionnaire-head h2{font-size:clamp(2.45rem,4.25vw,3.6rem)}
+.ij-questionnaire-head p{margin-top:13px}
+.ij-questionnaire-head>small{display:block;margin-top:8px;color:#8f751f;font-size:.68rem;font-weight:800}
+.ij-questionnaire-shell{max-width:1080px;grid-template-columns:235px 1fr;gap:14px}
+.ij-questionnaire-rail{padding:34px 26px;border-radius:12px}
+.ij-questionnaire-rail::before{inset:8px;border-radius:7px}
+.ij-rail-title strong{font-size:1.55rem}
+.ij-rail-title p{font-size:.72rem}
+.ij-rail-emblem{margin-block:23px}
+.ij-questionnaire-rail ol{margin:25px 0;gap:18px}
+.ij-questionnaire-rail li:not(:last-child)::after{height:13px}
+.ij-rail-progress{margin-top:35px}
+.ij-questionnaire-form{min-height:610px;border-radius:12px}
+.ij-protocol-header{padding:20px 31px 18px}
+.ij-protocol-header>strong{font-size:1.38rem}
+.ij-protocol-header>div:last-child{margin-top:12px!important;padding-top:10px}
+.ij-form-step{padding:30px 38px 0}
+.ij-form-step-head h3{font-size:clamp(1.75rem,2.7vw,2.25rem)}
+.ij-form-step-head::after{font-size:1.7rem}
+.ij-form-actions{margin-inline:38px;padding-top:27px}
+.ij-honeypot{position:absolute!important;right:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+.ij-submit-area{margin-top:25px;padding:22px;border:1px solid #d4c69e;border-radius:10px;background:#f8f3e7;text-align:center}
+.ij-submit-area button{width:100%;min-height:49px;padding:0 24px;border:1px solid #a77d12;border-radius:7px;color:#fff;background:linear-gradient(135deg,#08734b,#003d27);font:900 .95rem inherit;cursor:pointer;box-shadow:0 10px 24px rgba(0,76,48,.15);transition:.2s}
+.ij-submit-area button:hover{transform:translateY(-1px);filter:brightness(1.05)}
+.ij-submit-area button:disabled{color:rgba(255,255,255,.76);cursor:wait;filter:saturate(.55);transform:none}
+.ij-submit-area small{display:block;margin-top:10px;color:#76827b;font-size:.68rem;line-height:1.6}
+.ij-submit-message{min-height:1.4em;margin:12px 0 0;color:#557063;font-size:.78rem;font-weight:700}
+.ij-submit-message.is-error{padding:10px 12px;border:1px solid #c77770;color:#7c2e29;background:#fff1ef}
+
+@media(max-width:900px){
+  .ij-questionnaire-shell{grid-template-columns:1fr}
+  .ij-questionnaire-rail{padding:29px 28px}
+  .ij-questionnaire-rail ol{grid-template-columns:repeat(3,1fr);margin-block:23px}
+  .ij-rail-progress{margin-top:25px}
+}
+@media(max-width:650px){
+  .ij-simple-intro{padding:58px 0 42px}.ij-simple-intro::before{inset:12px}
+  .ij-simple-copy{padding-inline:12px}.ij-simple-copy h2{font-size:2.45rem}.ij-simple-copy p{font-size:.92rem}.ij-simple-copy>strong{padding:14px 10px;font-size:1.12rem}
+  .ij-simple-flow{margin-top:32px;display:block;border-radius:10px;overflow:hidden}
+  .ij-simple-flow li{min-height:72px;justify-content:flex-start;text-align:right}.ij-simple-flow li+li{border-right:0;border-top:1px solid #ded3b6}.ij-simple-flow li:not(:last-child)::after{content:"⌄";left:calc(50% - 11px);top:auto;bottom:-12px;transform:none}
+  .ij-questionnaire{padding-top:58px}.ij-questionnaire-head{padding-inline:10px}.ij-questionnaire-head h2{font-size:2.35rem}
+  .ij-questionnaire-shell{gap:10px}.ij-questionnaire-rail{border-radius:10px}.ij-questionnaire-rail ol span{display:block;font-size:.67rem}.ij-questionnaire-rail li{display:flex;flex-direction:column;gap:7px;text-align:center}.ij-questionnaire-rail li:not(:last-child)::after{display:none}
+  .ij-questionnaire-form{border-radius:10px}.ij-protocol-header{grid-template-columns:1fr;padding:19px 16px 16px}.ij-protocol-header>small{grid-column:1;grid-row:auto;margin-top:8px;justify-self:start}.ij-protocol-header>div:last-child{grid-template-columns:1fr 1fr}.ij-protocol-header>div:last-child b:last-child{grid-column:1/-1}
+  .ij-form-step{padding:27px 17px 0}.ij-form-step-head::after{font-size:1.45rem}.ij-field-grid{grid-template-columns:1fr}.ij-form-actions{margin-inline:17px}
+  .ij-submit-area{padding:17px 13px}
+}
