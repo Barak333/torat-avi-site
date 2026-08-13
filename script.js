@@ -1680,7 +1680,7 @@ function initializeWeeklyQuestionAlert() {
     }
 
     const loader = document.createElement("script");
-      loader.src = "weekly-qna.js?v=20260803-offset-non-jew-debt-1";
+      loader.src = "weekly-qna.js?v=20260813-foreign-workers-store-1";
     loader.addEventListener("load", showWeeklyQuestionAlert);
     document.head.append(loader);
   });
