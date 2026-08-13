@@ -3125,3 +3125,67 @@ function initCourtPrincipleCards() {
 }
 
 initCourtPrincipleCards();
+
+function initInnerJudgeEmblemSpin() {
+  const links = document.querySelectorAll("[data-inner-judge-emblem]");
+  if (!links.length) return;
+
+  const spinDuration = 780;
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  links.forEach((link) => {
+    if (link.dataset.innerJudgeSpinBound === "true") return;
+    link.dataset.innerJudgeSpinBound = "true";
+    let cleanupTimer = 0;
+
+    const spin = () => {
+      if (reducedMotion.matches) return;
+      window.clearTimeout(cleanupTimer);
+      link.classList.remove("is-spinning");
+      void link.offsetWidth;
+      link.classList.add("is-spinning");
+      cleanupTimer = window.setTimeout(() => {
+        link.classList.remove("is-spinning");
+      }, spinDuration + 80);
+    };
+
+    link.addEventListener("pointerenter", (event) => {
+      if (event.pointerType !== "touch") spin();
+    });
+
+    link.addEventListener("pointerdown", (event) => {
+      if (event.pointerType === "touch") spin();
+    });
+
+    link.addEventListener("click", (event) => {
+      const modifiedClick = event.button !== 0
+        || event.metaKey
+        || event.ctrlKey
+        || event.shiftKey
+        || event.altKey
+        || link.target === "_blank";
+      if (event.defaultPrevented || modifiedClick) return;
+
+      const destination = new URL(link.href, window.location.href);
+      const current = new URL(window.location.href);
+      const isCurrentPage = destination.pathname === current.pathname
+        && destination.search === current.search
+        && destination.hash === current.hash;
+
+      if (reducedMotion.matches) {
+        if (isCurrentPage) event.preventDefault();
+        return;
+      }
+
+      event.preventDefault();
+      spin();
+      if (!isCurrentPage) {
+        window.setTimeout(() => {
+          window.location.assign(destination.href);
+        }, spinDuration);
+      }
+    });
+  });
+}
+
+initInnerJudgeEmblemSpin();
