@@ -29602,66 +29602,129 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   }
 }
 
-/* Primary navigation gateway - "הדיין הפנימי". */
-.main-nav .nav-inner-judge{
-  position:relative!important;
-  min-width:0!important;
-  min-height:38px!important;
-  margin-inline:3px!important;
-  padding:0 16px!important;
-  display:inline-flex!important;
+/* The Inner Judge sub-brand sits beside the Mevakshei Panecha logo. */
+.site-header .header-brand-cluster{
+  grid-area:brand!important;
+  display:flex!important;
   align-items:center!important;
-  justify-content:center!important;
+  justify-content:flex-start!important;
+  gap:9px!important;
+  direction:rtl!important;
+  z-index:5!important;
+}
+
+.site-header .header-brand-cluster .brand-logo-link{
+  position:static!important;
+  inset:auto!important;
+  margin:0!important;
+  transform:none!important;
+}
+
+.site-header .inner-judge-emblem-link{
+  position:relative!important;
+  width:52px!important;
+  height:52px!important;
+  min-width:52px!important;
+  flex:0 0 52px!important;
+  padding:3px!important;
+  display:grid!important;
+  place-items:center!important;
   overflow:hidden!important;
-  border:1px solid rgba(211,180,78,.68)!important;
-  border-radius:999px!important;
-  color:#fffdf3!important;
-  background:linear-gradient(145deg,#003821,#00623b 55%,#00361f)!important;
-  box-shadow:0 5px 14px rgba(0,54,31,.14),inset 0 1px 0 rgba(255,255,255,.16)!important;
-  font:800 .92rem/1 "Segoe UI",Arial,sans-serif!important;
-  letter-spacing:0!important;
-  text-shadow:0 1px 4px rgba(0,24,14,.38)!important;
+  border:1px solid rgba(184,142,32,.66)!important;
+  border-radius:50%!important;
+  background:#fffdf8!important;
+  box-shadow:0 7px 17px rgba(25,42,33,.12),0 0 0 3px rgba(212,180,75,.08),inset 0 1px 0 #fff!important;
+  text-decoration:none!important;
   transform:none!important;
-  transition:color .2s ease,background .2s ease,border-color .2s ease,box-shadow .2s ease!important;
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease!important;
 }
-.main-nav .nav-inner-judge::before{
-  content:""!important;
-  position:absolute!important;
-  right:22%!important;
-  bottom:4px!important;
-  left:22%!important;
-  top:auto!important;
-  width:auto!important;
-  height:1px!important;
-  border:0!important;
-  border-radius:999px!important;
-  background:linear-gradient(90deg,transparent,#e1c45f,transparent)!important;
-  opacity:.82!important;
-  transform:none!important;
-}
-.main-nav .nav-inner-judge::after{
+
+.site-header .inner-judge-emblem-link::before,
+.site-header .inner-judge-emblem-link::after{
   content:none!important;
+  display:none!important;
 }
-.main-nav .nav-inner-judge span{display:block!important;white-space:nowrap!important}
-.main-nav .nav-inner-judge:hover,
-.main-nav .nav-inner-judge[aria-current="page"]{
-  color:#fff!important;
-  border-color:rgba(232,204,107,.88)!important;
-  background:linear-gradient(145deg,#00482b,#087149 55%,#004328)!important;
-  filter:none!important;
-  transform:none!important;
-  text-shadow:0 1px 5px rgba(0,21,12,.48)!important;
-  box-shadow:0 6px 16px rgba(0,54,31,.2),inset 0 1px 0 rgba(255,255,255,.2)!important;
+
+.site-header .inner-judge-emblem-link img{
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  max-height:none!important;
+  display:block!important;
+  object-fit:cover!important;
+  border-radius:50%!important;
 }
+
+.site-header .inner-judge-emblem-link:hover,
+.site-header .inner-judge-emblem-link:focus-visible,
+.site-header .inner-judge-emblem-link[aria-current="page"]{
+  border-color:#c99b27!important;
+  box-shadow:0 9px 21px rgba(21,51,37,.16),0 0 0 4px rgba(213,179,70,.18),0 0 18px rgba(199,157,43,.15)!important;
+  transform:translateY(-1px)!important;
+}
+
+.site-header .inner-judge-emblem-link:focus-visible{
+  outline:2px solid #0a6542!important;
+  outline-offset:4px!important;
+}
+
+@media(min-width:1081px){
+  .site-header .header-brand-cluster{
+    position:absolute!important;
+    right:34px!important;
+    left:auto!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+  }
+}
+
+@media(min-width:901px) and (max-width:1080px){
+  .site-header .header-brand-cluster{
+    position:relative!important;
+    justify-self:center!important;
+  }
+}
+
 @media(max-width:900px){
-  .main-nav .nav-inner-judge{
-    width:100%!important;
-    min-height:46px!important;
-    margin:0!important;
-    font-size:1rem!important;
-    color:#fffdf3!important;
-    border:1px solid rgba(211,180,78,.58)!important;
-    border-bottom:1px solid rgba(211,180,78,.58)!important;
+  .site-header .header-brand-cluster{
+    position:absolute!important;
+    left:53%!important;
+    right:auto!important;
+    top:50%!important;
+    gap:6px!important;
+    transform:translate(-50%,-50%)!important;
+  }
+
+  .site-header .header-brand-cluster .brand-logo-panel:has(.brand-logo-img[src$="mevakshei-panecha-nav-logo.webp"]){
+    width:138px!important;
+    height:48px!important;
+  }
+
+  .site-header .inner-judge-emblem-link{
+    width:44px!important;
+    height:44px!important;
+    min-width:44px!important;
+    flex-basis:44px!important;
+    padding:2px!important;
+  }
+}
+
+@media(max-width:430px){
+  .site-header .header-brand-cluster{
+    left:55%!important;
+    gap:5px!important;
+  }
+
+  .site-header .header-brand-cluster .brand-logo-panel:has(.brand-logo-img[src$="mevakshei-panecha-nav-logo.webp"]){
+    width:112px!important;
+    height:44px!important;
+  }
+
+  .site-header .inner-judge-emblem-link{
+    width:40px!important;
+    height:40px!important;
+    min-width:40px!important;
+    flex-basis:40px!important;
   }
 }
 

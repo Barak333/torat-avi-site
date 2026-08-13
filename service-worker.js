@@ -1,4 +1,4 @@
-const CACHE_NAME = "torat-avi-pwa-v140";
+const CACHE_NAME = "torat-avi-pwa-v141";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -22,6 +22,7 @@ const CORE_ASSETS = [
   "./assets/favicon-512.png",
   "./assets/torat-avi-logo-transparent.webp",
   "./assets/mevakshei-panecha-nav-logo.webp",
+  "./assets/inner-judge-emblem.webp",
   "./assets/site-emerald-banner-texture.webp",
   "./assets/psakim-hero-premium-bg.jpg",
   "./assets/court-gavel.png",
