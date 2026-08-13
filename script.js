@@ -155,8 +155,28 @@ function hydrateAnnouncementHebrewDate() {
 hydrateAnnouncementHebrewDate();
 
 if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./service-worker.js").catch(() => {});
+  window.addEventListener("load", async () => {
+    const isLocalPreview = location.hostname === "127.0.0.1" || location.hostname === "localhost";
+    if (!isLocalPreview) {
+      navigator.serviceWorker.register("./service-worker.js").catch(() => {});
+      return;
+    }
+
+    try {
+      const registrations = await navigator.serviceWorker.getRegistrations();
+      await Promise.all(registrations.map((registration) => registration.unregister()));
+      if ("caches" in window) {
+        const cacheNames = await caches.keys();
+        await Promise.all(cacheNames.map((cacheName) => caches.delete(cacheName)));
+      }
+      const cleanupKey = "toratAviLocalCacheCleanup";
+      if (navigator.serviceWorker.controller && sessionStorage.getItem(cleanupKey) !== "done") {
+        sessionStorage.setItem(cleanupKey, "done");
+        location.reload();
+      }
+    } catch (_error) {
+      // Local preview should remain usable even when browser storage is unavailable.
+    }
   });
 }
 
@@ -3125,67 +3145,3 @@ function initCourtPrincipleCards() {
 }
 
 initCourtPrincipleCards();
-
-function initInnerJudgeEmblemSpin() {
-  const links = document.querySelectorAll("[data-inner-judge-emblem]");
-  if (!links.length) return;
-
-  const spinDuration = 980;
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-  links.forEach((link) => {
-    if (link.dataset.innerJudgeSpinBound === "true") return;
-    link.dataset.innerJudgeSpinBound = "true";
-    let cleanupTimer = 0;
-
-    const spin = () => {
-      if (reducedMotion.matches) return;
-      window.clearTimeout(cleanupTimer);
-      link.classList.remove("is-spinning");
-      void link.offsetWidth;
-      link.classList.add("is-spinning");
-      cleanupTimer = window.setTimeout(() => {
-        link.classList.remove("is-spinning");
-      }, spinDuration + 80);
-    };
-
-    link.addEventListener("pointerenter", (event) => {
-      if (event.pointerType !== "touch") spin();
-    });
-
-    link.addEventListener("pointerdown", (event) => {
-      if (event.pointerType === "touch") spin();
-    });
-
-    link.addEventListener("click", (event) => {
-      const modifiedClick = event.button !== 0
-        || event.metaKey
-        || event.ctrlKey
-        || event.shiftKey
-        || event.altKey
-        || link.target === "_blank";
-      if (event.defaultPrevented || modifiedClick) return;
-
-      const destination = new URL(link.href, window.location.href);
-      const current = new URL(window.location.href);
-      const isCurrentPage = destination.pathname === current.pathname
-        && destination.search === current.search
-        && destination.hash === current.hash;
-
-      if (reducedMotion.matches) {
-        if (isCurrentPage) event.preventDefault();
-        return;
-      }
-
-      event.preventDefault();
-      spin();
-      if (!isCurrentPage) {
-        window.setTimeout(() => {
-          window.location.assign(destination.href);
-        }, spinDuration);
-      }
-    });
-  });
-}
-
-initInnerJudgeEmblemSpin();

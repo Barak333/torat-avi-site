@@ -21858,6 +21858,381 @@ body:has(.about-rabbi-hero){
   }
 }
 
+/* Keep the definition section title centered despite legacy page styles. */
+.ij-definition .ij-definition-section-title{
+  width:min(100%,780px);
+  max-width:780px;
+  margin:0 auto clamp(38px,4.5vw,54px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  color:#9a7618;
+  font:950 clamp(1.55rem,2.8vw,2.15rem)/1.2 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  text-align:center;
+  transform:none;
+}
+@media(max-width:760px){
+  .ij-definition .ij-definition-section-title{
+    margin-right:auto;
+    margin-bottom:34px;
+    margin-left:auto;
+    gap:12px;
+    font-size:1.5rem;
+  }
+}
+
+/* Inner Judge - section 5: personal deliverable. */
+.ij-deliverable{
+  --ij-title-ornament:#e1c35e;
+  position:relative;
+  padding:clamp(64px,6.5vw,88px) 0 clamp(58px,6vw,78px);
+  overflow:hidden;
+  color:#fff;
+  background-color:#003d27;
+  background-image:var(--emerald-texture);
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  border-block:1px solid rgba(213,180,72,.5);
+}
+.ij-deliverable::before{
+  content:"";
+  position:absolute;
+  inset:25px;
+  border:1px solid rgba(231,207,121,.1);
+  pointer-events:none;
+}
+.ij-deliverable .section-inner{position:relative;z-index:1;max-width:1080px}
+.ij-deliverable-title{
+  max-width:760px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  color:#f0d36d;
+  font:950 clamp(1.7rem,3vw,2.35rem)/1.2 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  text-align:center;
+  text-shadow:0 7px 22px rgba(0,0,0,.22);
+}
+.ij-deliverable-title::before,
+.ij-deliverable-title::after{
+  content:"";
+  width:clamp(56px,8vw,108px);
+  height:16px;
+  flex:0 1 108px;
+  background:
+    radial-gradient(10px 7px at 50% 100%,transparent 68%,var(--ij-title-ornament) 72% 80%,transparent 84%) 0 0/20px 8px repeat-x,
+    radial-gradient(10px 7px at 50% 0,transparent 68%,var(--ij-title-ornament) 72% 80%,transparent 84%) 10px 8px/20px 8px repeat-x;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent);
+  filter:drop-shadow(0 2px 3px rgba(108,77,7,.15));
+}
+.ij-deliverable-title::before{transform:scaleX(-1)}
+.ij-deliverable-lead{
+  max-width:710px;
+  margin:13px auto 0;
+  color:rgba(255,255,255,.72);
+  font-size:.95rem;
+  font-weight:650;
+  line-height:1.75;
+  text-align:center;
+  text-wrap:balance;
+}
+.ij-deliverable-steps{
+  position:relative;
+  margin:clamp(38px,4vw,50px) 0 0;
+  padding:0;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  list-style:none;
+  border-top:1px solid rgba(229,201,101,.42);
+  border-bottom:1px solid rgba(229,201,101,.42);
+}
+.ij-deliverable-steps li{
+  position:relative;
+  min-height:235px;
+  padding:34px 34px 30px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+.ij-deliverable-steps li+li{border-right:1px solid rgba(255,255,255,.13)}
+.ij-deliverable-steps b{
+  width:43px;
+  height:43px;
+  margin-bottom:15px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(234,204,99,.78);
+  border-radius:50%;
+  color:#f0d36d;
+  background:rgba(0,30,17,.34);
+  box-shadow:inset 0 0 0 5px rgba(255,255,255,.025),0 8px 20px rgba(0,0,0,.12);
+  font:900 1rem "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+}
+.ij-deliverable-steps small{
+  color:rgba(255,255,255,.44);
+  font-size:.59rem;
+  font-weight:850;
+  letter-spacing:.08em;
+}
+.ij-deliverable-steps strong{
+  margin-top:5px;
+  color:#fffef7;
+  font:900 clamp(1.15rem,1.7vw,1.38rem)/1.4 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+}
+.ij-deliverable-steps p{
+  max-width:260px;
+  margin:11px auto 0;
+  color:rgba(255,255,255,.65);
+  font-size:.79rem;
+  font-weight:600;
+  line-height:1.72;
+}
+.ij-deliverable-metrics{
+  max-width:900px;
+  margin:25px auto 0;
+  border-bottom:1px solid rgba(229,201,101,.36);
+}
+.ij-deliverable-metrics summary{
+  min-height:58px;
+  padding:11px 4px;
+  display:grid;
+  grid-template-columns:1fr auto 28px;
+  gap:14px;
+  align-items:center;
+  color:#fff;
+  cursor:pointer;
+  list-style:none;
+}
+.ij-deliverable-metrics summary::-webkit-details-marker{display:none}
+.ij-deliverable-metrics summary span{font:900 1rem "Frank Ruhl Libre","Noto Serif Hebrew",serif}
+.ij-deliverable-metrics summary small{color:#e5ca6b;font-size:.65rem;font-weight:850}
+.ij-deliverable-metrics summary i{
+  width:24px;
+  height:24px;
+  position:relative;
+  display:block;
+  border:1px solid rgba(229,201,101,.55);
+  border-radius:50%;
+}
+.ij-deliverable-metrics summary i::before,
+.ij-deliverable-metrics summary i::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:9px;
+  height:1px;
+  background:#e5ca6b;
+  transform:translate(-50%,-50%);
+  transition:transform .2s ease;
+}
+.ij-deliverable-metrics summary i::after{transform:translate(-50%,-50%) rotate(90deg)}
+.ij-deliverable-metrics[open] summary i::after{transform:translate(-50%,-50%) rotate(0)}
+.ij-deliverable-metrics ul{
+  margin:0;
+  padding:20px 0 24px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px 24px;
+  border-top:1px solid rgba(255,255,255,.1);
+  list-style:none;
+}
+.ij-deliverable-metrics li{
+  position:relative;
+  padding-right:14px;
+  color:rgba(255,255,255,.76);
+  font-size:.72rem;
+  font-weight:750;
+  line-height:1.45;
+}
+.ij-deliverable-metrics li::before{
+  content:"";
+  position:absolute;
+  top:.58em;
+  right:0;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#d9ba55;
+}
+.ij-deliverable-metrics>p{
+  margin:0;
+  padding:0 0 22px;
+  color:rgba(255,255,255,.5);
+  font-size:.65rem;
+  line-height:1.65;
+  text-align:center;
+}
+@media(max-width:780px){
+  .ij-deliverable{padding:57px 0 58px}
+  .ij-deliverable::before{inset:14px}
+  .ij-deliverable-steps{grid-template-columns:1fr;max-width:650px;margin-inline:auto}
+  .ij-deliverable-steps li{min-height:0;padding:25px 24px}
+  .ij-deliverable-steps li+li{border-right:0;border-top:1px solid rgba(255,255,255,.13)}
+  .ij-deliverable-steps p{max-width:470px}
+  .ij-deliverable-metrics ul{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:520px){
+  .ij-deliverable .section-inner{width:min(100% - 34px,1080px)}
+  .ij-deliverable-title{gap:12px;font-size:1.55rem}
+  .ij-deliverable-title::before,
+  .ij-deliverable-title::after{width:52px;flex-basis:52px}
+  .ij-deliverable-lead{font-size:.87rem}
+  .ij-deliverable-steps{margin-top:31px}
+  .ij-deliverable-steps li{padding:23px 15px}
+  .ij-deliverable-steps strong{font-size:1.2rem}
+  .ij-deliverable-metrics summary{grid-template-columns:1fr 27px;gap:10px}
+  .ij-deliverable-metrics summary small{grid-column:1;grid-row:2}
+  .ij-deliverable-metrics summary i{grid-column:2;grid-row:1 / span 2}
+  .ij-deliverable-metrics ul{grid-template-columns:1fr;gap:9px;padding-right:5px;padding-left:5px}
+}
+
+/* Inner Judge - section 6: the questionnaire as the page focus. */
+.ij-questionnaire{
+  --ij-title-ornament:#c29a30;
+  position:relative;
+  padding:clamp(68px,7vw,92px) 0 clamp(72px,7vw,96px);
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 0,rgba(194,154,48,.1),transparent 24%),
+    linear-gradient(90deg,rgba(0,84,51,.028) 1px,transparent 1px),
+    #f6f0e3;
+  background-size:auto,92px 100%,auto;
+  border-top:0;
+}
+.ij-questionnaire::before{
+  content:"";
+  position:absolute;
+  top:24px;
+  right:24px;
+  bottom:24px;
+  left:24px;
+  border:1px solid rgba(159,120,18,.1);
+  pointer-events:none;
+}
+.ij-questionnaire>.section-inner{position:relative;z-index:1;max-width:1160px}
+.ij-questionnaire-head{
+  max-width:900px;
+  margin:0 auto clamp(38px,4.5vw,52px);
+  padding:0;
+  text-align:center;
+}
+.ij-questionnaire-head::before{content:none!important;display:none!important}
+.ij-questionnaire-head h2{
+  max-width:880px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  color:#073e29;
+  font:950 clamp(1.85rem,3.5vw,2.75rem)/1.18 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  text-align:center;
+  text-wrap:balance;
+  white-space:nowrap;
+}
+.ij-questionnaire-head h2::before,
+.ij-questionnaire-head h2::after{
+  content:"";
+  width:clamp(56px,8vw,108px);
+  height:16px;
+  flex:0 1 108px;
+  background:
+    radial-gradient(10px 7px at 50% 100%,transparent 68%,var(--ij-title-ornament) 72% 80%,transparent 84%) 0 0/20px 8px repeat-x,
+    radial-gradient(10px 7px at 50% 0,transparent 68%,var(--ij-title-ornament) 72% 80%,transparent 84%) 10px 8px/20px 8px repeat-x;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent);
+  filter:drop-shadow(0 2px 3px rgba(108,77,7,.12));
+}
+.ij-questionnaire-head h2::before{transform:scaleX(-1)}
+.ij-questionnaire-head p{
+  max-width:720px;
+  margin:16px auto 0;
+  color:#65746c;
+  font-size:.95rem;
+  font-weight:650;
+  line-height:1.78;
+  text-wrap:balance;
+}
+.ij-questionnaire-head p strong{color:#174a36;font-weight:950}
+.ij-questionnaire-head>small{
+  min-height:46px;
+  width:min(100%,610px);
+  margin:18px auto 0;
+  padding:9px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  border:0;
+  border-top:1px solid rgba(170,130,24,.35);
+  border-bottom:1px solid rgba(170,130,24,.35);
+  border-radius:0;
+  color:#264d3b;
+  background:linear-gradient(90deg,transparent,rgba(255,253,247,.86) 18%,rgba(255,253,247,.86) 82%,transparent);
+  box-shadow:none;
+  font:800 .76rem/1.55 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  letter-spacing:.01em;
+}
+.ij-questionnaire-head>small b{
+  min-height:26px;
+  padding:0 0 0 13px;
+  display:inline-flex;
+  align-items:center;
+  border-left:1px solid rgba(174,134,29,.46);
+  border-radius:0;
+  color:#9a7412;
+  background:transparent;
+  font-size:.68rem;
+  font-weight:950;
+  letter-spacing:.09em;
+}
+.ij-questionnaire-head>small span{color:#234b39;font-weight:850}
+.ij-questionnaire-shell{
+  max-width:1080px;
+  gap:15px;
+  filter:drop-shadow(0 27px 45px rgba(54,40,7,.1));
+}
+.ij-questionnaire-rail{
+  background-color:#003d27;
+  background-image:linear-gradient(145deg,rgba(0,26,14,.1),rgba(0,38,22,.36)),var(--emerald-texture);
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+.ij-questionnaire-form{
+  border-color:#cbb97f;
+  box-shadow:0 17px 42px rgba(54,40,7,.07);
+}
+@media(max-width:900px){
+  .ij-questionnaire>.section-inner{max-width:760px}
+  .ij-questionnaire-shell{max-width:720px}
+}
+@media(max-width:650px){
+  .ij-questionnaire{padding:57px 0 62px;background-size:auto,52px 100%,auto}
+  .ij-questionnaire::before{inset:13px}
+  .ij-questionnaire>.section-inner{width:min(100% - 30px,760px)}
+  .ij-questionnaire-head{margin-bottom:34px;padding:0 7px}
+  .ij-questionnaire-head h2{gap:7px;font-size:clamp(1.08rem,4.6vw,1.4rem);line-height:1.25}
+  .ij-questionnaire-head h2::before,
+  .ij-questionnaire-head h2::after{width:27px;flex-basis:27px}
+  .ij-questionnaire-head p{font-size:.87rem}
+  .ij-questionnaire-head>small{width:100%;padding:9px 7px;gap:8px;font-size:.68rem}
+  .ij-questionnaire-head>small b{padding:0 0 0 9px;font-size:.62rem}
+  .ij-questionnaire-shell{filter:drop-shadow(0 18px 30px rgba(54,40,7,.08))}
+}
+@media(max-width:390px){
+  .ij-questionnaire-head h2{font-size:1.04rem}
+  .ij-questionnaire-head h2::before,
+  .ij-questionnaire-head h2::after{width:21px;flex-basis:21px}
+  .ij-questionnaire-head>small{font-size:.63rem}
+}
+
 /* WhatsApp icon: official brand green */
 .whatsapp-community-section .whatsapp-icon,
 .whatsapp-community-card .whatsapp-icon,
@@ -29043,9 +29418,11 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   width:clamp(148px,13vw,188px)!important;
   height:54px!important;
   overflow:visible!important;
-  border-radius:999px!important;
-  background:rgba(255,253,248,.9)!important;
-  border:1px solid rgba(214,183,93,.42)!important;
+  border:0!important;
+  border-radius:0!important;
+  outline:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
 }
 
 .site-header .brand-logo-img[src$="mevakshei-panecha-nav-logo.webp"]{
@@ -29605,11 +29982,8 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 /* The Inner Judge sub-brand sits beside the Mevakshei Panecha logo. */
 .site-header .header-brand-cluster{
   grid-area:brand!important;
-  display:flex!important;
-  align-items:center!important;
-  justify-content:flex-start!important;
-  gap:9px!important;
-  direction:ltr!important;
+  display:block!important;
+  pointer-events:none!important;
   z-index:5!important;
 }
 
@@ -29618,7 +29992,13 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   inset:auto!important;
   margin:0!important;
   order:2!important;
+  pointer-events:auto!important;
   transform:none!important;
+}
+
+.site-header .header-brand-cluster .brand-logo-img{
+  transform:scaleX(1.08) scaleY(1.04)!important;
+  transform-origin:center!important;
 }
 
 .site-header .inner-judge-emblem-link{
@@ -29636,9 +30016,20 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   background:transparent!important;
   box-shadow:none!important;
   text-decoration:none!important;
-  transform-origin:center!important;
-  will-change:transform!important;
+  pointer-events:auto!important;
   transition:filter .2s ease!important;
+}
+
+.site-header .inner-judge-emblem-link,
+.site-header .inner-judge-emblem-link:hover,
+.site-header .inner-judge-emblem-link:active,
+.site-header .inner-judge-emblem-link:focus,
+.site-header .inner-judge-emblem-link:focus-visible,
+.site-header .inner-judge-emblem-link[aria-current="page"]{
+  margin:0!important;
+  translate:none!important;
+  rotate:none!important;
+  scale:none!important;
 }
 
 .site-header .inner-judge-emblem-link::before,
@@ -29669,13 +30060,13 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 .site-header .inner-judge-emblem-arc{
   position:absolute!important;
   left:50%!important;
-  top:-14px!important;
-  width:132px!important;
-  height:72px!important;
+  top:50%!important;
+  width:112px!important;
+  height:82px!important;
   max-width:none!important;
   overflow:visible!important;
   pointer-events:none!important;
-  transform:translateX(-50%)!important;
+  transform:translate(-50%,-50%)!important;
 }
 
 .site-header .inner-judge-emblem-arc text{
@@ -29684,9 +30075,9 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   stroke-width:.7px!important;
   paint-order:stroke fill!important;
   font-family:"Frank Ruhl Libre","Noto Serif Hebrew",serif!important;
-  font-size:8.3px!important;
+  font-size:13.4px!important;
   font-weight:900!important;
-  letter-spacing:.08px!important;
+  letter-spacing:.12px!important;
 }
 
 .site-header .inner-judge-emblem-link:hover,
@@ -29707,22 +30098,39 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   outline-offset:4px!important;
 }
 
-@keyframes innerJudgeEmblemSpin{
-  0%{transform:rotate(0deg) scale(1)}
-  25%{transform:rotate(90deg) scale(1.06)}
-  50%{transform:rotate(180deg) scale(1.1)}
-  75%{transform:rotate(270deg) scale(1.06)}
-  100%{transform:rotate(360deg) scale(1)}
-}
-
-.site-header .inner-judge-emblem-link.is-spinning{
-  animation:innerJudgeEmblemSpin .98s cubic-bezier(.35,.05,.16,1) both!important;
-}
-
 @media(min-width:1081px){
   .site-header .header-brand-cluster{
     position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    transform:none!important;
+  }
+
+  .site-header .header-brand-cluster .brand-logo-link{
+    position:absolute!important;
     right:34px!important;
+    left:auto!important;
+    top:50%!important;
+    width:clamp(190px,16.5vw,250px)!important;
+    min-width:clamp(190px,16.5vw,250px)!important;
+    max-width:clamp(190px,16.5vw,250px)!important;
+    transform:translateY(-50%)!important;
+  }
+
+  .site-header .header-brand-cluster .brand-logo-panel:has(.brand-logo-img[src$="mevakshei-panecha-nav-logo.webp"]){
+    width:100%!important;
+    height:58px!important;
+  }
+
+  .site-header .inner-judge-emblem-link,
+  .site-header .inner-judge-emblem-link:hover,
+  .site-header .inner-judge-emblem-link:active,
+  .site-header .inner-judge-emblem-link:focus,
+  .site-header .inner-judge-emblem-link:focus-visible,
+  .site-header .inner-judge-emblem-link[aria-current="page"]{
+    position:absolute!important;
+    right:calc(52px + clamp(190px,16.5vw,250px))!important;
     left:auto!important;
     top:50%!important;
     transform:translateY(-50%)!important;
@@ -29743,11 +30151,21 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 @media(max-width:900px){
   .site-header .header-brand-cluster{
     position:absolute!important;
-    left:53%!important;
-    right:auto!important;
+    inset:0!important;
+    width:100%!important;
+    height:74px!important;
+    transform:none!important;
+  }
+
+  .site-header .header-brand-cluster .brand-logo-link{
+    position:absolute!important;
+    right:70px!important;
+    left:auto!important;
     top:50%!important;
-    gap:6px!important;
-    transform:translate(-50%,-50%)!important;
+    width:138px!important;
+    min-width:138px!important;
+    max-width:138px!important;
+    transform:translateY(-50%)!important;
   }
 
   .site-header .header-brand-cluster .brand-logo-panel:has(.brand-logo-img[src$="mevakshei-panecha-nav-logo.webp"]){
@@ -29755,33 +30173,49 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
     height:48px!important;
   }
 
-  .site-header .inner-judge-emblem-link{
+  .site-header .header-brand-cluster .brand-logo-img{
+    transform:scaleX(1.06) scaleY(1.02)!important;
+  }
+
+  .site-header .inner-judge-emblem-link,
+  .site-header .inner-judge-emblem-link:hover,
+  .site-header .inner-judge-emblem-link:active,
+  .site-header .inner-judge-emblem-link:focus,
+  .site-header .inner-judge-emblem-link:focus-visible,
+  .site-header .inner-judge-emblem-link[aria-current="page"]{
+    position:absolute!important;
+    right:226px!important;
+    left:auto!important;
+    top:50%!important;
     width:90px!important;
     height:49px!important;
     min-width:90px!important;
     flex-basis:90px!important;
+    transform:translateY(-50%)!important;
   }
 
   .site-header .inner-judge-emblem-link img{
-    width:68px!important;
-    height:68px!important;
+    width:70px!important;
+    height:70px!important;
   }
 
   .site-header .inner-judge-emblem-arc{
-    top:-12px!important;
-    width:108px!important;
-    height:59px!important;
+    top:50%!important;
+    width:90px!important;
+    height:68px!important;
   }
 
   .site-header .inner-judge-emblem-arc text{
-    font-size:8.1px!important;
+    font-size:17.5px!important;
   }
 }
 
 @media(max-width:430px){
-  .site-header .header-brand-cluster{
-    left:64%!important;
-    gap:4px!important;
+  .site-header .header-brand-cluster .brand-logo-link{
+    right:72px!important;
+    width:96px!important;
+    min-width:96px!important;
+    max-width:96px!important;
   }
 
   .site-header .header-brand-cluster .brand-logo-panel:has(.brand-logo-img[src$="mevakshei-panecha-nav-logo.webp"]){
@@ -29789,32 +30223,33 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
     height:42px!important;
   }
 
-  .site-header .inner-judge-emblem-link{
-    width:66px!important;
+  .site-header .inner-judge-emblem-link,
+  .site-header .inner-judge-emblem-link:hover,
+  .site-header .inner-judge-emblem-link:active,
+  .site-header .inner-judge-emblem-link:focus,
+  .site-header .inner-judge-emblem-link:focus-visible,
+  .site-header .inner-judge-emblem-link[aria-current="page"]{
+    right:188px!important;
+    width:74px!important;
     height:43px!important;
-    min-width:66px!important;
-    flex-basis:66px!important;
+    min-width:74px!important;
+    flex-basis:74px!important;
+    transform:translateY(-50%)!important;
   }
 
   .site-header .inner-judge-emblem-link img{
-    width:56px!important;
-    height:56px!important;
+    width:60px!important;
+    height:60px!important;
   }
 
   .site-header .inner-judge-emblem-arc{
-    top:-10px!important;
-    width:88px!important;
-    height:48px!important;
+    top:50%!important;
+    width:80px!important;
+    height:60px!important;
   }
 
   .site-header .inner-judge-emblem-arc text{
-    font-size:8px!important;
-  }
-}
-
-@media(prefers-reduced-motion:reduce){
-  .site-header .inner-judge-emblem-link.is-spinning{
-    animation:none!important;
+    font-size:20px!important;
   }
 }
 
@@ -30753,4 +31188,859 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   .ij-questionnaire-form{border-radius:10px}.ij-protocol-header{grid-template-columns:1fr;padding:19px 16px 16px}.ij-protocol-header>small{grid-column:1;grid-row:auto;margin-top:8px;justify-self:start}.ij-protocol-header>div:last-child{grid-template-columns:1fr 1fr}.ij-protocol-header>div:last-child b:last-child{grid-column:1/-1}
   .ij-form-step{padding:27px 17px 0}.ij-form-step-head::after{font-size:1.45rem}.ij-field-grid{grid-template-columns:1fr}.ij-form-actions{margin-inline:17px}
   .ij-submit-area{padding:17px 13px}
+}
+
+/* Inner Judge - section 1: completed hero banner. */
+.ij-court-hero{
+  min-height:clamp(480px,61vh,560px);
+  padding:64px 0 56px;
+  isolation:isolate;
+  border-bottom:2px solid #c6a43c;
+  box-shadow:inset 0 -1px 0 rgba(255,244,190,.28);
+}
+.ij-court-hero::before{
+  background:
+    radial-gradient(circle at 50% 35%,rgba(218,185,74,.12),transparent 33%),
+    linear-gradient(90deg,rgba(0,24,13,.42),rgba(0,31,18,.22) 38%,rgba(0,31,18,.22) 62%,rgba(0,24,13,.46))!important;
+}
+.ij-court-hero::after{
+  inset:auto 0 0;
+  height:140px;
+  background:linear-gradient(0deg,rgba(0,23,13,.78),transparent);
+}
+.ij-court-hero .section-inner{
+  width:min(100% - 36px,980px);
+  max-width:980px;
+  gap:10px;
+}
+.ij-court-file{
+  min-height:31px;
+  padding:6px 18px;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid rgba(236,209,112,.56);
+  border-radius:999px;
+  color:#f0d77c;
+  background:rgba(0,27,16,.62);
+  box-shadow:0 9px 24px rgba(0,0,0,.2),inset 0 0 0 1px rgba(255,255,255,.04);
+  font-size:.7rem;
+  font-weight:900;
+  letter-spacing:.035em;
+  line-height:1;
+}
+.ij-court-file i{
+  width:4px;
+  height:4px;
+  display:block;
+  border-radius:50%;
+  background:#e3c35c;
+  box-shadow:0 0 9px rgba(227,195,92,.8);
+}
+.ij-court-hero .article-hero-title{
+  margin-top:8px;
+  color:#d4b649;
+  font-size:clamp(3.5rem,6.4vw,5.65rem);
+  line-height:.92;
+  text-shadow:0 1px 0 #f7e69d,0 5px 0 rgba(63,44,5,.44),0 15px 34px rgba(0,0,0,.46),0 0 26px rgba(221,202,98,.17);
+}
+.ij-hero-thesis{
+  max-width:840px;
+  margin:10px auto 0;
+  color:#fffdf5;
+  font:800 clamp(1.42rem,2.55vw,2.15rem)/1.32 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  text-wrap:balance;
+  text-shadow:0 6px 25px rgba(0,0,0,.55);
+}
+.ij-hero-thesis span,
+.ij-hero-thesis strong{display:block}
+.ij-hero-thesis strong{
+  margin-top:2px;
+  color:#f0d46d;
+  font-weight:950;
+}
+.ij-hero-rule{
+  width:min(300px,55vw);
+  height:1px;
+  position:relative;
+  margin:7px 0 5px;
+  background:linear-gradient(90deg,transparent,rgba(229,199,94,.75),transparent);
+}
+.ij-hero-rule::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:7px;
+  height:7px;
+  border:1px solid #e0c15b;
+  background:#073921;
+  transform:translate(-50%,-50%) rotate(45deg);
+  box-shadow:0 0 0 4px rgba(5,49,29,.7),0 0 13px rgba(224,193,91,.42);
+}
+.ij-court-hero .article-hero-subtitle{
+  max-width:760px;
+  margin-top:0!important;
+  color:rgba(255,255,255,.88)!important;
+  font-size:clamp(.96rem,1.55vw,1.12rem);
+  font-weight:650;
+  line-height:1.68;
+  text-wrap:balance;
+}
+.ij-court-hero-cta{
+  min-width:280px;
+  min-height:48px;
+  margin-top:10px;
+  padding:0 29px;
+  border:1px solid #efd678;
+  border-radius:7px;
+  color:#123722;
+  background:linear-gradient(145deg,#f5e59b 0%,#d5b84e 55%,#bea03a 100%);
+  box-shadow:0 11px 28px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.68);
+  font-size:.93rem;
+  font-weight:950;
+  transition:transform .22s ease,filter .22s ease,box-shadow .22s ease;
+}
+.ij-court-hero-cta:hover,
+.ij-court-hero-cta:focus-visible{
+  transform:translateY(-2px);
+  filter:brightness(1.06);
+  box-shadow:0 15px 34px rgba(0,0,0,.32),0 0 0 3px rgba(236,207,105,.18),inset 0 1px 0 rgba(255,255,255,.72);
+}
+.ij-court-hero-cta:focus-visible{outline:2px solid #fff3b5;outline-offset:3px}
+.ij-hero-privacy{
+  margin-top:1px;
+  color:rgba(255,255,255,.65);
+  font-size:.68rem;
+  font-weight:650;
+}
+@media(max-width:650px){
+  .ij-court-hero{
+    min-height:535px;
+    padding:48px 0 42px;
+    background-position:center center!important;
+  }
+  .ij-court-hero .section-inner{width:min(100% - 28px,520px);gap:9px}
+  .ij-court-file{min-height:29px;padding:6px 13px;font-size:.61rem;gap:8px}
+  .ij-court-hero .article-hero-title{margin-top:6px;font-size:clamp(3rem,15vw,4.2rem)}
+  .ij-hero-thesis{max-width:360px;margin-top:9px;font-size:clamp(1.22rem,6.15vw,1.52rem);line-height:1.35}
+  .ij-hero-rule{width:min(220px,58vw);margin-block:6px 4px}
+  .ij-court-hero .article-hero-subtitle{max-width:390px;font-size:.9rem;line-height:1.62}
+  .ij-court-hero-cta{width:min(100%,340px);min-width:0;min-height:48px;margin-top:8px;padding:0 18px;font-size:.86rem;line-height:1.3;text-align:center}
+  .ij-hero-privacy{max-width:330px;font-size:.61rem;line-height:1.45}
+}
+@media(max-width:390px){
+  .ij-court-hero{min-height:520px;padding-top:42px}
+  .ij-court-hero .article-hero-title{font-size:2.85rem}
+  .ij-hero-thesis{font-size:1.18rem}
+  .ij-court-hero .article-hero-subtitle{font-size:.84rem}
+  .ij-court-hero-cta{font-size:.8rem}
+}
+
+/* Inner Judge - section 2: founder statement. */
+.ij-founder-statement{
+  position:relative;
+  padding:clamp(66px,7vw,96px) 0;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 14% 50%,rgba(0,83,51,.065),transparent 27%),
+    radial-gradient(circle at 86% 42%,rgba(205,171,61,.08),transparent 25%),
+    linear-gradient(180deg,#fffdf7 0%,#f9f4e7 100%);
+}
+.ij-founder-statement::before,
+.ij-founder-statement::after{
+  content:"";
+  position:absolute;
+  right:7%;
+  left:7%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(182,142,35,.72) 18%,rgba(182,142,35,.72) 82%,transparent);
+}
+.ij-founder-statement::before{top:0}
+.ij-founder-statement::after{bottom:0}
+.ij-founder-statement .section-inner{max-width:1210px}
+.ij-founder-section-title,
+.ij-definition-section-title{
+  max-width:780px;
+  margin:0 auto clamp(38px,4.5vw,54px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  color:#9a7618;
+  font:950 clamp(1.55rem,2.8vw,2.15rem)/1.2 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  text-align:center;
+}
+.ij-founder-section-title::before,
+.ij-founder-section-title::after,
+.ij-definition-section-title::before,
+.ij-definition-section-title::after{
+  content:"";
+  width:clamp(45px,8vw,105px);
+  height:1px;
+  background:linear-gradient(90deg,transparent,#c29a30);
+}
+.ij-founder-section-title::before,
+.ij-definition-section-title::before{transform:scaleX(-1)}
+.ij-founder-statement-shell{
+  position:relative;
+  display:grid;
+  grid-template-columns:190px minmax(0,1fr);
+  gap:clamp(38px,5vw,72px);
+  align-items:center;
+}
+.ij-founder-seal-column{
+  min-height:245px;
+  padding-left:clamp(30px,4vw,55px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:19px;
+  border-left:1px solid rgba(176,137,31,.34);
+}
+.ij-founder-seal-ring{
+  width:158px;
+  height:158px;
+  position:relative;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(183,143,36,.46);
+  border-radius:50%;
+  background:rgba(255,255,255,.7);
+  box-shadow:0 18px 42px rgba(17,65,44,.09),0 0 0 7px rgba(255,253,246,.82),0 0 0 8px rgba(183,143,36,.14);
+}
+.ij-founder-seal-ring::before{
+  content:"";
+  position:absolute;
+  inset:-15px;
+  border:1px solid rgba(182,141,33,.13);
+  border-radius:50%;
+}
+.ij-founder-seal-ring img{
+  width:142px;
+  height:142px;
+  display:block;
+  border-radius:50%;
+  object-fit:cover;
+  mix-blend-mode:multiply;
+  opacity:.88;
+}
+.ij-founder-seal-column>small{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  color:#8f711d;
+  font-size:.62rem;
+  font-weight:950;
+  letter-spacing:.12em;
+}
+.ij-founder-seal-column>small i{
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:#b5912f;
+}
+.ij-founder-statement-copy{
+  position:relative;
+  max-width:890px;
+  padding:12px 12px 10px 34px;
+}
+.ij-founder-eyebrow{
+  margin:0;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  color:#9a7618;
+  font-size:.72rem;
+  font-weight:950;
+  letter-spacing:.11em;
+}
+.ij-founder-eyebrow::after{
+  content:"";
+  width:70px;
+  height:1px;
+  background:linear-gradient(90deg,rgba(188,148,43,.15),#b9932e);
+}
+.ij-founder-quote{
+  position:relative;
+  margin:0;
+  padding:0;
+}
+.ij-founder-quote p{
+  position:relative;
+  z-index:1;
+  margin:0;
+  color:#103c2b;
+  font:800 clamp(1.45rem,2.15vw,2rem)/1.68 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  text-wrap:pretty;
+}
+.ij-founder-quote mark{
+  position:relative;
+  color:#9a7210;
+  background:transparent;
+  font-weight:950;
+  white-space:nowrap;
+}
+.ij-founder-quote mark::after{
+  content:"";
+  position:absolute;
+  right:0;
+  bottom:-3px;
+  width:100%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#c5a13e 18%,#c5a13e 82%,transparent);
+}
+.ij-founder-quote-mark{
+  position:absolute;
+  z-index:0;
+  color:#c19a34;
+  font:900 5.8rem/1 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  opacity:.48;
+  pointer-events:none;
+}
+.ij-founder-quote-mark-open{top:-48px;right:-41px}
+.ij-founder-quote-mark-close{left:-20px;bottom:4px;transform:rotate(180deg)}
+.ij-founder-quote footer{
+  margin-top:28px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.ij-founder-quote footer>i{
+  width:62px;
+  height:1px;
+  background:linear-gradient(90deg,rgba(181,141,35,.16),#b58d23);
+}
+.ij-founder-quote footer>span{display:grid;gap:2px}
+.ij-founder-quote cite{
+  color:#06442e;
+  font:900 1.08rem "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  font-style:normal;
+}
+.ij-founder-quote footer small{
+  color:#79857e;
+  font-size:.67rem;
+  font-weight:750;
+}
+@media(max-width:760px){
+  .ij-founder-statement{padding:54px 0 58px}
+  .ij-founder-statement::before,
+  .ij-founder-statement::after{right:4%;left:4%}
+  .ij-founder-statement-shell{grid-template-columns:1fr;gap:28px}
+  .ij-founder-section-title,
+  .ij-definition-section-title{margin-bottom:34px;gap:12px;font-size:1.5rem}
+  .ij-founder-section-title::before,
+  .ij-founder-section-title::after,
+  .ij-definition-section-title::before,
+  .ij-definition-section-title::after{width:37px}
+  .ij-founder-seal-column{
+    min-height:0;
+    padding:0 0 26px;
+    border-left:0;
+    border-bottom:1px solid rgba(176,137,31,.26);
+  }
+  .ij-founder-seal-ring{width:102px;height:102px;box-shadow:0 13px 31px rgba(17,65,44,.08),0 0 0 5px rgba(255,253,246,.82),0 0 0 6px rgba(183,143,36,.14)}
+  .ij-founder-seal-ring::before{inset:-10px}
+  .ij-founder-seal-ring img{width:92px;height:92px}
+  .ij-founder-seal-column>small{font-size:.56rem}
+  .ij-founder-statement-copy{max-width:620px;margin:auto;padding:0 16px;text-align:center}
+  .ij-founder-eyebrow{justify-content:center;font-size:.66rem}
+  .ij-founder-eyebrow::before,
+  .ij-founder-eyebrow::after{content:"";width:37px;height:1px;background:linear-gradient(90deg,transparent,#b9932e)}
+  .ij-founder-eyebrow::before{transform:scaleX(-1)}
+  .ij-founder-quote{margin-top:18px}
+  .ij-founder-quote p{font-size:clamp(1.1rem,4.65vw,1.32rem);line-height:1.78}
+  .ij-founder-quote mark{white-space:normal}
+  .ij-founder-quote-mark{font-size:4.2rem;opacity:.42}
+  .ij-founder-quote-mark-open{top:-35px;right:-10px}
+  .ij-founder-quote-mark-close{left:-7px;bottom:7px}
+  .ij-founder-quote footer{margin-top:25px;justify-content:center;gap:12px}
+  .ij-founder-quote footer>i{width:38px}
+  .ij-founder-quote footer>span{text-align:right}
+}
+@media(max-width:390px){
+  .ij-founder-statement-copy{padding-inline:11px}
+  .ij-founder-eyebrow::before,
+  .ij-founder-eyebrow::after{width:27px}
+  .ij-founder-quote p{font-size:1.08rem}
+  .ij-founder-quote footer>i{width:26px}
+}
+
+/* Inner Judge - section 3: recognition before interpretation. */
+.ij-recognition{
+  position:relative;
+  padding:clamp(58px,6vw,78px) 0 clamp(52px,5.5vw,70px);
+  overflow:hidden;
+  color:#fff;
+  background-color:#003d27;
+  background-image:var(--emerald-texture);
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  border-bottom:1px solid rgba(211,177,67,.58);
+}
+.ij-recognition::before{
+  content:"";
+  position:absolute;
+  top:28px;
+  right:28px;
+  bottom:28px;
+  left:28px;
+  border:1px solid rgba(229,203,112,.1);
+  pointer-events:none;
+}
+.ij-recognition::after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:17%;
+  width:1px;
+  background:linear-gradient(180deg,transparent,rgba(219,188,79,.2),transparent);
+  pointer-events:none;
+}
+.ij-recognition .section-inner{position:relative;z-index:1;max-width:1060px}
+.ij-recognition-pretitle{
+  max-width:760px;
+  margin:0 auto clamp(30px,3.5vw,42px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  color:#f0d36d;
+  font:950 clamp(1.55rem,2.8vw,2.15rem)/1.2 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  text-align:center;
+  text-shadow:0 7px 22px rgba(0,0,0,.22);
+}
+.ij-recognition-pretitle::before,
+.ij-recognition-pretitle::after{
+  content:"";
+  width:clamp(45px,8vw,105px);
+  height:1px;
+  background:linear-gradient(90deg,transparent,#d8b64f);
+}
+.ij-recognition-pretitle::before{transform:scaleX(-1)}
+.ij-recognition-layout{
+  display:grid;
+  grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr);
+  gap:clamp(40px,5vw,64px);
+  align-items:center;
+}
+.ij-recognition-head{
+  width:100%;
+  justify-self:center;
+  text-align:center;
+}
+.ij-recognition-head>span{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:#e6c75e;
+  font-size:.68rem;
+  font-weight:950;
+  letter-spacing:.13em;
+}
+.ij-recognition-head>span::before{
+  content:"";
+  width:34px;
+  height:1px;
+  background:#d1ad43;
+}
+.ij-recognition-head h2{
+  margin:10px 0 17px;
+  color:#fffdf4;
+  font:950 clamp(2.65rem,5vw,4.5rem)/1.03 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  text-shadow:0 10px 28px rgba(0,0,0,.22);
+}
+.ij-recognition-head p{
+  max-width:410px;
+  margin:0 auto;
+  color:rgba(255,255,255,.72);
+  font-size:1rem;
+  font-weight:650;
+  line-height:1.85;
+}
+.ij-recognition-records{
+  margin:0;
+  padding:0;
+  list-style:none;
+  border-top:1px solid rgba(226,197,93,.38);
+  border-bottom:1px solid rgba(226,197,93,.38);
+}
+.ij-recognition-records li{
+  min-height:94px;
+  padding:14px 5px;
+  display:grid;
+  grid-template-columns:42px minmax(150px,.8fr) minmax(230px,1.2fr);
+  gap:23px;
+  align-items:center;
+}
+.ij-recognition-records li+li{border-top:1px solid rgba(255,255,255,.12)}
+.ij-recognition-index{
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(227,196,89,.7);
+  border-radius:50%;
+  color:#efd77c;
+  background:rgba(0,25,14,.24);
+  font:900 .84rem "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  box-shadow:inset 0 0 0 4px rgba(255,255,255,.025);
+}
+.ij-recognition-event,
+.ij-recognition-verdict{display:grid;gap:6px}
+.ij-recognition-event small,
+.ij-recognition-verdict small{
+  color:rgba(255,255,255,.48);
+  font-size:.62rem;
+  font-weight:850;
+  letter-spacing:.06em;
+}
+.ij-recognition-event strong{
+  color:#fff;
+  font-size:.96rem;
+  font-weight:850;
+  line-height:1.5;
+}
+.ij-recognition-verdict{
+  min-height:56px;
+  padding-right:25px;
+  align-content:center;
+  border-right:1px solid rgba(224,193,86,.28);
+}
+.ij-recognition-verdict b{
+  color:#efd36d;
+  font:900 clamp(1.16rem,1.8vw,1.42rem)/1.4 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+}
+.ij-recognition-closing{
+  max-width:940px;
+  position:relative;
+  margin:32px auto 0;
+  padding:22px 24px 0;
+  color:rgba(255,255,255,.78);
+  font:750 clamp(1.08rem,2vw,1.32rem)/1.7 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  text-align:center;
+  text-wrap:balance;
+}
+.ij-recognition-closing::before{
+  content:"";
+  position:absolute;
+  top:0;
+  right:11%;
+  left:11%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(221,190,83,.6),transparent);
+}
+.ij-recognition-closing strong{color:#f0d36b;font-weight:950}
+@media(max-width:820px){
+  .ij-recognition{padding:58px 0 57px}
+  .ij-recognition::before{inset:14px}
+  .ij-recognition::after{display:none}
+  .ij-recognition-layout{grid-template-columns:1fr;gap:38px}
+  .ij-recognition-head{max-width:590px;margin:auto;text-align:center}
+  .ij-recognition-head p{max-width:520px;margin:auto;font-size:.93rem}
+  .ij-recognition-records{max-width:680px;width:100%;margin:auto}
+}
+@media(max-width:560px){
+  .ij-recognition{padding:52px 0 53px}
+  .ij-recognition .section-inner{width:min(100% - 34px,1060px)}
+  .ij-recognition-pretitle{margin-bottom:35px;gap:12px;font-size:1.5rem}
+  .ij-recognition-pretitle::before,
+  .ij-recognition-pretitle::after{width:37px}
+  .ij-recognition-head h2{font-size:2.75rem}
+  .ij-recognition-records li{
+    min-height:0;
+    padding:21px 3px;
+    grid-template-columns:36px 1fr;
+    gap:8px 14px;
+  }
+  .ij-recognition-index{grid-row:1 / span 2;width:31px;height:31px}
+  .ij-recognition-event{grid-column:2}
+  .ij-recognition-verdict{grid-column:2;min-height:0;padding:11px 0 0;border-right:0;border-top:1px solid rgba(224,193,86,.2)}
+  .ij-recognition-event strong{font-size:.9rem}
+  .ij-recognition-verdict b{font-size:1.17rem}
+  .ij-recognition-closing{margin-top:36px;padding:24px 4px 0;font-size:1.04rem}
+}
+
+/* Inner Judge - section 4: definition and core principles. */
+.ij-definition{
+  position:relative;
+  padding:clamp(72px,7vw,98px) 0 clamp(64px,6vw,86px);
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 11% 20%,rgba(0,96,59,.055),transparent 27%),
+    radial-gradient(circle at 88% 82%,rgba(201,166,56,.075),transparent 28%),
+    linear-gradient(180deg,#fffdf8 0%,#f8f3e6 100%);
+}
+.ij-definition::before{
+  content:"";
+  position:absolute;
+  inset:24px;
+  border:1px solid rgba(162,126,26,.1);
+  pointer-events:none;
+}
+.ij-definition .section-inner{position:relative;z-index:1;max-width:1100px}
+.ij-definition-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1.08fr) minmax(330px,.92fr);
+  gap:clamp(48px,7vw,88px);
+  align-items:center;
+}
+.ij-definition-head>span{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#9d7817;
+  font-size:.7rem;
+  font-weight:950;
+  letter-spacing:.12em;
+}
+.ij-definition-head>span::after{
+  content:"";
+  width:62px;
+  height:1px;
+  background:linear-gradient(90deg,rgba(185,146,39,.12),#b99227);
+}
+.ij-definition-head h3{
+  max-width:620px;
+  margin:11px 0 18px;
+  color:#073d29;
+  font:950 clamp(2.45rem,4.5vw,4rem)/1.08 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  text-wrap:balance;
+}
+.ij-definition-head>p{
+  max-width:610px;
+  margin:0;
+  color:#5e7067;
+  font-size:1rem;
+  font-weight:650;
+  line-height:1.85;
+}
+.ij-definition-head>strong{
+  max-width:620px;
+  margin-top:20px;
+  padding-right:20px;
+  display:block;
+  border-right:2px solid #c4a03b;
+  color:#244c3a;
+  font:850 1rem/1.75 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+}
+.ij-definition-principles{
+  margin:0;
+  padding:0;
+  list-style:none;
+  border-top:1px solid rgba(165,126,21,.38);
+  border-bottom:1px solid rgba(165,126,21,.38);
+}
+.ij-definition-principles li{
+  min-height:92px;
+  padding:18px 8px;
+  display:grid;
+  grid-template-columns:42px 1fr;
+  gap:18px;
+  align-items:center;
+}
+.ij-definition-principles li+li{border-top:1px solid rgba(13,67,43,.13)}
+.ij-definition-principles b{
+  width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(177,136,29,.56);
+  border-radius:50%;
+  color:#956f0b;
+  background:#fffdf7;
+  box-shadow:0 6px 16px rgba(77,57,5,.07),inset 0 0 0 4px #f8f2df;
+  font:900 .88rem "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+}
+.ij-definition-principles span{
+  color:#0d4932;
+  font:900 clamp(1.15rem,1.9vw,1.43rem)/1.5 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+}
+.ij-definition-principles span i{
+  width:24px;
+  height:1px;
+  margin:0 8px;
+  display:inline-block;
+  vertical-align:middle;
+  background:#c29b32;
+}
+.ij-definition-voices{
+  margin-top:clamp(40px,5vw,58px);
+  padding:24px 0;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:clamp(30px,5vw,64px);
+  align-items:center;
+  border-top:1px solid rgba(166,128,25,.27);
+  border-bottom:1px solid rgba(166,128,25,.27);
+}
+.ij-definition-voices>strong{
+  color:#8d6b11;
+  font:900 1.02rem "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  white-space:nowrap;
+}
+.ij-definition-voices ul{
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:11px 19px;
+  list-style:none;
+}
+.ij-definition-voices li{
+  position:relative;
+  color:#315847;
+  font-size:.78rem;
+  font-weight:850;
+  white-space:nowrap;
+}
+.ij-definition-voices li:not(:last-child)::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:-12px;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:#c19b32;
+  transform:translateY(-50%);
+}
+@media(max-width:820px){
+  .ij-definition{padding:64px 0 62px}
+  .ij-definition::before{inset:14px}
+  .ij-definition-layout{grid-template-columns:1fr;gap:42px}
+  .ij-definition-head{max-width:680px;margin:auto;text-align:center}
+  .ij-definition-head>span{justify-content:center}
+  .ij-definition-head>span::before{content:"";width:45px;height:1px;background:linear-gradient(90deg,transparent,#b99227)}
+  .ij-definition-head>span::after{width:45px}
+  .ij-definition-head h3,
+  .ij-definition-head>p,
+  .ij-definition-head>strong{margin-right:auto;margin-left:auto}
+  .ij-definition-head>strong{padding:16px 9px 0;border-right:0;border-top:1px solid rgba(183,143,35,.38)}
+  .ij-definition-principles{max-width:650px;width:100%;margin:auto}
+  .ij-definition-voices{grid-template-columns:1fr;gap:18px;text-align:center}
+  .ij-definition-voices ul{justify-content:center}
+}
+@media(max-width:520px){
+  .ij-definition{padding:56px 0 55px}
+  .ij-definition .section-inner{width:min(100% - 34px,1100px)}
+  .ij-definition-head h3{font-size:2.45rem}
+  .ij-definition-head>p{font-size:.92rem}
+  .ij-definition-head>strong{font-size:.93rem}
+  .ij-definition-principles li{min-height:78px;padding:15px 4px;grid-template-columns:37px 1fr;gap:13px}
+  .ij-definition-principles b{width:32px;height:32px}
+  .ij-definition-principles span{font-size:1.08rem}
+  .ij-definition-principles span i{width:17px;margin-inline:5px}
+  .ij-definition-voices{margin-top:34px;padding:21px 4px}
+  .ij-definition-voices>strong{white-space:normal}
+  .ij-definition-voices ul{gap:10px 20px}
+}
+
+/* Inner Judge - curled gold ornaments for the three section titles. */
+.ij-recognition-pretitle{--ij-title-ornament:#e1c35e}
+.ij-founder-section-title,
+.ij-definition-section-title{--ij-title-ornament:#c29a30}
+.ij-recognition-pretitle::before,
+.ij-recognition-pretitle::after,
+.ij-founder-section-title::before,
+.ij-founder-section-title::after,
+.ij-definition-section-title::before,
+.ij-definition-section-title::after{
+  width:clamp(56px,8vw,108px);
+  height:16px;
+  flex:0 1 108px;
+  background:
+    radial-gradient(10px 7px at 50% 100%,transparent 68%,var(--ij-title-ornament) 72% 80%,transparent 84%) 0 0/20px 8px repeat-x,
+    radial-gradient(10px 7px at 50% 0,transparent 68%,var(--ij-title-ornament) 72% 80%,transparent 84%) 10px 8px/20px 8px repeat-x;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent);
+  filter:drop-shadow(0 2px 3px rgba(108,77,7,.15));
+}
+@media(max-width:560px){
+  .ij-recognition-pretitle::before,
+  .ij-recognition-pretitle::after,
+  .ij-founder-section-title::before,
+  .ij-founder-section-title::after,
+  .ij-definition-section-title::before,
+  .ij-definition-section-title::after{
+    width:52px;
+    flex-basis:52px;
+  }
+}
+
+/* Final questionnaire heading and confidentiality treatment. */
+.inner-judge-page .ij-questionnaire-head h2{
+  max-width:940px;
+  margin-inline:auto;
+  font-size:clamp(1.85rem,3.5vw,2.75rem);
+  white-space:nowrap;
+}
+.inner-judge-page .ij-questionnaire-head>small{
+  min-height:46px;
+  width:min(100%,610px);
+  margin:18px auto 0;
+  padding:9px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  border:0;
+  border-top:1px solid rgba(170,130,24,.35);
+  border-bottom:1px solid rgba(170,130,24,.35);
+  border-radius:0;
+  color:#264d3b;
+  background:linear-gradient(90deg,transparent,rgba(255,253,247,.9) 18%,rgba(255,253,247,.9) 82%,transparent);
+  box-shadow:none;
+  font:800 .76rem/1.55 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  letter-spacing:.01em;
+}
+.inner-judge-page .ij-questionnaire-head>small b{
+  min-height:34px;
+  padding:0 0 0 13px;
+  display:inline-flex;
+  align-items:center;
+  border-left:1px solid rgba(174,134,29,.46);
+  color:#9a7412;
+  background:transparent;
+  font:950 1.12rem/1 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  font-weight:950;
+  letter-spacing:.09em;
+}
+.inner-judge-page .ij-questionnaire-head>small span{color:#234b39;font-weight:850}
+@media(max-width:650px){
+  .inner-judge-page .ij-questionnaire-head h2{
+    gap:7px;
+    font-size:clamp(1.08rem,4.6vw,1.4rem);
+  }
+  .inner-judge-page .ij-questionnaire-head h2::before,
+  .inner-judge-page .ij-questionnaire-head h2::after{
+    width:27px;
+    flex-basis:27px;
+  }
+  .inner-judge-page .ij-questionnaire-head>small{
+    width:100%;
+    padding:9px 7px;
+    gap:8px;
+    font-size:.68rem;
+  }
+  .inner-judge-page .ij-questionnaire-head>small b{min-height:32px;padding-left:9px;font-size:1rem}
+}
+@media(max-width:390px){
+  .inner-judge-page .ij-questionnaire-head h2{font-size:1.04rem}
+  .inner-judge-page .ij-questionnaire-head h2::before,
+  .inner-judge-page .ij-questionnaire-head h2::after{
+    width:21px;
+    flex-basis:21px;
+  }
+  .inner-judge-page .ij-questionnaire-head>small{font-size:.63rem}
+}
+@media(max-width:350px){
+  .inner-judge-page .ij-questionnaire-head h2{gap:4px;font-size:.88rem}
+  .inner-judge-page .ij-questionnaire-head h2::before,
+  .inner-judge-page .ij-questionnaire-head h2::after{width:16px;flex-basis:16px}
 }
