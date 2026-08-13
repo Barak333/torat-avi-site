@@ -29711,20 +29711,20 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 
 @media(max-width:430px){
   .site-header .header-brand-cluster{
-    left:55%!important;
-    gap:5px!important;
+    left:62%!important;
+    gap:4px!important;
   }
 
   .site-header .header-brand-cluster .brand-logo-panel:has(.brand-logo-img[src$="mevakshei-panecha-nav-logo.webp"]){
-    width:112px!important;
-    height:44px!important;
+    width:96px!important;
+    height:42px!important;
   }
 
   .site-header .inner-judge-emblem-link{
-    width:40px!important;
-    height:40px!important;
-    min-width:40px!important;
-    flex-basis:40px!important;
+    width:38px!important;
+    height:38px!important;
+    min-width:38px!important;
+    flex-basis:38px!important;
   }
 }
 
