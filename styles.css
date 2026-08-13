@@ -29605,88 +29605,61 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 /* Primary navigation gateway - "הדיין הפנימי". */
 .main-nav .nav-inner-judge{
   position:relative!important;
-  isolation:isolate!important;
-  min-width:164px!important;
-  min-height:52px!important;
-  margin-inline:8px!important;
-  padding:7px 25px!important;
+  min-width:0!important;
+  min-height:38px!important;
+  margin-inline:3px!important;
+  padding:0 16px!important;
   display:inline-flex!important;
-  flex-direction:column!important;
   align-items:center!important;
   justify-content:center!important;
-  gap:2px!important;
-  overflow:visible!important;
-  border:1px solid #d7b953!important;
-  border-radius:5px!important;
-  color:#fffdf2!important;
-  background:
-    linear-gradient(115deg,transparent 0 12%,rgba(255,255,255,.08) 31%,transparent 48%),
-    radial-gradient(circle at 50% -20%,rgba(246,219,119,.2),transparent 56%),
-    linear-gradient(145deg,#002b19,#00623a 52%,#002b1a)!important;
-  box-shadow:
-    0 10px 22px rgba(0,48,27,.25),
-    0 0 0 3px rgba(218,187,79,.1),
-    inset 0 1px 0 rgba(255,255,255,.18),
-    inset 0 -10px 22px rgba(0,20,11,.14)!important;
-  font:900 1.08rem/1 "Frank Ruhl Libre","Noto Serif Hebrew",serif!important;
-  letter-spacing:.025em!important;
-  text-shadow:0 2px 10px rgba(0,0,0,.42)!important;
-  transform:translateY(0)!important;
-  transition:transform .22s ease,box-shadow .22s ease,filter .22s ease!important;
+  overflow:hidden!important;
+  border:1px solid rgba(177,139,47,.5)!important;
+  border-radius:999px!important;
+  color:#073d27!important;
+  background:linear-gradient(180deg,#fffefb,#faf5e7)!important;
+  box-shadow:0 4px 12px rgba(65,48,8,.06),inset 0 1px 0 #fff!important;
+  font:800 .92rem/1 "Segoe UI",Arial,sans-serif!important;
+  letter-spacing:0!important;
+  text-shadow:none!important;
+  transform:none!important;
+  transition:color .2s ease,background .2s ease,border-color .2s ease,box-shadow .2s ease!important;
 }
 .main-nav .nav-inner-judge::before{
   content:""!important;
   position:absolute!important;
-  inset:4px!important;
-  z-index:-1!important;
+  right:22%!important;
+  bottom:4px!important;
+  left:22%!important;
+  top:auto!important;
   width:auto!important;
-  height:auto!important;
-  border:1px solid rgba(247,224,142,.34)!important;
-  border-radius:2px!important;
-  background:transparent!important;
-  opacity:1!important;
+  height:1px!important;
+  border:0!important;
+  border-radius:999px!important;
+  background:linear-gradient(90deg,transparent,#b58b24,transparent)!important;
+  opacity:.7!important;
   transform:none!important;
 }
 .main-nav .nav-inner-judge::after{
-  content:"◆"!important;
-  position:absolute!important;
-  right:50%!important;
-  bottom:-7px!important;
-  left:auto!important;
-  width:18px!important;
-  height:13px!important;
-  border:0!important;
-  border-radius:0!important;
-  color:#e7cb69!important;
-  background:#fff!important;
-  font-size:.5rem!important;
-  line-height:13px!important;
-  text-align:center!important;
-  text-shadow:0 0 7px rgba(214,178,56,.7)!important;
-  box-shadow:none!important;
-  opacity:1!important;
-  transform:translateX(50%)!important;
+  content:none!important;
 }
 .main-nav .nav-inner-judge span{display:block!important;white-space:nowrap!important}
 .main-nav .nav-inner-judge:hover,
 .main-nav .nav-inner-judge[aria-current="page"]{
-  color:#fff!important;
-  background:
-    linear-gradient(115deg,transparent 0 12%,rgba(255,255,255,.11) 31%,transparent 48%),
-    radial-gradient(circle at 50% -20%,rgba(246,219,119,.25),transparent 56%),
-    linear-gradient(145deg,#002b19,#087044 52%,#002b1a)!important;
-  filter:brightness(1.12)!important;
-  transform:translateY(-2px)!important;
-  box-shadow:0 14px 30px rgba(0,47,26,.3),0 0 20px rgba(222,190,77,.25),inset 0 1px 0 rgba(255,255,255,.2)!important;
+  color:#005633!important;
+  border-color:rgba(163,122,19,.75)!important;
+  background:linear-gradient(180deg,#fff,#f5ecd0)!important;
+  filter:none!important;
+  transform:none!important;
+  box-shadow:0 6px 16px rgba(65,48,8,.1),inset 0 1px 0 #fff!important;
 }
 @media(max-width:900px){
   .main-nav .nav-inner-judge{
-    order:-1!important;
     width:100%!important;
-    min-height:58px!important;
-    margin:4px 0 10px!important;
-    font-size:1.14rem!important;
-    border-bottom:1px solid rgba(222,190,77,.86)!important;
+    min-height:46px!important;
+    margin:0!important;
+    font-size:1rem!important;
+    border:1px solid rgba(177,139,47,.36)!important;
+    border-bottom:1px solid rgba(177,139,47,.36)!important;
   }
 }
 
