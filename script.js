@@ -3130,7 +3130,7 @@ function initInnerJudgeEmblemSpin() {
   const links = document.querySelectorAll("[data-inner-judge-emblem]");
   if (!links.length) return;
 
-  const spinDuration = 780;
+  const spinDuration = 980;
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   links.forEach((link) => {
