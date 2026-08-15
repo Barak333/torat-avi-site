@@ -11,22 +11,43 @@
   const progressLabel = shell.querySelector("[data-ij-progress-label]");
   const submitButton = form.querySelector("[data-ij-submit]");
   const submitMessage = form.querySelector("[data-ij-submit-message]");
+  const clearDraftButton = shell.querySelector("[data-ij-clear-draft]");
   const storageKey = "toratAviInnerJudgeDraft";
   const caseKey = "toratAviInnerJudgeCase";
   const successKey = "toratAviInnerJudgeSuccess";
+  const draftMaxAgeMs = 7 * 24 * 60 * 60 * 1000;
   const hebrewSteps = ["א", "ב", "ג"];
   const stageNames = ["פרטים אישיים", "שאלון העומק", "אישור ושליחה"];
   let current = 1;
   let deliveryReady = false;
 
+  function createSubmissionToken() {
+    if (window.crypto?.randomUUID) return window.crypto.randomUUID();
+    const randomPart = Math.random().toString(36).slice(2);
+    return `${Date.now().toString(36)}-${randomPart}`;
+  }
+
   function getCaseDetails() {
     try {
       const saved = JSON.parse(localStorage.getItem(caseKey) || "null");
-      if (saved?.number && saved?.date) return saved;
+      if (saved?.number && saved?.date) {
+        if (!saved.token) {
+          saved.token = createSubmissionToken();
+          localStorage.setItem(caseKey, JSON.stringify(saved));
+        }
+        return saved;
+      }
     } catch (_) {}
     const now = new Date();
     const dayCode = `${String(now.getFullYear()).slice(-2)}${String(now.getMonth() + 1).padStart(2, "0")}${String(now.getDate()).padStart(2, "0")}`;
-    const details = { number: `${dayCode}-${String(Math.floor(1000 + Math.random() * 9000))}`, date: now.toLocaleDateString("he-IL") };
+    const randomCode = window.crypto?.getRandomValues
+      ? window.crypto.getRandomValues(new Uint32Array(1))[0].toString(36).toUpperCase().padStart(7, "0").slice(-7)
+      : Math.random().toString(36).slice(2, 9).toUpperCase().padEnd(7, "0");
+    const details = {
+      number: `${dayCode}-${randomCode}`,
+      date: now.toLocaleDateString("he-IL"),
+      token: createSubmissionToken()
+    };
     localStorage.setItem(caseKey, JSON.stringify(details));
     return details;
   }
@@ -38,15 +59,24 @@
   if (signatureDate) signatureDate.value = caseDetails.date;
 
   function saveDraft() {
-    const values = {};
-    new FormData(form).forEach((value, key) => { values[key] = value; });
-    form.querySelectorAll('input[type="checkbox"]').forEach((input) => { values[input.name] = input.checked; });
-    localStorage.setItem(storageKey, JSON.stringify(values));
+    try {
+      const values = {};
+      new FormData(form).forEach((value, key) => { values[key] = value; });
+      form.querySelectorAll('input[type="checkbox"]').forEach((input) => { values[input.name] = input.checked; });
+      localStorage.setItem(storageKey, JSON.stringify({ savedAt: Date.now(), values }));
+    } catch (_) {
+      // The questionnaire remains usable when local storage is unavailable.
+    }
   }
 
   function restoreDraft() {
     try {
-      const values = JSON.parse(localStorage.getItem(storageKey) || "{}");
+      const savedDraft = JSON.parse(localStorage.getItem(storageKey) || "null");
+      if (!savedDraft?.savedAt || !savedDraft?.values || Date.now() - savedDraft.savedAt > draftMaxAgeMs) {
+        localStorage.removeItem(storageKey);
+        return;
+      }
+      const values = savedDraft.values;
       Object.entries(values).forEach(([name, value]) => {
         const field = form.elements.namedItem(name);
         if (!field) return;
@@ -54,6 +84,21 @@
         else field.value = value;
       });
     } catch (_) {}
+  }
+
+  if (clearDraftButton) {
+    clearDraftButton.addEventListener("click", () => {
+      if (!window.confirm("למחוק מהמכשיר את כל התשובות שנשמרו בטיוטה?")) return;
+      try {
+        localStorage.removeItem(storageKey);
+        localStorage.removeItem(caseKey);
+      } catch (_) {}
+      form.reset();
+      if (signatureDate) signatureDate.value = new Date().toLocaleDateString("he-IL");
+      showStep(1);
+      clearDraftButton.textContent = "הטיוטה נמחקה מהמכשיר";
+      clearDraftButton.disabled = true;
+    });
   }
 
   function showStep(number, shouldScroll = true) {
@@ -111,6 +156,7 @@
     values.privacyConsent = form.elements.namedItem("privacyConsent")?.checked === true;
     values.caseNumber = caseDetails.number;
     values.openDate = caseDetails.date;
+    values.submissionToken = caseDetails.token;
 
     try {
       const response = await fetch("/api/inner-judge-submit", {

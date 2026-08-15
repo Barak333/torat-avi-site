@@ -1,6 +1,10 @@
 const RABBI_EMAIL = process.env.INNER_JUDGE_RABBI_EMAIL || "Hraraviby@gmail.com";
 const LOGO_URL = process.env.INNER_JUDGE_LOGO_URL || "https://www.torat-avi.co.il/assets/mevakshei-panecha-nav-logo.webp";
 const SITE_URL = "https://www.torat-avi.co.il";
+const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
+const RATE_LIMIT_MAX_ATTEMPTS = 5;
+const rateLimitStore = globalThis.__innerJudgeRateLimitStore || new Map();
+globalThis.__innerJudgeRateLimitStore = rateLimitStore;
 
 const fields = [
   ["fullName", "שם מלא"],
@@ -54,6 +58,26 @@ function escapeHtml(value = "") {
 
 function cleanValue(value, maxLength) {
   return String(value ?? "").replace(/\u0000/g, "").trim().slice(0, maxLength);
+}
+
+function isRateLimited(request) {
+  const now = Date.now();
+  const forwardedFor = request.headers.get("x-forwarded-for") || request.headers.get("x-real-ip") || "unknown";
+  const clientKey = forwardedFor.split(",")[0].trim().slice(0, 128);
+  const current = rateLimitStore.get(clientKey);
+
+  if (!current || now - current.startedAt >= RATE_LIMIT_WINDOW_MS) {
+    rateLimitStore.set(clientKey, { startedAt: now, attempts: 1 });
+    return false;
+  }
+
+  current.attempts += 1;
+  if (rateLimitStore.size > 1000) {
+    for (const [key, value] of rateLimitStore) {
+      if (now - value.startedAt >= RATE_LIMIT_WINDOW_MS) rateLimitStore.delete(key);
+    }
+  }
+  return current.attempts > RATE_LIMIT_MAX_ATTEMPTS;
 }
 
 function emailShell(content, previewText = "") {
@@ -129,7 +153,7 @@ function plainRabbi(data, submittedAt) {
 export default {
   async fetch(request) {
     const apiKey = process.env.RESEND_API_KEY;
-    const configuredFrom = process.env.INNER_JUDGE_FROM_EMAIL || "inner-judge@torat-avi.co.il";
+    const configuredFrom = process.env.INNER_JUDGE_FROM_EMAIL || "inner-judge@send.torat-avi.co.il";
     if (request.method === "GET") return json({ configured: Boolean(apiKey) });
     if (request.method !== "POST") return json({ ok: false, message: "Method not allowed" }, 405);
 
@@ -153,11 +177,13 @@ export default {
     }
 
     if (cleanValue(body.website, 200)) return json({ ok: true, caseNumber: "", submittedAt: "" });
+    if (isRateLimited(request)) return json({ ok: false, message: "נשלחו מספר בקשות בזמן קצר. יש להמתין כרבע שעה ולנסות שוב." }, 429);
 
     const data = {};
     for (const [key] of fields) data[key] = cleanValue(body[key], shortFields.has(key) ? 250 : 8000);
     data.caseNumber = cleanValue(body.caseNumber, 40).replace(/[^0-9A-Za-z-]/g, "") || `IJ-${Date.now()}`;
     data.openDate = cleanValue(body.openDate, 40);
+    const submissionToken = cleanValue(body.submissionToken, 80).replace(/[^0-9A-Za-z-]/g, "") || crypto.randomUUID();
 
     const missing = requiredFields.filter((key) => !data[key]);
     if (missing.length || body.privacyConsent !== true) return json({ ok: false, message: "יש להשלים את כל שדות החובה ולאשר את מדיניות הפרטיות." }, 400);
@@ -199,7 +225,7 @@ export default {
       headers: {
         Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
-        "Idempotency-Key": `inner-judge/${data.caseNumber}`
+        "Idempotency-Key": `inner-judge/${submissionToken}`
       },
       body: JSON.stringify(emails)
     });

@@ -5,13 +5,10 @@ const siteActivityKey = "toratAviLastSiteActivityV1";
 const siteReturnTimeout = 2 * 60 * 1000;
 let deferredInstallPrompt = null;
 
-window.toratAviLiveContentReady = window.toratAviLiveContentReady || fetch("/api/content?limit=500", {
-  headers: { accept: "application/json" },
-  cache: "no-store"
-})
-  .then((response) => response.ok ? response.json() : { items: [] })
-  .then((payload) => Array.isArray(payload.items) ? payload.items : [])
-  .catch(() => []);
+// The public site currently uses the static content bundles shipped with each page.
+// Keep the shared promise available for the existing hydration code without issuing
+// a request to the retired /api/content endpoint on every page load.
+window.toratAviLiveContentReady = window.toratAviLiveContentReady || Promise.resolve([]);
 
 function readSiteActivity() {
   try {
@@ -447,17 +444,28 @@ setActiveNavigation();
 window.addEventListener("hashchange", setActiveNavigation);
 
 if (menuToggle) {
-  menuToggle.addEventListener("click", () => {
-    const isOpen = body.classList.toggle("nav-open");
+  const setMenuState = (isOpen, returnFocus = false) => {
+    body.classList.toggle("nav-open", isOpen);
     menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute("aria-label", isOpen ? "סגירת תפריט" : "פתיחת תפריט");
+    if (!isOpen && returnFocus) menuToggle.focus();
+  };
+
+  menuToggle.addEventListener("click", () => {
+    setMenuState(!body.classList.contains("nav-open"));
   });
 
   document.addEventListener("click", (event) => {
     if (!body.classList.contains("nav-open")) return;
     const header = document.querySelector(".site-header");
     if (header && !header.contains(event.target)) {
-      body.classList.remove("nav-open");
-      menuToggle.setAttribute("aria-expanded", "false");
+      setMenuState(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && body.classList.contains("nav-open")) {
+      setMenuState(false, true);
     }
   });
 }
@@ -467,6 +475,7 @@ document.querySelectorAll(".main-nav a").forEach((link) => {
     if (link.classList.contains("nav-dropdown-trigger")) return;
     body.classList.remove("nav-open");
     menuToggle?.setAttribute("aria-expanded", "false");
+    menuToggle?.setAttribute("aria-label", "פתיחת תפריט");
   });
 });
 
@@ -484,6 +493,85 @@ document.querySelectorAll(".nav-dropdown").forEach((dropdown) => {
     trigger.setAttribute("aria-expanded", String(isOpen));
   });
 });
+
+function standardizeSiteFooter() {
+  const siteFooter = document.querySelector(".site-footer");
+  const footerGrid = siteFooter?.querySelector(".footer-grid");
+  const footerBrand = footerGrid?.querySelector(".footer-brand");
+  if (!footerGrid || !footerBrand) return;
+  if (!siteFooter.id) siteFooter.id = "site-footer";
+
+  const preservedBrand = footerBrand.cloneNode(true);
+  footerGrid.classList.add("footer-grid-wide", "footer-grid-complete");
+  footerGrid.replaceChildren(preservedBrand);
+  footerGrid.insertAdjacentHTML("beforeend", `
+    <div class="footer-navigation-group">
+      <h3>ניווט ראשי</h3>
+      <div class="footer-links">
+        <a href="about.html">אודות</a>
+        <a href="beit-din.html">בית הדין</a>
+        <a href="piskei-din.html">פסקי דין</a>
+        <a href="books.html">ספרי הרב</a>
+        <a href="qna.html">שאלות ותשובות</a>
+      </div>
+    </div>
+    <div class="footer-content-group">
+      <h3>תוכן</h3>
+      <div class="footer-links footer-content-map">
+        <div>
+          <strong>מאמרים</strong>
+          <a href="articles.html">כל המאמרים</a>
+          <a href="articles-shabbat.html">שבת</a>
+          <a href="articles-moadim.html">חגים ומועדים</a>
+          <a href="articles-hitbonenut.html">התבוננות</a>
+          <a href="spark.html">ניצוץ של קדושה</a>
+        </div>
+        <div>
+          <strong>נפש</strong>
+          <a href="soul-torah.html">תורת הנפש</a>
+          <a href="growth.html">צמיחה</a>
+          <a href="emuna.html">אמונה</a>
+          <a href="zugiyut.html">זוגיות</a>
+          <a href="levado.html">לבדו</a>
+          <a href="children-education.html">חינוך ילדים</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-actions-group">
+      <h3>פעולות</h3>
+      <div class="footer-links">
+        <a href="inner-judge.html">הדיין הפנימי</a>
+        <a href="ask-rabbi.html">שאל את הרב</a>
+        <a href="donate.html">תרומה</a>
+        <a href="updates.html">עדכונים וקבצים</a>
+        <a href="https://wa.me/972532273277" target="_blank" rel="noopener">WhatsApp לבית ההוראה</a>
+      </div>
+    </div>
+    <div class="footer-policy-group">
+      <h3>מידע ומדיניות</h3>
+      <div class="footer-links footer-policy-links">
+        <a href="terms.html">תקנון האתר</a>
+        <a href="privacy.html">מדיניות פרטיות</a>
+        <a href="accessibility.html">הצהרת נגישות</a>
+        <a href="purchase-policy.html">רכישה ומשלוחים</a>
+        <a href="donation-policy.html">תרומות והחזרים</a>
+        <a href="payment-security.html">סליקה ואבטחה</a>
+        <a href="cookies-mailing.html">דיוור וקוקיז</a>
+        <a href="content-rights.html">זכויות יוצרים</a>
+        <a href="rabbi-disclaimer.html">הבהרה לשאלות לרב</a>
+        <a href="operator-details.html">פרטי מפעיל האתר</a>
+      </div>
+    </div>
+    <div class="footer-contact-group">
+      <h3>יצירת קשר</h3>
+      <p>
+        <a href="mailto:Hraraviby@gmail.com">Hraraviby@gmail.com</a><br>
+        <a href="tel:0532273277">0532273277</a><br>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=%D7%94%D7%A8%D7%91%20%D7%9E%D7%A8%D7%93%D7%9B%D7%99%20%D7%90%D7%9C%D7%99%D7%94%D7%95%2034%2C%20%D7%A7%D7%A8%D7%99%D7%AA%20%D7%9E%D7%9C%D7%90%D7%9B%D7%99" target="_blank" rel="noopener">הרב מרדכי אליהו 34,<br>קרית מלאכי</a>
+      </p>
+    </div>
+  `);
+}
 
 function setupMobileFooterAccordions() {
   const footer = document.querySelector(".site-footer");
@@ -541,6 +629,7 @@ function setupMobileFooterAccordions() {
   mobileQuery.addEventListener?.("change", syncFooterAccordions);
 }
 
+standardizeSiteFooter();
 setupMobileFooterAccordions();
 
 document.querySelectorAll("[data-whatsapp-join]").forEach((form) => {
@@ -2138,12 +2227,37 @@ const siteSearchPages = [
   { title: "עדכונים וקבצים", url: "updates.html" },
 ];
 
-const siteSearchModal = document.querySelector("[data-site-search-modal]");
+function ensureSiteSearchModal() {
+  const existingModal = document.querySelector("[data-site-search-modal]");
+  if (existingModal) return existingModal;
+
+  document.body.insertAdjacentHTML("beforeend", `
+    <div class="site-search-modal" data-site-search-modal hidden aria-hidden="true">
+      <div class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="siteSearchTitle">
+        <button class="site-search-close" type="button" aria-label="סגירת חיפוש" data-site-search-close>×</button>
+        <h2 id="siteSearchTitle">חיפוש באתר</h2>
+        <p>חפשו לפי מילה, נושא, ספר, שאלה או מדור.</p>
+        <input class="site-search-input" type="search" placeholder="הקלידו מילת חיפוש..." aria-label="מילת חיפוש" data-site-search-input>
+        <div class="site-search-results" data-site-search-results aria-live="polite"></div>
+      </div>
+    </div>
+  `);
+  return document.querySelector("[data-site-search-modal]");
+}
+
+const siteSearchModal = ensureSiteSearchModal();
 const siteSearchOpen = document.querySelector("[data-site-search-open]");
 const siteSearchClose = document.querySelector("[data-site-search-close]");
 const siteSearchInput = document.querySelector("[data-site-search-input]");
 const siteSearchResults = document.querySelector("[data-site-search-results]");
 let siteSearchIndex = [];
+
+if (siteSearchInput && !siteSearchInput.hasAttribute("aria-label")) {
+  siteSearchInput.setAttribute("aria-label", "מילת חיפוש");
+}
+if (siteSearchResults && !siteSearchResults.hasAttribute("aria-live")) {
+  siteSearchResults.setAttribute("aria-live", "polite");
+}
 
 async function buildSiteSearchIndex() {
   if (siteSearchIndex.length) return siteSearchIndex;
@@ -2398,6 +2512,115 @@ function initBookDetailsModal() {
 
 initBookDetailsModal();
 
+const bookCartStorageKey = "torat-avi-book-cart-v1";
+
+function readStoredBookCart() {
+  try {
+    const saved = JSON.parse(window.localStorage.getItem(bookCartStorageKey) || "{}");
+    if (!saved || typeof saved !== "object" || Array.isArray(saved)) return {};
+    return Object.fromEntries(
+      Object.entries(saved)
+        .map(([key, value]) => [key, Math.max(0, Math.floor(Number(value) || 0))])
+        .filter(([, value]) => value > 0)
+    );
+  } catch {
+    return {};
+  }
+}
+
+function writeStoredBookCart(cart) {
+  try {
+    if (Object.keys(cart).length) {
+      window.localStorage.setItem(bookCartStorageKey, JSON.stringify(cart));
+    } else {
+      window.localStorage.removeItem(bookCartStorageKey);
+    }
+  } catch {
+    // The cart remains usable on the current page when storage is unavailable.
+  }
+}
+
+function storedBookCartCount(cart = readStoredBookCart()) {
+  return Object.values(cart).reduce((sum, value) => sum + Math.max(0, Number(value) || 0), 0);
+}
+
+function updateHeaderCartBadge(count, { animate = false } = {}) {
+  const itemCount = Math.max(0, Math.floor(Number(count) || 0));
+  document.querySelectorAll(".quick-cart-icon").forEach((cartLink) => {
+    let badge = cartLink.querySelector(".cart-count-badge");
+    if (!badge) {
+      badge = document.createElement("span");
+      badge.className = "cart-count-badge";
+      badge.setAttribute("aria-hidden", "true");
+      cartLink.appendChild(badge);
+    }
+
+    badge.textContent = itemCount > 99 ? "99+" : String(itemCount);
+    badge.hidden = itemCount === 0;
+    cartLink.classList.toggle("has-items", itemCount > 0);
+    cartLink.setAttribute("aria-label", itemCount > 0 ? `עגלת קניות - ${itemCount} פריטים` : "עגלת קניות");
+
+    if (animate && itemCount > 0) {
+      badge.classList.remove("is-bumping");
+      void badge.offsetWidth;
+      badge.classList.add("is-bumping");
+      window.setTimeout(() => badge.classList.remove("is-bumping"), 460);
+    }
+  });
+}
+
+function bookRowStorageKey(row) {
+  return row?.dataset.bookKey || row?.querySelector("input[type='hidden']")?.name || "";
+}
+
+function persistBookCartFromPage() {
+  const cart = readStoredBookCart();
+  document.querySelectorAll("[data-price]").forEach((row) => {
+    const key = bookRowStorageKey(row);
+    if (!key) return;
+    const qty = Math.max(0, Math.floor(Number(row.querySelector("input[type='hidden']")?.value || 0)));
+    if (qty > 0 && !row.classList.contains("is-unavailable")) cart[key] = qty;
+    else delete cart[key];
+  });
+  writeStoredBookCart(cart);
+  updateHeaderCartBadge(storedBookCartCount(cart), { animate: true });
+}
+
+function restoreBookCartPage() {
+  const rows = Array.from(document.querySelectorAll("[data-price]"));
+  if (!rows.length) return;
+  const cart = readStoredBookCart();
+  let cartChanged = false;
+
+  rows.forEach((row) => {
+    const key = bookRowStorageKey(row);
+    let qty = key ? Math.max(0, Math.floor(Number(cart[key]) || 0)) : 0;
+    if (row.classList.contains("is-unavailable")) {
+      if (key && cart[key]) {
+        delete cart[key];
+        cartChanged = true;
+      }
+      qty = 0;
+    }
+    const output = row.querySelector("output");
+    const input = row.querySelector("input[type='hidden']");
+    if (output) {
+      output.value = qty;
+      output.textContent = qty;
+    }
+    if (input) input.value = qty;
+    row.classList.toggle("is-in-cart", qty > 0);
+  });
+
+  if (cartChanged) writeStoredBookCart(cart);
+  updateCartTotal();
+}
+
+updateHeaderCartBadge(storedBookCartCount());
+window.addEventListener("storage", (event) => {
+  if (event.key === bookCartStorageKey) updateHeaderCartBadge(storedBookCartCount());
+});
+
 document.querySelectorAll("[data-qty]").forEach((button) => {
   button.addEventListener("click", () => {
     const row = button.closest("[data-price], .book-card");
@@ -2426,35 +2649,130 @@ document.querySelectorAll("[data-add-book]").forEach((button) => {
     window.setTimeout(() => {
       button.textContent = "הוסף";
     }, 1100);
+    persistBookCartFromPage();
     updateCartTotal();
   });
 });
 
 function updateCartTotal() {
   let total = 0;
+  let itemCount = 0;
   const lines = [];
-  document.querySelectorAll("[data-price]").forEach((row) => {
+  const cartRows = Array.from(document.querySelectorAll("[data-price]"));
+  cartRows.forEach((row) => {
     const price = Number(row.dataset.price || 0);
     const qty = Number(row.querySelector("input[type='hidden']")?.value || 0);
     const title = row.querySelector("h3")?.textContent?.trim() || "פריט";
     total += price * qty;
-    if (qty > 0) lines.push({ title, qty, price });
+    itemCount += qty;
+    if (qty > 0) lines.push({ key: bookRowStorageKey(row), title, qty, price });
   });
   const totalEl = document.querySelector("[data-cart-total]");
   if (totalEl) totalEl.textContent = `₪${total}`;
   const linesEl = document.querySelector("[data-cart-lines]");
   if (linesEl) {
     linesEl.innerHTML = lines.length
-      ? lines.map((item) => `<div><span>${item.title}</span><strong>${item.qty} × ₪${item.price}</strong></div>`).join("")
+      ? lines.map((item) => `
+          <div class="premium-cart-line">
+            <span>${item.title}</span>
+            <strong>${item.qty} × ₪${item.price}</strong>
+            <button class="cart-remove-btn" type="button" data-cart-remove="${item.key}" aria-label="הסרת הפריט מהעגלה">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M7 7l1 13h8l1-13M10 11v5M14 11v5"/></svg>
+              <span>הסר</span>
+            </button>
+          </div>`).join("")
       : "עדיין לא נבחרו ספרים";
   }
+  if (cartRows.length) updateHeaderCartBadge(itemCount);
 }
 
-document.querySelectorAll("form[data-demo-form]").forEach((form) => {
-  form.addEventListener("submit", (event) => {
+restoreBookCartPage();
+
+document.querySelector("[data-cart-lines]")?.addEventListener("click", (event) => {
+  const removeButton = event.target.closest("[data-cart-remove]");
+  if (!removeButton) return;
+  const row = Array.from(document.querySelectorAll("[data-price]"))
+    .find((item) => bookRowStorageKey(item) === removeButton.dataset.cartRemove);
+  if (!row) return;
+
+  const output = row.querySelector("output");
+  const input = row.querySelector("input[type='hidden']");
+  if (output) {
+    output.value = 0;
+    output.textContent = "0";
+  }
+  if (input) input.value = 0;
+  row.classList.remove("is-in-cart", "is-pending-qty");
+  const addButton = row.querySelector("[data-add-book]");
+  if (addButton) addButton.textContent = "הוסף";
+
+  persistBookCartFromPage();
+  updateCartTotal();
+});
+
+document.querySelectorAll("form[data-contact-form]").forEach((form) => {
+  const submitButton = form.querySelector('button[type="submit"]');
+  if (!submitButton) return;
+
+  const honeypot = document.createElement("input");
+  honeypot.type = "text";
+  honeypot.name = "website";
+  honeypot.tabIndex = -1;
+  honeypot.autocomplete = "off";
+  honeypot.hidden = true;
+  form.append(honeypot);
+
+  const status = document.createElement("p");
+  status.className = "form-submit-status";
+  status.setAttribute("role", "status");
+  status.setAttribute("aria-live", "polite");
+  submitButton.insertAdjacentElement("afterend", status);
+
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const intent = form.dataset.demoForm || "הטופס";
-    alert(`${intent} מוכן לחיבור למייל/סליקה מאובטחת. בשלב הבא מחברים ספק תשלום וכתובת מייל אמיתית.`);
+    if (!form.reportValidity()) return;
+
+    const data = Object.fromEntries(new FormData(form).entries());
+    const nameField = form.elements.namedItem("fullName") || form.elements.namedItem("name");
+    const questionField = form.elements.namedItem("question");
+    if (!String(nameField?.value || "").trim() || !String(questionField?.value || "").trim()) {
+      status.className = "form-submit-status is-error";
+      status.textContent = "יש למלא שם ואת תוכן השאלה או הבקשה.";
+      (!String(nameField?.value || "").trim() ? nameField : questionField)?.focus();
+      return;
+    }
+    if (!String(data.phone || "").trim() && !String(data.email || "").trim()) {
+      status.className = "form-submit-status is-error";
+      status.textContent = "יש להזין לפחות דרך חזרה אחת - טלפון או אימייל.";
+      (form.elements.namedItem("phone") || form.elements.namedItem("email"))?.focus();
+      return;
+    }
+
+    const originalText = submitButton.textContent;
+    submitButton.disabled = true;
+    submitButton.textContent = "שולח את הפנייה...";
+    status.className = "form-submit-status";
+    status.textContent = "נא להמתין, הפנייה מועברת לבית ההוראה.";
+
+    try {
+      const response = await fetch("/api/contact-submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...data, intent: form.dataset.contactIntent || "פנייה מהאתר" })
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.ok) throw new Error(result.message || "לא ניתן היה לשלוח את הפנייה.");
+
+      form.reset();
+      status.className = "form-submit-status is-success";
+      status.textContent = "הפנייה התקבלה בהצלחה ותועבר לעיון הרב.";
+    } catch (error) {
+      status.className = "form-submit-status is-error";
+      status.textContent = error.message || "אירעה תקלה בשליחה. אפשר לנסות שוב בעוד מספר דקות.";
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = originalText;
+    }
   });
 });
 

@@ -8,4 +8,4 @@ Disallow: /ocr-data/
 Disallow: /mobile-checks/
 Disallow: /.github/
 
-Sitemap: https://toratavi.co.il/sitemap.xml
+Sitemap: https://www.torat-avi.co.il/sitemap.xml
