@@ -914,9 +914,9 @@
   font-weight: 700;
 }
 
-.court-booking-form input {
+.court-booking-form input,
+.court-booking-form textarea {
   width: 100%;
-  height: 48px;
   padding: 8px 13px;
   color: #173d30;
   font: inherit;
@@ -927,9 +927,43 @@
   transition: border-color .2s ease, box-shadow .2s ease;
 }
 
-.court-booking-form input:focus {
+.court-booking-form input:focus,
+.court-booking-form textarea:focus {
   border-color: #b7922d;
   box-shadow: 0 0 0 3px rgba(207, 170, 59, .16);
+}
+
+.court-booking-instructions {
+  padding: 16px 18px;
+  color: #173d30;
+  text-align: right;
+  border: 1px solid rgba(181, 142, 39, .32);
+  border-radius: 6px;
+  background: linear-gradient(135deg, rgba(248, 231, 161, .38), rgba(255, 255, 255, .72));
+  box-shadow: inset 3px 0 #c6a33e;
+}
+
+.court-booking-instructions strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #71530d;
+  font-family: "David Libre", "Noto Serif Hebrew", serif;
+  font-size: 1.15rem;
+}
+
+.court-booking-instructions ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-right: 20px;
+}
+
+.court-booking-instructions li::marker { color: #a88320; }
+
+.court-booking-message-label textarea {
+  min-height: 180px;
+  resize: vertical;
+  line-height: 1.75;
 }
 
 .court-booking-picker-grid {

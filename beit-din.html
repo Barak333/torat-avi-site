@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="contrast-restoration.css?v=20260608-header-icons-gold">
   <link rel="stylesheet" href="premium-buttons.css?v=20260608-header-icons-gold">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=David+Libre:wght@400;500;700&amp;family=Noto+Sans+Hebrew:wght@300;400;500;600;700;800&amp;display=swap">
-  <link rel="stylesheet" href="beit-din.css?v=20260622-court-calendar-clock-2">
+  <link rel="stylesheet" href="beit-din.css?v=20260816-court-message-1">
   <link rel="icon" href="./assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
@@ -217,43 +217,23 @@
       <div class="court-booking-heading">
         <span>בית הדין תורת אבי</span>
         <h2 id="courtBookingTitle">קביעת דין תורה</h2>
-        <p id="courtBookingDescription">בחרו תאריך ושעה מבוקשים. פרטי הבקשה יועברו לבית הדין ב־WhatsApp.</p>
+        <p id="courtBookingDescription">כתבו הודעה קצרה לבית הדין. לאחר השליחה תיפתח עבורכם הודעת WhatsApp מוכנה.</p>
       </div>
       <form class="court-booking-form" data-court-booking-form>
-        <label>
-          <span>שם מלא</span>
-          <input type="text" name="fullName" autocomplete="name" required>
-        </label>
-        <label>
-          <span>מספר טלפון</span>
-          <input type="tel" name="phone" inputmode="tel" autocomplete="tel" required>
-        </label>
-        <div class="court-booking-picker-grid">
-          <section class="court-calendar" aria-labelledby="courtCalendarTitle">
-            <div class="court-calendar-header">
-              <button type="button" aria-label="החודש הקודם" data-court-calendar-prev>‹</button>
-              <strong id="courtCalendarTitle" data-court-calendar-title></strong>
-              <button type="button" aria-label="החודש הבא" data-court-calendar-next>›</button>
-            </div>
-            <div class="court-calendar-weekdays" aria-hidden="true">
-              <span>א</span><span>ב</span><span>ג</span><span>ד</span><span>ה</span><span>ו</span><span>ש</span>
-            </div>
-            <div class="court-calendar-days" data-court-calendar-days></div>
-            <input type="hidden" name="date" data-court-booking-date>
-          </section>
-          <section class="court-time-picker" aria-labelledby="courtTimeTitle">
-            <div class="court-time-heading">
-              <span aria-hidden="true">◷</span>
-              <strong id="courtTimeTitle">בחירת שעה</strong>
-            </div>
-            <div class="court-time-slots" data-court-time-slots></div>
-            <input type="hidden" name="time" data-court-booking-time>
-          </section>
+        <div class="court-booking-instructions" id="courtBookingInstructions">
+          <strong>מה חשוב לכתוב בהודעה?</strong>
+          <ul>
+            <li>היום המבוקש לקיום הדיון</li>
+            <li>השעה המבוקשת</li>
+            <li>שם מלא ומספר טלפון לחזרה</li>
+          </ul>
         </div>
-        <p class="court-booking-selection" data-court-booking-selection>בחרו יום ושעה לקיום הדיון</p>
-        <p class="court-booking-error" data-court-booking-error role="alert" hidden>יש לבחור תאריך ושעה מתוך היומן.</p>
+        <label class="court-booking-message-label">
+          <span>ההודעה לבית הדין</span>
+          <textarea name="message" rows="7" maxlength="1600" aria-describedby="courtBookingInstructions" placeholder="יום מבוקש:&#10;שעה מבוקשת:&#10;שם מלא:&#10;טלפון לחזרה:" required></textarea>
+        </label>
         <p class="court-booking-note">המועד ייקבע סופית לאחר קבלת אישור מבית הדין.</p>
-        <button class="btn court-booking-submit" type="submit">שליחת הבקשה ב־WhatsApp</button>
+        <button class="btn court-booking-submit" type="submit">שליחת ההודעה ב־WhatsApp</button>
       </form>
     </section>
   </div>
@@ -282,6 +262,6 @@
     </div>
   </footer>
   <script src="script.js?v=20260815-cart-remove-1"></script>
-  <script src="beit-din-booking.js?v=20260622-court-booking-phone-1"></script>
+  <script src="beit-din-booking.js?v=20260816-court-message-1"></script>
 </body>
 </html>

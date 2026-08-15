@@ -32182,3 +32182,22 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   .inner-judge-page .ij-questionnaire-head h2::before,
   .inner-judge-page .ij-questionnaire-head h2::after{width:16px;flex-basis:16px}
 }
+
+/* Piskei din hero title - same typographic treatment as the Beit Din hero. */
+.psakim-page .psakim-hero h1.levado-hero-title{
+  display:block!important;
+  margin:0!important;
+  max-width:none!important;
+  color:rgba(221,202,98,.28)!important;
+  font-family:"Noto Sans Hebrew","Heebo",Arial,sans-serif!important;
+  font-size:clamp(4rem,12vw,10rem)!important;
+  font-weight:900!important;
+  line-height:.82!important;
+  letter-spacing:0!important;
+  text-shadow:0 24px 60px rgba(0,0,0,.36)!important;
+}
+@media(max-width:640px){
+  .psakim-page .psakim-hero h1.levado-hero-title{
+    font-size:clamp(3.8rem,20vw,6rem)!important;
+  }
+}
