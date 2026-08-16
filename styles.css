@@ -32079,6 +32079,137 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   .ij-definition-voices ul{gap:10px 20px}
 }
 
+/* Inner Judge - compact transition from interpretation to the internal trial. */
+.ij-deliberation-divider{
+  position:relative;
+  isolation:isolate;
+  min-height:210px;
+  padding:34px 0 32px;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  color:#fffaf0;
+  background:
+    linear-gradient(90deg,rgba(0,18,10,.52),rgba(0,56,34,.12) 48%,rgba(0,18,10,.52)),
+    linear-gradient(180deg,rgba(0,21,12,.28),rgba(0,39,23,.42)),
+    var(--emerald-texture) center/cover no-repeat;
+  border-block:1px solid rgba(221,190,87,.58);
+  box-shadow:inset 0 16px 42px rgba(0,0,0,.14),inset 0 -16px 42px rgba(0,0,0,.18);
+}
+.ij-deliberation-divider::before,
+.ij-deliberation-divider::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  right:7%;
+  left:7%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(231,204,111,.72) 24%,rgba(231,204,111,.72) 76%,transparent);
+}
+.ij-deliberation-divider::before{top:15px}
+.ij-deliberation-divider::after{bottom:15px}
+.ij-deliberation-divider .section-inner{
+  width:min(100% - 40px,1120px);
+  position:relative;
+  text-align:center;
+}
+.ij-deliberation-kicker{
+  margin:0 0 8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  color:#e0bf58;
+  font-size:.62rem;
+  font-weight:950;
+  letter-spacing:.16em;
+}
+.ij-deliberation-kicker::before,
+.ij-deliberation-kicker::after{
+  content:"";
+  width:44px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#d7b649);
+}
+.ij-deliberation-kicker::before{transform:scaleX(-1)}
+.ij-deliberation-divider h2{
+  margin:0;
+  color:#fffdf7;
+  font:950 clamp(1.7rem,3vw,2.55rem)/1.12 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  text-wrap:balance;
+  text-shadow:0 3px 20px rgba(0,0,0,.28);
+}
+.ij-deliberation-flow{
+  margin:14px auto 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(14px,2vw,25px);
+  color:rgba(255,253,246,.84);
+  font:750 clamp(.9rem,1.35vw,1.04rem)/1.5 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+}
+.ij-deliberation-flow strong{
+  color:#e3c563;
+  font-size:1.08em;
+  font-weight:950;
+}
+.ij-deliberation-flow i{
+  position:relative;
+  width:44px;
+  height:1px;
+  flex:0 0 44px;
+  background:linear-gradient(90deg,transparent,#c99f31,transparent);
+}
+.ij-deliberation-flow i::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:6px;
+  height:6px;
+  border:1px solid #d7b64e;
+  background:#03472c;
+  transform:translate(-50%,-50%) rotate(45deg);
+}
+.ij-deliberation-closing{
+  margin:13px auto 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  color:rgba(255,252,242,.69);
+  font-size:.72rem;
+  font-weight:750;
+  letter-spacing:.025em;
+}
+.ij-deliberation-closing b{
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#d6b449;
+  box-shadow:0 0 12px rgba(222,190,82,.72);
+}
+@media(max-width:620px){
+  .ij-deliberation-divider{min-height:236px;padding:31px 0 29px}
+  .ij-deliberation-divider::before{top:12px}
+  .ij-deliberation-divider::after{bottom:12px}
+  .ij-deliberation-divider .section-inner{width:min(100% - 34px,1120px)}
+  .ij-deliberation-kicker{font-size:.57rem}
+  .ij-deliberation-kicker::before,
+  .ij-deliberation-kicker::after{width:32px}
+  .ij-deliberation-divider h2{font-size:1.7rem}
+  .ij-deliberation-flow{
+    margin-top:12px;
+    display:grid;
+    grid-template-columns:1fr;
+    justify-items:center;
+    gap:5px;
+    font-size:.88rem;
+  }
+  .ij-deliberation-flow i{width:1px;height:12px;flex-basis:auto;background:linear-gradient(180deg,transparent,#c99f31,transparent)}
+  .ij-deliberation-closing{margin-top:11px;font-size:.66rem}
+}
+
 /* Inner Judge - curled gold ornaments for the three section titles. */
 .ij-recognition-pretitle{--ij-title-ornament:#e1c35e}
 .ij-founder-section-title,
@@ -32200,6 +32331,528 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   .psakim-page .psakim-hero h1.levado-hero-title{
     font-size:clamp(3.8rem,20vw,6rem)!important;
   }
+}
+
+/* Inner Judge - the inner court protocol. */
+.ij-protocol{
+  --ij-protocol-gold:#b88d20;
+  position:relative;
+  scroll-margin-top:150px;
+  padding:clamp(74px,7vw,100px) 0 clamp(68px,6.5vw,92px);
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 10% 15%,rgba(0,78,47,.075),transparent 27%),
+    radial-gradient(circle at 91% 84%,rgba(187,143,31,.105),transparent 25%),
+    linear-gradient(90deg,rgba(141,106,20,.027) 1px,transparent 1px),
+    linear-gradient(180deg,#f5efe2 0%,#ece2ce 100%);
+  background-size:auto,auto,84px 100%,auto;
+  border-block:1px solid rgba(177,136,28,.34);
+}
+.ij-protocol::before{
+  content:"";
+  position:absolute;
+  inset:24px;
+  border:1px solid rgba(154,116,18,.13);
+  pointer-events:none;
+}
+.ij-protocol::after{
+  content:"";
+  position:absolute;
+  top:0;
+  right:9%;
+  left:9%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#b8902b 19%,#b8902b 81%,transparent);
+  pointer-events:none;
+}
+.ij-protocol .section-inner{
+  position:relative;
+  z-index:1;
+  max-width:1110px;
+}
+.ij-protocol-heading{
+  max-width:860px;
+  margin:0 auto;
+  text-align:center;
+}
+.ij-protocol-heading>span{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:13px;
+  color:#96700e;
+  font-size:.67rem;
+  font-weight:950;
+  letter-spacing:.16em;
+}
+.ij-protocol-heading>span::before,
+.ij-protocol-heading>span::after{
+  content:"";
+  width:56px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#b78c20);
+}
+.ij-protocol-heading>span::before{transform:scaleX(-1)}
+.ij-protocol-heading h2{
+  max-width:850px;
+  margin:15px auto 18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  color:#063c28;
+  font:950 clamp(2.25rem,4.4vw,3.7rem)/1.08 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  text-align:center;
+  text-wrap:balance;
+}
+.ij-protocol-heading h2::before,
+.ij-protocol-heading h2::after{
+  content:"";
+  width:clamp(48px,7vw,92px);
+  height:16px;
+  flex:0 1 92px;
+  background:
+    radial-gradient(10px 7px at 50% 100%,transparent 68%,var(--ij-protocol-gold) 72% 80%,transparent 84%) 0 0/20px 8px repeat-x,
+    radial-gradient(10px 7px at 50% 0,transparent 68%,var(--ij-protocol-gold) 72% 80%,transparent 84%) 10px 8px/20px 8px repeat-x;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent);
+}
+.ij-protocol-heading h2::before{transform:scaleX(-1)}
+.ij-protocol-heading p{
+  max-width:760px;
+  margin:0 auto;
+  color:#52675d;
+  font-size:1rem;
+  font-weight:650;
+  line-height:1.85;
+  text-wrap:balance;
+}
+.ij-protocol-sheet{
+  position:relative;
+  margin:clamp(42px,5vw,60px) auto 0;
+  padding:0 clamp(24px,3vw,38px) clamp(25px,3vw,38px);
+  overflow:hidden;
+  border:1px solid rgba(159,119,18,.42);
+  border-radius:2px;
+  background:
+    radial-gradient(circle at 50% 0,rgba(191,148,38,.07),transparent 34%),
+    rgba(255,253,247,.76);
+  box-shadow:0 28px 66px rgba(39,58,45,.11),inset 0 0 0 8px rgba(255,255,255,.33);
+}
+.ij-protocol-sheet::before{
+  content:"";
+  position:absolute;
+  inset:8px;
+  border:1px solid rgba(163,123,22,.13);
+  pointer-events:none;
+}
+.ij-protocol-meta{
+  min-height:63px;
+  position:relative;
+  z-index:1;
+  padding:0 4px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  border-bottom:1px solid rgba(157,117,15,.3);
+  color:#87670f;
+  font-size:.64rem;
+  font-weight:950;
+  letter-spacing:.09em;
+}
+.ij-protocol-meta i{
+  height:1px;
+  flex:1;
+  background:linear-gradient(90deg,transparent,rgba(170,128,20,.5),transparent);
+}
+.ij-protocol-meta b{
+  padding-inline:5px;
+  color:#b18825;
+  font-size:.58rem;
+}
+.ij-protocol-steps{
+  position:relative;
+  z-index:1;
+  margin:0;
+  padding:0;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  list-style:none;
+}
+.ij-protocol-steps li{
+  min-height:225px;
+  position:relative;
+  padding:30px clamp(20px,2.5vw,31px) 27px;
+  display:grid;
+  align-content:start;
+  justify-items:center;
+  text-align:center;
+}
+.ij-protocol-steps li:nth-child(n+4){border-top:1px solid rgba(17,74,50,.12)}
+.ij-protocol-steps li:not(:nth-child(3n)){border-inline-end:1px solid rgba(17,74,50,.12)}
+.ij-protocol-seal{
+  width:45px;
+  height:45px;
+  position:relative;
+  z-index:1;
+  margin-bottom:16px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(169,127,20,.66);
+  border-radius:50%;
+  color:#8c680c;
+  background:#fbf6e9;
+  box-shadow:0 7px 18px rgba(88,67,13,.09),inset 0 0 0 5px rgba(188,147,40,.075);
+  font:950 .92rem "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+}
+.ij-protocol-seal::before{
+  content:"";
+  position:absolute;
+  inset:-6px;
+  border:1px solid rgba(166,124,18,.15);
+  border-radius:50%;
+}
+.ij-protocol-steps small{
+  display:block;
+  color:#a17b18;
+  font-size:.58rem;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+.ij-protocol-steps h3{
+  margin:6px 0 10px;
+  color:#0a4932;
+  font:950 clamp(1.17rem,1.75vw,1.42rem)/1.35 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+}
+.ij-protocol-steps p{
+  max-width:270px;
+  margin:0 auto;
+  color:#5f6e67;
+  font-size:.78rem;
+  font-weight:650;
+  line-height:1.72;
+}
+.ij-protocol-verdict{
+  max-width:900px;
+  position:relative;
+  margin:clamp(34px,4vw,47px) auto 0;
+  padding:clamp(27px,3vw,36px) clamp(62px,8vw,100px) 29px;
+  overflow:hidden;
+  border:1px solid rgba(223,193,91,.68);
+  color:#fff;
+  text-align:center;
+  background-color:#003d27;
+  background-image:var(--emerald-texture);
+  background-position:center;
+  background-size:cover;
+  box-shadow:0 21px 50px rgba(0,46,28,.2),inset 0 0 0 8px rgba(0,22,12,.17);
+}
+.ij-protocol-verdict::before{
+  content:"";
+  position:absolute;
+  inset:9px;
+  border:1px solid rgba(232,207,117,.14);
+  pointer-events:none;
+}
+.ij-protocol-verdict>span{
+  position:absolute;
+  top:4px;
+  right:27px;
+  color:#e2c45e;
+  font:950 5rem/1 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  opacity:.36;
+}
+.ij-protocol-verdict p{
+  position:relative;
+  z-index:1;
+  margin:0;
+  color:#f4d873;
+  font:950 clamp(1.62rem,3vw,2.25rem)/1.35 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+}
+.ij-protocol-verdict footer{
+  position:relative;
+  z-index:1;
+  margin-top:9px;
+  color:rgba(255,255,255,.68);
+  font-size:.76rem;
+  font-weight:700;
+  line-height:1.65;
+}
+@media(max-width:880px){
+  .ij-protocol-sheet{max-width:720px}
+  .ij-protocol-steps{grid-template-columns:repeat(2,1fr)}
+  .ij-protocol-steps li{border:0!important}
+  .ij-protocol-steps li:nth-child(-n+4){border-bottom:1px solid rgba(17,74,50,.12)!important}
+  .ij-protocol-steps li:nth-child(odd){border-inline-end:1px solid rgba(17,74,50,.12)!important}
+}
+@media(max-width:620px){
+  .ij-protocol{padding:58px 0 57px;background-size:auto,auto,64px 100%,auto}
+  .ij-protocol::before{inset:14px}
+  .ij-protocol .section-inner{width:min(100% - 34px,1110px)}
+  .ij-protocol-heading>span{font-size:.6rem;letter-spacing:.12em}
+  .ij-protocol-heading>span::before,
+  .ij-protocol-heading>span::after{width:34px}
+  .ij-protocol-heading h2{gap:10px;font-size:1.75rem;line-height:1.2}
+  .ij-protocol-heading h2::before,
+  .ij-protocol-heading h2::after{width:33px;flex-basis:33px}
+  .ij-protocol-heading p{font-size:.89rem;line-height:1.78}
+  .ij-protocol-sheet{margin-top:34px;padding:0 18px 14px}
+  .ij-protocol-meta{min-height:56px;gap:9px;font-size:.54rem;letter-spacing:.04em}
+  .ij-protocol-meta i{min-width:25px}
+  .ij-protocol-meta b{padding-inline:2px}
+  .ij-protocol-steps{grid-template-columns:1fr;padding-block:6px}
+  .ij-protocol-steps li{
+    min-height:0;
+    padding:22px 2px;
+    grid-template-columns:48px 1fr;
+    gap:0 15px;
+    align-items:start;
+    justify-items:stretch;
+    text-align:right;
+    border:0!important;
+  }
+  .ij-protocol-steps li:not(:last-child){border-bottom:1px solid rgba(17,74,50,.12)!important}
+  .ij-protocol-seal{grid-column:1;grid-row:1;margin:3px 0 0;width:38px;height:38px}
+  .ij-protocol-steps li>div{grid-column:2;grid-row:1}
+  .ij-protocol-steps h3{margin:4px 0 7px;font-size:1.15rem}
+  .ij-protocol-steps p{max-width:none;margin:0;font-size:.74rem;line-height:1.7}
+  .ij-protocol-verdict{margin-top:30px;padding:28px 28px 25px}
+  .ij-protocol-verdict>span{top:8px;right:16px;font-size:3.8rem}
+  .ij-protocol-verdict p{padding-inline:12px;font-size:1.42rem}
+  .ij-protocol-verdict footer{font-size:.69rem}
+}
+@media(max-width:370px){
+  .ij-protocol-heading h2{font-size:1.57rem}
+  .ij-protocol-heading h2::before,
+  .ij-protocol-heading h2::after{width:25px;flex-basis:25px}
+  .ij-protocol-meta{font-size:.49rem}
+  .ij-protocol-meta i{min-width:13px}
+  .ij-protocol-sheet{padding-inline:14px}
+}
+
+/* Inner Judge - premium chamber layout for the method protocol. */
+.ij-protocol-sheet{
+  max-width:1060px;
+  padding:0;
+  border-color:rgba(141,103,11,.5);
+  border-radius:4px;
+  background:#fffdf7;
+  box-shadow:0 34px 84px rgba(28,52,38,.16),0 3px 0 rgba(151,111,17,.13),inset 0 0 0 8px rgba(246,239,222,.82);
+}
+.ij-protocol-sheet::before{inset:8px;border-color:rgba(155,115,16,.16)}
+.ij-protocol-meta{
+  min-height:68px;
+  padding:0 30px;
+  border-bottom:1px solid rgba(224,194,92,.55);
+  color:#f3d56e;
+  background:
+    linear-gradient(90deg,rgba(0,20,11,.48),rgba(0,56,34,.08),rgba(0,20,11,.48)),
+    var(--emerald-texture) center/cover no-repeat;
+  box-shadow:inset 0 -8px 22px rgba(0,0,0,.13);
+  font-size:.62rem;
+}
+.ij-protocol-meta i{background:linear-gradient(90deg,transparent,rgba(231,202,100,.7),transparent)}
+.ij-protocol-meta b{color:#e0c259}
+.ij-protocol-phases{
+  position:relative;
+  z-index:1;
+  padding:16px 34px 12px;
+}
+.ij-protocol-phase{
+  min-height:156px;
+  position:relative;
+  display:grid;
+  grid-template-columns:210px minmax(0,1fr);
+  align-items:stretch;
+  border-bottom:1px solid rgba(22,72,49,.14);
+}
+.ij-protocol-phase:last-child{border-bottom:0}
+.ij-protocol-phase-head{
+  position:relative;
+  padding:25px 2px 23px 26px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  overflow:hidden;
+  border-inline-end:1px solid rgba(177,137,34,.28);
+}
+.ij-protocol-phase::before{
+  content:attr(data-phase-letter);
+  position:absolute;
+  z-index:-1;
+  top:50%;
+  right:2px;
+  color:rgba(173,132,28,.065);
+  font:950 7.4rem/1 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  transform:translateY(-50%);
+  pointer-events:none;
+}
+.ij-protocol-phase-head small{
+  color:#a27a13;
+  font-size:.56rem;
+  font-weight:950;
+  letter-spacing:.13em;
+}
+.ij-protocol-phase-head h3{
+  margin:7px 0 7px;
+  color:#073e29;
+  font:950 1.38rem/1.2 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+}
+.ij-protocol-phase-head p{
+  max-width:165px;
+  margin:0;
+  color:#66756e;
+  font-size:.68rem;
+  font-weight:700;
+  line-height:1.65;
+}
+.ij-protocol-phase-steps{
+  margin:0;
+  padding:0;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  list-style:none;
+}
+.ij-protocol-phase-steps li{
+  min-width:0;
+  padding:25px clamp(18px,2.2vw,30px);
+  display:grid;
+  grid-template-columns:48px minmax(0,1fr);
+  gap:14px;
+  align-items:center;
+  text-align:right;
+}
+.ij-protocol-phase-steps li+li{border-inline-start:1px solid rgba(18,69,46,.12)}
+.ij-protocol-phase-steps .ij-protocol-seal{
+  width:40px;
+  height:40px;
+  margin:0;
+  color:#e4c45a;
+  border-color:rgba(203,163,53,.72);
+  background:#06472f var(--emerald-texture) center/cover no-repeat;
+  box-shadow:0 9px 22px rgba(0,54,33,.18),inset 0 0 0 4px rgba(0,25,13,.17);
+}
+.ij-protocol-phase-steps .ij-protocol-seal::before{border-color:rgba(170,128,20,.24)}
+.ij-protocol-phase-steps small{
+  display:block;
+  color:#a17b18;
+  font-size:.54rem;
+  font-weight:950;
+  letter-spacing:.07em;
+}
+.ij-protocol-phase-steps h4{
+  margin:5px 0 7px;
+  color:#0b4932;
+  font:950 clamp(1.08rem,1.5vw,1.3rem)/1.3 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+}
+.ij-protocol-phase-steps p{
+  max-width:285px;
+  margin:0;
+  color:#5e6e66;
+  font-size:.72rem;
+  font-weight:680;
+  line-height:1.68;
+}
+.ij-protocol-sheet-principle{
+  min-height:66px;
+  position:relative;
+  z-index:1;
+  padding:13px 32px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:18px;
+  align-items:center;
+  border-top:3px double rgba(172,131,27,.42);
+  background:linear-gradient(90deg,#f3ead6,#fffdf7 50%,#f3ead6);
+}
+.ij-protocol-sheet-principle span{
+  color:#9a7210;
+  font-size:.57rem;
+  font-weight:950;
+  letter-spacing:.11em;
+}
+.ij-protocol-sheet-principle strong{
+  color:#184d38;
+  font:900 .9rem/1.45 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+  text-align:center;
+}
+.ij-protocol-sheet-principle i{
+  width:34px;
+  height:34px;
+  position:relative;
+  display:block;
+  border:1px solid rgba(169,126,18,.52);
+  border-radius:50%;
+  box-shadow:inset 0 0 0 4px #f8f0dc;
+}
+.ij-protocol-sheet-principle i::before,
+.ij-protocol-sheet-principle i::after{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+.ij-protocol-sheet-principle i::before{
+  content:"דין";
+  color:#9a7210;
+  background:transparent;
+  font:950 .52rem/1 "Frank Ruhl Libre","Noto Serif Hebrew",serif;
+}
+.ij-protocol-sheet-principle i::after{content:none}
+.ij-protocol-verdict{
+  max-width:760px;
+  padding-top:24px;
+  border-radius:2px;
+}
+.ij-protocol-verdict small{
+  position:relative;
+  z-index:1;
+  margin-bottom:7px;
+  display:block;
+  color:rgba(244,218,121,.72);
+  font-size:.56rem;
+  font-weight:950;
+  letter-spacing:.16em;
+}
+@media(max-width:900px){
+  .ij-protocol-sheet{max-width:760px}
+  .ij-protocol-phases{padding-inline:24px}
+  .ij-protocol-phase{grid-template-columns:180px minmax(0,1fr)}
+  .ij-protocol-phase-head{padding-left:19px}
+  .ij-protocol-phase-steps li{padding-inline:18px;grid-template-columns:42px minmax(0,1fr);gap:11px}
+  .ij-protocol-phase-steps .ij-protocol-seal{width:36px;height:36px}
+}
+@media(max-width:680px){
+  .ij-protocol-sheet{padding:0}
+  .ij-protocol-meta{min-height:57px;padding-inline:17px}
+  .ij-protocol-phases{padding:10px 16px 8px}
+  .ij-protocol-phase{grid-template-columns:1fr;min-height:0}
+  .ij-protocol-phase::before{top:33px;right:3px;font-size:4rem;transform:none}
+  .ij-protocol-phase-head{
+    min-height:76px;
+    padding:14px 53px 13px 4px;
+    border-inline-end:0;
+    border-bottom:1px solid rgba(177,137,34,.2);
+  }
+  .ij-protocol-phase-head h3{margin:4px 0 3px;font-size:1.18rem}
+  .ij-protocol-phase-head p{max-width:none;font-size:.63rem}
+  .ij-protocol-phase-steps{grid-template-columns:1fr}
+  .ij-protocol-phase-steps li{min-height:102px;padding:17px 4px;grid-template-columns:42px minmax(0,1fr);gap:12px}
+  .ij-protocol-phase-steps li+li{border-inline-start:0;border-top:1px solid rgba(18,69,46,.1)}
+  .ij-protocol-phase-steps h4{font-size:1.08rem}
+  .ij-protocol-phase-steps p{max-width:none;font-size:.7rem}
+  .ij-protocol-sheet-principle{min-height:76px;padding:13px 18px;grid-template-columns:1fr auto;gap:5px 12px}
+  .ij-protocol-sheet-principle span{grid-column:1}
+  .ij-protocol-sheet-principle strong{grid-column:1;text-align:right;font-size:.78rem}
+  .ij-protocol-sheet-principle i{grid-column:2;grid-row:1/3;width:30px;height:30px}
+  .ij-protocol-verdict{padding-top:25px}
+}
+@media(max-width:370px){
+  .ij-protocol-phases{padding-inline:13px}
+  .ij-protocol-meta{padding-inline:13px;font-size:.49rem}
+  .ij-protocol-phase-head{padding-right:47px}
+  .ij-protocol-phase-steps li{grid-template-columns:39px minmax(0,1fr);gap:9px}
+  .ij-protocol-phase-steps .ij-protocol-seal{width:34px;height:34px}
 }
 
 /* Timed visitor messages. */
