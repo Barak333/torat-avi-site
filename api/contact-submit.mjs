@@ -1,4 +1,4 @@
-const RABBI_EMAIL = process.env.CONTACT_RABBI_EMAIL || process.env.INNER_JUDGE_RABBI_EMAIL || "Hraraviby@gmail.com";
+const RABBI_EMAIL = "toratavi@gmail.com";
 const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || process.env.INNER_JUDGE_FROM_EMAIL || "forms@send.torat-avi.co.il";
 const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
 const RATE_LIMIT_MAX_ATTEMPTS = 8;
@@ -87,7 +87,7 @@ export default {
     if (data.phone && data.phone.replace(/\D/g, "").length < 8) {
       return json({ ok: false, message: "מספר הטלפון אינו תקין." }, 400);
     }
-    if (!apiKey) return json({ ok: false, message: "מערכת השליחה טרם הופעלה. אפשר לפנות כעת בטלפון או בוואטסאפ." }, 503);
+    if (!apiKey) return json({ ok: false, message: "מערכת השליחה טרם הופעלה. אפשר לפנות כעת בדוא״ל לכתובת toratavi@gmail.com." }, 503);
 
     const from = FROM_EMAIL.includes("<") ? FROM_EMAIL : `בית ההוראה מבקשי פניך <${FROM_EMAIL}>`;
     const rows = [

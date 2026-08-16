@@ -544,7 +544,7 @@ function standardizeSiteFooter() {
         <a href="ask-rabbi.html">שאל את הרב</a>
         <a href="donate.html">תרומה</a>
         <a href="updates.html">עדכונים וקבצים</a>
-        <a href="https://wa.me/972532273277" target="_blank" rel="noopener">WhatsApp לבית ההוראה</a>
+        <a href="ask-rabbi.html">פנייה לבית ההוראה</a>
       </div>
     </div>
     <div class="footer-policy-group">
@@ -565,7 +565,7 @@ function standardizeSiteFooter() {
     <div class="footer-contact-group">
       <h3>יצירת קשר</h3>
       <p>
-        <a href="mailto:Hraraviby@gmail.com">Hraraviby@gmail.com</a><br>
+        <a href="mailto:toratavi@gmail.com">toratavi@gmail.com</a><br>
         <a href="tel:0532273277">0532273277</a><br>
         <a href="https://www.google.com/maps/dir/?api=1&amp;destination=%D7%94%D7%A8%D7%91%20%D7%9E%D7%A8%D7%93%D7%9B%D7%99%20%D7%90%D7%9C%D7%99%D7%94%D7%95%2034%2C%20%D7%A7%D7%A8%D7%99%D7%AA%20%D7%9E%D7%9C%D7%90%D7%9B%D7%99" target="_blank" rel="noopener">הרב מרדכי אליהו 34,<br>קרית מלאכי</a>
       </p>
@@ -630,6 +630,27 @@ function setupMobileFooterAccordions() {
 }
 
 standardizeSiteFooter();
+
+function standardizeRabbiContactDestinations() {
+  const contactEmail = "toratavi@gmail.com";
+
+  document.querySelectorAll(".horaa-phone").forEach((link) => {
+    link.href = "ask-rabbi.html";
+    link.removeAttribute("target");
+    link.removeAttribute("rel");
+    link.setAttribute("aria-label", "שליחת הודעה לבית ההוראה במייל");
+  });
+
+  document.querySelectorAll('a[href^="mailto:Hraraviby@gmail.com" i]').forEach((link) => {
+    const href = link.getAttribute("href") || "";
+    link.setAttribute("href", href.replace(/Hraraviby@gmail\.com/i, contactEmail));
+    if (link.textContent.trim().toLowerCase() === "hraraviby@gmail.com") {
+      link.textContent = contactEmail;
+    }
+  });
+}
+
+standardizeRabbiContactDestinations();
 setupMobileFooterAccordions();
 
 document.querySelectorAll("[data-whatsapp-join]").forEach((form) => {
@@ -637,7 +658,7 @@ document.querySelectorAll("[data-whatsapp-join]").forEach((form) => {
     event.preventDefault();
     const phone = form.querySelector('input[name="phone"]')?.value.trim() || "";
     const message = `אני רוצה להצטרף לקהילה. מספר הפלאפון שלי: ${phone}`;
-    window.open(`https://wa.me/972532273277?text=${encodeURIComponent(message)}`, "_blank", "noopener");
+    window.open(`https://wa.me/972535215541?text=${encodeURIComponent(message)}`, "_blank", "noopener");
   });
 });
 
