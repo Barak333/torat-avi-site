@@ -3484,3 +3484,185 @@ function initCourtPrincipleCards() {
 }
 
 initCourtPrincipleCards();
+
+function initTimedVisitorPromos() {
+  const FIRST_DELAY_MS = 15_000;
+  const SECOND_DELAY_MS = 45_000;
+  const STORAGE_KEY = "toratAviVisitorPromosV1";
+  const promoContent = {
+    first: {
+      src: "assets/visitor-popup-first-light.webp",
+      alt: "לפעמים אדם יודע בדיוק מה הוא צריך לעשות, אך הידיעה לא מספיקה כדי להשתנות. שיעור בכל ראשון ורביעי בשעה 20:15."
+    },
+    second: {
+      src: "assets/visitor-popup-second-dark.webp",
+      alt: "עדות אישית על השיעור והתחלת שינוי בחיים בצורה שלא ראיתי קודם."
+    }
+  };
+
+  let state = {};
+  try {
+    state = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || "{}") || {};
+  } catch {
+    state = {};
+  }
+
+  const saveState = () => {
+    try {
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch {
+      // The timing still works in memory when browser storage is unavailable.
+    }
+  };
+
+  if (!state.firstDueAt && !state.firstShownAt && !state.firstClosedAt) {
+    state.firstDueAt = Date.now() + FIRST_DELAY_MS;
+    saveState();
+  }
+
+  const preloadPromoImage = (kind) => {
+    const preload = new Image();
+    preload.src = promoContent[kind].src;
+  };
+  window.setTimeout(() => preloadPromoImage("first"), 1000);
+
+  const modal = document.createElement("div");
+  modal.className = "visitor-promo-modal";
+  modal.hidden = true;
+  modal.setAttribute("aria-hidden", "true");
+  modal.innerHTML = `
+    <div class="visitor-promo-backdrop" data-visitor-promo-close></div>
+    <section class="visitor-promo-dialog" role="dialog" aria-modal="true" aria-label="הודעה מיוחדת ממבקשי פניך" tabindex="-1">
+      <button class="visitor-promo-close" type="button" aria-label="סגירת ההודעה" data-visitor-promo-close>
+        <span aria-hidden="true">×</span>
+      </button>
+      <div class="visitor-promo-media">
+        <img src="" alt="" decoding="async">
+      </div>
+    </section>
+  `;
+  document.body.appendChild(modal);
+
+  const dialog = modal.querySelector(".visitor-promo-dialog");
+  const media = modal.querySelector(".visitor-promo-media");
+  const image = modal.querySelector("img");
+  const closeButton = modal.querySelector(".visitor-promo-close");
+  let activePromo = "";
+  let timerId = 0;
+  let previousFocus = null;
+  let closing = false;
+  let lockedElements = [];
+
+  const pageIsBusy = () =>
+    document.documentElement.classList.contains("rabbi-opinion-pending") ||
+    document.body.classList.contains("rabbi-opinion-open") ||
+    document.body.classList.contains("court-booking-open") ||
+    document.body.classList.contains("modal-open");
+
+  const lockPage = () => {
+    lockedElements = Array.from(document.body.children)
+      .filter((element) => element !== modal)
+      .map((element) => ({ element, wasInert: element.inert }));
+    lockedElements.forEach(({ element }) => { element.inert = true; });
+  };
+
+  const unlockPage = () => {
+    lockedElements.forEach(({ element, wasInert }) => { element.inert = wasInert; });
+    lockedElements = [];
+  };
+
+  const showPromo = (kind) => {
+    if (pageIsBusy()) {
+      timerId = window.setTimeout(() => showPromo(kind), 800);
+      return;
+    }
+
+    activePromo = kind;
+    closing = false;
+    previousFocus = document.activeElement;
+    dialog.classList.toggle("is-light", kind === "first");
+    dialog.classList.toggle("is-dark", kind === "second");
+    media.classList.toggle("is-light", kind === "first");
+    media.classList.toggle("is-dark", kind === "second");
+    image.src = promoContent[kind].src;
+    image.alt = promoContent[kind].alt;
+
+    const shownKey = kind === "first" ? "firstShownAt" : "secondShownAt";
+    if (!state[shownKey]) {
+      state[shownKey] = Date.now();
+      saveState();
+    }
+
+    modal.hidden = false;
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("visitor-promo-open");
+    lockPage();
+    window.requestAnimationFrame(() => {
+      modal.classList.add("is-visible");
+      closeButton.focus({ preventScroll: true });
+    });
+  };
+
+  const schedulePromo = (kind, dueAt) => {
+    window.clearTimeout(timerId);
+    timerId = window.setTimeout(
+      () => showPromo(kind),
+      Math.max(0, Number(dueAt || 0) - Date.now())
+    );
+  };
+
+  const scheduleNextPromo = () => {
+    if (state.secondClosedAt) return;
+
+    if (state.firstClosedAt) {
+      state.secondDueAt ||= Number(state.firstClosedAt) + SECOND_DELAY_MS;
+      saveState();
+      schedulePromo("second", state.secondShownAt ? Date.now() : state.secondDueAt);
+      return;
+    }
+
+    schedulePromo("first", state.firstShownAt ? Date.now() : state.firstDueAt);
+  };
+
+  const closePromo = () => {
+    if (modal.hidden || closing) return;
+    closing = true;
+    modal.classList.remove("is-visible");
+
+    const closedAt = Date.now();
+    if (activePromo === "first") {
+      state.firstClosedAt = closedAt;
+      state.secondDueAt = closedAt + SECOND_DELAY_MS;
+      preloadPromoImage("second");
+    } else if (activePromo === "second") {
+      state.secondClosedAt = closedAt;
+    }
+    saveState();
+
+    window.setTimeout(() => {
+      modal.hidden = true;
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("visitor-promo-open");
+      unlockPage();
+      previousFocus?.focus?.({ preventScroll: true });
+      activePromo = "";
+      closing = false;
+      scheduleNextPromo();
+    }, 300);
+  };
+
+  modal.querySelectorAll("[data-visitor-promo-close]").forEach((element) => {
+    element.addEventListener("click", closePromo);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || modal.hidden) return;
+    event.preventDefault();
+    closePromo();
+  });
+
+  window.addEventListener("toratavi:rabbi-opinion-resolved", scheduleNextPromo);
+  scheduleNextPromo();
+}
+
+initTimedVisitorPromos();

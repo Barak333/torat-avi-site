@@ -1,4 +1,4 @@
-const CACHE_NAME = "torat-avi-pwa-v166";
+const CACHE_NAME = "torat-avi-pwa-v170";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -31,7 +31,9 @@ const CORE_ASSETS = [
   "./assets/directory-qna-premium.webp",
   "./assets/directory-ask-rabbi-premium.webp",
   "./assets/whatsapp-community-icon.jpg",
-  "./assets/whatsapp-community-icon-transparent.webp"
+  "./assets/whatsapp-community-icon-transparent.webp",
+  "./assets/visitor-popup-first-light.webp",
+  "./assets/visitor-popup-second-dark.webp"
 ];
 
 self.addEventListener("install", (event) => {
