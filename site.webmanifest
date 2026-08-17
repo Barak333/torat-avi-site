@@ -2,7 +2,7 @@
   "name": "מבקשי פניך",
   "short_name": "מבקשי פניך",
   "description": "מבקשי פניך - בית המדרש, בית ההוראה ובית הדין בראשות הרב איתי בן יוסף.",
-  "id": "./",
+  "id": "/",
   "lang": "he",
   "dir": "rtl",
   "start_url": "./index.html",
@@ -14,19 +14,19 @@
   "categories": ["education", "books", "lifestyle"],
   "icons": [
     {
-      "src": "./assets/favicon-192.png",
+      "src": "./assets/mevakshei-panecha-app-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "./assets/favicon-512.png",
+      "src": "./assets/mevakshei-panecha-app-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "./assets/favicon-512.png",
+      "src": "./assets/mevakshei-panecha-app-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -37,19 +37,19 @@
       "name": "שאלות ותשובות",
       "short_name": "שו״ת",
       "url": "./qna.html",
-      "icons": [{ "src": "./assets/favicon-192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "./assets/mevakshei-panecha-app-192.png", "sizes": "192x192" }]
     },
     {
       "name": "פסקי דין",
       "short_name": "פסקי דין",
       "url": "./piskei-din.html",
-      "icons": [{ "src": "./assets/favicon-192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "./assets/mevakshei-panecha-app-192.png", "sizes": "192x192" }]
     },
     {
       "name": "ספרי הרב",
       "short_name": "ספרים",
       "url": "./books.html",
-      "icons": [{ "src": "./assets/favicon-192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "./assets/mevakshei-panecha-app-192.png", "sizes": "192x192" }]
     }
   ]
 }

@@ -1,4 +1,4 @@
-const CACHE_NAME = "torat-avi-pwa-v178";
+const CACHE_NAME = "mevakshei-panecha-pwa-v1";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -17,9 +17,8 @@ const CORE_ASSETS = [
   "./emuna-qna.js",
   "./rabbi-opinion.css",
   "./rabbi-opinion.js",
-  "./site.webmanifest",
-  "./assets/favicon-192.png",
-  "./assets/favicon-512.png",
+  "./assets/mevakshei-panecha-app-192.png",
+  "./assets/mevakshei-panecha-app-512.png",
   "./assets/torat-avi-logo-transparent.webp",
   "./assets/mevakshei-panecha-nav-logo.webp",
   "./assets/inner-judge-emblem.webp",
@@ -61,6 +60,11 @@ self.addEventListener("fetch", (event) => {
 
   if (url.pathname.startsWith("/api/") || url.pathname.startsWith("/media/")) {
     event.respondWith(fetch(request));
+    return;
+  }
+
+  if (url.pathname.endsWith("/site.webmanifest") || url.pathname.includes("/assets/mevakshei-panecha-app-")) {
+    event.respondWith(fetch(request, { cache: "reload" }));
     return;
   }
 
