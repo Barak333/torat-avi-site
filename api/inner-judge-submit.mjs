@@ -1,6 +1,6 @@
 const RABBI_EMAIL = process.env.INNER_JUDGE_RABBI_EMAIL || "Hraraviby@gmail.com";
-const LOGO_URL = process.env.INNER_JUDGE_LOGO_URL || "https://www.torat-avi.co.il/assets/mevakshei-panecha-nav-logo.webp";
-const SITE_URL = "https://www.torat-avi.co.il";
+const LOGO_URL = process.env.INNER_JUDGE_LOGO_URL || "https://www.mevakshei-panecha.co.il/assets/mevakshei-panecha-nav-logo.webp";
+const SITE_URL = "https://www.mevakshei-panecha.co.il";
 const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
 const RATE_LIMIT_MAX_ATTEMPTS = 5;
 const rateLimitStore = globalThis.__innerJudgeRateLimitStore || new Map();
@@ -96,7 +96,7 @@ function emailShell(content, previewText = "") {
         <tr><td style="padding:42px 38px 38px;">${content}</td></tr>
         <tr><td align="center" style="padding:20px 28px;border-top:1px solid #e3d8b9;color:#7b867f;font-size:12px;line-height:1.7;">
           בית המדרש מבקשי פניך • הודעה אישית וחסויה<br>
-          <a href="${SITE_URL}" style="color:#00613b;font-weight:700;">www.torat-avi.co.il</a>
+          <a href="${SITE_URL}" style="color:#00613b;font-weight:700;">www.mevakshei-panecha.co.il</a>
         </td></tr>
       </table>
     </td></tr>
