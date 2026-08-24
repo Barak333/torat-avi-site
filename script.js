@@ -1810,7 +1810,7 @@ function initializeWeeklyQuestionAlert() {
     }
 
     const loader = document.createElement("script");
-      loader.src = "weekly-qna.js?v=20260820-yatom-vitamintchik-1";
+      loader.src = "weekly-qna.js?v=20260824-ear-tissue-product-1";
     loader.addEventListener("load", showWeeklyQuestionAlert);
     document.head.append(loader);
   });
