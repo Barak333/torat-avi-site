@@ -1944,6 +1944,942 @@ body.gate-intro-active {
   }
 }
 
+/* Realistic ceremonial gates - 2026-08-25 */
+.home-gate-intro {
+  background: #010705;
+  perspective: 1900px;
+  isolation: isolate;
+}
+
+.home-gate-intro::before {
+  z-index: 2;
+  background:
+    radial-gradient(circle at 19% 31%, rgba(255, 228, 145, .72) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 77% 23%, rgba(255, 241, 185, .58) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 68% 74%, rgba(227, 185, 78, .52) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 33% 81%, rgba(255, 235, 170, .42) 0 1px, transparent 1.8px);
+  background-size: 270px 270px, 350px 350px, 430px 430px, 510px 510px;
+  opacity: .34;
+  filter: blur(.1px);
+}
+
+.home-gate-intro::after {
+  content: "";
+  position: absolute;
+  z-index: 30;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(ellipse at 50% 54%, rgba(255, 252, 220, .94) 0 3%, rgba(255, 224, 131, .48) 15%, transparent 49%);
+  mix-blend-mode: screen;
+}
+
+.home-gate-intro.is-opening::after {
+  animation: gate-opening-flash 1.35s cubic-bezier(.15, .7, .2, 1) both;
+}
+
+.gate-intro-bg {
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(188, 143, 39, .18), transparent 24%),
+    radial-gradient(ellipse at 50% 66%, rgba(1, 94, 44, .38), transparent 48%),
+    linear-gradient(104deg, rgba(0, 4, 3, .99), rgba(0, 38, 20, .93) 48%, rgba(0, 5, 3, .99)),
+    url("assets/torat-avi-green-texture-clean.webp") center / cover no-repeat;
+  filter: saturate(1.08) contrast(1.05);
+}
+
+.gate-intro-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .22;
+  background:
+    repeating-linear-gradient(93deg, transparent 0 68px, rgba(255, 236, 178, .035) 69px 70px),
+    repeating-linear-gradient(3deg, transparent 0 84px, rgba(255, 236, 178, .025) 85px 86px);
+  mask-image: radial-gradient(ellipse at center, #000, transparent 76%);
+}
+
+.gate-intro-bg::after {
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, .87), transparent 30%, transparent 70%, rgba(0, 0, 0, .87)),
+    linear-gradient(180deg, rgba(0, 0, 0, .42), transparent 32%, rgba(0, 0, 0, .32)),
+    radial-gradient(ellipse at 50% 50%, transparent 0 28%, rgba(0, 0, 0, .7) 82%);
+}
+
+.gate-intro-world {
+  width: min(940px, 94vw);
+  height: min(760px, 86vh);
+  perspective: 1800px;
+}
+
+.gate-intro-world::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 20%;
+  left: 50%;
+  width: min(420px, 48vw);
+  height: min(560px, 63vh);
+  border-radius: 48% 48% 10% 10%;
+  background:
+    radial-gradient(ellipse at 50% 55%, rgba(255, 255, 232, .94) 0 8%, rgba(255, 226, 134, .54) 26%, rgba(212, 157, 43, .16) 54%, transparent 72%);
+  filter: blur(23px);
+  opacity: .08;
+  transform: translate3d(-50%, 0, -180px) scale(.58);
+  will-change: opacity, transform;
+}
+
+.home-gate-intro.is-opening .gate-intro-world::before {
+  opacity: .96;
+  transform: translate3d(-50%, -2%, -70px) scale(1.2);
+  transition: opacity .82s ease, transform 1.2s cubic-bezier(.15, .75, .18, 1);
+  animation: gate-light-breathe 1.4s ease-in-out .75s infinite alternate;
+}
+
+.gate-intro-light {
+  z-index: 1;
+  top: 22%;
+  width: min(380px, 46vw);
+  height: min(500px, 58vh);
+  border-radius: 48% 48% 8% 8%;
+  background:
+    radial-gradient(ellipse at 50% 52%, #fffde5 0 7%, rgba(255, 246, 190, .95) 18%, rgba(244, 195, 87, .7) 34%, rgba(183, 126, 27, .22) 57%, transparent 73%);
+  filter: blur(14px);
+  opacity: .06;
+  transform: translate3d(-50%, 0, -130px) scale(.58);
+}
+
+.gate-intro-light::before,
+.gate-intro-light::after {
+  content: "";
+  position: absolute;
+  top: 49%;
+  left: 50%;
+  width: min(780px, 92vw);
+  height: min(240px, 34vh);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(255, 248, 205, .78), rgba(226, 174, 62, .2) 38%, transparent 70%);
+  filter: blur(20px);
+  transform: translate(-50%, -50%) scale(.42);
+  opacity: 0;
+}
+
+.gate-intro-light::after {
+  width: min(630px, 86vw);
+  height: min(620px, 75vh);
+  background: conic-gradient(from 0deg at 50% 50%, transparent 0 7%, rgba(255, 235, 163, .2) 9%, transparent 13% 29%, rgba(255, 238, 171, .15) 32%, transparent 36% 58%, rgba(255, 228, 135, .18) 61%, transparent 65% 100%);
+  filter: blur(12px);
+}
+
+.home-gate-intro.is-opening .gate-intro-light {
+  opacity: 1;
+  transform: translate3d(-50%, -2%, -35px) scale(1.3);
+  transition: opacity .72s ease, transform 1.12s cubic-bezier(.15, .78, .18, 1);
+}
+
+.home-gate-intro.is-opening .gate-intro-light::before {
+  opacity: .82;
+  transform: translate(-50%, -50%) scale(1.08);
+  transition: opacity .72s ease .14s, transform 1.2s cubic-bezier(.15, .78, .18, 1) .08s;
+}
+
+.home-gate-intro.is-opening .gate-intro-light::after {
+  opacity: .78;
+  transform: translate(-50%, -50%) scale(1.04) rotate(8deg);
+  transition: opacity .8s ease .16s, transform 1.35s cubic-bezier(.15, .78, .18, 1) .08s;
+}
+
+.gate-intro-beams {
+  position: absolute;
+  z-index: 1;
+  top: 29%;
+  left: 50%;
+  width: min(760px, 92vw);
+  height: min(500px, 60vh);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-50%) scale(.42);
+  transform-origin: 50% 45%;
+  filter: blur(1px);
+  will-change: opacity, transform;
+}
+
+.gate-intro-beams span {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  width: 24%;
+  height: 94%;
+  transform-origin: 50% 4%;
+  clip-path: polygon(46% 0, 54% 0, 100% 100%, 0 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 220, .58), rgba(255, 222, 122, .18) 58%, transparent);
+  mix-blend-mode: screen;
+}
+
+.gate-intro-beams span:nth-child(1) { transform: translateX(-50%) rotate(0deg); opacity: .64; }
+.gate-intro-beams span:nth-child(2) { transform: translateX(-50%) rotate(17deg); opacity: .42; }
+.gate-intro-beams span:nth-child(3) { transform: translateX(-50%) rotate(-17deg); opacity: .42; }
+
+.home-gate-intro.is-opening .gate-intro-beams {
+  opacity: .9;
+  transform: translateX(-50%) scale(1);
+  transition: opacity .88s ease .16s, transform 1.25s cubic-bezier(.15, .76, .16, 1) .06s;
+}
+
+.gate-intro-dust {
+  position: absolute;
+  z-index: 8;
+  top: 29%;
+  left: 50%;
+  width: min(570px, 72vw);
+  height: min(470px, 56vh);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-50%);
+  overflow: hidden;
+}
+
+.gate-intro-dust i {
+  --dust-x: 50%;
+  --dust-delay: 0s;
+  --dust-size: 3px;
+  position: absolute;
+  bottom: 4%;
+  left: var(--dust-x);
+  width: var(--dust-size);
+  height: var(--dust-size);
+  border-radius: 50%;
+  background: #fff3b6;
+  box-shadow: 0 0 7px 2px rgba(255, 210, 92, .62);
+  animation: gate-dust-rise 2.2s ease-in infinite var(--dust-delay);
+}
+
+.gate-intro-dust i:nth-child(1) { --dust-x: 17%; --dust-delay: -.2s; --dust-size: 2px; }
+.gate-intro-dust i:nth-child(2) { --dust-x: 26%; --dust-delay: -1.3s; --dust-size: 4px; }
+.gate-intro-dust i:nth-child(3) { --dust-x: 34%; --dust-delay: -.75s; --dust-size: 2px; }
+.gate-intro-dust i:nth-child(4) { --dust-x: 43%; --dust-delay: -1.75s; --dust-size: 3px; }
+.gate-intro-dust i:nth-child(5) { --dust-x: 48%; --dust-delay: -.45s; --dust-size: 2px; }
+.gate-intro-dust i:nth-child(6) { --dust-x: 54%; --dust-delay: -1.1s; --dust-size: 4px; }
+.gate-intro-dust i:nth-child(7) { --dust-x: 61%; --dust-delay: -1.9s; --dust-size: 2px; }
+.gate-intro-dust i:nth-child(8) { --dust-x: 67%; --dust-delay: -.9s; --dust-size: 3px; }
+.gate-intro-dust i:nth-child(9) { --dust-x: 73%; --dust-delay: -1.55s; --dust-size: 2px; }
+.gate-intro-dust i:nth-child(10) { --dust-x: 79%; --dust-delay: -.1s; --dust-size: 3px; }
+.gate-intro-dust i:nth-child(11) { --dust-x: 39%; --dust-delay: -1.45s; --dust-size: 3px; }
+.gate-intro-dust i:nth-child(12) { --dust-x: 58%; --dust-delay: -.6s; --dust-size: 2px; }
+
+.home-gate-intro.is-opening .gate-intro-dust {
+  opacity: .86;
+  transition: opacity .72s ease .28s;
+}
+
+.gate-intro-frame {
+  z-index: 4;
+  width: min(600px, 79vw);
+  height: min(550px, 65vh);
+  perspective: 1450px;
+  filter: drop-shadow(0 44px 54px rgba(0, 0, 0, .76));
+}
+
+.gate-intro-frame::before {
+  top: 18%;
+  right: -8%;
+  bottom: -4%;
+  left: -8%;
+  border: 1px solid rgba(232, 196, 105, .34);
+  background:
+    radial-gradient(circle at 50% 5%, rgba(255, 231, 152, .14), transparent 27%),
+    repeating-linear-gradient(7deg, rgba(255, 236, 182, .022) 0 2px, transparent 2px 10px),
+    repeating-linear-gradient(91deg, transparent 0 54px, rgba(255, 232, 162, .04) 55px 56px),
+    linear-gradient(90deg, #080d0a, #252319 14%, #0c120e 36%, #171a13 63%, #060a08);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 232, 160, .1),
+    inset 0 36px 60px rgba(255, 228, 142, .06),
+    inset 0 -48px 90px rgba(0, 0, 0, .82),
+    0 28px 44px rgba(0, 0, 0, .58);
+  opacity: 1;
+}
+
+.gate-intro-frame::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 27%;
+  right: 2%;
+  bottom: 0;
+  left: 2%;
+  border-radius: 44% 44% 2% 2%;
+  background: radial-gradient(ellipse at 50% 51%, #fffbd7 0 7%, rgba(255, 226, 126, .72) 23%, rgba(192, 131, 25, .18) 50%, transparent 72%);
+  filter: blur(12px);
+  opacity: .05;
+  transform: translateZ(-18px) scale(.62);
+  will-change: opacity, transform;
+}
+
+.home-gate-intro.is-opening .gate-intro-frame::after {
+  opacity: 1;
+  transform: translateZ(-8px) scale(1.08);
+  transition: opacity .72s ease .08s, transform 1.08s cubic-bezier(.14, .76, .17, 1) .06s;
+}
+
+.gate-intro-arch {
+  z-index: 7;
+  inset: -47px 3% auto;
+  height: 49%;
+  border: 10px solid transparent;
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+  background:
+    linear-gradient(180deg, rgba(255, 244, 190, .16), transparent 38%),
+    repeating-linear-gradient(96deg, transparent 0 20px, rgba(255, 231, 158, .045) 21px 22px),
+    linear-gradient(90deg, #060b08, #20241a 18%, #0c120e 50%, #20241a 82%, #060b08),
+    linear-gradient(90deg, #594317, #d2aa4d 7%, #493612 14%, #ad842d 28%, #f0d37b 50%, #9b7122 72%, #3d2c0f 87%, #c49b3b);
+  background-origin: border-box;
+  background-clip: padding-box, padding-box, padding-box, border-box;
+  box-shadow:
+    inset 0 0 0 2px rgba(0, 0, 0, .56),
+    inset 0 -28px 48px rgba(0, 0, 0, .72),
+    inset 0 12px 22px rgba(255, 239, 179, .14),
+    0 0 0 2px rgba(15, 12, 5, .9),
+    0 15px 28px rgba(0, 0, 0, .54),
+    0 0 34px rgba(208, 163, 54, .2);
+}
+
+.gate-intro-arch-line {
+  inset: 20px 24px auto;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #7a5918 12%, #f4d987 50%, #7a5918 88%, transparent);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .72), 0 0 12px rgba(255, 219, 114, .25);
+}
+
+.gate-intro-arch-crown {
+  top: 27px;
+  width: 27px;
+  height: 27px;
+  border: 2px solid rgba(255, 240, 179, .9);
+  background: linear-gradient(135deg, #fff1a9, #a27618 58%, #4b350c);
+  box-shadow: inset 0 0 0 2px rgba(67, 45, 5, .42), 0 0 23px rgba(255, 222, 124, .4);
+}
+
+.gate-intro-pillar {
+  z-index: 6;
+  top: 27%;
+  width: 11.5%;
+  height: 75%;
+  border: 2px solid #8f6b20;
+  background:
+    linear-gradient(90deg, rgba(255, 238, 177, .2), transparent 22%, rgba(0, 0, 0, .56) 82%),
+    repeating-linear-gradient(180deg, rgba(255, 230, 153, .07) 0 4px, transparent 4px 34px),
+    repeating-linear-gradient(96deg, transparent 0 10px, rgba(255, 238, 182, .035) 11px 12px),
+    linear-gradient(90deg, #080d09, #2d2c20 34%, #111710 68%, #050705);
+  box-shadow:
+    inset 6px 0 12px rgba(255, 225, 146, .06),
+    inset -10px 0 18px rgba(0, 0, 0, .68),
+    0 18px 32px rgba(0, 0, 0, .58),
+    0 0 18px rgba(198, 151, 40, .16);
+}
+
+.gate-intro-pillar::before,
+.gate-intro-pillar::after {
+  content: "";
+  position: absolute;
+  right: -13%;
+  left: -13%;
+  height: 5%;
+  border: 1px solid rgba(219, 177, 76, .7);
+  background: linear-gradient(180deg, #33270e, #0b0e0a);
+  box-shadow: 0 5px 9px rgba(0, 0, 0, .52);
+}
+
+.gate-intro-pillar::before { top: 2%; }
+.gate-intro-pillar::after { bottom: 2%; }
+
+.gate-intro-door {
+  z-index: 5;
+  bottom: 0;
+  height: 73%;
+  border-color: rgba(211, 170, 66, .86);
+  overflow: visible;
+  background:
+    linear-gradient(108deg, transparent 0 28%, rgba(255, 239, 183, .13) 34%, transparent 41%),
+    radial-gradient(ellipse at 50% 37%, rgba(212, 170, 65, .16), transparent 28%),
+    repeating-linear-gradient(88deg, rgba(255, 233, 168, .04) 0 2px, transparent 2px 38px),
+    repeating-linear-gradient(3deg, transparent 0 15px, rgba(255, 235, 171, .025) 16px 17px),
+    linear-gradient(100deg, #030504, #152018 23%, #263023 46%, #0b100c 73%, #020302);
+  box-shadow:
+    inset 0 0 0 2px rgba(0, 0, 0, .56),
+    inset 0 0 0 4px rgba(236, 197, 98, .08),
+    inset 15px 0 32px rgba(255, 225, 137, .04),
+    inset -22px 0 35px rgba(0, 0, 0, .64),
+    inset 0 -34px 52px rgba(0, 0, 0, .72),
+    0 14px 30px rgba(0, 0, 0, .5);
+  transition: filter .3s ease;
+}
+
+.gate-intro-door::before {
+  inset: 7% 8%;
+  border: 1px solid rgba(235, 197, 104, .42);
+  background:
+    linear-gradient(90deg, transparent 49%, rgba(255, 229, 153, .2) 49.5% 50.5%, transparent 51%),
+    radial-gradient(circle at 50% 40%, rgba(255, 227, 140, .12), transparent 28%),
+    linear-gradient(180deg, rgba(255, 239, 190, .035), transparent 44%, rgba(0, 0, 0, .18));
+  box-shadow:
+    inset 0 0 0 3px rgba(0, 0, 0, .28),
+    inset 0 0 26px rgba(0, 0, 0, .5),
+    0 0 0 1px rgba(0, 0, 0, .42);
+}
+
+.gate-intro-door::after {
+  inset: 0;
+  background:
+    linear-gradient(112deg, transparent 0 31%, rgba(255, 255, 220, .13) 37%, transparent 43% 100%),
+    radial-gradient(circle at 50% 42%, transparent 0 58%, rgba(0, 0, 0, .28) 100%);
+  opacity: .46;
+  mix-blend-mode: screen;
+}
+
+.gate-intro-door-right {
+  right: 0;
+  border-radius: 176px 2px 2px 8px;
+  transform-origin: 100% 54%;
+}
+
+.gate-intro-door-left {
+  left: 0;
+  border-radius: 2px 176px 8px 2px;
+  transform-origin: 0 54%;
+}
+
+.gate-intro-door-right::after {
+  box-shadow: inset -22px 0 32px rgba(0, 0, 0, .46);
+}
+
+.gate-intro-door-left::after {
+  box-shadow: inset 22px 0 32px rgba(0, 0, 0, .46);
+}
+
+.gate-door-ornament {
+  inset: 11% 12%;
+  border: 1px solid rgba(243, 207, 112, .5);
+  box-shadow:
+    inset 0 0 0 3px rgba(0, 0, 0, .26),
+    inset 0 0 26px rgba(203, 155, 43, .1),
+    0 0 0 1px rgba(0, 0, 0, .38);
+}
+
+.gate-door-ornament::before,
+.gate-door-ornament::after {
+  border-color: rgba(227, 182, 74, .42);
+}
+
+.gate-door-ornament::after {
+  background: linear-gradient(135deg, rgba(255, 229, 146, .2), rgba(85, 59, 9, .24));
+  box-shadow: inset 0 0 8px rgba(255, 233, 167, .12), 0 3px 7px rgba(0, 0, 0, .5);
+}
+
+.gate-door-rail {
+  z-index: 1;
+  width: 64%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #725116 12%, #f0cf74 50%, #725116 88%, transparent);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .8), 0 0 15px rgba(255, 219, 115, .18);
+}
+
+.gate-intro-door strong {
+  z-index: 4;
+  min-width: 68%;
+  padding: .18em .35em .25em;
+  color: #e8c96f;
+  background: linear-gradient(180deg, rgba(12, 17, 12, .76), rgba(4, 7, 5, .36));
+  border-top: 1px solid rgba(255, 224, 137, .26);
+  border-bottom: 1px solid rgba(57, 38, 4, .86);
+  font-size: clamp(1.55rem, 3.8vw, 2.8rem);
+  font-weight: 950;
+  letter-spacing: .025em;
+  line-height: 1;
+  text-align: center;
+  text-shadow:
+    0 2px 0 #241902,
+    0 -1px 0 rgba(255, 249, 201, .36),
+    0 0 17px rgba(255, 218, 107, .22);
+  box-shadow: inset 0 7px 14px rgba(255, 239, 174, .025), 0 5px 14px rgba(0, 0, 0, .38);
+}
+
+.home-gate-intro.is-opening .gate-intro-door-right {
+  transform: rotateY(-103deg) translateZ(8px);
+  filter: brightness(.72);
+  box-shadow:
+    inset -14px 0 28px rgba(0, 0, 0, .72),
+    -30px 16px 54px rgba(0, 0, 0, .62),
+    8px 0 22px rgba(255, 222, 122, .18);
+  transition: transform 1.18s cubic-bezier(.16, .82, .18, 1), filter .88s ease, box-shadow .9s ease;
+}
+
+.home-gate-intro.is-opening .gate-intro-door-left {
+  transform: rotateY(103deg) translateZ(8px);
+  filter: brightness(.72);
+  box-shadow:
+    inset 14px 0 28px rgba(0, 0, 0, .72),
+    30px 16px 54px rgba(0, 0, 0, .62),
+    -8px 0 22px rgba(255, 222, 122, .18);
+  transition: transform 1.18s cubic-bezier(.16, .82, .18, 1), filter .88s ease, box-shadow .9s ease;
+}
+
+.gate-intro-caption {
+  z-index: 4;
+  top: 54%;
+  gap: 7px;
+  transform: translate3d(0, 18px, 22px) scale(.9);
+  text-shadow: 0 3px 6px rgba(0, 0, 0, .88), 0 15px 30px rgba(0, 0, 0, .7);
+}
+
+.gate-intro-caption::before {
+  content: "";
+  width: min(230px, 58%);
+  height: 1px;
+  margin-bottom: 4px;
+  background: linear-gradient(90deg, transparent, rgba(255, 237, 171, .9), transparent);
+  box-shadow: 0 0 10px rgba(255, 219, 105, .42);
+}
+
+.gate-intro-caption span {
+  color: #f1d57e;
+  font-size: clamp(2rem, 4.5vw, 3.8rem);
+  line-height: .96;
+  text-shadow:
+    0 2px 0 #3d2904,
+    0 0 10px rgba(255, 239, 174, .68),
+    0 0 30px rgba(255, 204, 72, .46);
+}
+
+.gate-intro-caption small {
+  color: rgba(255, 254, 232, .97);
+  font-size: clamp(1rem, 1.75vw, 1.34rem);
+  letter-spacing: .015em;
+}
+
+.home-gate-intro.is-opening .gate-intro-caption {
+  opacity: 1;
+  transform: translate3d(0, 0, 24px) scale(1);
+  transition: opacity .58s ease .46s, transform .78s cubic-bezier(.16, .8, .2, 1) .38s;
+}
+
+.gate-intro-path {
+  z-index: 3;
+  bottom: -18%;
+  width: min(560px, 72vw);
+  opacity: .24;
+}
+
+.home-gate-intro.is-opening .gate-intro-path {
+  opacity: .72;
+  filter: drop-shadow(0 0 9px rgba(255, 219, 112, .42));
+  transition: opacity .85s ease .24s, filter .85s ease .24s;
+}
+
+.home-gate-intro.is-dolly .gate-intro-world {
+  transform: translate3d(0, -2vh, 260px) scale(1.58);
+  transition: transform .58s cubic-bezier(.13, .82, .2, 1);
+}
+
+.home-gate-intro.is-revealing .gate-intro-light {
+  opacity: 1;
+  transform: translate3d(-50%, -2%, 170px) scale(2.7);
+  transition: opacity .34s ease, transform .52s ease;
+}
+
+@keyframes gate-opening-flash {
+  0% { opacity: 0; transform: scale(.88); }
+  34% { opacity: .46; }
+  100% { opacity: 0; transform: scale(1.08); }
+}
+
+@keyframes gate-light-breathe {
+  from { filter: blur(23px) brightness(.94); }
+  to { filter: blur(28px) brightness(1.14); }
+}
+
+@keyframes gate-dust-rise {
+  0% { opacity: 0; transform: translate3d(-12px, 12px, 0) scale(.65); }
+  18% { opacity: .82; }
+  72% { opacity: .5; }
+  100% { opacity: 0; transform: translate3d(22px, -360px, 0) scale(1.2); }
+}
+
+@media (max-width: 680px) {
+  .gate-intro-world {
+    width: 98vw;
+    height: 78vh;
+  }
+
+  .gate-intro-frame {
+    width: min(410px, 84vw);
+    height: min(490px, 58vh);
+  }
+
+  .gate-intro-arch {
+    top: -36px;
+    border-width: 7px;
+  }
+
+  .gate-intro-pillar {
+    width: 12%;
+  }
+
+  .gate-intro-door strong {
+    min-width: 76%;
+    padding-inline: .2em;
+    font-size: clamp(1.2rem, 6.3vw, 1.95rem);
+  }
+
+  .gate-intro-caption {
+    top: 55%;
+    right: 7%;
+    left: 7%;
+  }
+
+  .gate-intro-caption span {
+    font-size: clamp(1.7rem, 9vw, 2.6rem);
+  }
+
+  .gate-intro-caption small {
+    font-size: clamp(.83rem, 3.8vw, 1.08rem);
+  }
+
+  .gate-intro-beams {
+    width: 96vw;
+  }
+
+  .gate-intro-dust {
+    width: 78vw;
+  }
+}
+
+/* Freestanding doors and a matching beit midrash vestibule */
+.gate-intro-bg {
+  background:
+    radial-gradient(ellipse at 50% 48%, rgba(181, 126, 36, .17) 0 15%, transparent 45%),
+    radial-gradient(ellipse at 50% 50%, rgba(0, 89, 48, .38), transparent 66%),
+    linear-gradient(90deg, rgba(0, 6, 4, .99), rgba(0, 31, 19, .94) 20%, rgba(0, 55, 31, .9) 50%, rgba(0, 31, 19, .94) 80%, rgba(0, 6, 4, .99)),
+    url("assets/torat-avi-green-texture-clean.webp") center / cover no-repeat;
+  filter: saturate(1.06) contrast(1.06);
+}
+
+.gate-intro-bg::before {
+  content: "";
+  position: absolute;
+  inset: 3% 0 0;
+  opacity: .58;
+  background:
+    radial-gradient(circle at 16% 42%, rgba(255, 227, 157, .52) 0 1px, rgba(219, 164, 63, .2) 2px 3%, transparent 14%),
+    radial-gradient(circle at 84% 42%, rgba(255, 227, 157, .52) 0 1px, rgba(219, 164, 63, .2) 2px 3%, transparent 14%),
+    linear-gradient(90deg, transparent 0 9%, rgba(209, 174, 105, .14) 9.1% 9.3%, transparent 9.45% 23.8%, rgba(209, 174, 105, .055) 23.9% 24%, transparent 24.1% 75.9%, rgba(209, 174, 105, .055) 76% 76.1%, transparent 76.2% 90.55%, rgba(209, 174, 105, .14) 90.7% 90.9%, transparent 91%),
+    repeating-linear-gradient(0deg, transparent 0 92px, rgba(255, 239, 201, .018) 93px 94px);
+  mask-image: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent);
+}
+
+.gate-intro-bg::after {
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, .82), transparent 26%, transparent 74%, rgba(0, 0, 0, .82)),
+    linear-gradient(180deg, rgba(0, 0, 0, .35), transparent 30%, rgba(0, 0, 0, .5)),
+    radial-gradient(ellipse at 50% 46%, transparent 0 26%, rgba(0, 0, 0, .62) 84%);
+}
+
+.gate-intro-world::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  bottom: -14%;
+  left: 50%;
+  width: min(1080px, 116vw);
+  height: 35%;
+  opacity: .34;
+  transform: translateX(-50%) rotateX(67deg) translateZ(-170px);
+  transform-origin: 50% 100%;
+  background:
+    linear-gradient(90deg, transparent 49.8%, rgba(222, 185, 102, .25) 50%, transparent 50.2%),
+    repeating-linear-gradient(90deg, transparent 0 9.8%, rgba(215, 183, 119, .08) 9.9% 10%),
+    repeating-linear-gradient(180deg, rgba(229, 198, 133, .1) 0 1px, transparent 1px 42px),
+    radial-gradient(ellipse at 50% 0, rgba(217, 170, 73, .2), transparent 62%);
+  filter: drop-shadow(0 -12px 22px rgba(218, 168, 65, .08));
+  pointer-events: none;
+}
+
+.gate-intro-frame {
+  filter:
+    drop-shadow(0 47px 58px rgba(0, 0, 0, .86))
+    drop-shadow(0 0 34px rgba(195, 139, 35, .13));
+}
+
+.gate-intro-frame::before {
+  display: none;
+}
+
+.gate-intro-door {
+  box-shadow:
+    inset 0 0 0 1px rgba(242, 205, 121, .15),
+    inset 0 -32px 56px rgba(0, 0, 0, .32),
+    0 28px 44px rgba(0, 0, 0, .68),
+    0 0 20px rgba(211, 160, 59, .08);
+}
+
+.gate-intro-path {
+  opacity: .34;
+  filter: drop-shadow(0 0 7px rgba(219, 174, 80, .22));
+}
+
+@media (max-width: 680px) {
+  .gate-intro-bg::before {
+    opacity: .3;
+    background:
+      linear-gradient(90deg, transparent 0 5%, rgba(218, 185, 119, .11) 5.2% 5.4%, transparent 5.6% 94.4%, rgba(218, 185, 119, .11) 94.6% 94.8%, transparent 95%),
+      repeating-linear-gradient(90deg, transparent 0 24.8%, rgba(255, 234, 188, .02) 24.9% 25%);
+  }
+
+  .gate-intro-world::after {
+    bottom: -10%;
+    width: 126vw;
+    height: 29%;
+    opacity: .27;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gate-intro-dust i,
+  .home-gate-intro.is-opening .gate-intro-world::before,
+  .home-gate-intro.is-opening::after {
+    animation: none !important;
+  }
+}
+
+/* Photorealistic beit midrash doors */
+.gate-intro-world {
+  width: min(840px, 96vw);
+  height: min(800px, 90vh);
+}
+
+.gate-intro-frame {
+  width: min(450px, 62vw);
+  height: min(710px, 81vh);
+  filter:
+    drop-shadow(0 46px 52px rgba(0, 0, 0, .82))
+    drop-shadow(0 0 25px rgba(196, 143, 40, .2));
+}
+
+.gate-intro-frame::before {
+  top: -2.2%;
+  right: -5.5%;
+  bottom: -2.2%;
+  left: -5.5%;
+  border: 12px solid #b79869;
+  border-radius: 19px 19px 6px 6px;
+  background: transparent;
+  box-shadow:
+    inset 0 0 0 2px rgba(74, 45, 20, .48),
+    inset 0 0 14px rgba(0, 0, 0, .36),
+    0 0 0 1px rgba(245, 222, 172, .65),
+    0 28px 52px rgba(0, 0, 0, .68);
+  opacity: 1;
+}
+
+.gate-intro-frame::after {
+  top: 1%;
+  right: 1%;
+  bottom: 1%;
+  left: 1%;
+  border-radius: 10px;
+}
+
+.gate-intro-arch,
+.gate-intro-pillar,
+.gate-door-ornament,
+.gate-door-rail {
+  display: none;
+}
+
+.gate-intro-door {
+  bottom: 0;
+  width: 50.05%;
+  height: 100%;
+  overflow: hidden;
+  border: 0;
+  border-radius: 3px;
+  background-color: #160d08;
+  background-image: url("assets/beit-midrash-gates-photoreal-v1.webp");
+  background-repeat: no-repeat;
+  background-size: 246% 105%;
+  box-shadow:
+    inset 0 0 0 1px rgba(242, 205, 121, .18),
+    inset 0 -32px 56px rgba(0, 0, 0, .32),
+    0 17px 33px rgba(0, 0, 0, .62);
+}
+
+.gate-intro-door-right {
+  right: 0;
+  border-radius: 0 8px 8px 0;
+  background-position: 84% bottom;
+}
+
+.gate-intro-door-left {
+  left: 0;
+  border-radius: 8px 0 0 8px;
+  background-position: 16% bottom;
+}
+
+.gate-intro-door::before {
+  inset: 0;
+  border: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(180deg, rgba(255, 239, 199, .035), transparent 28%, rgba(0, 0, 0, .15)),
+    radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0, 0, 0, .22));
+  box-shadow: inset 0 0 0 1px rgba(232, 194, 110, .12);
+}
+
+.gate-intro-door::after {
+  background: linear-gradient(112deg, transparent 0 36%, rgba(255, 246, 215, .12) 40%, transparent 45% 100%);
+  opacity: .34;
+}
+
+.gate-intro-door strong {
+  position: absolute;
+  top: 42%;
+  right: 9%;
+  left: 9%;
+  min-width: 0;
+  padding: .24em .2em .31em;
+  color: #f4daa0;
+  border: 1px solid rgba(229, 185, 83, .82);
+  border-right-color: rgba(255, 232, 164, .45);
+  border-left-color: rgba(84, 48, 8, .72);
+  border-radius: 3px;
+  background:
+    linear-gradient(180deg, rgba(45, 25, 12, .94), rgba(16, 9, 5, .91)),
+    url("assets/beit-midrash-gates-photoreal-v1.webp") center / cover;
+  font-family: "Frank Ruhl Libre", "Noto Serif Hebrew", serif;
+  font-size: clamp(1.55rem, 3.7vw, 2.55rem);
+  font-weight: 950;
+  letter-spacing: .035em;
+  line-height: 1;
+  text-shadow:
+    0 2px 1px #130a03,
+    0 -1px 0 rgba(255, 249, 220, .46),
+    0 0 12px rgba(238, 193, 86, .28);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 240, 194, .15),
+    inset 0 -8px 16px rgba(0, 0, 0, .32),
+    0 7px 15px rgba(0, 0, 0, .46);
+}
+
+.gate-intro-door-right strong {
+  transform: translateZ(4px);
+}
+
+.gate-intro-door-left strong {
+  transform: translateZ(4px);
+}
+
+.home-gate-intro.is-opening .gate-intro-door-right {
+  transform: rotateY(-102deg) translateZ(8px);
+}
+
+.home-gate-intro.is-opening .gate-intro-door-left {
+  transform: rotateY(102deg) translateZ(8px);
+}
+
+.gate-intro-caption {
+  z-index: 12;
+  top: 45%;
+  right: 8%;
+  left: 8%;
+  gap: 6px;
+  padding: clamp(13px, 2.2vw, 20px) clamp(12px, 3vw, 28px) clamp(15px, 2.5vw, 23px);
+  border: 1px solid rgba(235, 197, 101, .82);
+  border-radius: 7px;
+  background: rgba(0, 34, 20, .92);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 245, 207, .08),
+    inset 0 10px 25px rgba(255, 238, 177, .035),
+    0 18px 44px rgba(0, 0, 0, .62),
+    0 0 28px rgba(255, 217, 108, .14);
+  text-shadow: none;
+}
+
+.gate-intro-caption::before {
+  width: min(220px, 62%);
+  margin-bottom: 2px;
+  background: linear-gradient(90deg, transparent, #ebca73, transparent);
+  box-shadow: 0 0 7px rgba(255, 220, 119, .25);
+}
+
+.gate-intro-caption span {
+  color: #f2d381;
+  font-size: clamp(2rem, 4.25vw, 3.45rem);
+  line-height: 1;
+  text-shadow: 0 2px 0 #1c1004;
+}
+
+.gate-intro-caption small {
+  color: #fffbed;
+  font-size: clamp(1rem, 1.65vw, 1.28rem);
+  font-weight: 850;
+  line-height: 1.35;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .65);
+}
+
+.home-gate-intro.is-opening .gate-intro-caption {
+  opacity: 1;
+  transform: translate3d(0, 0, 26px) scale(1);
+}
+
+.gate-intro-light {
+  top: 15%;
+  height: min(650px, 72vh);
+}
+
+.gate-intro-beams {
+  top: 18%;
+  height: min(650px, 72vh);
+}
+
+.gate-intro-dust {
+  top: 18%;
+  height: min(630px, 70vh);
+}
+
+@media (max-width: 680px) {
+  .gate-intro-world {
+    height: 84vh;
+  }
+
+  .gate-intro-frame {
+    width: min(360px, 78vw);
+    height: min(610px, 72vh);
+  }
+
+  .gate-intro-door strong {
+    top: 42%;
+    right: 7%;
+    left: 7%;
+    padding: .22em .08em .28em;
+    font-size: clamp(1.18rem, 6vw, 1.72rem);
+    letter-spacing: 0;
+  }
+
+  .gate-intro-caption {
+    top: 43%;
+    right: 5%;
+    left: 5%;
+    padding: 12px 10px 14px;
+  }
+
+  .gate-intro-caption span {
+    font-size: clamp(1.75rem, 8.5vw, 2.35rem);
+  }
+
+  .gate-intro-caption small {
+    font-size: clamp(.84rem, 3.7vw, 1.02rem);
+  }
+}
+
 /* Absolute final homepage hero shade: black 55%, no emerald wash. */
 .home-restored-banner-darkness {
   background: rgba(0, 0, 0, .55) !important;
@@ -1990,5 +2926,108 @@ main > section.home-restored-banner::after {
     animation: none !important;
     filter: none !important;
     opacity: 1 !important;
+  }
+}
+
+/* Site-aligned emerald vestibule around the freestanding doors */
+.home-gate-intro {
+  background: #001d14;
+}
+
+.gate-intro-bg {
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(207, 156, 53, .19) 0 13%, transparent 42%),
+    radial-gradient(ellipse at 50% 64%, rgba(0, 100, 61, .32), transparent 60%),
+    linear-gradient(90deg, #00140e 0%, #003623 20%, #005238 50%, #003623 80%, #00140e 100%),
+    url("assets/torat-avi-green-texture-clean.webp") center / cover no-repeat;
+  background-blend-mode: screen, soft-light, normal, soft-light;
+  filter: saturate(1.08) contrast(1.03);
+}
+
+.gate-intro-bg::before {
+  inset: 0;
+  opacity: .82;
+  background:
+    radial-gradient(circle at 14% 39%, rgba(255, 229, 157, .72) 0 1px, rgba(218, 164, 66, .2) 2px 4%, transparent 15%),
+    radial-gradient(circle at 86% 39%, rgba(255, 229, 157, .72) 0 1px, rgba(218, 164, 66, .2) 2px 4%, transparent 15%),
+    linear-gradient(90deg,
+      transparent 0 9%, rgba(216, 178, 104, .16) 9.1% 9.25%, transparent 9.4% 23.7%,
+      rgba(216, 178, 104, .07) 23.8% 23.95%, transparent 24.1% 75.9%,
+      rgba(216, 178, 104, .07) 76.05% 76.2%, transparent 76.3% 90.6%,
+      rgba(216, 178, 104, .16) 90.75% 90.9%, transparent 91%),
+    repeating-linear-gradient(0deg, transparent 0 82px, rgba(255, 242, 208, .025) 83px 84px);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 13%, #000 86%, transparent 100%);
+}
+
+.gate-intro-bg::after {
+  background:
+    linear-gradient(90deg, rgba(0, 8, 5, .48), transparent 25%, transparent 75%, rgba(0, 8, 5, .48)),
+    linear-gradient(180deg, rgba(0, 8, 5, .4), transparent 29%, rgba(0, 8, 5, .5)),
+    radial-gradient(ellipse at 50% 46%, transparent 0 29%, rgba(0, 15, 10, .35) 86%);
+}
+
+.gate-intro-world::after {
+  opacity: .46;
+  background:
+    linear-gradient(90deg, transparent 49.75%, rgba(231, 194, 111, .32) 50%, transparent 50.25%),
+    repeating-linear-gradient(90deg, transparent 0 9.8%, rgba(207, 176, 112, .1) 9.9% 10%),
+    repeating-linear-gradient(180deg, rgba(228, 198, 138, .12) 0 1px, transparent 1px 42px),
+    radial-gradient(ellipse at 50% 0, rgba(222, 174, 76, .25), transparent 64%);
+}
+
+@media (max-width: 680px) {
+  .gate-intro-bg {
+    background:
+      radial-gradient(ellipse at 50% 45%, rgba(210, 158, 53, .2) 0 15%, transparent 48%),
+      radial-gradient(ellipse at 50% 62%, rgba(0, 103, 62, .34), transparent 65%),
+      linear-gradient(90deg, #00150f 0%, #00402a 50%, #00150f 100%),
+      url("assets/torat-avi-green-texture-clean.webp") center / cover no-repeat;
+  }
+
+  .gate-intro-bg::before {
+    opacity: .48;
+    background:
+      radial-gradient(circle at 7% 39%, rgba(255, 225, 148, .54) 0 1px, rgba(216, 162, 62, .14) 2px 3%, transparent 14%),
+      radial-gradient(circle at 93% 39%, rgba(255, 225, 148, .54) 0 1px, rgba(216, 162, 62, .14) 2px 3%, transparent 14%),
+      linear-gradient(90deg, transparent 0 5%, rgba(216, 178, 104, .13) 5.2% 5.4%, transparent 5.6% 94.4%, rgba(216, 178, 104, .13) 94.6% 94.8%, transparent 95%);
+  }
+
+  .gate-intro-bg::after {
+    background:
+      linear-gradient(90deg, rgba(0, 8, 5, .38), transparent 18%, transparent 82%, rgba(0, 8, 5, .38)),
+      linear-gradient(180deg, rgba(0, 8, 5, .34), transparent 26%, rgba(0, 8, 5, .46));
+  }
+}
+
+/* Doors span the viewport from its top edge to its bottom edge */
+.gate-intro-world,
+.home-gate-intro.is-ready .gate-intro-world {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+}
+
+.gate-intro-frame {
+  width: min(450px, 62vw);
+  height: 100vh;
+  height: 100dvh;
+  max-height: none;
+}
+
+@media (max-width: 680px) {
+  .gate-intro-world,
+  .home-gate-intro.is-ready .gate-intro-world {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  .gate-intro-frame {
+    width: min(390px, 92vw);
+    height: 100vh;
+    height: 100dvh;
   }
 }
