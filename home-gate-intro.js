@@ -63,7 +63,7 @@
     }, { once: true });
   }
 
-  later(620, function () {
+  later(500, function () {
     overlay.classList.add("is-opening");
   });
 

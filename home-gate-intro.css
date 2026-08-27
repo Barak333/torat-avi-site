@@ -3031,3 +3031,472 @@ main > section.home-restored-banner::after {
     height: 100dvh;
   }
 }
+
+/* Full-viewport gate composition: two perfectly mirrored leaves across the screen */
+.home-gate-intro {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100svh;
+  place-items: stretch;
+}
+
+.gate-intro-world,
+.home-gate-intro.is-ready .gate-intro-world {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100svh;
+  max-width: none;
+  max-height: none;
+}
+
+.gate-intro-frame {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100svh;
+  max-width: none;
+  max-height: none;
+  filter: drop-shadow(0 0 42px rgba(0, 0, 0, .72));
+}
+
+.gate-intro-door {
+  top: 0;
+  bottom: 0;
+  width: 50vw;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100svh;
+  border-radius: 0;
+  background-size: 200% 100%;
+  background-position-y: center;
+  box-shadow:
+    inset 0 0 0 1px rgba(242, 205, 121, .14),
+    inset 0 -5vh 9vh rgba(0, 0, 0, .3),
+    0 0 38px rgba(0, 0, 0, .58);
+}
+
+.gate-intro-door-right {
+  right: 0;
+  left: auto;
+  border-radius: 0;
+  background-position-x: right;
+}
+
+.gate-intro-door-left {
+  right: auto;
+  left: 0;
+  border-radius: 0;
+  background-position-x: left;
+}
+
+.gate-intro-door strong {
+  top: 44%;
+  right: 50%;
+  left: auto;
+  width: min(66%, 360px);
+  padding: .3em .3em .36em;
+  transform: translateX(50%) translateZ(4px);
+  font-size: clamp(2rem, 3.2vw, 4.15rem);
+  text-align: center;
+}
+
+.gate-intro-door-right strong,
+.gate-intro-door-left strong {
+  transform: translateX(50%) translateZ(4px);
+}
+
+.gate-intro-caption {
+  top: 50%;
+  right: auto;
+  bottom: auto;
+  left: 50%;
+  width: min(680px, calc(100vw - 40px));
+  transform: translate3d(-50%, -44%, 0) scale(.94);
+}
+
+.home-gate-intro.is-opening .gate-intro-caption {
+  transform: translate3d(-50%, -50%, 26px) scale(1);
+}
+
+.home-gate-intro.is-dolly .gate-intro-caption {
+  transform: translate3d(-50%, calc(-50% + 14px), 0) scale(.98);
+}
+
+.gate-intro-light {
+  top: 5%;
+  width: min(920px, 72vw);
+  height: 90vh;
+  height: 90dvh;
+}
+
+.gate-intro-beams {
+  top: 0;
+  width: min(1200px, 96vw);
+  height: 100vh;
+  height: 100dvh;
+}
+
+.gate-intro-dust {
+  top: 0;
+  width: min(1040px, 92vw);
+  height: 100vh;
+  height: 100dvh;
+}
+
+.gate-intro-path {
+  bottom: -12%;
+  width: min(920px, 78vw);
+  height: 62%;
+}
+
+@media (max-width: 680px) {
+  .gate-intro-frame,
+  .gate-intro-door {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100svh;
+  }
+
+  .gate-intro-frame {
+    width: 100vw;
+  }
+
+  .gate-intro-door {
+    width: 50vw;
+    background-size: 200% 100%;
+  }
+
+  .gate-intro-door strong {
+    top: 43%;
+    width: 78%;
+    padding: .26em .08em .32em;
+    font-size: clamp(1.3rem, 7.2vw, 2rem);
+  }
+
+  .gate-intro-caption {
+    top: 48%;
+    width: calc(100vw - 28px);
+  }
+
+  .gate-intro-light {
+    width: 88vw;
+  }
+
+  .gate-intro-path {
+    width: 108vw;
+  }
+}
+
+/* Cinematic gate refinement: native aspect ratios, engraved names and editorial reveal */
+.gate-intro-door {
+  isolation: isolate;
+  overflow: hidden;
+  background: #1b0d07;
+  box-shadow:
+    inset 0 0 0 1px rgba(242, 205, 121, .1),
+    inset 0 -6vh 10vh rgba(0, 0, 0, .24),
+    0 0 46px rgba(0, 0, 0, .66);
+}
+
+.gate-intro-door::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  bottom: auto;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100svh;
+  inset-inline: auto;
+  border: 0;
+  border-radius: 0;
+  background-image: url("assets/beit-midrash-gates-fullscreen-desktop-v1.webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 1;
+  mix-blend-mode: normal;
+  pointer-events: none;
+}
+
+.gate-intro-door-right::after {
+  right: 0;
+  left: auto;
+}
+
+.gate-intro-door-left::after {
+  right: auto;
+  left: 0;
+}
+
+.gate-intro-door::before {
+  z-index: 1;
+  inset: 0;
+  border: 0;
+  border-radius: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 236, 190, .025), transparent 26%, rgba(0, 0, 0, .1)),
+    radial-gradient(ellipse at 50% 50%, transparent 58%, rgba(0, 0, 0, .16));
+  box-shadow: inset 0 0 0 1px rgba(235, 198, 111, .07);
+  pointer-events: none;
+}
+
+.gate-intro-door strong {
+  z-index: 3;
+  top: 45.5%;
+  width: min(90%, 720px);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  isolation: isolate;
+  background: linear-gradient(180deg, #160905 0%, #2b1209 38%, #4b2413 62%, #9c673b 86%, #d09b5d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 1.45px rgba(12, 4, 2, .94);
+  font-size: clamp(4rem, 6.46vw, 8.33rem);
+  font-weight: 950;
+  letter-spacing: .012em;
+  line-height: .94;
+  text-shadow:
+    0 -3px 2px rgba(0, 0, 0, .98),
+    0 1px 0 rgba(90, 48, 23, .9),
+    0 3px 1px rgba(239, 186, 105, .42),
+    1px 0 1px rgba(14, 5, 2, .94),
+    -1px 0 0 rgba(185, 120, 61, .2);
+  box-shadow: none;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, .26));
+  mix-blend-mode: normal;
+}
+
+.gate-intro-door strong::before,
+.gate-intro-door strong::after {
+  content: attr(data-engrave);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  width: 100%;
+  place-items: center;
+  pointer-events: none;
+}
+
+.gate-intro-door strong::before {
+  z-index: -1;
+  color: rgba(9, 3, 1, .96);
+  -webkit-text-stroke: 2.2px rgba(4, 1, 0, .94);
+  transform: translateY(-3px);
+  text-shadow:
+    0 -3px 3px rgba(0, 0, 0, .88),
+    0 -6px 8px rgba(0, 0, 0, .36);
+}
+
+.gate-intro-door strong::after {
+  z-index: 1;
+  color: transparent;
+  -webkit-text-stroke: .72px rgba(234, 175, 96, .5);
+  transform: translateY(2px);
+  text-shadow: 0 1px 0 rgba(255, 219, 151, .22);
+  opacity: .74;
+}
+
+.home-gate-intro.is-opening .gate-intro-door-right {
+  transform: rotateY(-102deg) translateZ(8px);
+  transition: transform .6s cubic-bezier(.2, .78, .2, 1);
+}
+
+.home-gate-intro.is-opening .gate-intro-door-left {
+  transform: rotateY(102deg) translateZ(8px);
+  transition: transform .6s cubic-bezier(.2, .78, .2, 1);
+}
+
+.gate-intro-caption {
+  top: 49%;
+  width: min(780px, calc(100vw - 48px));
+  gap: 8px;
+  padding: clamp(28px, 4vw, 48px) clamp(24px, 5vw, 64px);
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  text-shadow: none;
+  isolation: isolate;
+}
+
+.gate-intro-caption::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -20% -8%;
+  width: auto;
+  height: auto;
+  margin: 0;
+  background: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.gate-intro-caption::after {
+  content: "";
+  position: absolute;
+  right: 50%;
+  bottom: 18px;
+  width: min(430px, 72%);
+  height: 1px;
+  transform: translateX(50%);
+  background: linear-gradient(90deg, transparent, rgba(243, 210, 126, .88), transparent);
+  box-shadow: 0 0 10px rgba(255, 218, 119, .18);
+}
+
+.gate-intro-caption span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 2.3vw, 28px);
+  color: #f0d58e;
+  -webkit-text-stroke: .7px rgba(35, 18, 7, .82);
+  font-size: clamp(2.6rem, 4.4vw, 4.6rem);
+  font-weight: 950;
+  line-height: 1;
+  letter-spacing: .015em;
+  white-space: nowrap;
+  text-shadow:
+    0 2px 0 rgba(24, 11, 3, .98),
+    0 5px 9px rgba(0, 0, 0, .72),
+    0 12px 28px rgba(0, 0, 0, .56);
+}
+
+.gate-intro-caption span::before,
+.gate-intro-caption span::after {
+  content: "";
+  flex: 1 1 50px;
+  max-width: 110px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(243, 210, 126, .78));
+}
+
+.gate-intro-caption span::after {
+  background: linear-gradient(90deg, rgba(243, 210, 126, .78), transparent);
+}
+
+.gate-intro-caption small {
+  color: rgba(255, 251, 235, .94);
+  font-family: "Frank Ruhl Libre", "Noto Serif Hebrew", serif;
+  font-size: clamp(1.05rem, 1.75vw, 1.4rem);
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: .045em;
+  text-shadow:
+    0 2px 2px rgba(0, 19, 11, .98),
+    0 0 10px rgba(0, 19, 11, .9),
+    0 7px 18px rgba(0, 0, 0, .62);
+}
+
+.home-gate-intro.is-opening .gate-intro-caption {
+  opacity: 1;
+  transform: translate3d(-50%, -50%, 26px) scale(1);
+  transition:
+    opacity .32s ease .46s,
+    transform .44s cubic-bezier(.18, .78, .2, 1) .43s;
+}
+
+.home-gate-intro.is-opening .gate-intro-light {
+  opacity: .27;
+  transform: translateX(-50%) translateZ(-80px) scale(.96);
+  transition: opacity .6s ease, transform .6s cubic-bezier(.18, .78, .2, 1);
+}
+
+.home-gate-intro.is-opening .gate-intro-world::before {
+  opacity: .3;
+  transform: translate3d(-50%, -2%, -70px) scale(1.02);
+  transition: opacity .6s ease, transform .6s cubic-bezier(.18, .78, .2, 1);
+  animation: none;
+}
+
+.home-gate-intro.is-opening .gate-intro-light::before {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.82);
+  transition: opacity .6s ease, transform .6s cubic-bezier(.18, .78, .2, 1);
+}
+
+.home-gate-intro.is-opening .gate-intro-light::after {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.82) rotate(6deg);
+  transition: opacity .6s ease, transform .6s cubic-bezier(.18, .78, .2, 1);
+}
+
+.home-gate-intro.is-opening .gate-intro-beams {
+  opacity: .36;
+  transform: translateX(-50%) scale(.92);
+  transition: opacity .6s ease, transform .6s cubic-bezier(.18, .78, .2, 1);
+}
+
+@media (max-width: 680px) {
+  .gate-intro-door::after {
+    background-image: url("assets/beit-midrash-gates-fullscreen-mobile-v1.webp");
+  }
+
+  .gate-intro-door strong {
+    top: 44.5%;
+    width: 96%;
+    font-size: clamp(2.38rem, 13.6vw, 3.65rem);
+    letter-spacing: 0;
+    -webkit-text-stroke-width: 1.05px;
+    transform: translateX(50%) translateZ(4px) scaleX(.86);
+  }
+
+  .gate-intro-door-right strong,
+  .gate-intro-door-left strong {
+    transform: translateX(50%) translateZ(4px) scaleX(.86);
+  }
+
+  .gate-intro-door strong::before {
+    -webkit-text-stroke-width: 1.7px;
+    transform: translateY(-2px);
+  }
+
+  .gate-intro-door strong::after {
+    -webkit-text-stroke-width: .6px;
+  }
+
+  .gate-intro-caption {
+    top: 48%;
+    width: calc(100vw - 20px);
+    gap: 6px;
+    padding: 30px 14px 34px;
+  }
+
+  .gate-intro-caption::before {
+    inset: -18% -2%;
+  }
+
+  .gate-intro-caption::after {
+    bottom: 16px;
+    width: 68%;
+  }
+
+  .gate-intro-caption span {
+    gap: 10px;
+    font-size: clamp(1.75rem, 8.5vw, 2.4rem);
+  }
+
+  .gate-intro-caption span::before,
+  .gate-intro-caption span::after {
+    flex-basis: 18px;
+    max-width: 32px;
+  }
+
+  .gate-intro-caption small {
+    font-size: clamp(.92rem, 4.2vw, 1.08rem);
+    letter-spacing: .025em;
+  }
+}
