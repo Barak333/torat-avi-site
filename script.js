@@ -1810,7 +1810,7 @@ function initializeWeeklyQuestionAlert() {
     }
 
     const loader = document.createElement("script");
-      loader.src = "weekly-qna.js?v=20260825-gemara-study-1";
+      loader.src = "weekly-qna.js?v=20260828-donation-cash-credit-1";
     loader.addEventListener("load", showWeeklyQuestionAlert);
     document.head.append(loader);
   });
