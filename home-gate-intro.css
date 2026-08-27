@@ -3308,12 +3308,12 @@ main > section.home-restored-banner::after {
 
 .home-gate-intro.is-opening .gate-intro-door-right {
   transform: rotateY(-102deg) translateZ(8px);
-  transition: transform .6s cubic-bezier(.2, .78, .2, 1);
+  transition: transform 1.4s cubic-bezier(.2, .78, .2, 1);
 }
 
 .home-gate-intro.is-opening .gate-intro-door-left {
   transform: rotateY(102deg) translateZ(8px);
-  transition: transform .6s cubic-bezier(.2, .78, .2, 1);
+  transition: transform 1.4s cubic-bezier(.2, .78, .2, 1);
 }
 
 .gate-intro-caption {
