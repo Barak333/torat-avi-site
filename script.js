@@ -2387,7 +2387,8 @@ const bookDetails = {
     title: "לך אמר ליבי",
     subtitle: "נפש ואמונה",
     image: "assets/store-book-lech-amar-libi-normalized.png",
-    status: "בקרוב",
+    price: "₪101",
+    note: "ספר מודפס",
     paragraphs: [
       "הספר אינו ספר קריאה רגיל, אלא מסע ומפתח אל המקומות הפנימיים שבנפש.",
       "דרך סיפורים, משלים ועבודה מדורגת הוא מחבר בין השכל ללב, ומוביל את האדם אל עצמו ואל ה׳."
