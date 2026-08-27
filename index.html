@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <title>מבקשי פניך | השער שלך לחיים אחרים</title>
   <link rel="canonical" href="https://www.mevakshei-panecha.co.il/">
   <meta property="og:type" content="website">
@@ -42,34 +43,47 @@
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": "#website",
+        "@id": "https://www.mevakshei-panecha.co.il/#website",
+        "url": "https://www.mevakshei-panecha.co.il/",
         "name": "מבקשי פניך",
         "alternateName": "השער שלך לחיים אחרים",
         "description": "תורת הנפש, זוגיות, הלכה, בית הוראה ובית דין - במקום שבו התורה פוגשת את החיים.",
         "inLanguage": "he",
-        "publisher": { "@id": "#organization" }
+        "publisher": { "@id": "https://www.mevakshei-panecha.co.il/#organization" }
       },
       {
         "@type": "Organization",
-        "@id": "#organization",
+        "@id": "https://www.mevakshei-panecha.co.il/#organization",
+        "url": "https://www.mevakshei-panecha.co.il/",
         "name": "מבקשי פניך",
         "legalName": "מבקשי פניך ע״ר",
         "alternateName": ["תורת אבי", "בית הוראה ובית דין תורת אבי"],
         "description": "בית מדרש המשלב תורת הנפש, זוגיות, הלכה, בית הוראה ובית דין בקריית מלאכי.",
+        "email": "Hraraviby@gmail.com",
+        "telephone": "+972-53-227-3277",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "הרב מרדכי אליהו 34",
+          "addressLocality": "קרית מלאכי",
+          "addressCountry": "IL"
+        },
         "logo": {
           "@type": "ImageObject",
-          "url": "/assets/favicon-512.png",
+          "url": "https://www.mevakshei-panecha.co.il/assets/favicon-512.png",
           "width": 512,
           "height": 512
         }
       },
       {
         "@type": "Person",
-        "@id": "#rabbi-itay-ben-yosef",
+        "@id": "https://www.mevakshei-panecha.co.il/#rabbi-itay-ben-yosef",
+        "url": "https://www.mevakshei-panecha.co.il/about.html",
         "name": "הרב איתי בן יוסף",
         "honorificPrefix": "הרב",
         "jobTitle": "ראש בית ההוראה ובית הדין לממונות תורת אבי",
-        "worksFor": { "@id": "#organization" }
+        "knowsAbout": ["הלכה", "דיני ממונות", "תורת הנפש", "זוגיות"],
+        "worksFor": { "@id": "https://www.mevakshei-panecha.co.il/#organization" },
+        "mainEntityOfPage": "https://www.mevakshei-panecha.co.il/about.html"
       }
     ]
   }
