@@ -1810,7 +1810,7 @@ function initializeWeeklyQuestionAlert() {
     }
 
     const loader = document.createElement("script");
-      loader.src = "weekly-qna.js?v=20260831-passive-smoking-betulim-1";
+      loader.src = "weekly-qna.js?v=20260831-afrochim-basis-1";
     loader.addEventListener("load", showWeeklyQuestionAlert);
     document.head.append(loader);
   });
