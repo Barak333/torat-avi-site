@@ -3,6 +3,7 @@
   if (!overlay) return;
 
   var forcePreview = /(?:[?&])gateIntro=1(?:&|$)/.test(window.location.search);
+  var previewStage = new URLSearchParams(window.location.search).get("gateStage");
   var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var arrivedFromInsideSite = false;
 
@@ -28,6 +29,16 @@
 
   overlay.classList.add("is-ready");
 
+  if (forcePreview && previewStage === "closed") return;
+  if (forcePreview && previewStage === "open") {
+    overlay.classList.add("is-opening");
+    return;
+  }
+  if (forcePreview && previewStage === "handoff") {
+    overlay.classList.add("is-opening", "is-dolly", "is-handoff");
+    return;
+  }
+
   var timers = [];
   var minimumTimePassed = false;
   var pageReady = document.readyState === "complete";
@@ -40,20 +51,20 @@
 
   function finish() {
     overlay.classList.add("is-revealing");
+    window.dispatchEvent(new CustomEvent("toratavi:gate-intro-finished"));
     later(260, function () {
       timers.forEach(window.clearTimeout);
       document.documentElement.classList.remove("gate-intro-active");
       document.body.classList.remove("gate-intro-active");
       overlay.remove();
-      window.dispatchEvent(new CustomEvent("toratavi:gate-intro-finished"));
     });
   }
 
   function beginExitWhenReady() {
     if (exitStarted || !minimumTimePassed || !pageReady) return;
     exitStarted = true;
-    overlay.classList.add("is-dolly");
-    later(680, finish);
+    overlay.classList.add("is-dolly", "is-handoff");
+    later(520, finish);
   }
 
   if (!pageReady) {
@@ -67,7 +78,7 @@
     overlay.classList.add("is-opening");
   });
 
-  later(2900, function () {
+  later(4400, function () {
     minimumTimePassed = true;
     beginExitWhenReady();
   });
