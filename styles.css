@@ -29552,7 +29552,7 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 }
 
 /* Use the Mevakshei Panecha logo consistently across all site headers. */
-.site-header .brand-logo-panel:has(.brand-logo-img[src$="mevakshei-panecha-nav-logo.webp"]){
+.site-header .brand-logo-panel:has(.brand-logo-img[src*="mevakshei-panecha-nav-logo.webp"]){
   width:clamp(148px,13vw,188px)!important;
   height:54px!important;
   overflow:visible!important;
@@ -29563,7 +29563,7 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   box-shadow:none!important;
 }
 
-.site-header .brand-logo-img[src$="mevakshei-panecha-nav-logo.webp"]{
+.site-header .brand-logo-img[src*="mevakshei-panecha-nav-logo.webp"]{
   width:100%!important;
   height:100%!important;
   max-height:54px!important;
@@ -29573,12 +29573,12 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 }
 
 @media(max-width:760px){
-  .site-header .brand-logo-panel:has(.brand-logo-img[src$="mevakshei-panecha-nav-logo.webp"]){
+  .site-header .brand-logo-panel:has(.brand-logo-img[src*="mevakshei-panecha-nav-logo.webp"]){
     width:min(54vw,178px)!important;
     height:50px!important;
   }
 
-  .site-header .brand-logo-img[src$="mevakshei-panecha-nav-logo.webp"]{
+  .site-header .brand-logo-img[src*="mevakshei-panecha-nav-logo.webp"]{
     max-height:50px!important;
   }
 }
@@ -30256,7 +30256,7 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
     transform:translateY(-50%)!important;
   }
 
-  .site-header .header-brand-cluster .brand-logo-panel:has(.brand-logo-img[src$="mevakshei-panecha-nav-logo.webp"]){
+  .site-header .header-brand-cluster .brand-logo-panel:has(.brand-logo-img[src*="mevakshei-panecha-nav-logo.webp"]){
     width:100%!important;
     height:58px!important;
   }
@@ -30306,7 +30306,7 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
     transform:translateY(-50%)!important;
   }
 
-  .site-header .header-brand-cluster .brand-logo-panel:has(.brand-logo-img[src$="mevakshei-panecha-nav-logo.webp"]){
+  .site-header .header-brand-cluster .brand-logo-panel:has(.brand-logo-img[src*="mevakshei-panecha-nav-logo.webp"]){
     width:138px!important;
     height:48px!important;
   }
@@ -30356,7 +30356,7 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
     max-width:96px!important;
   }
 
-  .site-header .header-brand-cluster .brand-logo-panel:has(.brand-logo-img[src$="mevakshei-panecha-nav-logo.webp"]){
+  .site-header .header-brand-cluster .brand-logo-panel:has(.brand-logo-img[src*="mevakshei-panecha-nav-logo.webp"]){
     width:96px!important;
     height:42px!important;
   }
@@ -33226,4 +33226,64 @@ body.visitor-promo-open{
   .ij-protection-insight{padding:32px 23px 30px}
   .ij-protection-insight>p{font-size:1.03rem}
   .ij-questionnaire .ij-rail-emblem{font-size:.47rem}
+}
+
+/* Larger desktop brand mark without increasing the navigation bar height. */
+@media(min-width:1081px){
+  .site-header .header-brand-cluster .brand-logo-img[src*="mevakshei-panecha-nav-logo.webp"]{
+    transform:scale(1.92)!important;
+    transform-origin:center center!important;
+  }
+}
+
+/* Keep the footer slogan readable over the dark emerald texture. */
+.site-footer .footer-brand-logo,
+.site-footer .home-footer-mevakshei{
+  position:relative!important;
+}
+
+.site-footer .footer-brand-logo::after,
+.site-footer .home-footer-mevakshei::after{
+  content:"השער שלך לחיים אחרים";
+  display:block;
+  color:#f7dda0;
+  font-family:"Frank Ruhl Libre","Noto Serif Hebrew","Times New Roman",serif;
+  font-size:clamp(.92rem,1.08vw,1.08rem);
+  font-weight:900;
+  line-height:1.15;
+  letter-spacing:.025em;
+  white-space:nowrap;
+  text-align:center;
+  text-shadow:0 2px 5px rgba(0,20,10,.96),0 0 14px rgba(231,190,73,.3);
+}
+
+.site-footer .footer-brand-logo{
+  gap:0!important;
+}
+
+.site-footer .footer-brand-logo::after{
+  width:min(220px,100%);
+  margin-top:-7px;
+}
+
+.site-footer .home-footer-mevakshei{
+  flex-direction:column!important;
+  align-items:center!important;
+  gap:0!important;
+}
+
+.site-footer .home-footer-mevakshei::after{
+  margin-top:-7px;
+  transform:translateX(118px);
+}
+
+@media(max-width:760px){
+  .site-footer .footer-brand-logo::after{
+    width:min(210px,70vw);
+    margin-inline:auto;
+  }
+
+  .site-footer .home-footer-mevakshei::after{
+    transform:none;
+  }
 }

@@ -1,4 +1,4 @@
-const CACHE_NAME = "mevakshei-panecha-pwa-v2";
+const CACHE_NAME = "mevakshei-panecha-pwa-v3-logo";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -19,8 +19,8 @@ const CORE_ASSETS = [
   "./rabbi-opinion.js",
   "./assets/mevakshei-panecha-app-192.png",
   "./assets/mevakshei-panecha-app-512.png",
-  "./assets/torat-avi-logo-transparent.webp",
-  "./assets/mevakshei-panecha-nav-logo.webp",
+  "./assets/torat-avi-logo-transparent.webp?v=20260831-logo-1",
+  "./assets/mevakshei-panecha-nav-logo.webp?v=20260831-logo-1",
   "./assets/inner-judge-emblem.webp",
   "./assets/site-emerald-banner-texture.webp",
   "./assets/psakim-hero-premium-bg.jpg",

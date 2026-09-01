@@ -229,7 +229,7 @@ function ensureUtilityControls() {
     installButton.type = "button";
     installButton.hidden = true;
     installButton.textContent = "התקנת האפליקציה";
-    installButton.setAttribute("aria-label", "התקנת תורת אבי במסך הבית");
+    installButton.setAttribute("aria-label", "התקנת מבקשי פניך במסך הבית");
     document.body.append(installButton);
   }
 }
@@ -2390,8 +2390,9 @@ const bookDetails = {
     price: "₪101",
     note: "ספר מודפס",
     paragraphs: [
-      "הספר אינו ספר קריאה רגיל, אלא מסע ומפתח אל המקומות הפנימיים שבנפש.",
-      "דרך סיפורים, משלים ועבודה מדורגת הוא מחבר בין השכל ללב, ומוביל את האדם אל עצמו ואל ה׳."
+      "מסע עמוק אל תוך הנפש, אל הכאבים שאנו מסתירים והקולות שאיננו מעזים לשמוע. הספר מעניק שפה בהירה להתבוננות פנימית, להבנת הפחדים והדפוסים שלנו, ולצעד הראשון בדרך להקשבה, לריפוי וחיים שלמים יותר. ואמיתיים",
+      "<strong>מסע מרתק אל תוך נבכי נשמתנו בשפה קלה וברורה.</strong>",
+      "<strong>ספר חובה בכל בית יהודי!</strong>"
     ]
   },
   "neshama-avuda": {
