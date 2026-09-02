@@ -540,7 +540,7 @@ function standardizeSiteFooter() {
     <div class="footer-actions-group">
       <h3>פעולות</h3>
       <div class="footer-links">
-        <a href="inner-judge.html">הדיין הפנימי</a>
+        <a href="inner-judge.html">הקול הפנימי</a>
         <a href="ask-rabbi.html">שאל את הרב</a>
         <a href="donate.html">תרומה</a>
         <a href="updates.html">עדכונים וקבצים</a>
@@ -641,10 +641,10 @@ function standardizeRabbiContactDestinations() {
     link.setAttribute("aria-label", "שליחת הודעה לבית ההוראה במייל");
   });
 
-  document.querySelectorAll('a[href^="mailto:Hraraviby@gmail.com" i]').forEach((link) => {
+  document.querySelectorAll('a[href^="mailto:toratavi@gmail.com" i]').forEach((link) => {
     const href = link.getAttribute("href") || "";
     link.setAttribute("href", href.replace(/Hraraviby@gmail\.com/i, contactEmail));
-    if (link.textContent.trim().toLowerCase() === "hraraviby@gmail.com") {
+    if (link.textContent.trim().toLowerCase() === "toratavi@gmail.com") {
       link.textContent = contactEmail;
     }
   });
@@ -1292,6 +1292,7 @@ function renderWeeklyQna() {
   items.forEach((item, index) => {
     const article = document.createElement("article");
     article.className = "weekly-qna-item alonim-item";
+    if (item.id) article.dataset.qnaId = item.id;
     const button = document.createElement("button");
     button.type = "button";
     button.setAttribute("aria-expanded", "false");
@@ -1591,6 +1592,7 @@ function renderAlonimQna() {
       runningQuestionNumber += 1;
       const article = document.createElement("article");
       article.className = "alonim-item";
+      if (item.id) article.dataset.qnaId = item.id;
       const button = document.createElement("button");
       button.type = "button";
       button.setAttribute("aria-expanded", "false");
@@ -1647,12 +1649,19 @@ function initializeQnaPermalinks() {
 
   const itemSelector = ".faq-item, .choshen-item, .shabbat-item, .issur-item, .alonim-item, .weekly-qna-item";
   const topics = Array.from(qnaPage.querySelectorAll(".qna-topic"));
+  const usedElementIds = new Map();
 
   topics.forEach((topic) => {
     const items = Array.from(topic.querySelectorAll(itemSelector));
     items.forEach((item, index) => {
       const questionNumber = index + 1;
-      item.id = `qna-${topic.id}-${questionNumber}`;
+      const stableQuestionId = item.dataset.qnaId || "";
+      const baseElementId = stableQuestionId
+        ? `qna-${stableQuestionId}`
+        : `qna-${topic.id}-${questionNumber}`;
+      const duplicateIndex = (usedElementIds.get(baseElementId) || 0) + 1;
+      usedElementIds.set(baseElementId, duplicateIndex);
+      item.id = duplicateIndex === 1 ? baseElementId : `${baseElementId}-${duplicateIndex}`;
       item.dataset.qnaTopic = topic.id;
       item.dataset.qnaQuestion = String(questionNumber);
 
@@ -1662,8 +1671,13 @@ function initializeQnaPermalinks() {
         const url = new URL(window.location.href);
         url.searchParams.delete("q");
         url.searchParams.delete("search");
-        url.searchParams.set("topic", topic.id);
-        url.searchParams.set("question", String(questionNumber));
+        if (stableQuestionId) {
+          url.searchParams.delete("topic");
+          url.searchParams.set("question", stableQuestionId);
+        } else {
+          url.searchParams.set("topic", topic.id);
+          url.searchParams.set("question", String(questionNumber));
+        }
         url.hash = item.id;
         history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
       });
@@ -1673,11 +1687,21 @@ function initializeQnaPermalinks() {
 
   const params = new URLSearchParams(window.location.search);
   const requestedTopic = params.get("topic");
-  const requestedQuestion = Number(params.get("question"));
-  if (!requestedTopic || !Number.isInteger(requestedQuestion) || requestedQuestion < 1) return;
-
-  const topic = document.getElementById(requestedTopic);
-  const item = document.getElementById(`qna-${requestedTopic}-${requestedQuestion}`);
+  const requestedQuestionValue = params.get("question") || "";
+  const requestedQuestionNumber = Number(requestedQuestionValue);
+  const stableItem = requestedQuestionValue
+    ? Array.from(qnaPage.querySelectorAll(itemSelector))
+      .find((candidate) => candidate.dataset.qnaId === requestedQuestionValue)
+    : null;
+  const legacyItem = requestedTopic && Number.isInteger(requestedQuestionNumber) && requestedQuestionNumber > 0
+    ? Array.from(qnaPage.querySelectorAll(itemSelector)).find(
+        (candidate) =>
+          candidate.dataset.qnaTopic === requestedTopic &&
+          candidate.dataset.qnaQuestion === String(requestedQuestionNumber)
+      )
+    : null;
+  const item = stableItem || legacyItem;
+  const topic = item?.closest(".qna-topic") || (requestedTopic ? document.getElementById(requestedTopic) : null);
   if (!topic || !item) return;
 
   window.setActiveQnaTopicFromLink?.(requestedTopic, { clearSearch: false });
@@ -1691,9 +1715,73 @@ function initializeQnaPermalinks() {
     button?.querySelector("strong")?.textContent?.trim() ||
     button?.textContent?.trim();
   if (title) {
-    document.title = `${title} | תורת אבי`;
+    const canonicalUrl = stableItem
+      ? `https://www.mevakshei-panecha.co.il/qna.html?question=${encodeURIComponent(requestedQuestionValue)}`
+      : `https://www.mevakshei-panecha.co.il/qna.html?topic=${encodeURIComponent(topic.id)}&question=${requestedQuestionNumber}`;
+    const weeklyEntry = (window.weeklyQnaEntries || [])
+      .find((entry) => entry.id === requestedQuestionValue);
+    const questionText = String(weeklyEntry?.question || title).replace(/\s+/g, " ").trim();
+    const descriptionText = questionText.length > 155
+      ? `${questionText.slice(0, 152).trim()}...`
+      : questionText;
+    document.title = `${title} | הרב איתי בן יוסף - מבקשי פניך`;
     const description = document.querySelector('meta[name="description"]');
-    if (description) description.content = `${title} - שאלה ותשובה מתוך מאגר בית הוראה תורת אבי.`;
+    if (description) description.content = descriptionText;
+
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.href = canonicalUrl;
+
+    const metadata = {
+      'meta[property="og:title"]': document.title,
+      'meta[property="og:description"]': descriptionText,
+      'meta[property="og:url"]': canonicalUrl,
+      'meta[name="twitter:title"]': document.title,
+      'meta[name="twitter:description"]': descriptionText
+    };
+    Object.entries(metadata).forEach(([selector, content]) => {
+      const element = document.querySelector(selector);
+      if (element) element.content = content;
+    });
+
+    if (weeklyEntry) {
+      let structuredData = document.getElementById("qna-question-structured-data");
+      if (!structuredData) {
+        structuredData = document.createElement("script");
+        structuredData.id = "qna-question-structured-data";
+        structuredData.type = "application/ld+json";
+        document.head.append(structuredData);
+      }
+      structuredData.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "@id": `${canonicalUrl}#article`,
+        mainEntityOfPage: canonicalUrl,
+        headline: title,
+        description: descriptionText,
+        articleBody: weeklyEntry.answer || "",
+        datePublished: weeklyEntry.publishedAt,
+        dateModified: weeklyEntry.publishedAt,
+        inLanguage: "he",
+        author: {
+          "@type": "Person",
+          "@id": "https://www.mevakshei-panecha.co.il/#rabbi-itay-ben-yosef",
+          name: "הרב איתי בן יוסף",
+          url: "https://www.mevakshei-panecha.co.il/about.html",
+          sameAs: ["https://www.youtube.com/channel/UC-1VdGSZTeFJfktXpRduWIA"]
+        },
+        publisher: {
+          "@type": "Organization",
+          "@id": "https://www.mevakshei-panecha.co.il/#organization",
+          name: "מבקשי פניך",
+          alternateName: "תורת אבי",
+          url: "https://www.mevakshei-panecha.co.il/",
+          logo: {
+            "@type": "ImageObject",
+            url: "https://www.mevakshei-panecha.co.il/assets/favicon-512.png"
+          }
+        }
+      });
+    }
   }
 
   requestAnimationFrame(() => item.scrollIntoView({ block: "start" }));
@@ -1746,7 +1834,9 @@ function showWeeklyQuestionAlert() {
 
   const link = document.createElement("a");
   link.className = "weekly-question-alert-link";
-  link.href = "qna.html?topic=weekly-qna&question=1";
+  link.href = latest.id
+    ? `qna.html?question=${encodeURIComponent(latest.id)}`
+    : "qna.html?topic=weekly-qna&question=1";
   const ornament = document.createElement("span");
   ornament.className = "weekly-question-alert-ornament";
   ornament.setAttribute("aria-hidden", "true");
@@ -2244,7 +2334,7 @@ const siteSearchPages = [
   { title: "תורת הנפש", url: "soul-torah.html" },
   { title: "צמיחה", url: "growth.html" },
   { title: "אמונה", url: "emuna.html" },
-  { title: "הדיין הפנימי", url: "inner-judge.html" },
+  { title: "הקול הפנימי", url: "inner-judge.html" },
   { title: "עדכונים וקבצים", url: "updates.html" },
 ];
 

@@ -1,4 +1,4 @@
-const RABBI_EMAIL = process.env.INNER_JUDGE_RABBI_EMAIL || "Hraraviby@gmail.com";
+const RABBI_EMAIL = "toratavi@gmail.com";
 const LOGO_URL = process.env.INNER_JUDGE_LOGO_URL || "https://www.mevakshei-panecha.co.il/assets/mevakshei-panecha-nav-logo.webp";
 const SITE_URL = "https://www.mevakshei-panecha.co.il";
 const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
@@ -91,7 +91,7 @@ function emailShell(content, previewText = "") {
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:680px;border-collapse:collapse;background:#fffdf8;border:1px solid #d7c68f;box-shadow:0 18px 44px rgba(0,49,29,.12);">
         <tr><td align="center" style="padding:30px 28px 25px;background:#00452d;border-bottom:4px solid #c9a63a;">
           <img src="${LOGO_URL}" width="250" height="153" alt="מבקשי פניך" style="display:block;width:250px;max-width:82%;height:auto;margin:0 auto 20px;border:0;outline:none;text-decoration:none;">
-          <div style="color:#efd574;font-size:13px;font-weight:700;letter-spacing:.5px;">הדיין הפנימי • מבקשי פניך - הרב איתי בן יוסף</div>
+          <div style="color:#efd574;font-size:13px;font-weight:700;letter-spacing:.5px;">הקול הפנימי • מבקשי פניך - הרב איתי בן יוסף</div>
         </td></tr>
         <tr><td style="padding:42px 38px 38px;">${content}</td></tr>
         <tr><td align="center" style="padding:20px 28px;border-top:1px solid #e3d8b9;color:#7b867f;font-size:12px;line-height:1.7;">
@@ -142,7 +142,7 @@ function rabbiEmail(data, submittedAt) {
 }
 
 function plainConfirmation(data) {
-  return `הדיין הפנימי • מבקשי פניך - הרב איתי בן יוסף\n\nשלום ${data.fullName},\nהרב קיבל את תשובותיך הכנות - המסע שלך יישלח אליך בהקדם.\n\nמספר השאלון: ${data.caseNumber}\n\nכעת מתחיל שלב העיון האישי. הרב יקרא את התשובות ויכין עבורכם מסמך PDF מפורט.`;
+  return `הקול הפנימי • מבקשי פניך - הרב איתי בן יוסף\n\nשלום ${data.fullName},\nהרב קיבל את תשובותיך הכנות - המסע שלך יישלח אליך בהקדם.\n\nמספר השאלון: ${data.caseNumber}\n\nכעת מתחיל שלב העיון האישי. הרב יקרא את התשובות ויכין עבורכם מסמך PDF מפורט.`;
 }
 
 function plainRabbi(data, submittedAt) {
@@ -192,7 +192,7 @@ export default {
 
     if (!apiKey) return json({ ok: false, message: "מערכת השליחה טרם הופעלה. התשובות נשמרו במכשיר ואפשר לנסות שוב לאחר החיבור." }, 503);
 
-    const from = configuredFrom.includes("<") ? configuredFrom : `הדיין הפנימי <${configuredFrom}>`;
+    const from = configuredFrom.includes("<") ? configuredFrom : `הקול הפנימי <${configuredFrom}>`;
     const submittedAt = new Intl.DateTimeFormat("he-IL", {
       dateStyle: "long",
       timeStyle: "short",
@@ -204,7 +204,7 @@ export default {
         from,
         to: [RABBI_EMAIL],
         reply_to: data.email,
-        subject: `שאלון הדיין הפנימי - ${data.fullName} - ${data.caseNumber}`,
+        subject: `שאלון הקול הפנימי - ${data.fullName} - ${data.caseNumber}`,
         html: rabbiEmail(data, submittedAt),
         text: plainRabbi(data, submittedAt),
         tags: [{ name: "form", value: "inner-judge" }, { name: "recipient", value: "rabbi" }]
@@ -213,7 +213,7 @@ export default {
         from,
         to: [data.email],
         reply_to: RABBI_EMAIL,
-        subject: "הרב קיבל את תשובותיך - הדיין הפנימי",
+        subject: "הרב קיבל את תשובותיך - הקול הפנימי",
         html: confirmationEmail(data),
         text: plainConfirmation(data),
         tags: [{ name: "form", value: "inner-judge" }, { name: "recipient", value: "submitter" }]
