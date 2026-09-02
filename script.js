@@ -894,7 +894,7 @@ function renderChoshenMishpat() {
   const items = window.choshenMishpatContent || [];
   if (!target || !items.length) return;
   target.innerHTML = items.map((item, index) => `
-    <article class="choshen-item">
+    <article class="choshen-item" data-qna-id="${item.permalinkId || item.id || ""}">
       <button type="button" aria-expanded="false">
         <span class="choshen-number">${String(index + 1).padStart(2, "0")}</span>
         <span class="choshen-head">
@@ -1070,7 +1070,7 @@ function renderShabbatQuestions() {
       <h3>${subtopic}</h3>
       <div class="shabbat-subtopic-list">
         ${groupItems.map(({ item, index }) => `
-          <article class="shabbat-item" data-shabbat-index="${index}">
+          <article class="shabbat-item" data-shabbat-index="${index}" data-qna-id="${item.permalinkId || item.id || ""}">
             <button type="button" aria-expanded="false">
               <span>${item.heading || "שבת"}</span>
               <strong><em class="shabbat-question-number">${item.number || index + 1}</em><span class="shabbat-question-title">${item.title || ""}</span></strong>
@@ -1142,7 +1142,7 @@ function renderIssurHeterQuestions() {
             `).join("")}
           </div>
         ` : groupItems.map(({ item, index }) => `
-          <article class="issur-item" data-issur-index="${index}">
+          <article class="issur-item" data-issur-index="${index}" data-qna-id="${item.permalinkId || item.id || ""}">
             <button type="button" aria-expanded="false">
               <span>${item.heading || "איסור והיתר"}</span>
               <strong>${item.title || ""}</strong>
@@ -1292,7 +1292,7 @@ function renderWeeklyQna() {
   items.forEach((item, index) => {
     const article = document.createElement("article");
     article.className = "weekly-qna-item alonim-item";
-    if (item.id) article.dataset.qnaId = item.id;
+    if (item.permalinkId || item.id) article.dataset.qnaId = item.permalinkId || item.id;
     const button = document.createElement("button");
     button.type = "button";
     button.setAttribute("aria-expanded", "false");
@@ -1592,7 +1592,7 @@ function renderAlonimQna() {
       runningQuestionNumber += 1;
       const article = document.createElement("article");
       article.className = "alonim-item";
-      if (item.id) article.dataset.qnaId = item.id;
+      if (item.permalinkId || item.id) article.dataset.qnaId = item.permalinkId || item.id;
       const button = document.createElement("button");
       button.type = "button";
       button.setAttribute("aria-expanded", "false");
@@ -1644,11 +1644,12 @@ function renderAlonimQna() {
 renderAlonimQna();
 
 function initializeQnaPermalinks() {
-  const qnaPage = document.querySelector(".qna-categories-section");
+  const qnaPage = document.querySelector(".qna-categories-section, .levado-qna-section");
   if (!qnaPage) return;
 
-  const itemSelector = ".faq-item, .choshen-item, .shabbat-item, .issur-item, .alonim-item, .weekly-qna-item";
-  const topics = Array.from(qnaPage.querySelectorAll(".qna-topic"));
+  const itemSelector = ".faq-item, .choshen-item, .shabbat-item, .issur-item, .alonim-item, .weekly-qna-item, .levado-item";
+  const nestedTopics = Array.from(qnaPage.querySelectorAll(".qna-topic"));
+  const topics = nestedTopics.length ? nestedTopics : [qnaPage];
   const usedElementIds = new Map();
 
   topics.forEach((topic) => {
@@ -1662,7 +1663,7 @@ function initializeQnaPermalinks() {
       const duplicateIndex = (usedElementIds.get(baseElementId) || 0) + 1;
       usedElementIds.set(baseElementId, duplicateIndex);
       item.id = duplicateIndex === 1 ? baseElementId : `${baseElementId}-${duplicateIndex}`;
-      item.dataset.qnaTopic = topic.id;
+      item.dataset.qnaTopic = topic.id || window.qnaPermalinkEntries?.[stableQuestionId]?.topic || "qna";
       item.dataset.qnaQuestion = String(questionNumber);
 
       const itemButton = item.querySelector("button");
@@ -1701,10 +1702,12 @@ function initializeQnaPermalinks() {
       )
     : null;
   const item = stableItem || legacyItem;
-  const topic = item?.closest(".qna-topic") || (requestedTopic ? document.getElementById(requestedTopic) : null);
+  const topic = item?.closest(".qna-topic, .levado-qna-section") || (requestedTopic ? document.getElementById(requestedTopic) : null);
   if (!topic || !item) return;
 
-  window.setActiveQnaTopicFromLink?.(requestedTopic, { clearSearch: false });
+  if (topic.classList.contains("qna-topic")) {
+    window.setActiveQnaTopicFromLink?.(topic.id || requestedTopic, { clearSearch: false });
+  }
   item.hidden = false;
   item.closest(".shabbat-subtopic, .issur-subtopic, .alonim-subtopic")?.removeAttribute("hidden");
 
@@ -1715,12 +1718,13 @@ function initializeQnaPermalinks() {
     button?.querySelector("strong")?.textContent?.trim() ||
     button?.textContent?.trim();
   if (title) {
+    const qnaEntry = window.qnaPermalinkEntries?.[requestedQuestionValue] ||
+      (window.weeklyQnaEntries || []).find((entry) => entry.id === requestedQuestionValue);
+    const canonicalPage = qnaEntry?.page || decodeURIComponent(window.location.pathname.split("/").pop() || "qna.html");
     const canonicalUrl = stableItem
-      ? `https://www.mevakshei-panecha.co.il/qna.html?question=${encodeURIComponent(requestedQuestionValue)}`
+      ? `https://www.mevakshei-panecha.co.il/${canonicalPage}?question=${encodeURIComponent(requestedQuestionValue)}`
       : `https://www.mevakshei-panecha.co.il/qna.html?topic=${encodeURIComponent(topic.id)}&question=${requestedQuestionNumber}`;
-    const weeklyEntry = (window.weeklyQnaEntries || [])
-      .find((entry) => entry.id === requestedQuestionValue);
-    const questionText = String(weeklyEntry?.question || title).replace(/\s+/g, " ").trim();
+    const questionText = String(qnaEntry?.question || title).replace(/\s+/g, " ").trim();
     const descriptionText = questionText.length > 155
       ? `${questionText.slice(0, 152).trim()}...`
       : questionText;
@@ -1743,7 +1747,7 @@ function initializeQnaPermalinks() {
       if (element) element.content = content;
     });
 
-    if (weeklyEntry) {
+    if (qnaEntry) {
       let structuredData = document.getElementById("qna-question-structured-data");
       if (!structuredData) {
         structuredData = document.createElement("script");
@@ -1751,16 +1755,15 @@ function initializeQnaPermalinks() {
         structuredData.type = "application/ld+json";
         document.head.append(structuredData);
       }
-      structuredData.textContent = JSON.stringify({
+      const articleData = {
         "@context": "https://schema.org",
         "@type": "Article",
         "@id": `${canonicalUrl}#article`,
         mainEntityOfPage: canonicalUrl,
         headline: title,
         description: descriptionText,
-        articleBody: weeklyEntry.answer || "",
-        datePublished: weeklyEntry.publishedAt,
-        dateModified: weeklyEntry.publishedAt,
+        articleBody: qnaEntry.answer || "",
+        articleSection: qnaEntry.category || "שאלות ותשובות",
         inLanguage: "he",
         author: {
           "@type": "Person",
@@ -1780,7 +1783,12 @@ function initializeQnaPermalinks() {
             url: "https://www.mevakshei-panecha.co.il/assets/favicon-512.png"
           }
         }
-      });
+      };
+      if (qnaEntry.publishedAt) {
+        articleData.datePublished = qnaEntry.publishedAt;
+        articleData.dateModified = qnaEntry.publishedAt;
+      }
+      structuredData.textContent = JSON.stringify(articleData);
     }
   }
 
@@ -2006,6 +2014,7 @@ function renderLevadoQuestions() {
     filtered.forEach((item, index) => {
       const article = document.createElement("article");
       article.className = "levado-item";
+      if (item.permalinkId || item.id) article.dataset.qnaId = item.permalinkId || item.id;
 
       const button = document.createElement("button");
       button.type = "button";
@@ -2047,6 +2056,7 @@ function renderLevadoQuestions() {
       }
     });
     if (count) count.textContent = `${filtered.length} שאלות מוצגות`;
+    initializeQnaPermalinks();
   };
 
   search?.addEventListener("input", render);

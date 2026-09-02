@@ -1,4 +1,4 @@
-const CACHE_NAME = "mevakshei-panecha-pwa-v3-logo";
+const CACHE_NAME = "mevakshei-panecha-pwa-v4-qna-permalinks";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -15,6 +15,7 @@ const CORE_ASSETS = [
   "./nefesh-qna.js",
   "./nefesh-growth-qna.js",
   "./emuna-qna.js",
+  "./qna-permalinks.js",
   "./rabbi-opinion.css",
   "./rabbi-opinion.js",
   "./assets/mevakshei-panecha-app-192.png",
