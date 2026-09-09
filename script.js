@@ -1908,7 +1908,7 @@ function initializeWeeklyQuestionAlert() {
     }
 
     const loader = document.createElement("script");
-      loader.src = "weekly-qna.js?v=20260831-afrochim-basis-1";
+      loader.src = "weekly-qna.js?v=20260909-shiluach-haken-1";
     loader.addEventListener("load", showWeeklyQuestionAlert);
     document.head.append(loader);
   });
