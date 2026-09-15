@@ -2,6 +2,8 @@ User-agent: *
 Allow: /
 
 Disallow: /admin.html
+Disallow: /qna-management
+Disallow: /qna-management.html
 Disallow: /reports/
 Disallow: /tools/
 Disallow: /ocr-data/

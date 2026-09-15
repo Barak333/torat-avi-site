@@ -64,6 +64,11 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
+  if (url.pathname.includes("/qna-management")) {
+    event.respondWith(fetch(request, { cache: "no-store" }));
+    return;
+  }
+
   if (url.pathname.endsWith("/site.webmanifest") || url.pathname.includes("/assets/mevakshei-panecha-app-")) {
     event.respondWith(fetch(request, { cache: "reload" }));
     return;

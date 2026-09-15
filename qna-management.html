@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+  <title>מערכת פרסום שו״ת | מבקשי פניך</title>
+  <link rel="icon" href="assets/mevakshei-panecha-app-192.png">
+  <link rel="stylesheet" href="qna-management.css?v=20260915-1">
+</head>
+<body>
+  <main class="admin-shell">
+    <header class="brand-header">
+      <img src="assets/mevakshei-panecha-nav-logo.webp?v=20260831-logo-1" alt="מבקשי פניך" width="360" height="132">
+      <div>
+        <p class="eyebrow">מערכת פרטית</p>
+        <h1>העלאת שו״ת לאתר</h1>
+        <p>מעלים מסמך Word, בודקים את התוכן ומפרסמים ישירות לאתר.</p>
+      </div>
+    </header>
+
+    <section id="login-panel" class="panel login-panel" aria-labelledby="login-title">
+      <div class="panel-heading">
+        <span class="step-mark">כניסה</span>
+        <h2 id="login-title">כניסה מאובטחת</h2>
+        <p>הגישה מותרת לחשבון שהוגדר מראש בלבד.</p>
+      </div>
+      <form id="login-form" class="form-grid" autocomplete="on">
+        <label>
+          <span>כתובת מייל</span>
+          <input id="login-email" name="email" type="email" inputmode="email" autocomplete="username" required>
+        </label>
+        <label>
+          <span>סיסמה</span>
+          <span class="password-field">
+            <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+            <button id="toggle-password" class="text-button" type="button" aria-label="הצגת הסיסמה">הצגה</button>
+          </span>
+        </label>
+        <button class="primary-button" type="submit">כניסה למערכת</button>
+        <p id="login-status" class="status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="publisher-panel" class="publisher" hidden>
+      <div class="session-bar">
+        <span><span class="online-dot"></span> מחובר כעת: <strong id="session-email"></strong></span>
+        <button id="logout-button" class="quiet-button" type="button">יציאה</button>
+      </div>
+
+      <section class="panel upload-panel" aria-labelledby="upload-title">
+        <div class="panel-heading">
+          <span class="step-mark">שלב 1</span>
+          <h2 id="upload-title">העלאת מסמך Word</h2>
+          <p>יש לבחור קובץ DOCX. המסמך מעובד בדפדפן ואינו נשמר בנפרד.</p>
+        </div>
+        <label id="drop-zone" class="drop-zone" for="docx-file">
+          <input id="docx-file" type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+          <span class="upload-icon" aria-hidden="true">↑</span>
+          <strong>גררו לכאן את קובץ ה-Word</strong>
+          <span>או לחצו לבחירת קובץ מהמחשב</span>
+          <small>עד 10MB, קובץ DOCX בלבד</small>
+        </label>
+        <div id="file-summary" class="file-summary" hidden>
+          <span class="file-check">✓</span>
+          <div><strong id="file-name"></strong><small id="file-size"></small></div>
+          <button id="replace-file" class="quiet-button" type="button">החלפת קובץ</button>
+        </div>
+        <details class="template-help">
+          <summary>איך כדאי לסדר את המסמך?</summary>
+          <pre>כותרת: כותרת השאלה
+קטגוריה: שבת
+
+שאלה:
+טקסט השאלה...
+
+תשובה:
+טקסט התשובה...</pre>
+          <p>אפשר לערוך ולתקן את כל השדות לפני הפרסום.</p>
+        </details>
+        <p id="file-status" class="status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section id="review-panel" class="panel review-panel" aria-labelledby="review-title" hidden>
+        <div class="panel-heading">
+          <span class="step-mark">שלב 2</span>
+          <h2 id="review-title">בחירת קטגוריה ופרסום</h2>
+          <p>המערכת זיהתה בעצמה את הכותרת, השאלה והתשובה מתוך המסמך.</p>
+        </div>
+        <form id="publish-form" class="review-form">
+          <div class="analysis-card" aria-live="polite">
+            <span class="analysis-check">✓</span>
+            <div>
+              <strong>המסמך נותח ומוכן לפרסום</strong>
+              <span id="detected-title"></span>
+              <small id="detected-summary"></small>
+            </div>
+          </div>
+          <label>
+            <span>כותרת השאלה</span>
+            <input id="qna-title" name="title" maxlength="240" required>
+          </label>
+          <label>
+            <span>השאלה</span>
+            <textarea id="qna-question" name="question" rows="8" maxlength="12000" required></textarea>
+          </label>
+          <label>
+            <span>התשובה</span>
+            <textarea id="qna-answer" name="answer" rows="14" maxlength="40000" required></textarea>
+          </label>
+          <label class="category-field">
+            <span>לאיזו קטגוריה השו״ת שייך?</span>
+            <select id="qna-category" name="targetCategoryId" required>
+              <option value="">בחירת קטגוריה</option>
+              <option value="mamonot">דיני ממונות</option>
+              <option value="shabbat">שבת</option>
+              <option value="kashrut">איסור והיתר וכשרות</option>
+              <option value="tefila">תפילה וברכות</option>
+              <option value="avelut">אבלות</option>
+              <option value="sukkot">מועדים וסוכות</option>
+              <option value="musar">מוסר והנהגה</option>
+              <option value="kabbalah">קבלה</option>
+            </select>
+          </label>
+
+          <aside class="publish-note">
+            <strong>מה יקרה בלחיצה?</strong>
+            <span>תאריך ההעלאה ייקבע אוטומטית. השו״ת יופיע בשו״ת השבועי, יקבל כתובת קבועה לגוגל, ולאחר סיום השבוע יעבור אוטומטית לשו״ת המקיף.</span>
+          </aside>
+          <button id="publish-button" class="publish-button" type="submit">
+            <span>פרסום באתר</span>
+            <small>פעולה זו מעדכנת את האתר החי</small>
+          </button>
+          <div id="publish-progress" class="publish-progress" hidden aria-live="polite">
+            <span class="spinner" aria-hidden="true"></span>
+            <div><strong id="progress-title">מפרסם את השו״ת...</strong><p id="progress-detail">המערכת מעדכנת כעת את האתר.</p></div>
+          </div>
+          <p id="publish-status" class="status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section id="success-panel" class="panel success-panel" hidden aria-labelledby="success-title">
+        <span class="success-symbol">✓</span>
+        <p class="eyebrow">הפרסום הושלם</p>
+        <h2 id="success-title">השו״ת נמצא באתר</h2>
+        <p>העדכון פורסם בהצלחה וזמין לגולשים בכתובת הקבועה שלו.</p>
+        <div class="success-actions">
+          <a id="published-link" class="primary-button" href="#" target="_blank" rel="noopener">פתיחת השו״ת באתר</a>
+          <button id="publish-another" class="quiet-button" type="button">פרסום שו״ת נוסף</button>
+        </div>
+      </section>
+    </section>
+  </main>
+  <script src="qna-management.js?v=20260915-1" defer></script>
+</body>
+</html>
