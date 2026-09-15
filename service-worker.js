@@ -1,4 +1,4 @@
-const CACHE_NAME = "mevakshei-panecha-pwa-v9-weekly-five-questions";
+const CACHE_NAME = "mevakshei-panecha-pwa-v10-weekly-seven-questions";
 const CORE_ASSETS = [
   "./",
   "./index.html",
