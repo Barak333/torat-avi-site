@@ -180,6 +180,13 @@ export default {
 
     try {
       const body = await request.json();
+      if (body.action === "connection-test") {
+        const state = await readRepositoryState(owner, repo, branch);
+        if (!state.qna.includes(QNA_MARKER) || !state.sitemap.includes("</urlset>")) {
+          throw new Error("מבנה קובצי האתר אינו תקין לפרסום.");
+        }
+        return json({ ok: true, connected: true });
+      }
       const entry = validatePayload(body);
       const hash = await shortHash(`${entry.title}|${entry.question}`);
       entry.id = `weekly-${slugify(entry.title) || "question"}-${entry.publishedAt}-${hash}`;
