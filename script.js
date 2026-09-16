@@ -3,7 +3,28 @@ const menuToggle = document.querySelector(".menu-toggle");
 const storageKey = "orHanefeshContent";
 const siteActivityKey = "toratAviLastSiteActivityV1";
 const siteReturnTimeout = 2 * 60 * 1000;
+const logoHomeNavigationKey = "toratAviLogoHomeNavigationV1";
 let deferredInstallPrompt = null;
+
+document.addEventListener("click", (event) => {
+  const link = event.target.closest?.("a.brand-logo-link[href]");
+  if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+  const destination = new URL(link.href, location.href);
+  if (destination.origin !== location.origin || !/\/(?:index\.html)?$/.test(destination.pathname)) return;
+
+  if (/\/(?:index\.html)?$/.test(location.pathname)) {
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    return;
+  }
+
+  try {
+    sessionStorage.setItem(logoHomeNavigationKey, String(Date.now()));
+  } catch {
+    // Navigation still works if browser storage is unavailable.
+  }
+});
 
 // The public site currently uses the static content bundles shipped with each page.
 // Keep the shared promise available for the existing hydration code without issuing
@@ -2833,9 +2854,61 @@ document.querySelector("[data-cart-lines]")?.addEventListener("click", (event) =
   updateCartTotal();
 });
 
+const askerMemoryKey = "mevakshei-panecha:ask-rabbi:contact-v1";
+
+function readAskerMemory() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(askerMemoryKey) || "{}");
+    return {
+      names: Array.isArray(saved.names) ? saved.names.filter((value) => typeof value === "string") : [],
+      emails: Array.isArray(saved.emails) ? saved.emails.filter((value) => typeof value === "string") : [],
+      contacts: Array.isArray(saved.contacts) ? saved.contacts.filter((item) =>
+        item && typeof item.name === "string" && typeof item.email === "string") : []
+    };
+  } catch {
+    return { names: [], emails: [], contacts: [] };
+  }
+}
+
+function renderAskerMemory(form, memory, prefill = false) {
+  const nameField = form.elements.namedItem("fullName");
+  const emailField = form.elements.namedItem("email");
+  const namesList = form.querySelector("#askSavedNames");
+  const emailsList = form.querySelector("#askSavedEmails");
+  if (!nameField || !emailField || !namesList || !emailsList) return;
+  namesList.replaceChildren(...memory.names.map((value) => new Option(value, value)));
+  emailsList.replaceChildren(...memory.emails.map((value) => new Option(value, value)));
+  if (prefill) {
+    if (!nameField.value) nameField.value = memory.contacts[0]?.name || memory.names[0] || "";
+    if (!emailField.value) emailField.value = memory.contacts[0]?.email || memory.emails[0] || "";
+  }
+}
+
 document.querySelectorAll("form[data-contact-form]").forEach((form) => {
   const submitButton = form.querySelector('button[type="submit"]');
   if (!submitButton) return;
+
+  const remembersAsker = form.hasAttribute("data-remember-asker");
+  if (remembersAsker) {
+    renderAskerMemory(form, readAskerMemory(), true);
+    form.elements.namedItem("fullName").addEventListener("change", () => {
+      const name = form.elements.namedItem("fullName").value.trim();
+      const match = readAskerMemory().contacts.find((item) => item.name === name);
+      if (match) form.elements.namedItem("email").value = match.email;
+    });
+    form.elements.namedItem("email").addEventListener("change", () => {
+      const email = form.elements.namedItem("email").value.trim().toLowerCase();
+      const match = readAskerMemory().contacts.find((item) => item.email.toLowerCase() === email);
+      if (match) form.elements.namedItem("fullName").value = match.name;
+    });
+    form.querySelector("[data-clear-asker-memory]")?.addEventListener("click", () => {
+      try { localStorage.removeItem(askerMemoryKey); } catch { /* Private browsing may disable storage. */ }
+      form.elements.namedItem("fullName").value = "";
+      form.elements.namedItem("email").value = "";
+      renderAskerMemory(form, { names: [], emails: [], contacts: [] });
+      form.elements.namedItem("fullName").focus();
+    });
+  }
 
   const honeypot = document.createElement("input");
   honeypot.type = "text";
@@ -2864,7 +2937,13 @@ document.querySelectorAll("form[data-contact-form]").forEach((form) => {
       (!String(nameField?.value || "").trim() ? nameField : questionField)?.focus();
       return;
     }
-    if (!String(data.phone || "").trim() && !String(data.email || "").trim()) {
+    if (remembersAsker && !String(data.email || "").trim()) {
+      status.className = "form-submit-status is-error";
+      status.textContent = "יש להזין כתובת אימייל לקבלת תשובה.";
+      form.elements.namedItem("email")?.focus();
+      return;
+    }
+    if (!remembersAsker && !String(data.phone || "").trim() && !String(data.email || "").trim()) {
       status.className = "form-submit-status is-error";
       status.textContent = "יש להזין לפחות דרך חזרה אחת - טלפון או אימייל.";
       (form.elements.namedItem("phone") || form.elements.namedItem("email"))?.focus();
@@ -2886,7 +2965,19 @@ document.querySelectorAll("form[data-contact-form]").forEach((form) => {
       const result = await response.json().catch(() => ({}));
       if (!response.ok || !result.ok) throw new Error(result.message || "לא ניתן היה לשלוח את הפנייה.");
 
+      if (remembersAsker) {
+        const memory = readAskerMemory();
+        const name = String(data.fullName || "").trim();
+        const email = String(data.email || "").trim();
+        memory.names = [name, ...memory.names.filter((value) => value !== name)];
+        memory.emails = [email, ...memory.emails.filter((value) => value.toLowerCase() !== email.toLowerCase())];
+        memory.contacts = [{ name, email }, ...memory.contacts.filter((item) =>
+          item.name !== name || item.email.toLowerCase() !== email.toLowerCase())];
+        try { localStorage.setItem(askerMemoryKey, JSON.stringify(memory)); } catch { /* Submission still succeeds without local storage. */ }
+        renderAskerMemory(form, memory);
+      }
       form.reset();
+      if (remembersAsker) renderAskerMemory(form, readAskerMemory(), true);
       status.className = "form-submit-status is-success";
       status.textContent = "הפנייה התקבלה בהצלחה ותועבר לעיון הרב.";
     } catch (error) {
@@ -3590,7 +3681,9 @@ initCourtPrincipleCards();
 function initTimedVisitorPromos() {
   const FIRST_DELAY_MS = 15_000;
   const SECOND_DELAY_MS = 45_000;
-  const STORAGE_KEY = "toratAviVisitorPromosV1";
+  const STORAGE_KEY = "toratAviVisitorPromosV2";
+  const isLocalPreview = location.protocol === "file:" || ["localhost", "127.0.0.1"].includes(location.hostname);
+  const forcePreview = isLocalPreview && new URLSearchParams(location.search).get("visitorPromosTest") === "1";
   const promoContent = {
     first: {
       src: "assets/visitor-popup-first-light.webp",
@@ -3616,6 +3709,31 @@ function initTimedVisitorPromos() {
       // The timing still works in memory when browser storage is unavailable.
     }
   };
+
+  const syncState = () => {
+    try {
+      state = { ...state, ...JSON.parse(sessionStorage.getItem(STORAGE_KEY) || "{}") };
+    } catch {
+      // Keep the in-memory state if browser storage is unavailable.
+    }
+  };
+
+  const visitState = window.toratAviVisitState;
+  if (forcePreview || (
+    Number.isFinite(visitState?.inactivityMs) &&
+    visitState.inactivityMs >= visitState.timeoutMs
+  )) {
+    state = {};
+    saveState();
+  }
+
+  // A popup already seen in this tab must not reopen after navigating to another page.
+  // If navigation interrupted the first popup, treat leaving that page as closing it.
+  if (state.firstShownAt && !state.firstClosedAt) {
+    state.firstClosedAt = Date.now();
+    state.secondDueAt = state.firstClosedAt + SECOND_DELAY_MS;
+    saveState();
+  }
 
   if (!state.firstDueAt && !state.firstShownAt && !state.firstClosedAt) {
     state.firstDueAt = Date.now() + FIRST_DELAY_MS;
@@ -3674,6 +3792,8 @@ function initTimedVisitorPromos() {
   };
 
   const showPromo = (kind) => {
+    syncState();
+    if (state[kind === "first" ? "firstShownAt" : "secondShownAt"]) return;
     if (pageIsBusy()) {
       timerId = window.setTimeout(() => showPromo(kind), 800);
       return;
@@ -3714,16 +3834,18 @@ function initTimedVisitorPromos() {
   };
 
   const scheduleNextPromo = () => {
-    if (state.secondClosedAt) return;
+    syncState();
+    if (state.secondShownAt || state.secondClosedAt) return;
 
     if (state.firstClosedAt) {
       state.secondDueAt ||= Number(state.firstClosedAt) + SECOND_DELAY_MS;
       saveState();
-      schedulePromo("second", state.secondShownAt ? Date.now() : state.secondDueAt);
+      schedulePromo("second", state.secondDueAt);
       return;
     }
 
-    schedulePromo("first", state.firstShownAt ? Date.now() : state.firstDueAt);
+    if (state.firstShownAt) return;
+    schedulePromo("first", state.firstDueAt);
   };
 
   const closePromo = () => {
@@ -3763,7 +3885,21 @@ function initTimedVisitorPromos() {
     closePromo();
   });
 
+  window.addEventListener("pagehide", () => {
+    if (activePromo !== "first" || state.firstClosedAt) return;
+    state.firstClosedAt = Date.now();
+    state.secondDueAt = state.firstClosedAt + SECOND_DELAY_MS;
+    saveState();
+  });
+
   window.addEventListener("toratavi:rabbi-opinion-resolved", scheduleNextPromo);
+  window.addEventListener("toratavi:returned-after-inactivity", (event) => {
+    if (activePromo || !Number.isFinite(event.detail?.inactivityMs)) return;
+    window.clearTimeout(timerId);
+    state = { firstDueAt: Date.now() + FIRST_DELAY_MS };
+    saveState();
+    scheduleNextPromo();
+  });
   scheduleNextPromo();
 }
 

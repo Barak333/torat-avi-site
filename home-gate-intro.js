@@ -6,6 +6,16 @@
   var previewStage = new URLSearchParams(window.location.search).get("gateStage");
   var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var arrivedFromInsideSite = false;
+  var arrivedByLogo = false;
+
+  try {
+    var logoNavigationAt = Number(sessionStorage.getItem("toratAviLogoHomeNavigationV1"));
+    sessionStorage.removeItem("toratAviLogoHomeNavigationV1");
+    arrivedByLogo = logoNavigationAt > 0 && Date.now() - logoNavigationAt < 30000;
+  } catch (error) {
+    arrivedByLogo = false;
+  }
+  window.toratAviLogoHomeNavigation = arrivedByLogo && !forcePreview;
 
   try {
     arrivedFromInsideSite = Boolean(document.referrer) && new URL(document.referrer).origin === window.location.origin;
@@ -19,7 +29,7 @@
     window.dispatchEvent(new CustomEvent("toratavi:gate-intro-finished"));
   }
 
-  if (reducedMotion || (!forcePreview && arrivedFromInsideSite)) {
+  if (reducedMotion || (!forcePreview && (arrivedFromInsideSite || arrivedByLogo))) {
     hideImmediately();
     return;
   }

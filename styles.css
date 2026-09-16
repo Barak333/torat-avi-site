@@ -19071,6 +19071,28 @@ body:has(.about-rabbi-hero){
   color:rgba(5,49,24,.72)!important;
   font-weight:750!important;
 }
+.ask-memory-note{
+  margin:17px 0 0;
+  color:#466354;
+  font-size:.88rem;
+  line-height:1.7;
+}
+.ask-memory-note button{
+  display:inline;
+  padding:0;
+  border:0;
+  background:none;
+  color:#075c3b;
+  font:inherit;
+  font-weight:800;
+  text-decoration:underline;
+  text-underline-offset:3px;
+  cursor:pointer;
+}
+.ask-memory-note button:focus-visible{
+  outline:2px solid #b89e14;
+  outline-offset:3px;
+}
 .ask-guidance-panel{
   border-radius:6px 24px 6px 24px!important;
   border:1px solid rgba(184,158,20,.24)!important;

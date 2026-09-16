@@ -179,6 +179,15 @@
   });
 
   const openAfterGate = () => {
+    if (window.toratAviLogoHomeNavigation) {
+      document.documentElement.classList.remove("rabbi-opinion-pending");
+      modal.dataset.opinionResolved = "true";
+      if (dock) {
+        dock.hidden = false;
+        dock.classList.add("is-settled");
+      }
+      return;
+    }
     const gateIntro = document.querySelector("[data-home-gate-intro]");
     if (gateIntro && !gateIntro.classList.contains("is-hidden")) {
       window.addEventListener("toratavi:gate-intro-finished", open, { once: true });
