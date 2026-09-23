@@ -2,7 +2,7 @@
  * שאלות חדשות מתווספות למערך הבא.
  * publishedAt: תאריך העלאה בפורמט YYYY-MM-DD.
  * targetCategoryId: מזהה תת-הקטגוריה בשו"ת מקיף.
- * מזהים קיימים: mamonot, sukkot, avelut, tefila, musar, kabbalah, shabbat, kashrut.
+ * מזהים קיימים נטענים גם מתוך qna-custom-categories.js.
  */
 window.weeklyQnaEntries = window.weeklyQnaEntries || [
   {
@@ -1598,6 +1598,11 @@ __________________ חתימה: __________`
 (() => {
   const entries = Array.isArray(window.weeklyQnaEntries) ? window.weeklyQnaEntries : [];
   const categories = Array.isArray(window.alonimQnaCategories) ? window.alonimQnaCategories : [];
+  const customCategories = Array.isArray(window.qnaCustomCategories) ? window.qnaCustomCategories : [];
+  customCategories.forEach((category) => {
+    if (!category?.id || !category?.name || categories.some((item) => item.id === category.id)) return;
+    categories.push({ id: category.id, name: category.name, count: 0, items: [] });
+  });
   const jerusalemParts = new Intl.DateTimeFormat("en-CA", {
     timeZone: "Asia/Jerusalem",
     year: "numeric",

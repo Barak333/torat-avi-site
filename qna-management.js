@@ -12,6 +12,7 @@
   const publishButton = $("#publish-button");
   const publishProgress = $("#publish-progress");
   let pendingQna = null;
+  let categoriesLoaded = false;
 
   const setStatus = (element, message = "", type = "") => {
     element.textContent = message;
@@ -33,10 +34,35 @@
     return data;
   };
 
+  const loadCategories = async () => {
+    if (categoriesLoaded) return;
+    try {
+      const result = await api("/api/qna-admin-publish");
+      const select = $("#qna-category");
+      const currentValue = select.value;
+      select.querySelectorAll("option:not(:first-child)").forEach((option) => option.remove());
+      result.categories.forEach((category) => {
+        const option = document.createElement("option");
+        option.value = category.id;
+        option.textContent = category.name;
+        select.append(option);
+      });
+      const addOption = document.createElement("option");
+      addOption.value = "__new__";
+      addOption.textContent = "הוספת קטגוריה חדשה...";
+      select.append(addOption);
+      if ([...select.options].some((option) => option.value === currentValue)) select.value = currentValue;
+      categoriesLoaded = true;
+    } catch {
+      setStatus($("#file-status"), "לא ניתן היה לרענן את רשימת הקטגוריות. אפשר להמשיך עם הרשימה הקיימת.", "error");
+    }
+  };
+
   const showPublisher = (email) => {
     loginPanel.hidden = true;
     publisherPanel.hidden = false;
     $("#session-email").textContent = email;
+    loadCategories();
   };
 
   const checkSession = async () => {
@@ -215,7 +241,8 @@
       [/אבלות|אבל|ניחום/u, "avelut"],
       [/סוכות|מועדים|חג|יום טוב/u, "sukkot"],
       [/קבלה|סוד/u, "kabbalah"],
-      [/מוסר|הנהגה|אמונה|נפש|מידות/u, "musar"]
+      [/נפש|נפשי|רגש|חרדה|דימוי עצמי/u, "nefesh"],
+      [/מוסר|הנהגה|אמונה|מידות/u, "musar"]
     ];
     return categories.find(([pattern]) => pattern.test(text))?.[1] || "";
   }
@@ -282,6 +309,13 @@
   }));
   dropZone.addEventListener("drop", (event) => event.dataTransfer.files[0] && handleFile(event.dataTransfer.files[0]));
 
+  $("#qna-category").addEventListener("change", () => {
+    const adding = $("#qna-category").value === "__new__";
+    $("#new-category-field").hidden = !adding;
+    $("#new-category-name").required = adding;
+    if (adding) $("#new-category-name").focus();
+  });
+
   async function waitForLive(id) {
     const expected = `\"id\": \"${id}\"`;
     for (let attempt = 0; attempt < 36; attempt += 1) {
@@ -312,17 +346,27 @@
       title: $("#qna-title").value,
       question: $("#qna-question").value,
       answer: $("#qna-answer").value,
-      targetCategoryId: $("#qna-category").value
+      targetCategoryId: $("#qna-category").value,
+      newCategoryName: $("#new-category-name").value
     };
     try {
       const result = await api("/api/qna-admin-publish", { method: "POST", body: JSON.stringify(payload) });
+      const categorySelect = $("#qna-category");
+      if (result.category && ![...categorySelect.options].some((option) => option.value === result.category.id)) {
+        const option = document.createElement("option");
+        option.value = result.category.id;
+        option.textContent = result.category.name;
+        categorySelect.insertBefore(option, categorySelect.querySelector('option[value="__new__"]'));
+      }
       $("#progress-title").textContent = "השו״ת נשלח לפרסום";
       const live = await waitForLive(result.id);
       reviewPanel.hidden = true;
       successPanel.hidden = false;
       $("#published-link").href = result.url;
       $("#success-title").textContent = live ? "השו״ת נמצא באתר" : "השו״ת נשלח לאתר";
-      successPanel.querySelector("p:not(.eyebrow)").textContent = live
+      successPanel.querySelector("p:not(.eyebrow)").textContent = !result.notificationSent
+        ? "השו״ת פורסם, אך הודעת העדכון במייל לא נשלחה. אין צורך לפרסם אותו שוב."
+        : live
         ? "העדכון פורסם בהצלחה וזמין לגולשים בכתובת הקבועה שלו."
         : "הפרסום התקבל. אם הקישור עדיין אינו מציג את השו״ת, יש להמתין דקה ולרענן.";
       successPanel.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -342,6 +386,8 @@
 
   $("#publish-another").addEventListener("click", () => {
     $("#publish-form").reset();
+    $("#new-category-field").hidden = true;
+    $("#new-category-name").required = false;
     pendingQna = null;
     fileInput.value = "";
     fileSummary.hidden = true;

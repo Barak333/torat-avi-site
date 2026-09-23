@@ -77,6 +77,7 @@ self.addEventListener("fetch", (event) => {
   if (
     url.pathname.endsWith("/qna.html") ||
     url.pathname.endsWith("/weekly-qna.js") ||
+    url.pathname.endsWith("/qna-custom-categories.js") ||
     url.pathname.endsWith("/script.js")
   ) {
     event.respondWith(fetch(request));

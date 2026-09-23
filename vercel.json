@@ -64,6 +64,15 @@
       ]
     },
     {
+      "source": "/qna-custom-categories.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    },
+    {
       "source": "/script.js",
       "headers": [
         {

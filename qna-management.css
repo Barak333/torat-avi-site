@@ -184,6 +184,7 @@ input:focus, select:focus, textarea:focus { border-color: var(--gold); box-shado
 .analysis-card small { margin-top: 5px; color: var(--muted); }
 .analysis-check { flex: 0 0 auto; display: grid !important; place-items: center; width: 44px; height: 44px; border-radius: 50%; color: #fff; background: #25885f; font-size: 1.3rem; font-weight: 900; }
 .category-field { max-width: 520px; }
+.new-category-field small { display: block; margin-top: 7px; color: var(--muted); }
 .publish-note { display: flex; gap: 8px; padding: 16px 18px; border-radius: 13px; color: #59400f; background: #fff7e4; border: 1px solid rgba(200,154,60,.28); }
 .publish-note span { color: #6a5937; }
 .publish-button { flex-direction: column; min-height: 66px; background: linear-gradient(135deg, #9d701f, #d0a34b); }

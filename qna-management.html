@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
   <title>מערכת פרסום שו״ת | מבקשי פניך</title>
   <link rel="icon" href="assets/mevakshei-panecha-app-192.png">
-  <link rel="stylesheet" href="qna-management.css?v=20260915-1">
+  <link rel="stylesheet" href="qna-management.css?v=20260923-1">
 </head>
 <body>
   <main class="admin-shell">
@@ -120,7 +120,14 @@
               <option value="sukkot">מועדים וסוכות</option>
               <option value="musar">מוסר והנהגה</option>
               <option value="kabbalah">קבלה</option>
+              <option value="nefesh">נפש</option>
+              <option value="__new__">הוספת קטגוריה חדשה...</option>
             </select>
+          </label>
+          <label id="new-category-field" class="category-field new-category-field" hidden>
+            <span>שם הקטגוריה החדשה</span>
+            <input id="new-category-name" name="newCategoryName" maxlength="80" placeholder="לדוגמה: חינוך ילדים">
+            <small>הקטגוריה תתווסף לאתר ותישמר לבחירה בפרסומים הבאים.</small>
           </label>
 
           <aside class="publish-note">
@@ -151,6 +158,6 @@
       </section>
     </section>
   </main>
-  <script src="qna-management.js?v=20260915-1" defer></script>
+  <script src="qna-management.js?v=20260923-1" defer></script>
 </body>
 </html>
