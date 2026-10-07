@@ -12,6 +12,7 @@ const BUILTIN_CATEGORIES = [
 ];
 const QNA_MARKER = "window.weeklyQnaEntries = window.weeklyQnaEntries || [";
 const CUSTOM_CATEGORIES_PATH = "qna-custom-categories.js";
+const LATEST_QNA_PATH = "weekly-qna-latest.js";
 const GITHUB_API = "https://api.github.com";
 const NOTIFICATION_EMAIL = process.env.QNA_NOTIFICATION_EMAIL || "bl0527009541@gmail.com";
 
@@ -152,6 +153,15 @@ function insertSitemap(source, entry) {
   return source.replace("</urlset>", `  <url><loc>${loc}</loc><lastmod>${entry.publishedAt}</lastmod></url>\n</urlset>`);
 }
 
+function serializeLatestEntry(entry) {
+  const latest = {
+    id: entry.id,
+    publishedAt: entry.publishedAt,
+    title: entry.title
+  };
+  return `window.weeklyQnaLatest = ${JSON.stringify(latest, null, 2)};\n`;
+}
+
 async function readRepositoryState(owner, repo, branch) {
   const ref = await github(`/repos/${owner}/${repo}/git/ref/heads/${encodeURIComponent(branch)}`);
   const commit = await github(`/repos/${owner}/${repo}/git/commits/${ref.object.sha}`);
@@ -181,10 +191,12 @@ async function commitEntry(owner, repo, branch, entry, state, customCategories, 
   const qna = insertEntry(state.qna, entry);
   const sitemap = insertSitemap(state.sitemap, entry);
   const categorySource = serializeCustomCategories(customCategories);
-  const [qnaBlob, sitemapBlob, categoriesBlob] = await Promise.all([
+  const latestSource = serializeLatestEntry(entry);
+  const [qnaBlob, sitemapBlob, categoriesBlob, latestBlob] = await Promise.all([
     createBlob(owner, repo, qna),
     createBlob(owner, repo, sitemap),
-    createBlob(owner, repo, categorySource)
+    createBlob(owner, repo, categorySource),
+    createBlob(owner, repo, latestSource)
   ]);
   const tree = await github(`/repos/${owner}/${repo}/git/trees`, {
     method: "POST",
@@ -193,6 +205,7 @@ async function commitEntry(owner, repo, branch, entry, state, customCategories, 
       base_tree: state.treeSha,
       tree: [
         { path: "weekly-qna.js", mode: "100644", type: "blob", sha: qnaBlob.sha },
+        { path: LATEST_QNA_PATH, mode: "100644", type: "blob", sha: latestBlob.sha },
         { path: "sitemap.xml", mode: "100644", type: "blob", sha: sitemapBlob.sha },
         { path: CUSTOM_CATEGORIES_PATH, mode: "100644", type: "blob", sha: categoriesBlob.sha }
       ]

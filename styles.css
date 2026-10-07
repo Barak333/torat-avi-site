@@ -33270,3 +33270,23 @@ body.visitor-promo-open{
 .site-header .inner-judge-emblem-link{
   z-index:2!important;
 }
+
+/* Inner Voice navigation emblem - dedicated top label around the circular mark. */
+.site-header .inner-judge-emblem-arc .inner-judge-top-label{
+  fill:#9b681c!important;
+  font-size:10.5px!important;
+  font-weight:900!important;
+  letter-spacing:.45px!important;
+}
+
+@media(max-width:900px){
+  .site-header .inner-judge-emblem-arc .inner-judge-top-label{
+    font-size:11.5px!important;
+  }
+}
+
+@media(max-width:430px){
+  .site-header .inner-judge-emblem-arc .inner-judge-top-label{
+    font-size:12.5px!important;
+  }
+}

@@ -1,4 +1,4 @@
-const CACHE_NAME = "mevakshei-panecha-pwa-v10-weekly-seven-questions";
+const CACHE_NAME = "mevakshei-panecha-pwa-v11-performance";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -20,20 +20,10 @@ const CORE_ASSETS = [
   "./rabbi-opinion.js",
   "./assets/mevakshei-panecha-app-192.png",
   "./assets/mevakshei-panecha-app-512.png",
-  "./assets/torat-avi-logo-transparent.webp?v=20260831-logo-1",
   "./assets/mevakshei-panecha-nav-logo.webp?v=20260831-logo-1",
-  "./assets/inner-judge-emblem.webp",
-  "./assets/site-emerald-banner-texture.webp",
-  "./assets/psakim-hero-premium-bg.jpg",
-  "./assets/court-gavel.png",
-  "./assets/directory-soul-premium.webp",
-  "./assets/directory-books-premium.webp",
-  "./assets/directory-qna-premium.webp",
-  "./assets/directory-ask-rabbi-premium.webp",
+  "./assets/inner-judge-emblem-v2.webp?v=20261007-voice-logo-1",
   "./assets/whatsapp-community-icon.jpg",
-  "./assets/whatsapp-community-icon-transparent.webp",
-  "./assets/visitor-popup-first-light.webp",
-  "./assets/visitor-popup-second-dark.webp"
+  "./assets/whatsapp-community-icon-transparent.webp"
 ];
 
 self.addEventListener("install", (event) => {
@@ -77,6 +67,7 @@ self.addEventListener("fetch", (event) => {
   if (
     url.pathname.endsWith("/qna.html") ||
     url.pathname.endsWith("/weekly-qna.js") ||
+    url.pathname.endsWith("/weekly-qna-latest.js") ||
     url.pathname.endsWith("/qna-custom-categories.js") ||
     url.pathname.endsWith("/script.js")
   ) {

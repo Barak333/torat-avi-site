@@ -1902,6 +1902,32 @@ function showWeeklyQuestionAlert() {
   window.setTimeout(dismiss, 9100);
 }
 
+function setLatestWeeklyQuestionForAlert() {
+  const latest = window.weeklyQnaLatest;
+  if (!latest || typeof latest !== "object") {
+    window.weeklyQnaCurrent = [];
+    return;
+  }
+
+  const jerusalemParts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Jerusalem",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(new Date());
+  const part = (type) => jerusalemParts.find((item) => item.type === type)?.value || "";
+  const todayKey = `${part("year")}-${part("month")}-${part("day")}`;
+  const todayUtc = new Date(`${todayKey}T12:00:00Z`);
+  const weekStartUtc = new Date(todayUtc);
+  weekStartUtc.setUTCDate(todayUtc.getUTCDate() - todayUtc.getUTCDay());
+  const weekStartKey = weekStartUtc.toISOString().slice(0, 10);
+  const publishedAt = String(latest.publishedAt || "").slice(0, 10);
+
+  window.weeklyQnaCurrent = publishedAt && publishedAt >= weekStartKey && publishedAt <= todayKey
+    ? [latest]
+    : [];
+}
+
 function initializeWeeklyQuestionAlert() {
   const opinionModal = document.querySelector("[data-rabbi-opinion-modal]");
   if (opinionModal) {
@@ -1929,8 +1955,11 @@ function initializeWeeklyQuestionAlert() {
     }
 
     const loader = document.createElement("script");
-      loader.src = "weekly-qna.js?v=20260915-seven-questions-1";
-    loader.addEventListener("load", showWeeklyQuestionAlert);
+    loader.src = "weekly-qna-latest.js?v=20260923-performance-1";
+    loader.addEventListener("load", () => {
+      setLatestWeeklyQuestionForAlert();
+      showWeeklyQuestionAlert();
+    });
     document.head.append(loader);
   });
 }
@@ -3744,7 +3773,8 @@ function initTimedVisitorPromos() {
     const preload = new Image();
     preload.src = promoContent[kind].src;
   };
-  window.setTimeout(() => preloadPromoImage("first"), 1000);
+  const firstPreloadDelay = Math.max(0, Number(state.firstDueAt || Date.now() + FIRST_DELAY_MS) - Date.now() - 3000);
+  window.setTimeout(() => preloadPromoImage("first"), firstPreloadDelay);
 
   const modal = document.createElement("div");
   modal.className = "visitor-promo-modal";
