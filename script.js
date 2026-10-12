@@ -1831,7 +1831,7 @@ function createTextBlock(text) {
 
 function showWeeklyQuestionAlert() {
   const questions = Array.isArray(window.weeklyQnaCurrent) ? window.weeklyQnaCurrent : [];
-  if (!questions.length || document.querySelector("[data-weekly-question-alert]")) return;
+  if (!questions.length) return;
   const opinionModal = document.querySelector("[data-rabbi-opinion-modal]");
   if (opinionModal && opinionModal.dataset.opinionResolved !== "true") return;
 
@@ -1847,6 +1847,9 @@ function showWeeklyQuestionAlert() {
     identityHash = ((identityHash << 5) - identityHash + questionIdentity.charCodeAt(index)) | 0;
   }
   const questionKey = `${latest.id || "weekly"}-${Math.abs(identityHash)}`;
+  const existingAlert = document.querySelector("[data-weekly-question-alert]");
+  if (existingAlert?.dataset.weeklyQuestionKey === questionKey) return;
+  existingAlert?.remove();
   const storageKey = "torat-avi-weekly-question-alert";
   try {
     if (window.localStorage.getItem(storageKey) === questionKey) return;
@@ -1928,6 +1931,29 @@ function setLatestWeeklyQuestionForAlert() {
     : [];
 }
 
+function loadLatestWeeklyQuestionForAlert() {
+  return new Promise((resolve) => {
+    const loader = document.createElement("script");
+    loader.src = `weekly-qna-latest.js?v=20261007-live-home-1&t=${Date.now()}`;
+    loader.async = true;
+    loader.addEventListener("load", () => {
+      loader.remove();
+      setLatestWeeklyQuestionForAlert();
+      showWeeklyQuestionAlert();
+      resolve(true);
+    }, { once: true });
+    loader.addEventListener("error", () => {
+      loader.remove();
+      resolve(false);
+    }, { once: true });
+    document.head.append(loader);
+  });
+}
+
+function isHomePage() {
+  return /\/(?:index\.html)?$/.test(window.location.pathname);
+}
+
 function initializeWeeklyQuestionAlert() {
   const opinionModal = document.querySelector("[data-rabbi-opinion-modal]");
   if (opinionModal) {
@@ -1951,16 +1977,19 @@ function initializeWeeklyQuestionAlert() {
   window.toratAviLiveContentReady.then(() => {
     if (Array.isArray(window.weeklyQnaCurrent)) {
       showWeeklyQuestionAlert();
-      return;
+    } else {
+      loadLatestWeeklyQuestionForAlert();
     }
 
-    const loader = document.createElement("script");
-    loader.src = "weekly-qna-latest.js?v=20260923-performance-1";
-    loader.addEventListener("load", () => {
-      setLatestWeeklyQuestionForAlert();
-      showWeeklyQuestionAlert();
+    if (!isHomePage()) return;
+
+    window.setInterval(() => {
+      if (!document.hidden) loadLatestWeeklyQuestionForAlert();
+    }, 30000);
+
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) loadLatestWeeklyQuestionForAlert();
     });
-    document.head.append(loader);
   });
 }
 
