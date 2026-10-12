@@ -6,6 +6,17 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "torat-avi-site.vercel.app"
+        }
+      ],
+      "destination": "https://www.mevakshei-panecha.co.il/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
