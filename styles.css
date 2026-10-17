@@ -4879,7 +4879,7 @@ body.reduce-motion .home-books-feature .book-float-wrap{
   place-items:center;
   background:
     linear-gradient(90deg,rgba(9,16,15,.88),rgba(15,24,22,.58),rgba(199,155,69,.12)),
-    url("assets/levado-hero.png") center/cover no-repeat!important;
+    url("assets/levado-hero.webp") center/cover no-repeat!important;
   color:white;
 }
 .levado-hero .section-inner{
@@ -30439,7 +30439,7 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   min-height:430px;
   background:
     linear-gradient(90deg,rgba(1,38,18,.28),rgba(0,40,20,.12),rgba(1,38,18,.32)),
-    url("assets/inner-judge-hero-v3.png") center/cover no-repeat!important;
+    url("assets/inner-judge-hero-v3.webp") center/cover no-repeat!important;
 }
 .ij-article-hero::before{
   background:
@@ -30454,7 +30454,7 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 .ij-section-heading>p:last-child{max-width:650px;margin:18px auto 0;color:#637469;font-size:1.08rem;line-height:1.8}
 .ij-hero{position:relative;min-height:min(790px,calc(100vh - 115px));display:flex;align-items:center;color:#fff;background:#001f13;overflow:hidden}
 .ij-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 0 34%,rgba(0,27,15,.46) 51%,#001f13 75%),linear-gradient(180deg,rgba(0,0,0,.05),transparent 55%,rgba(0,18,10,.78));z-index:1}
-.ij-hero-visual{position:absolute;inset:0;background:url("assets/inner-judge-hero-v2.png") left center/cover no-repeat;animation:ijHeroBreath 10s ease-in-out infinite alternate}
+.ij-hero-visual{position:absolute;inset:0;background:url("assets/inner-judge-hero-v2.webp") left center/cover no-repeat;animation:ijHeroBreath 10s ease-in-out infinite alternate}
 .ij-hero-glow{position:absolute;inset:auto 15% 10% auto;width:430px;height:430px;border-radius:50%;background:rgba(216,185,79,.07);filter:blur(65px);z-index:1}
 .ij-hero-inner{position:relative;z-index:2;width:100%}
 .ij-hero-copy{width:min(570px,48%);margin-right:clamp(22px,4vw,60px);margin-left:auto;padding:95px 0 110px;text-align:right}
