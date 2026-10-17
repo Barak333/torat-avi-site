@@ -1,4 +1,4 @@
-const CACHE_NAME = "mevakshei-panecha-pwa-v12-performance";
+const CACHE_NAME = "mevakshei-panecha-pwa-v13-full-performance";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -8,15 +8,16 @@ const CORE_ASSETS = [
   "./emuna.html",
   "./updates.html",
   "./updates.js",
-  "./styles.css",
-  "./beit-din.css",
+  "./site.min.css?v=20261017-full-performance-1",
+  "./home.min.css?v=20261017-full-performance-1",
+  "./script.min.js?v=20261017-full-performance-1",
+  "./home-gate-intro.min.js?v=20261017-full-performance-1",
+  "./beit-din.min.css?v=20261017-full-performance-1",
   "./beit-din-booking.js",
-  "./premium-buttons.css",
-  "./nefesh-qna.js",
-  "./nefesh-growth-qna.js",
-  "./emuna-qna.js",
-  "./qna-permalinks.js",
-  "./rabbi-opinion.css",
+  "./nefesh-qna.min.js?v=20261017-full-performance-1",
+  "./nefesh-growth-qna.min.js?v=20261017-full-performance-1",
+  "./emuna-qna.min.js?v=20261017-full-performance-1",
+  "./qna-permalinks.min.js?v=20261017-full-performance-1",
   "./rabbi-opinion.js",
   "./assets/mevakshei-panecha-app-192.png",
   "./assets/mevakshei-panecha-app-512.png",
@@ -69,7 +70,8 @@ self.addEventListener("fetch", (event) => {
     url.pathname.endsWith("/weekly-qna.js") ||
     url.pathname.endsWith("/weekly-qna-latest.js") ||
     url.pathname.endsWith("/qna-custom-categories.js") ||
-    url.pathname.endsWith("/script.js")
+    url.pathname.endsWith("/script.js") ||
+    url.pathname.endsWith("/script.min.js")
   ) {
     event.respondWith(fetch(request));
     return;

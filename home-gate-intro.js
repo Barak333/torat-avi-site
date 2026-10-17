@@ -34,6 +34,21 @@
     return;
   }
 
+  [
+    "assets/luxury-gold-gate-emerald-background-v2.webp",
+    "assets/luxury-gold-gate-emerald-doors-v2.webp"
+  ].forEach(function (href) {
+    var preload = document.createElement("link");
+    preload.rel = "preload";
+    preload.as = "image";
+    preload.type = "image/webp";
+    preload.href = href;
+    preload.fetchPriority = "high";
+    document.head.appendChild(preload);
+  });
+
+  overlay.classList.add("gate-intro-assets-ready");
+
   document.documentElement.classList.add("gate-intro-active");
   document.body.classList.add("gate-intro-active");
 

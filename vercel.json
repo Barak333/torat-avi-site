@@ -115,7 +115,34 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "no-store"
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/script.min.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(home-gate-intro|qna-library|qna-permalinks|levado-data|emuna-qna|zugiyut-qna|nefesh-qna|children-education-qna|nefesh-growth-qna|journey-testimonials|psakim-library).min.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(site|home|beit-din|inner-judge-link).min.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
         }
       ]
     },

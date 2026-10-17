@@ -2544,7 +2544,7 @@ const bookDetails = {
   "mamonot": {
     title: "שו״ת תורת אבי",
     subtitle: "דיני ממונות",
-    image: "assets/store-book-torat-avi-mamonot-normalized.png",
+    image: "assets/store-book-torat-avi-mamonot-normalized.webp",
     status: "בקרוב",
     paragraphs: [
       "בעולם שבו שאלות של כסף, התחייבויות, שכנים, עסקים ונזקים פוגשות אותנו בכל יום – הספר הזה מביא את הלכות חושן משפט בצורה בהירה, מעשית ומדויקת.",
@@ -2555,7 +2555,7 @@ const bookDetails = {
   "issur-heter": {
     title: "שו״ת תורת אבי",
     subtitle: "איסור והיתר – חלק א׳",
-    image: "assets/store-book-torat-avi-issur-heter-normalized.png",
+    image: "assets/store-book-torat-avi-issur-heter-normalized.webp",
     price: "₪52",
     paragraphs: [
       "בשר וחלב, פת ובישולי גויים, טבילת כלים, עניינים שונים ואקטואליים.",
@@ -2565,7 +2565,7 @@ const bookDetails = {
   "lech-amar-libi": {
     title: "לך אמר ליבי",
     subtitle: "נפש ואמונה",
-    image: "assets/store-book-lech-amar-libi-normalized.png",
+    image: "assets/store-book-lech-amar-libi-normalized.webp",
     price: "₪101",
     note: "ספר מודפס",
     paragraphs: [
@@ -2577,7 +2577,7 @@ const bookDetails = {
   "neshama-avuda": {
     title: "נשמה אבודה",
     subtitle: "מסע לגילוי הנשמה",
-    image: "assets/store-book-neshama-avuda-normalized.png",
+    image: "assets/store-book-neshama-avuda-normalized.webp",
     price: "₪26",
     note: "מהדורת כיס",
     paragraphs: [
@@ -2588,7 +2588,7 @@ const bookDetails = {
   "levado": {
     title: "לבדו",
     subtitle: "זוגיות ונפש באור פנימי",
-    image: "assets/store-book-levado-normalized.png",
+    image: "assets/store-book-levado-normalized.webp",
     price: "₪101",
     paragraphs: [
       "בנין הבית | איך אמור להיראות בית אמיתי?",
@@ -2599,7 +2599,7 @@ const bookDetails = {
   "zviyot": {
     title: "עניין של זוויות",
     subtitle: "קלפי טיפול זוגיים",
-    image: "assets/store-book-inyan-shel-zviyot-normalized.png",
+    image: "assets/store-book-inyan-shel-zviyot-normalized.webp",
     price: "₪260",
     paragraphs: [
       "תמיד רציתם לדבר והרגשתם שאתם לא יודעים איך להתחיל? משהו חוסם לכם את הזרימה? גם אתם רוצים קשר עמוק יותר?",
@@ -2610,7 +2610,7 @@ const bookDetails = {
   "dor-hahastara": {
     title: "דור ההסתריה",
     subtitle: "כל היסטריה מקורה בהסתר – י־ה",
-    image: "assets/store-book-dor-hahastara-normalized.png",
+    image: "assets/store-book-dor-hahastara-normalized.webp",
     status: "אזל המלאי",
     paragraphs: [
       "הספר מלווה את הקורא במסע פנימי אל תוך עצמו.",

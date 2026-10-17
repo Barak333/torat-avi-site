@@ -28,6 +28,12 @@
   filter: saturate(1.04) contrast(1.03) !important;
 }
 
+/* Gate artwork is requested only when the intro will actually run. */
+.home-gate-intro:not(.gate-intro-assets-ready) .gate-intro-bg,
+.home-gate-intro:not(.gate-intro-assets-ready) .gate-intro-door::after {
+  background-image: none !important;
+}
+
 .gate-intro-bg::before,
 .gate-intro-bg::after {
   content: "" !important;
