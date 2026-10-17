@@ -717,20 +717,12 @@ document.addEventListener("click", (event) => {
   });
 });
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        entry.target.classList.add("is-zoom-visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.12 }
-);
-
-  document.querySelectorAll(".reveal, .zoom-reveal, .reveal-drop, .directory-card").forEach((el) => observer.observe(el));
+/* Keep content painted while scrolling. Heavy reveal-on-scroll transitions caused
+   sections to look as if they disappeared and reloaded on slower devices. */
+document.querySelectorAll(".reveal, .zoom-reveal, .reveal-drop, .directory-card").forEach((el) => {
+  el.classList.add("is-visible");
+  el.classList.add("is-zoom-visible");
+});
 
 document.querySelectorAll("[data-donation-mode]").forEach((button) => {
   button.addEventListener("click", () => {
@@ -3451,15 +3443,51 @@ if (resetContent) {
 
 const homepageBookFloat = document.querySelector(".home-books-feature .book-float-wrap");
 if (homepageBookFloat) {
-  const startedAt = performance.now();
+  const reduceBookMotion = window.matchMedia("(prefers-reduced-motion: reduce), (max-width: 860px)");
+  let floatFrame = 0;
+  let floatActive = false;
+  let startedAt = performance.now();
+
   const floatBook = (now) => {
+    if (!floatActive || document.hidden) return;
     const elapsed = (now - startedAt) / 1000;
     const y = Math.sin(elapsed * 1.65) * 22;
     const scale = 1 + Math.sin(elapsed * 1.65 + 0.7) * 0.012;
     homepageBookFloat.style.setProperty("transform", `translate3d(0, ${y}px, 0) scale(${scale})`, "important");
-    requestAnimationFrame(floatBook);
+    floatFrame = requestAnimationFrame(floatBook);
   };
-  requestAnimationFrame(floatBook);
+
+  const setBookFloatActive = (active) => {
+    const nextActive = Boolean(active) && !reduceBookMotion.matches && !document.hidden;
+    if (nextActive === floatActive) return;
+    floatActive = nextActive;
+    cancelAnimationFrame(floatFrame);
+    if (floatActive) {
+      startedAt = performance.now();
+      floatFrame = requestAnimationFrame(floatBook);
+    } else {
+      homepageBookFloat.style.removeProperty("transform");
+    }
+  };
+
+  const bookVisibilityObserver = new IntersectionObserver(
+    ([entry]) => setBookFloatActive(entry?.isIntersecting),
+    { rootMargin: "180px 0px", threshold: 0 }
+  );
+
+  if (reduceBookMotion.matches) {
+    homepageBookFloat.style.removeProperty("transform");
+  } else {
+    bookVisibilityObserver.observe(homepageBookFloat);
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) setBookFloatActive(false);
+    else if (!reduceBookMotion.matches) {
+      const rect = homepageBookFloat.getBoundingClientRect();
+      setBookFloatActive(rect.bottom >= -180 && rect.top <= window.innerHeight + 180);
+    }
+  });
 }
 
 

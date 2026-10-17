@@ -23,6 +23,7 @@
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const thresholds = [0.14, 0.35, 0.58, 0.79];
   let ticking = false;
+  let sectionIsNearViewport = false;
 
   const locateByVerticalProgress = ({ route, length, viewHeight }, progress) => {
     const targetY = viewHeight * progress;
@@ -73,7 +74,7 @@
   };
 
   const requestDraw = () => {
-    if (ticking) return;
+    if (ticking || !sectionIsNearViewport || document.hidden) return;
     ticking = true;
     window.requestAnimationFrame(draw);
   };
@@ -93,7 +94,16 @@
     return;
   }
 
+  const visibilityObserver = new IntersectionObserver(
+    ([entry]) => {
+      sectionIsNearViewport = Boolean(entry?.isIntersecting);
+      if (sectionIsNearViewport) requestDraw();
+    },
+    { rootMargin: "240px 0px", threshold: 0 }
+  );
+
+  visibilityObserver.observe(section);
   window.addEventListener("scroll", requestDraw, { passive: true });
   window.addEventListener("resize", requestDraw, { passive: true });
-  draw();
+  document.addEventListener("visibilitychange", requestDraw);
 })();

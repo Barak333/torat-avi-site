@@ -33289,3 +33289,34 @@ body.visitor-promo-open{
     font-size:12.5px!important;
   }
 }
+
+/* Scroll stability: content remains painted instead of fading out until it
+   crosses an observer threshold. This prevents flashing on slower devices. */
+html body .reveal,
+html body .zoom-reveal,
+html body .reveal-drop,
+html body .directory-card {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+@media (max-width: 860px), (prefers-reduced-motion: reduce) {
+  html body .reveal,
+  html body .zoom-reveal,
+  html body .reveal-drop,
+  html body .directory-card,
+  .home-flow-divider-animated .home-flow-divider-inner > div,
+  .home-flow-divider-animated .home-flow-divider-inner > span {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .home-journey-grid::before {
+    animation: none !important;
+  }
+}
