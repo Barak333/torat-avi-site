@@ -1656,9 +1656,31 @@ function renderAlonimQna() {
 
 renderAlonimQna();
 
+let qnaPermalinkMutationObserver = null;
+let qnaPermalinkMutationTimer = 0;
+
+function watchQnaPermalinkRenders(qnaPage) {
+  const requestedQuestion = new URLSearchParams(window.location.search).get("question");
+  if (!requestedQuestion || qnaPermalinkMutationObserver) return;
+
+  qnaPermalinkMutationObserver = new MutationObserver((mutations) => {
+    if (!mutations.some((mutation) => mutation.type === "childList")) return;
+    window.clearTimeout(qnaPermalinkMutationTimer);
+    qnaPermalinkMutationTimer = window.setTimeout(initializeQnaPermalinks, 40);
+  });
+  qnaPermalinkMutationObserver.observe(qnaPage, { childList: true, subtree: true });
+
+  window.setTimeout(() => {
+    qnaPermalinkMutationObserver?.disconnect();
+    qnaPermalinkMutationObserver = null;
+  }, 12000);
+}
+
 function initializeQnaPermalinks() {
   const qnaPage = document.querySelector(".qna-categories-section, .levado-qna-section");
   if (!qnaPage) return;
+
+  watchQnaPermalinkRenders(qnaPage);
 
   const itemSelector = ".faq-item, .choshen-item, .shabbat-item, .issur-item, .alonim-item, .weekly-qna-item, .levado-item";
   const nestedTopics = Array.from(qnaPage.querySelectorAll(".qna-topic"));
@@ -1686,7 +1708,7 @@ function initializeQnaPermalinks() {
         url.searchParams.delete("q");
         url.searchParams.delete("search");
         if (stableQuestionId) {
-          url.searchParams.delete("topic");
+          url.searchParams.set("topic", topic.id || item.dataset.qnaTopic || "qna");
           url.searchParams.set("question", stableQuestionId);
         } else {
           url.searchParams.set("topic", topic.id);
@@ -1703,10 +1725,15 @@ function initializeQnaPermalinks() {
   const requestedTopic = params.get("topic");
   const requestedQuestionValue = params.get("question") || "";
   const requestedQuestionNumber = Number(requestedQuestionValue);
-  const stableItem = requestedQuestionValue
+  const requestedHashId = decodeURIComponent(window.location.hash || "").replace(/^#/, "");
+  const stableCandidates = requestedQuestionValue
     ? Array.from(qnaPage.querySelectorAll(itemSelector))
-      .find((candidate) => candidate.dataset.qnaId === requestedQuestionValue)
-    : null;
+      .filter((candidate) => candidate.dataset.qnaId === requestedQuestionValue)
+    : [];
+  const stableItem = stableCandidates.find((candidate) => candidate.id === requestedHashId)
+    || stableCandidates.find((candidate) => candidate.dataset.qnaTopic === requestedTopic)
+    || stableCandidates[0]
+    || null;
   const legacyItem = requestedTopic && Number.isInteger(requestedQuestionNumber) && requestedQuestionNumber > 0
     ? Array.from(qnaPage.querySelectorAll(itemSelector)).find(
         (candidate) =>
@@ -1722,7 +1749,15 @@ function initializeQnaPermalinks() {
     window.setActiveQnaTopicFromLink?.(topic.id || requestedTopic, { clearSearch: false });
   }
   item.hidden = false;
-  item.closest(".shabbat-subtopic, .issur-subtopic, .alonim-subtopic")?.removeAttribute("hidden");
+  const subtopic = item.closest(".shabbat-subtopic, .issur-subtopic, .alonim-subtopic");
+  subtopic?.removeAttribute("hidden");
+  subtopic?.classList.remove("is-toc-hidden");
+  if (topic.id === "alonim-qna") {
+    topic.querySelectorAll(".alonim-subtopic").forEach((section) => section.classList.remove("is-toc-hidden"));
+    topic.querySelectorAll("[data-alonim-filter]").forEach((filter) => {
+      filter.classList.toggle("is-active", filter.dataset.alonimFilter === "all");
+    });
+  }
 
   const button = item.querySelector("button");
   if (button?.getAttribute("aria-expanded") !== "true") button?.click();
@@ -1805,7 +1840,16 @@ function initializeQnaPermalinks() {
     }
   }
 
-  requestAnimationFrame(() => item.scrollIntoView({ block: "start" }));
+  const scrollToQuestion = () => {
+    if (!document.documentElement.contains(item)) return;
+    item.scrollIntoView({ block: "start", behavior: "auto" });
+  };
+  requestAnimationFrame(() => {
+    scrollToQuestion();
+    requestAnimationFrame(scrollToQuestion);
+  });
+  window.setTimeout(scrollToQuestion, 250);
+  window.setTimeout(scrollToQuestion, 900);
 }
 
 initializeQnaPermalinks();
