@@ -888,7 +888,8 @@ if (qnaSearch) {
       event.preventDefault();
       const topicId = tab.getAttribute("href").replace("#", "");
       setActiveQnaTopic(topicId);
-      history.replaceState(null, "", `${location.pathname}#${topicId}`);
+      const topicPath = /^\/q\//.test(location.pathname) ? "/qna.html" : location.pathname;
+      history.replaceState(null, "", `${topicPath}#${topicId}`);
     });
   });
 
@@ -1656,6 +1657,28 @@ function renderAlonimQna() {
 
 renderAlonimQna();
 
+function getQnaShortCode(value) {
+  const source = String(value || "");
+  let hash = 2166136261;
+  for (let index = 0; index < source.length; index += 1) {
+    hash ^= source.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return (hash >>> 0).toString(36).padStart(7, "0").slice(0, 7);
+}
+
+function getRequestedQnaShortCode() {
+  const match = window.location.pathname.match(/^\/q\/([a-z0-9]{5,12})\/?$/i);
+  return match ? match[1].toLowerCase() : "";
+}
+
+function setShortQnaAddress(questionId) {
+  if (!questionId) return;
+  const shortCode = getQnaShortCode(questionId);
+  history.replaceState(null, "", `/q/${shortCode}`);
+  initializeWhatsAppShareButton();
+}
+
 let qnaPermalinkMutationObserver = null;
 let qnaPermalinkMutationTimer = 0;
 
@@ -1700,6 +1723,7 @@ function initializeQnaPermalinks() {
       item.id = duplicateIndex === 1 ? baseElementId : `${baseElementId}-${duplicateIndex}`;
       item.dataset.qnaTopic = topic.id || window.qnaPermalinkEntries?.[stableQuestionId]?.topic || "qna";
       item.dataset.qnaQuestion = String(questionNumber);
+      if (stableQuestionId) item.dataset.qnaShortCode = getQnaShortCode(stableQuestionId);
 
       const itemButton = item.querySelector("button");
       if (itemButton && itemButton.dataset.qnaPermalinkBound !== "true") itemButton.addEventListener("click", () => {
@@ -1708,8 +1732,8 @@ function initializeQnaPermalinks() {
         url.searchParams.delete("q");
         url.searchParams.delete("search");
         if (stableQuestionId) {
-          url.searchParams.set("topic", topic.id || item.dataset.qnaTopic || "qna");
-          url.searchParams.set("question", stableQuestionId);
+          setShortQnaAddress(stableQuestionId);
+          return;
         } else {
           url.searchParams.set("topic", topic.id);
           url.searchParams.set("question", String(questionNumber));
@@ -1724,11 +1748,14 @@ function initializeQnaPermalinks() {
   const params = new URLSearchParams(window.location.search);
   const requestedTopic = params.get("topic");
   const requestedQuestionValue = params.get("question") || "";
+  const requestedShortCode = getRequestedQnaShortCode();
   const requestedQuestionNumber = Number(requestedQuestionValue);
   const requestedHashId = decodeURIComponent(window.location.hash || "").replace(/^#/, "");
-  const stableCandidates = requestedQuestionValue
+  const stableCandidates = requestedQuestionValue || requestedShortCode
     ? Array.from(qnaPage.querySelectorAll(itemSelector))
-      .filter((candidate) => candidate.dataset.qnaId === requestedQuestionValue)
+      .filter((candidate) => requestedQuestionValue
+        ? candidate.dataset.qnaId === requestedQuestionValue
+        : candidate.dataset.qnaShortCode === requestedShortCode)
     : [];
   const stableItem = stableCandidates.find((candidate) => candidate.id === requestedHashId)
     || stableCandidates.find((candidate) => candidate.dataset.qnaTopic === requestedTopic)
@@ -1762,15 +1789,17 @@ function initializeQnaPermalinks() {
   const button = item.querySelector("button");
   if (button?.getAttribute("aria-expanded") !== "true") button?.click();
 
+  const resolvedQuestionId = item.dataset.qnaId || requestedQuestionValue;
+  if (resolvedQuestionId && !requestedShortCode) setShortQnaAddress(resolvedQuestionId);
+
   const title = button?.querySelector(".shabbat-question-title")?.textContent?.trim() ||
     button?.querySelector("strong")?.textContent?.trim() ||
     button?.textContent?.trim();
   if (title) {
-    const qnaEntry = window.qnaPermalinkEntries?.[requestedQuestionValue] ||
-      (window.weeklyQnaEntries || []).find((entry) => entry.id === requestedQuestionValue);
-    const canonicalPage = qnaEntry?.page || decodeURIComponent(window.location.pathname.split("/").pop() || "qna.html");
+    const qnaEntry = window.qnaPermalinkEntries?.[resolvedQuestionId] ||
+      (window.weeklyQnaEntries || []).find((entry) => entry.id === resolvedQuestionId);
     const canonicalUrl = stableItem
-      ? `https://www.mevakshei-panecha.co.il/${canonicalPage}?question=${encodeURIComponent(requestedQuestionValue)}`
+      ? `https://www.mevakshei-panecha.co.il/q/${getQnaShortCode(resolvedQuestionId)}`
       : `https://www.mevakshei-panecha.co.il/qna.html?topic=${encodeURIComponent(topic.id)}&question=${requestedQuestionNumber}`;
     const questionText = String(qnaEntry?.question || title).replace(/\s+/g, " ").trim();
     const descriptionText = questionText.length > 155
@@ -1794,6 +1823,7 @@ function initializeQnaPermalinks() {
       const element = document.querySelector(selector);
       if (element) element.content = content;
     });
+    initializeWhatsAppShareButton();
 
     if (qnaEntry) {
       let structuredData = document.getElementById("qna-question-structured-data");
@@ -1903,7 +1933,7 @@ function showWeeklyQuestionAlert() {
   const link = document.createElement("a");
   link.className = "weekly-question-alert-link";
   link.href = latest.id
-    ? `qna.html?question=${encodeURIComponent(latest.id)}`
+    ? `/q/${getQnaShortCode(latest.id)}`
     : "qna.html?topic=weekly-qna&question=1";
   const ornament = document.createElement("span");
   ornament.className = "weekly-question-alert-ornament";
@@ -2033,23 +2063,27 @@ initializeWeeklyQuestionAlert();
 
 function initializeWhatsAppShareButton() {
   const actions = document.querySelector(".header-quick-icons");
-  if (!actions || actions.querySelector(".quick-whatsapp-share")) return;
+  if (!actions) return;
 
-  const share = document.createElement("a");
-  share.className = "quick-whatsapp-share";
-  share.target = "_blank";
-  share.rel = "noopener";
-  share.setAttribute("aria-label", "שיתוף העמוד ב־WhatsApp");
-  share.title = "שיתוף ב־WhatsApp";
+  let share = actions.querySelector(".quick-whatsapp-share");
+  if (!share) {
+    share = document.createElement("a");
+    share.className = "quick-whatsapp-share";
+    share.target = "_blank";
+    share.rel = "noopener";
+    share.setAttribute("aria-label", "שיתוף העמוד ב־WhatsApp");
+    share.title = "שיתוף ב־WhatsApp";
+
+    const icon = document.createElement("img");
+    icon.src = "assets/whatsapp-community-icon-transparent.webp";
+    icon.alt = "";
+    icon.setAttribute("aria-hidden", "true");
+    share.append(icon);
+    actions.append(share);
+  }
+
   const message = `${document.title}\n${window.location.href}`;
   share.href = `https://wa.me/?text=${encodeURIComponent(message)}`;
-
-  const icon = document.createElement("img");
-  icon.src = "assets/whatsapp-community-icon-transparent.webp";
-  icon.alt = "";
-  icon.setAttribute("aria-hidden", "true");
-  share.append(icon);
-  actions.append(share);
 }
 
 initializeWhatsAppShareButton();

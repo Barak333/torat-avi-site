@@ -35,6 +35,10 @@
   ],
   "rewrites": [
     {
+      "source": "/q/:id",
+      "destination": "/q.html"
+    },
+    {
       "source": "/qna-management",
       "destination": "/qna-management.html"
     }
@@ -76,6 +80,15 @@
     },
     {
       "source": "/qna.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    },
+    {
+      "source": "/q/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
