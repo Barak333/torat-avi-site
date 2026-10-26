@@ -13,6 +13,10 @@ const BUILTIN_CATEGORIES = [
 const QNA_MARKER = "window.weeklyQnaEntries = window.weeklyQnaEntries || [";
 const CUSTOM_CATEGORIES_PATH = "qna-custom-categories.js";
 const LATEST_QNA_PATH = "weekly-qna-latest.js";
+const SEO_INDEX_PATH = "qna-seo-index.mjs";
+const QNA_SITEMAP_PATH = "sitemap-qna.xml";
+const FEED_PATH = "feed.xml";
+const SITE_URL = "https://www.mevakshei-panecha.co.il";
 const GITHUB_API = "https://api.github.com";
 const NOTIFICATION_EMAIL = process.env.QNA_NOTIFICATION_EMAIL || "bl0527009541@gmail.com";
 
@@ -42,6 +46,20 @@ async function github(path, options = {}) {
   return data;
 }
 
+async function githubRaw(path) {
+  const response = await fetch(`${GITHUB_API}${path}`, {
+    headers: { ...githubHeaders(), Accept: "application/vnd.github.raw+json" }
+  });
+  const text = await response.text();
+  if (!response.ok) {
+    const error = new Error(`GitHub ${response.status}`);
+    error.status = response.status;
+    error.details = text;
+    throw error;
+  }
+  return text;
+}
+
 function decodeBase64(value) {
   const binary = atob(String(value || "").replace(/\s/gu, ""));
   return new TextDecoder().decode(Uint8Array.from(binary, (character) => character.charCodeAt(0)));
@@ -63,6 +81,16 @@ function slugify(value) {
 async function shortHash(value) {
   const digest = new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value)));
   return [...digest.slice(0, 5)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
+function qnaShortCode(value) {
+  const source = String(value || "");
+  let hash = 2166136261;
+  for (let index = 0; index < source.length; index += 1) {
+    hash ^= source.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return (hash >>> 0).toString(36).padStart(7, "0").slice(0, 7);
 }
 
 function validatePayload(body, categories) {
@@ -146,11 +174,47 @@ function insertEntry(source, entry) {
   return source.replace(QNA_MARKER, `${QNA_MARKER}\n${serializeEntry(entry)},`);
 }
 
-function insertSitemap(source, entry) {
+function insertSitemap(source, entry, code) {
   if (!source.includes("</urlset>")) throw new Error("מבנה מפת האתר אינו מוכר.");
-  const loc = `https://www.mevakshei-panecha.co.il/qna.html?question=${encodeURIComponent(entry.id)}`;
+  const loc = `${SITE_URL}/q/${code}`;
   if (source.includes(loc)) return source;
   return source.replace("</urlset>", `  <url><loc>${loc}</loc><lastmod>${entry.publishedAt}</lastmod></url>\n</urlset>`);
+}
+
+function parseSeoIndex(source) {
+  const match = String(source || "").match(/export default (\{[\s\S]*\});\s*$/u);
+  if (!match) throw new Error("מבנה אינדקס השו״ת אינו מוכר.");
+  const data = JSON.parse(match[1]);
+  if (!data || typeof data.entries !== "object") throw new Error("אינדקס השו״ת אינו תקין.");
+  return data;
+}
+
+function serializeSeoIndex(data) {
+  return `// Generated Q&A SEO index. Do not edit manually.\nexport default ${JSON.stringify(data, null, 2)};\n`;
+}
+
+function escapeXml(value = "") {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&apos;");
+}
+
+function serializeFeed(entries) {
+  const items = Object.values(entries)
+    .filter((entry) => /^\d{4}-\d{2}-\d{2}$/u.test(String(entry.publishedAt || "")))
+    .sort((left, right) => right.publishedAt.localeCompare(left.publishedAt))
+    .slice(0, 100)
+    .map((entry) => {
+      const link = `${SITE_URL}/q/${entry.code}`;
+      const description = String(entry.question || "").replace(/\s+/gu, " ").trim().slice(0, 500);
+      const pubDate = new Date(`${entry.publishedAt}T12:00:00+03:00`).toUTCString();
+      return `    <item>\n      <title>${escapeXml(entry.title)}</title>\n      <link>${link}</link>\n      <guid isPermaLink="true">${link}</guid>\n      <pubDate>${pubDate}</pubDate>\n      <category>${escapeXml(entry.category)}</category>\n      <description>${escapeXml(description)}</description>\n    </item>`;
+    })
+    .join("\n");
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n  <channel>\n    <title>שו״ת מבקשי פניך - הרב איתי בן יוסף</title>\n    <link>${SITE_URL}/qna.html</link>\n    <description>שאלות ותשובות חדשות מאת הרב איתי בן יוסף</description>\n    <language>he</language>\n    <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>\n${items}\n  </channel>\n</rss>\n`;
 }
 
 function serializeLatestEntry(entry) {
@@ -165,17 +229,19 @@ function serializeLatestEntry(entry) {
 async function readRepositoryState(owner, repo, branch) {
   const ref = await github(`/repos/${owner}/${repo}/git/ref/heads/${encodeURIComponent(branch)}`);
   const commit = await github(`/repos/${owner}/${repo}/git/commits/${ref.object.sha}`);
-  const [qnaFile, sitemapFile, categoriesFile] = await Promise.all([
+  const [qnaFile, sitemapFile, categoriesFile, seoIndexSource] = await Promise.all([
     github(`/repos/${owner}/${repo}/contents/weekly-qna.js?ref=${ref.object.sha}`),
-    github(`/repos/${owner}/${repo}/contents/sitemap.xml?ref=${ref.object.sha}`),
-    github(`/repos/${owner}/${repo}/contents/${CUSTOM_CATEGORIES_PATH}?ref=${ref.object.sha}`)
+    github(`/repos/${owner}/${repo}/contents/${QNA_SITEMAP_PATH}?ref=${ref.object.sha}`),
+    github(`/repos/${owner}/${repo}/contents/${CUSTOM_CATEGORIES_PATH}?ref=${ref.object.sha}`),
+    githubRaw(`/repos/${owner}/${repo}/contents/${SEO_INDEX_PATH}?ref=${ref.object.sha}`)
   ]);
   return {
     headSha: ref.object.sha,
     treeSha: commit.tree.sha,
     qna: decodeBase64(qnaFile.content),
     sitemap: decodeBase64(sitemapFile.content),
-    customCategoriesSource: decodeBase64(categoriesFile.content)
+    customCategoriesSource: decodeBase64(categoriesFile.content),
+    seoIndexSource
   };
 }
 
@@ -187,16 +253,36 @@ async function createBlob(owner, repo, content) {
   });
 }
 
-async function commitEntry(owner, repo, branch, entry, state, customCategories, categoryAdded) {
+async function commitEntry(owner, repo, branch, entry, categoryName, state, customCategories, categoryAdded) {
   const qna = insertEntry(state.qna, entry);
-  const sitemap = insertSitemap(state.sitemap, entry);
+  const code = qnaShortCode(entry.id);
+  const sitemap = insertSitemap(state.sitemap, entry, code);
+  const seoIndex = parseSeoIndex(state.seoIndexSource);
+  const existingCode = Object.values(seoIndex.entries).find((item) => item.id !== entry.id && item.code === code);
+  if (existingCode) throw new Error("לא ניתן ליצור קישור קצר ייחודי. יש לנסות כותרת מדויקת יותר.");
+  seoIndex.generatedAt = new Date().toISOString();
+  seoIndex.entries[code] = {
+    id: entry.id,
+    code,
+    title: entry.title,
+    question: entry.question,
+    answer: entry.answer,
+    category: categoryName,
+    publishedAt: entry.publishedAt,
+    page: "qna.html",
+    topic: "weekly-qna"
+  };
+  const seoIndexSource = serializeSeoIndex(seoIndex);
+  const feedSource = serializeFeed(seoIndex.entries);
   const categorySource = serializeCustomCategories(customCategories);
   const latestSource = serializeLatestEntry(entry);
-  const [qnaBlob, sitemapBlob, categoriesBlob, latestBlob] = await Promise.all([
+  const [qnaBlob, sitemapBlob, categoriesBlob, latestBlob, seoIndexBlob, feedBlob] = await Promise.all([
     createBlob(owner, repo, qna),
     createBlob(owner, repo, sitemap),
     createBlob(owner, repo, categorySource),
-    createBlob(owner, repo, latestSource)
+    createBlob(owner, repo, latestSource),
+    createBlob(owner, repo, seoIndexSource),
+    createBlob(owner, repo, feedSource)
   ]);
   const tree = await github(`/repos/${owner}/${repo}/git/trees`, {
     method: "POST",
@@ -206,8 +292,10 @@ async function commitEntry(owner, repo, branch, entry, state, customCategories, 
       tree: [
         { path: "weekly-qna.js", mode: "100644", type: "blob", sha: qnaBlob.sha },
         { path: LATEST_QNA_PATH, mode: "100644", type: "blob", sha: latestBlob.sha },
-        { path: "sitemap.xml", mode: "100644", type: "blob", sha: sitemapBlob.sha },
-        { path: CUSTOM_CATEGORIES_PATH, mode: "100644", type: "blob", sha: categoriesBlob.sha }
+        { path: QNA_SITEMAP_PATH, mode: "100644", type: "blob", sha: sitemapBlob.sha },
+        { path: CUSTOM_CATEGORIES_PATH, mode: "100644", type: "blob", sha: categoriesBlob.sha },
+        { path: SEO_INDEX_PATH, mode: "100644", type: "blob", sha: seoIndexBlob.sha },
+        { path: FEED_PATH, mode: "100644", type: "blob", sha: feedBlob.sha }
       ]
     })
   });
@@ -225,7 +313,7 @@ async function commitEntry(owner, repo, branch, entry, state, customCategories, 
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ sha: commit.sha, force: false })
   });
-  return commit.sha;
+  return { commitSha: commit.sha, code };
 }
 
 function escapeHtml(value = "") {
@@ -295,7 +383,7 @@ export default {
       const body = await request.json();
       if (body.action === "connection-test") {
         const state = await readRepositoryState(owner, repo, branch);
-        if (!state.qna.includes(QNA_MARKER) || !state.sitemap.includes("</urlset>")) {
+        if (!state.qna.includes(QNA_MARKER) || !state.sitemap.includes("</urlset>") || !parseSeoIndex(state.seoIndexSource)) {
           throw new Error("מבנה קובצי האתר אינו תקין לפרסום.");
         }
         return json({ ok: true, connected: true });
@@ -308,9 +396,9 @@ export default {
       const entry = validatePayload(body, allCategories);
       const hash = await shortHash(`${entry.title}|${entry.question}`);
       entry.id = `weekly-${slugify(entry.title) || "question"}-${entry.publishedAt}-${hash}`;
-      const commitSha = await commitEntry(owner, repo, branch, entry, state, resolvedCategory.categories, resolvedCategory.added);
-      const url = `https://www.mevakshei-panecha.co.il/qna.html?question=${encodeURIComponent(entry.id)}`;
       const categoryName = allCategories.find((category) => category.id === entry.targetCategoryId)?.name || entry.targetCategoryId;
+      const { commitSha, code } = await commitEntry(owner, repo, branch, entry, categoryName, state, resolvedCategory.categories, resolvedCategory.added);
+      const url = `${SITE_URL}/q/${code}`;
       const notificationSent = await sendPublicationNotification(entry, categoryName, url, commitSha);
       return json({
         ok: true,
