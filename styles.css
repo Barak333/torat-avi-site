@@ -29880,7 +29880,7 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   --about-testimony-line:rgba(251,248,239,.42);
   padding-block:clamp(58px,7vw,94px)!important;
   border:0!important;
-  background:#003018 var(--site-emerald-texture) center / cover no-repeat!important;
+  background:#003018 url("assets/site-emerald-banner-texture.webp") center / cover no-repeat!important;
   color:var(--about-testimony-ink)!important;
 }
 .about-testimony-light{
@@ -29888,7 +29888,7 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
   --about-testimony-ink:#fbf8ef;
   --about-testimony-muted:rgba(251,248,239,.82);
   --about-testimony-line:rgba(251,248,239,.42);
-  background:#003018 var(--site-emerald-texture) center / cover no-repeat!important;
+  background:#003018 url("assets/site-emerald-banner-texture.webp") center / cover no-repeat!important;
 }
 .about-testimony-card{
   width:min(1120px,88vw)!important;
@@ -29997,10 +29997,10 @@ body .site-header .header-quick-icons .quick-whatsapp-share:focus-visible img {
 
 /* Every green field on About uses the site's single emerald surface. */
 .about-derech-section{
-  background:#003018 var(--site-emerald-texture) center / cover no-repeat!important;
+  background:#003018 url("assets/site-emerald-banner-texture.webp") center / cover no-repeat!important;
 }
 .about-worlds-section{
-  background:#003018 var(--site-emerald-texture) center / cover no-repeat!important;
+  background:#003018 url("assets/site-emerald-banner-texture.webp") center / cover no-repeat!important;
 }
 
 /* Lavi - refined site design and development signature. */
@@ -33318,5 +33318,54 @@ html body .directory-card {
 
   .home-journey-grid::before {
     animation: none !important;
+  }
+}
+
+/* Scroll performance - preserve the design while reducing paint work. */
+html{
+  scroll-behavior:auto!important;
+}
+
+.scroll-progress span{
+  width:100%!important;
+  transform:scaleX(var(--scroll-progress-scale,0));
+  transform-origin:right center;
+  transition:none!important;
+  will-change:transform;
+}
+
+body::before{
+  transform:translateZ(0);
+  backface-visibility:hidden;
+}
+
+.home-journey-step,
+.impact-mini-card{
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+}
+
+body.is-scrolling *,
+body.is-scrolling *::before,
+body.is-scrolling *::after,
+main > section[data-scroll-active="false"] .ticker-row,
+main > section[data-scroll-active="false"] .journey-traveler-halo,
+main > section[data-scroll-active="false"] .book-float-wrap,
+main > section[data-scroll-active="false"] .book-photo.main-book,
+main > section[data-scroll-active="false"] .whatsapp-community-icon,
+main > section[data-scroll-active="false"]::before,
+main > section[data-scroll-active="false"]::after{
+  animation-play-state:paused!important;
+}
+
+@media(max-width:900px){
+  .site-header,
+  .btn,
+  .pulse-orbit a,
+  .impact-cta-grid,
+  .torah-donation-section .donation-mini-wide,
+  .torah-impact-cta .impact-steps div{
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
   }
 }

@@ -281,7 +281,6 @@ window.addEventListener("beforeinstallprompt", (event) => {
   syncInstallButtonVisibility();
 });
 
-window.addEventListener("scroll", syncInstallButtonPosition, { passive: true });
 window.addEventListener("resize", syncInstallButtonVisibility);
 mobileInstallQuery.addEventListener?.("change", syncInstallButtonVisibility);
 syncInstallButtonVisibility();
@@ -342,12 +341,41 @@ const progressBar = document.querySelector(".scroll-progress span");
 function updateScrollProgress() {
   const max = document.documentElement.scrollHeight - window.innerHeight;
   const progress = max > 0 ? (window.scrollY / max) * 100 : 0;
-  if (progressBar) progressBar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+  if (progressBar) {
+    const scale = Math.min(1, Math.max(0, progress / 100));
+    progressBar.style.setProperty("--scroll-progress-scale", String(scale));
+  }
   document.body.classList.toggle("scrolled", window.scrollY > 360);
 }
 
-window.addEventListener("scroll", updateScrollProgress, { passive: true });
-updateScrollProgress();
+let scrollUiFrame = 0;
+let scrollIdleTimer = 0;
+
+function syncScrollUi() {
+  scrollUiFrame = 0;
+  syncInstallButtonPosition();
+  updateScrollProgress();
+}
+
+function scheduleScrollUi() {
+  document.body.classList.add("is-scrolling");
+  window.clearTimeout(scrollIdleTimer);
+  scrollIdleTimer = window.setTimeout(() => document.body.classList.remove("is-scrolling"), 140);
+  if (scrollUiFrame) return;
+  scrollUiFrame = window.requestAnimationFrame(syncScrollUi);
+}
+
+window.addEventListener("scroll", scheduleScrollUi, { passive: true });
+syncScrollUi();
+
+if ("IntersectionObserver" in window) {
+  const scrollEffectObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      entry.target.dataset.scrollActive = String(entry.isIntersecting);
+    });
+  }, { rootMargin: "180px 0px", threshold: 0 });
+  document.querySelectorAll("main > section").forEach((section) => scrollEffectObserver.observe(section));
+}
 
 document.querySelector(".back-to-top")?.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -803,6 +831,32 @@ document.querySelectorAll(".faq-item button").forEach((button) => {
   });
 });
 
+const qnaSearchSources = new WeakMap();
+const qnaSearchTextCache = new WeakMap();
+
+function registerQnaSearchSource(element, source) {
+  if (!element || !source) return;
+  qnaSearchSources.set(element, source);
+  qnaSearchTextCache.delete(element);
+}
+
+function getQnaSearchText(element) {
+  if (!element) return "";
+  const cached = qnaSearchTextCache.get(element);
+  if (cached) return cached;
+  const source = qnaSearchSources.get(element);
+  const sourceText = source ? JSON.stringify(source) : "";
+  const text = `${element.textContent || ""} ${sourceText}`.toLocaleLowerCase("he-IL");
+  qnaSearchTextCache.set(element, text);
+  return text;
+}
+
+function hydrateQnaBodyOnce(body, renderBody) {
+  if (!body || body.dataset.qnaHydrated === "true") return;
+  renderBody();
+  body.dataset.qnaHydrated = "true";
+}
+
 const qnaSearch = document.getElementById("qnaSearch");
 if (qnaSearch) {
   const qnaTabs = document.querySelectorAll(".qna-category-tabs a");
@@ -849,7 +903,7 @@ if (qnaSearch) {
       let topicHasVisibleItems = false;
 
       topic.querySelectorAll(".faq-item, .choshen-item, .shabbat-item, .issur-item, .issur-letter, .alonim-item, .weekly-qna-item").forEach((item) => {
-        const text = item.textContent.toLowerCase();
+        const text = getQnaSearchText(item);
         const isMatch = text.includes(query);
         item.hidden = !isMatch;
         if (isMatch) topicHasVisibleItems = true;
@@ -867,7 +921,7 @@ if (qnaSearch) {
 
   const topicHasQnaMatch = (topic, query) => {
     if (!query) return false;
-    return Array.from(topic.querySelectorAll(".faq-item, .choshen-item, .shabbat-item, .issur-item, .issur-letter, .alonim-item, .weekly-qna-item")).some((item) => item.textContent.toLowerCase().includes(query));
+    return Array.from(topic.querySelectorAll(".faq-item, .choshen-item, .shabbat-item, .issur-item, .issur-letter, .alonim-item, .weekly-qna-item")).some((item) => getQnaSearchText(item).includes(query));
   };
 
   window.applyQnaSearchFromUrl = () => {
@@ -923,42 +977,47 @@ function renderChoshenMishpat() {
 
   target.querySelectorAll(".choshen-item").forEach((node, index) => {
     const body = node.querySelector(".choshen-body");
-    const overview = buildChoshenOverview(items[index]);
-    if (overview) {
-      body.append(
-        buildChoshenDivider("תקציר הסימן", "summary"),
-        overview,
-        buildChoshenDivider("בהרחבה", "full")
-      );
-    }
-    let listIndex = 0;
-    (items[index].paragraphs || []).forEach((paragraph) => {
-      const p = document.createElement("p");
-      const sourceRuns = typeof paragraph === "string" ? [{ text: paragraph, bold: false }] : paragraph.runs || [{ text: paragraph.text || "", bold: false }];
-      const runs = sourceRuns.reduce((merged, run) => {
-        const previous = merged[merged.length - 1];
-        if (previous && previous.bold === run.bold) previous.text += run.text;
-        else merged.push({ ...run });
-        return merged;
-      }, []);
-      const isList = typeof paragraph === "object" && paragraph.isList;
-      if (isList) {
-        listIndex += 1;
-        p.className = "doc-list-paragraph";
-        const marker = document.createElement("span");
-        marker.className = "doc-list-marker";
-        marker.textContent = `${listIndex}.`;
-        p.append(marker);
+    const sourceItem = items[index];
+    registerQnaSearchSource(node, sourceItem);
+    const hydrateBody = () => {
+      const overview = buildChoshenOverview(sourceItem);
+      if (overview) {
+        body.append(
+          buildChoshenDivider("תקציר הסימן", "summary"),
+          overview,
+          buildChoshenDivider("בהרחבה", "full")
+        );
       }
-      runs.forEach((run) => {
-        const node = document.createElement(run.bold ? "strong" : "span");
-        node.textContent = run.text;
-        p.append(node);
+      let listIndex = 0;
+      (sourceItem.paragraphs || []).forEach((paragraph) => {
+        const p = document.createElement("p");
+        const sourceRuns = typeof paragraph === "string" ? [{ text: paragraph, bold: false }] : paragraph.runs || [{ text: paragraph.text || "", bold: false }];
+        const runs = sourceRuns.reduce((merged, run) => {
+          const previous = merged[merged.length - 1];
+          if (previous && previous.bold === run.bold) previous.text += run.text;
+          else merged.push({ ...run });
+          return merged;
+        }, []);
+        const isList = typeof paragraph === "object" && paragraph.isList;
+        if (isList) {
+          listIndex += 1;
+          p.className = "doc-list-paragraph";
+          const marker = document.createElement("span");
+          marker.className = "doc-list-marker";
+          marker.textContent = `${listIndex}.`;
+          p.append(marker);
+        }
+        runs.forEach((run) => {
+          const child = document.createElement(run.bold ? "strong" : "span");
+          child.textContent = run.text;
+          p.append(child);
+        });
+        body.append(p);
       });
-      body.append(p);
-    });
+    };
     node.querySelector("button")?.addEventListener("click", () => {
       const isOpen = body.hidden === false;
+      if (!isOpen) hydrateQnaBodyOnce(body, hydrateBody);
       body.hidden = isOpen;
       node.classList.toggle("is-open", !isOpen);
       node.querySelector("button").setAttribute("aria-expanded", String(!isOpen));
@@ -1099,7 +1158,9 @@ function renderShabbatQuestions() {
   target.querySelectorAll(".shabbat-item").forEach((node) => {
     const index = Number(node.dataset.shabbatIndex || 0);
     const body = node.querySelector(".shabbat-body");
-    (items[index].paragraphs || []).forEach((paragraph) => {
+    const sourceItem = items[index];
+    registerQnaSearchSource(node, sourceItem);
+    const hydrateBody = () => (sourceItem.paragraphs || []).forEach((paragraph) => {
       const p = document.createElement("p");
       if (paragraph.source) p.className = "shabbat-source-link";
       const sourceRuns = paragraph.runs || [{ text: paragraph.text || "", bold: false }];
@@ -1124,6 +1185,7 @@ function renderShabbatQuestions() {
     });
     node.querySelector("button")?.addEventListener("click", () => {
       const isOpen = body.hidden === false;
+      if (!isOpen) hydrateQnaBodyOnce(body, hydrateBody);
       body.hidden = isOpen;
       node.querySelector("button").setAttribute("aria-expanded", String(!isOpen));
     });
@@ -1171,7 +1233,9 @@ function renderIssurHeterQuestions() {
   target.querySelectorAll(".issur-item").forEach((node) => {
     const index = Number(node.dataset.issurIndex || 0);
     const body = node.querySelector(".issur-body");
-    (items[index].paragraphs || []).forEach((paragraph) => {
+    const sourceItem = items[index];
+    registerQnaSearchSource(node, sourceItem);
+    const hydrateBody = () => (sourceItem.paragraphs || []).forEach((paragraph) => {
       const p = document.createElement("p");
       if (paragraph.source) p.className = "issur-source-link";
       const sourceRuns = paragraph.runs || [{ text: paragraph.text || "", bold: false }];
@@ -1196,6 +1260,7 @@ function renderIssurHeterQuestions() {
     });
     node.querySelector("button")?.addEventListener("click", () => {
       const isOpen = body.hidden === false;
+      if (!isOpen) hydrateQnaBodyOnce(body, hydrateBody);
       body.hidden = isOpen;
       node.querySelector("button").setAttribute("aria-expanded", String(!isOpen));
     });
@@ -1331,18 +1396,22 @@ function renderWeeklyQna() {
     const body = document.createElement("div");
     body.className = "alonim-body";
     body.hidden = true;
-    const questionTitle = document.createElement("h4");
-    questionTitle.textContent = "השאלה";
-    body.append(questionTitle);
-    appendWeeklyQnaParagraphs(body, item.question, item);
-    const answerTitle = document.createElement("h4");
-    answerTitle.textContent = "התשובה";
-    body.append(answerTitle);
-    appendWeeklyQnaParagraphs(body, item.answer, item);
-    appendWeeklyQnaNotes(body, item);
+    registerQnaSearchSource(article, item);
+    const hydrateBody = () => {
+      const questionTitle = document.createElement("h4");
+      questionTitle.textContent = "השאלה";
+      body.append(questionTitle);
+      appendWeeklyQnaParagraphs(body, item.question, item);
+      const answerTitle = document.createElement("h4");
+      answerTitle.textContent = "התשובה";
+      body.append(answerTitle);
+      appendWeeklyQnaParagraphs(body, item.answer, item);
+      appendWeeklyQnaNotes(body, item);
+    };
 
     button.addEventListener("click", () => {
       const isOpen = body.hidden === false;
+      if (!isOpen) hydrateQnaBodyOnce(body, hydrateBody);
       body.hidden = isOpen;
       button.setAttribute("aria-expanded", String(!isOpen));
     });
@@ -1619,17 +1688,21 @@ function renderAlonimQna() {
       const body = document.createElement("div");
       body.className = "alonim-body";
       body.hidden = true;
-      const questionTitle = document.createElement("h4");
-      questionTitle.textContent = "השאלה";
-      body.append(questionTitle);
-      appendWeeklyQnaParagraphs(body, item.question, item, "archive");
-      const answerTitle = document.createElement("h4");
-      answerTitle.textContent = "התשובה";
-      body.append(answerTitle);
-      appendWeeklyQnaParagraphs(body, item.answer, item, "archive");
-      appendWeeklyQnaNotes(body, item, "archive");
+      registerQnaSearchSource(article, item);
+      const hydrateBody = () => {
+        const questionTitle = document.createElement("h4");
+        questionTitle.textContent = "השאלה";
+        body.append(questionTitle);
+        appendWeeklyQnaParagraphs(body, item.question, item, "archive");
+        const answerTitle = document.createElement("h4");
+        answerTitle.textContent = "התשובה";
+        body.append(answerTitle);
+        appendWeeklyQnaParagraphs(body, item.answer, item, "archive");
+        appendWeeklyQnaNotes(body, item, "archive");
+      };
       button.addEventListener("click", () => {
         const isOpen = body.hidden === false;
+        if (!isOpen) hydrateQnaBodyOnce(body, hydrateBody);
         body.hidden = isOpen;
         button.setAttribute("aria-expanded", String(!isOpen));
       });
