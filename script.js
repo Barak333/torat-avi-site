@@ -281,7 +281,6 @@ window.addEventListener("beforeinstallprompt", (event) => {
   syncInstallButtonVisibility();
 });
 
-window.addEventListener("scroll", syncInstallButtonPosition, { passive: true });
 window.addEventListener("resize", syncInstallButtonVisibility);
 mobileInstallQuery.addEventListener?.("change", syncInstallButtonVisibility);
 syncInstallButtonVisibility();
@@ -339,15 +338,26 @@ function enhanceBaseAccessibility() {
 enhanceBaseAccessibility();
 
 const progressBar = document.querySelector(".scroll-progress span");
-function updateScrollProgress() {
+let scrollUiFrame = 0;
+
+function updateScrollUi() {
+  scrollUiFrame = 0;
   const max = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = max > 0 ? (window.scrollY / max) * 100 : 0;
-  if (progressBar) progressBar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+  const progress = max > 0 ? window.scrollY / max : 0;
+  if (progressBar) progressBar.style.transform = `scaleX(${Math.min(1, Math.max(0, progress))})`;
   document.body.classList.toggle("scrolled", window.scrollY > 360);
+  syncInstallButtonPosition();
 }
 
-window.addEventListener("scroll", updateScrollProgress, { passive: true });
-updateScrollProgress();
+function scheduleScrollUiUpdate() {
+  if (scrollUiFrame) return;
+  scrollUiFrame = window.requestAnimationFrame(updateScrollUi);
+}
+
+window.addEventListener("scroll", scheduleScrollUiUpdate, { passive: true });
+window.addEventListener("resize", scheduleScrollUiUpdate, { passive: true });
+window.addEventListener("pageshow", scheduleScrollUiUpdate, { passive: true });
+updateScrollUi();
 
 document.querySelector(".back-to-top")?.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
