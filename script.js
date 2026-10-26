@@ -338,57 +338,18 @@ function enhanceBaseAccessibility() {
 enhanceBaseAccessibility();
 
 const progressBar = document.querySelector(".scroll-progress span");
-const liveScrollProgressQuery = window.matchMedia("(min-width: 861px) and (hover: hover) and (pointer: fine)");
 let scrollUiFrame = 0;
-let scrollUiTimer = 0;
-let scrollAnimationResumeTimer = 0;
-let animationsPausedForScroll = [];
-
-function pauseDecorativeAnimationsForScroll() {
-  window.clearTimeout(scrollAnimationResumeTimer);
-
-  if (!animationsPausedForScroll.length) {
-    animationsPausedForScroll = document.getAnimations().filter((animation) => {
-      const timing = animation.effect?.getTiming?.();
-      const target = animation.effect?.target;
-      return animation.playState === "running" &&
-        timing?.iterations === Infinity &&
-        !target?.closest?.("[data-home-gate-intro]");
-    });
-    animationsPausedForScroll.forEach((animation) => animation.pause());
-  }
-
-  scrollAnimationResumeTimer = window.setTimeout(() => {
-    if (!document.body.classList.contains("reduce-motion")) {
-      animationsPausedForScroll.forEach((animation) => {
-        if (animation.playState === "paused") animation.play();
-      });
-    }
-    animationsPausedForScroll = [];
-  }, 180);
-}
 
 function updateScrollUi() {
   scrollUiFrame = 0;
   const max = document.documentElement.scrollHeight - window.innerHeight;
   const progress = max > 0 ? window.scrollY / max : 0;
-  if (progressBar && liveScrollProgressQuery.matches) {
-    progressBar.style.transform = `scaleX(${Math.min(1, Math.max(0, progress))})`;
-  }
+  if (progressBar) progressBar.style.transform = `scaleX(${Math.min(1, Math.max(0, progress))})`;
   document.body.classList.toggle("scrolled", window.scrollY > 360);
   syncInstallButtonPosition();
 }
 
 function scheduleScrollUiUpdate() {
-  pauseDecorativeAnimationsForScroll();
-  if (!liveScrollProgressQuery.matches) {
-    if (scrollUiTimer) return;
-    scrollUiTimer = window.setTimeout(() => {
-      scrollUiTimer = 0;
-      updateScrollUi();
-    }, 96);
-    return;
-  }
   if (scrollUiFrame) return;
   scrollUiFrame = window.requestAnimationFrame(updateScrollUi);
 }

@@ -24,7 +24,7 @@
 }
 
 html {
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -33377,30 +33377,6 @@ html body .media-card::after {
 }
 
 @media (max-width: 1024px), (hover: none), (pointer: coarse) {
-  html body .scroll-progress {
-    display: none !important;
-  }
-
-  html body .daily-hourglass::before,
-  html body .daily-hourglass::after,
-  html body .portal-ticker .ticker-row.ticker-row,
-  html body .home-books-feature .book-float-wrap,
-  html body .home-books-feature .book-float-wrap .book-photo.main-book,
-  html body .whatsapp-community-card .whatsapp-community-icon.whatsapp-community-image-icon {
-    animation: none !important;
-    will-change: auto !important;
-  }
-
-  html body .ticker-window {
-    overflow-x: auto !important;
-    overscroll-behavior-inline: contain;
-    scrollbar-width: none;
-  }
-
-  html body .ticker-window::-webkit-scrollbar {
-    display: none;
-  }
-
   html body .home-rabbi-portrait,
   html body .home-restored-banner-img,
   html body .real-book-showcase,
@@ -33417,14 +33393,4 @@ html body .media-card::after {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
   }
-}
-
-/* Transparent blur cards are expensive to repaint while a long page moves.
-   Opaque equivalents preserve the same palette without making the browser
-   repeatedly sample everything behind each card. */
-html body .impact-mini-card,
-html body .home-journey-step,
-html body .btn.btn-secondary {
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
 }
