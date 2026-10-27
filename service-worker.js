@@ -1,4 +1,4 @@
-const CACHE_NAME = "mevakshei-panecha-pwa-v20-qna-scroll-blur";
+const CACHE_NAME = "mevakshei-panecha-pwa-v21-eager-images";
 const CORE_ASSETS = [
   "./",
   "./index.html",

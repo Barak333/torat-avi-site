@@ -1242,7 +1242,7 @@ function renderIssurHeterQuestions() {
             ${(window.issurHeterLettersPages || []).filter((page) => Number(page.page) >= 375).map((page) => `
               <figure class="issur-letter-page">
                 <figcaption>עמוד ${page.page || ""}</figcaption>
-                <img src="${page.src || ""}" alt="צילום עמוד ${page.page || ""} מתוך נספח המכתבים" loading="lazy">
+                <img src="${page.src || ""}" alt="צילום עמוד ${page.page || ""} מתוך נספח המכתבים" loading="eager">
               </figure>
             `).join("")}
           </div>
