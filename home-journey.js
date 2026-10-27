@@ -1,34 +1,109 @@
 (() => {
   const section = document.querySelector(".home-journey");
-  if (!section) return;
+  const steps = [...(section?.querySelectorAll(".home-journey-step") || [])];
+  const destination = section?.querySelector(".home-journey-destination");
+  const maps = [...(section?.querySelectorAll(".home-journey-map") || [])]
+    .map((map) => {
+      const route = map.querySelector("[data-journey-route]");
+      const traveler = map.querySelector("[data-journey-traveler]");
+      const halo = map.querySelector("[data-journey-halo]");
+      const waypoints = [...map.querySelectorAll(".journey-map-waypoints circle")];
 
-  const steps = Array.from(section.querySelectorAll(".home-journey-step"));
-  const destination = section.querySelector(".home-journey-destination");
-  const maps = Array.from(section.querySelectorAll(".home-journey-map"));
+      if (!route || !traveler || !halo || typeof route.getTotalLength !== "function") return null;
 
-  maps.forEach((map) => {
-    const route = map.querySelector("[data-journey-route]");
-    const traveler = map.querySelector("[data-journey-traveler]");
-    const halo = map.querySelector("[data-journey-halo]");
-    if (!route || typeof route.getTotalLength !== "function") return;
+      const length = route.getTotalLength();
+      const viewHeight = map.viewBox?.baseVal?.height || 900;
+      route.style.strokeDasharray = `${length}`;
+      return { map, route, traveler, halo, waypoints, length, viewHeight };
+    })
+    .filter(Boolean);
 
-    const length = route.getTotalLength();
-    const endPoint = route.getPointAtLength(length);
-    route.style.strokeDasharray = `${length}`;
-    route.style.strokeDashoffset = "0";
+  if (!section || !maps.length) return;
 
-    [traveler, halo].forEach((marker) => {
-      if (!marker) return;
-      marker.setAttribute("cx", endPoint.x);
-      marker.setAttribute("cy", endPoint.y);
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const thresholds = [0.14, 0.35, 0.58, 0.79];
+  let ticking = false;
+  let sectionIsNearViewport = false;
+
+  const locateByVerticalProgress = ({ route, length, viewHeight }, progress) => {
+    const targetY = viewHeight * progress;
+    let low = 0;
+    let high = length;
+
+    for (let index = 0; index < 9; index += 1) {
+      const middle = (low + high) / 2;
+      if (route.getPointAtLength(middle).y < targetY) low = middle;
+      else high = middle;
+    }
+
+    const distance = (low + high) / 2;
+    return { distance, point: route.getPointAtLength(distance) };
+  };
+
+  const draw = () => {
+    const grid = section.querySelector(".home-journey-grid");
+    const rect = grid?.getBoundingClientRect();
+    if (!rect) {
+      ticking = false;
+      return;
+    }
+
+    const focusRatio = window.innerWidth <= 860 ? 0.7 : 0.66;
+    const focusLine = window.innerHeight * focusRatio;
+    const progress = Math.min(1, Math.max(0, (focusLine - rect.top) / rect.height));
+
+    maps.forEach((mapData) => {
+      const { route, traveler, halo, waypoints, length } = mapData;
+      const { distance, point } = locateByVerticalProgress(mapData, progress);
+      route.style.strokeDashoffset = `${length - distance}`;
+      traveler.setAttribute("cx", point.x);
+      traveler.setAttribute("cy", point.y);
+      halo.setAttribute("cx", point.x);
+      halo.setAttribute("cy", point.y);
+      waypoints.forEach((waypoint, index) => {
+        waypoint.classList.toggle("is-reached", progress >= thresholds[index]);
+      });
     });
 
-    map.querySelectorAll(".journey-map-waypoints circle").forEach((waypoint) => {
-      waypoint.classList.add("is-reached");
+    steps.forEach((step, index) => {
+      step.classList.toggle("is-journey-reached", progress >= thresholds[index]);
     });
-  });
+    destination?.classList.toggle("is-journey-reached", progress >= 0.93);
+    section.style.setProperty("--journey-progress", progress.toFixed(3));
+    ticking = false;
+  };
 
-  steps.forEach((step) => step.classList.add("is-journey-reached"));
-  destination?.classList.add("is-journey-reached");
-  section.style.setProperty("--journey-progress", "1");
+  const requestDraw = () => {
+    if (ticking || !sectionIsNearViewport || document.hidden) return;
+    ticking = true;
+    window.requestAnimationFrame(draw);
+  };
+
+  if (reducedMotion.matches) {
+    maps.forEach(({ route, traveler, halo, waypoints, length }) => {
+      route.style.strokeDashoffset = "0";
+      const point = route.getPointAtLength(length);
+      traveler.setAttribute("cx", point.x);
+      traveler.setAttribute("cy", point.y);
+      halo.setAttribute("cx", point.x);
+      halo.setAttribute("cy", point.y);
+      waypoints.forEach((waypoint) => waypoint.classList.add("is-reached"));
+    });
+    steps.forEach((step) => step.classList.add("is-journey-reached"));
+    destination?.classList.add("is-journey-reached");
+    return;
+  }
+
+  const visibilityObserver = new IntersectionObserver(
+    ([entry]) => {
+      sectionIsNearViewport = Boolean(entry?.isIntersecting);
+      if (sectionIsNearViewport) requestDraw();
+    },
+    { rootMargin: "240px 0px", threshold: 0 }
+  );
+
+  visibilityObserver.observe(section);
+  window.addEventListener("scroll", requestDraw, { passive: true });
+  window.addEventListener("resize", requestDraw, { passive: true });
+  document.addEventListener("visibilitychange", requestDraw);
 })();
