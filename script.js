@@ -1659,11 +1659,25 @@ function initializeWeeklyQnaCountdown() {
     }
   };
 
-  tick();
-  window.setInterval(tick, 1000);
-  document.addEventListener("visibilitychange", () => {
-    if (!document.hidden) tick();
-  });
+  const countdownTopic = countdown.closest(".qna-topic");
+  const countdownIsActive = () => (
+    !document.hidden &&
+    countdown.isConnected &&
+    (!countdownTopic || !countdownTopic.hidden)
+  );
+  const tickWhenActive = () => {
+    if (countdownIsActive()) tick();
+  };
+
+  tickWhenActive();
+  window.setInterval(tickWhenActive, 1000);
+  document.addEventListener("visibilitychange", tickWhenActive);
+  if (countdownTopic) {
+    new MutationObserver(tickWhenActive).observe(countdownTopic, {
+      attributes: true,
+      attributeFilter: ["hidden"]
+    });
+  }
 }
 
 initializeWeeklyQnaCountdown();

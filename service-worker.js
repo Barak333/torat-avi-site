@@ -1,4 +1,4 @@
-const CACHE_NAME = "mevakshei-panecha-pwa-v18-qna-scroll";
+const CACHE_NAME = "mevakshei-panecha-pwa-v20-qna-scroll-blur";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -9,9 +9,11 @@ const CORE_ASSETS = [
   "./updates.html",
   "./updates.js",
   "./site.min.css?v=20261027-lazy-warmup-4",
-  "./qna-performance.css?v=20261027-qna-scroll-2",
+  "./qna-performance.css?v=20261027-qna-scroll-5",
+  "./qna-performance.js?v=20261027-qna-dom-1",
   "./home.min.css?v=20261018-scroll-stability-1",
   "./script.min.js?v=20261027-lazy-warmup-4",
+  "./script.min.js?v=20261027-qna-idle-1",
   "./home-gate-intro.min.js?v=20261018-scroll-stability-1",
   "./beit-din.min.css?v=20261018-scroll-stability-1",
   "./beit-din-booking.js",

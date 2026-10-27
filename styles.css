@@ -33416,6 +33416,11 @@ body.reduce-motion .home-books-feature .main-book,
   animation:none!important;
 }
 
+.qna-categories-section .form-box{
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+}
+
 .qna-categories-section :is(
   .weekly-qna-item,
   .alonim-item,
@@ -33449,4 +33454,12 @@ body.reduce-motion .home-books-feature .main-book,
   ){
     box-shadow:0 8px 22px rgba(1,41,18,.07)!important;
   }
+}
+
+.qna-page .scroll-progress{
+  display:none!important;
+}
+
+.qna-page :is(.back-to-top,.install-app-button){
+  transition:none!important;
 }
