@@ -33399,3 +33399,54 @@ body.reduce-motion .home-books-feature .main-book,
     backdrop-filter:none!important;
   }
 }
+
+/* Q&A scroll performance - keep the same appearance without full-page repaints. */
+.qna-page::before{
+  display:none!important;
+}
+
+.qna-categories-section{
+  background-attachment:scroll!important;
+  background-size:100% 100%,720px auto!important;
+  background-repeat:no-repeat,repeat!important;
+  background-position:center,top center!important;
+}
+
+.qna-categories-section .qna-topic{
+  animation:none!important;
+}
+
+.qna-categories-section :is(
+  .weekly-qna-item,
+  .alonim-item,
+  .shabbat-item,
+  .choshen-item,
+  .issur-item,
+  .faq-item
+){
+  contain:layout paint style;
+}
+
+.qna-categories-section :is(
+  .weekly-qna-item,
+  .alonim-item,
+  .shabbat-item,
+  .choshen-item,
+  .issur-item,
+  .faq-item
+) :is(button, .alonim-body, .shabbat-body, .issur-body, .faq-answer){
+  backface-visibility:hidden;
+}
+
+@media(max-width:900px){
+  .qna-categories-section :is(
+    .weekly-qna-item,
+    .alonim-item,
+    .shabbat-item,
+    .choshen-item,
+    .issur-item,
+    .faq-item
+  ){
+    box-shadow:0 8px 22px rgba(1,41,18,.07)!important;
+  }
+}
