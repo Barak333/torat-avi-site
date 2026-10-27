@@ -1,0 +1,87 @@
+/* Home-page paint stability.
+   Keep every section fully rendered while limiting expensive repaints during fast scrolling. */
+
+.home-page::before {
+  display: none !important;
+}
+
+.home-page main,
+.home-page main > section {
+  background-color: #fbf7ef;
+}
+
+.home-page main > section {
+  contain: paint;
+}
+
+.home-page main *,
+.home-page main *::before,
+.home-page main *::after {
+  animation: none !important;
+}
+
+.home-page main :is(
+  .pulse-orbit a,
+  .impact-cta-grid,
+  .torah-donation-section .donation-mini-wide,
+  .daily-spark,
+  .home-stay-reason,
+  .whatsapp-community-card
+) {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+.home-page :is(
+  .home-restored-banner-img-right,
+  .home-restored-banner-img-left,
+  .journey-route-shadow,
+  .journey-route-progress,
+  .home-journey-destination,
+  .home-journey-name,
+  .home-books-feature .main-book img
+) {
+  filter: none !important;
+}
+
+.home-page .home-journey-step {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12) !important;
+}
+
+.home-page .home-journey-destination {
+  transform: none !important;
+}
+
+.home-page :is(
+  .home-restored-banner-img-right,
+  .home-restored-banner-img-left
+) {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.home-page :is(
+  .home-journey,
+  .home-life-statement,
+  .home-flow-divider[aria-labelledby="home-flow-numbers-title"],
+  .home-flow-divider[aria-labelledby="home-flow-books-title"]
+) {
+  background-size: 100% 100%, 960px auto !important;
+  background-repeat: no-repeat, repeat !important;
+  background-position: center, top center !important;
+  background-attachment: scroll !important;
+}
+
+.home-page :is(
+  .whatsapp-community-card,
+  .daily-spark,
+  .home-stay-reason
+) {
+  box-shadow: 0 12px 28px rgba(0, 48, 24, 0.1) !important;
+}
+
+@media (max-width: 760px) {
+  .home-page main > section {
+    contain: paint;
+  }
+}

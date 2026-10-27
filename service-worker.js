@@ -1,4 +1,4 @@
-const CACHE_NAME = "mevakshei-panecha-pwa-v21-eager-images";
+const CACHE_NAME = "mevakshei-panecha-pwa-v23-home-background-warmup";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -12,6 +12,9 @@ const CORE_ASSETS = [
   "./qna-performance.css?v=20261027-qna-scroll-5",
   "./qna-performance.js?v=20261027-qna-dom-1",
   "./home.min.css?v=20261018-scroll-stability-1",
+  "./home-performance.css?v=20261027-paint-stability-1",
+  "./home-journey.js?v=20261027-static-route-1",
+  "./home-backgrounds.js?v=20261027-predecode-1",
   "./script.min.js?v=20261027-lazy-warmup-4",
   "./script.min.js?v=20261027-qna-idle-1",
   "./home-gate-intro.min.js?v=20261018-scroll-stability-1",
