@@ -257,6 +257,47 @@ function ensureUtilityControls() {
 
 ensureUtilityControls();
 
+function initSmoothLazyImages() {
+  const lazyImages = Array.from(document.querySelectorAll('img[loading="lazy"]'));
+  if (!lazyImages.length) return;
+
+  const markReady = (image) => image.classList.add("is-image-ready");
+  const warmImage = (image) => {
+    image.loading = "eager";
+    image.fetchPriority = "low";
+    if (image.complete) {
+      markReady(image);
+      return;
+    }
+    image.addEventListener("load", () => {
+      const decoded = typeof image.decode === "function" ? image.decode().catch(() => {}) : Promise.resolve();
+      decoded.finally(() => markReady(image));
+    }, { once: true });
+    image.addEventListener("error", () => markReady(image), { once: true });
+  };
+
+  lazyImages.forEach((image) => {
+    if (image.complete) markReady(image);
+  });
+
+  if (!("IntersectionObserver" in window)) return;
+
+  const imageWarmupObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      warmImage(entry.target);
+      imageWarmupObserver.unobserve(entry.target);
+    });
+  }, {
+    rootMargin: window.matchMedia("(max-width: 760px)").matches ? "1800px 0px" : "1400px 0px",
+    threshold: 0
+  });
+
+  lazyImages.forEach((image) => imageWarmupObserver.observe(image));
+}
+
+initSmoothLazyImages();
+
 const installAppButton = document.querySelector(".install-app-button");
 const mobileInstallQuery = window.matchMedia("(max-width: 760px)");
 

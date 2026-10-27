@@ -1,4 +1,4 @@
-const CACHE_NAME = "mevakshei-panecha-pwa-v16-scroll-deep";
+const CACHE_NAME = "mevakshei-panecha-pwa-v17-lazy-warmup";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -8,9 +8,9 @@ const CORE_ASSETS = [
   "./emuna.html",
   "./updates.html",
   "./updates.js",
-  "./site.min.css?v=20261027-scroll-deep-3",
+  "./site.min.css?v=20261027-lazy-warmup-4",
   "./home.min.css?v=20261018-scroll-stability-1",
-  "./script.min.js?v=20261027-scroll-deep-3",
+  "./script.min.js?v=20261027-lazy-warmup-4",
   "./home-gate-intro.min.js?v=20261018-scroll-stability-1",
   "./beit-din.min.css?v=20261018-scroll-stability-1",
   "./beit-din-booking.js",
