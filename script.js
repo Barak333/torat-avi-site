@@ -338,6 +338,7 @@ function enhanceBaseAccessibility() {
 enhanceBaseAccessibility();
 
 const progressBar = document.querySelector(".scroll-progress span");
+const backToTopButton = document.querySelector(".back-to-top");
 function updateScrollProgress() {
   const max = document.documentElement.scrollHeight - window.innerHeight;
   const progress = max > 0 ? (window.scrollY / max) * 100 : 0;
@@ -345,11 +346,10 @@ function updateScrollProgress() {
     const scale = Math.min(1, Math.max(0, progress / 100));
     progressBar.style.setProperty("--scroll-progress-scale", String(scale));
   }
-  document.body.classList.toggle("scrolled", window.scrollY > 360);
+  backToTopButton?.classList.toggle("is-visible", window.scrollY > 360);
 }
 
 let scrollUiFrame = 0;
-let scrollIdleTimer = 0;
 
 function syncScrollUi() {
   scrollUiFrame = 0;
@@ -358,9 +358,6 @@ function syncScrollUi() {
 }
 
 function scheduleScrollUi() {
-  document.body.classList.add("is-scrolling");
-  window.clearTimeout(scrollIdleTimer);
-  scrollIdleTimer = window.setTimeout(() => document.body.classList.remove("is-scrolling"), 140);
   if (scrollUiFrame) return;
   scrollUiFrame = window.requestAnimationFrame(syncScrollUi);
 }
@@ -368,16 +365,7 @@ function scheduleScrollUi() {
 window.addEventListener("scroll", scheduleScrollUi, { passive: true });
 syncScrollUi();
 
-if ("IntersectionObserver" in window) {
-  const scrollEffectObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      entry.target.dataset.scrollActive = String(entry.isIntersecting);
-    });
-  }, { rootMargin: "180px 0px", threshold: 0 });
-  document.querySelectorAll("main > section").forEach((section) => scrollEffectObserver.observe(section));
-}
-
-document.querySelector(".back-to-top")?.addEventListener("click", () => {
+backToTopButton?.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
