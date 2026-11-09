@@ -2,6 +2,9 @@ import qnaSeo from "../qna-seo-index.mjs";
 
 const BASE_URL = "https://www.mevakshei-panecha.co.il";
 const SHARE_IMAGE = `${BASE_URL}/assets/mevakshei-panecha-social-share-square-4k.jpg?v=20260907-2`;
+const WEBSITE_ID = `${BASE_URL}/#website`;
+const ORGANIZATION_ID = `${BASE_URL}/#organization`;
+const RABBI_ID = `${BASE_URL}/#rabbi-itay-ben-yosef`;
 
 function escapeHtml(value = "") {
   return String(value)
@@ -40,6 +43,14 @@ function contentParagraphs(value) {
     .join("");
 }
 
+function neighboringEntries(entries, entry, offsets) {
+  const index = entries.findIndex((item) => item.code === entry.code);
+  if (index < 0) return [];
+  return offsets
+    .map((offset) => entries[index + offset])
+    .filter(Boolean);
+}
+
 function structuredData(entry, canonicalUrl) {
   return JSON.stringify({
     "@context": "https://schema.org",
@@ -47,25 +58,67 @@ function structuredData(entry, canonicalUrl) {
       {
         "@type": "Article",
         "@id": `${canonicalUrl}#article`,
-        mainEntityOfPage: canonicalUrl,
+        mainEntityOfPage: { "@id": `${canonicalUrl}#webpage` },
         headline: entry.title || entry.question,
         description: descriptionFor(entry),
         articleBody: entry.answer || "",
         datePublished: entry.publishedAt || undefined,
+        dateModified: entry.publishedAt || undefined,
+        articleSection: entry.category || "שאלות ותשובות",
+        image: SHARE_IMAGE,
         inLanguage: "he",
-        author: {
-          "@type": "Person",
-          name: "הרב איתי בן יוסף",
-          url: `${BASE_URL}/about.html`
-        },
-        publisher: {
-          "@type": "Organization",
-          name: "מבקשי פניך",
-          url: `${BASE_URL}/`
+        isPartOf: { "@id": WEBSITE_ID },
+        author: { "@id": RABBI_ID },
+        publisher: { "@id": ORGANIZATION_ID }
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${canonicalUrl}#webpage`,
+        url: canonicalUrl,
+        name: entry.title || entry.question,
+        description: descriptionFor(entry),
+        inLanguage: "he",
+        isPartOf: { "@id": WEBSITE_ID },
+        about: [
+          { "@id": RABBI_ID },
+          { "@id": ORGANIZATION_ID }
+        ],
+        breadcrumb: { "@id": `${canonicalUrl}#breadcrumb` },
+        primaryImageOfPage: { "@type": "ImageObject", url: SHARE_IMAGE }
+      },
+      {
+        "@type": "Person",
+        "@id": RABBI_ID,
+        name: "הרב איתי בן יוסף",
+        honorificPrefix: "הרב",
+        url: `${BASE_URL}/about.html`,
+        worksFor: { "@id": ORGANIZATION_ID }
+      },
+      {
+        "@type": "Organization",
+        "@id": ORGANIZATION_ID,
+        name: "מבקשי פניך",
+        alternateName: ["תורת אבי", "בית הוראה ובית דין תורת אבי"],
+        url: `${BASE_URL}/`,
+        logo: {
+          "@type": "ImageObject",
+          url: `${BASE_URL}/assets/favicon-512.png?v=20260831-logo-1`,
+          width: 512,
+          height: 512
         }
       },
       {
+        "@type": "WebSite",
+        "@id": WEBSITE_ID,
+        url: `${BASE_URL}/`,
+        name: "מבקשי פניך",
+        alternateName: "תורת אבי",
+        inLanguage: "he",
+        publisher: { "@id": ORGANIZATION_ID }
+      },
+      {
         "@type": "BreadcrumbList",
+        "@id": `${canonicalUrl}#breadcrumb`,
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "מבקשי פניך", item: `${BASE_URL}/` },
           { "@type": "ListItem", position: 2, name: "שאלות ותשובות", item: `${BASE_URL}/qna.html` },
@@ -82,8 +135,15 @@ function page(entry) {
   const description = descriptionFor(entry);
   const archiveUrl = `/qna.html?question=${encodeURIComponent(entry.id)}`;
   const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(`${title}\n${canonicalUrl}`)}`;
-  const related = Object.values(qnaSeo.entries)
-    .filter((item) => item.code !== entry.code && item.category === entry.category)
+  const categoryEntries = Object.values(qnaSeo.entries)
+    .filter((item) => item.category === entry.category);
+  const topicEntries = Object.values(qnaSeo.entries)
+    .filter((item) => item.topic === entry.topic);
+  const related = [
+    ...neighboringEntries(categoryEntries, entry, [-2, -1, 1, 2]),
+    ...neighboringEntries(topicEntries, entry, [-1, 1])
+  ]
+    .filter((item, index, items) => item.code !== entry.code && items.findIndex((candidate) => candidate.code === item.code) === index)
     .slice(0, 5);
   const relatedMarkup = related.length
     ? `<aside class="related" aria-labelledby="related-heading"><h2 id="related-heading">שאלות נוספות בנושא</h2><ul>${related.map((item) => `<li><a href="/q/${item.code}">${escapeHtml(item.title)}</a></li>`).join("")}</ul></aside>`
