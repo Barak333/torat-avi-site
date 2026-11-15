@@ -1,5 +1,5 @@
 window.weeklyQnaLatest = {
-  "id": "weekly-תתאה-גבר-2026-11-15-65fd5b2fcd",
+  "id": "weekly-להניח-תפילין-בלילה-2026-11-15-9439b24ea7",
   "publishedAt": "2026-11-15",
-  "title": "תתאה גבר"
+  "title": "להניח תפילין בלילה"
 };
