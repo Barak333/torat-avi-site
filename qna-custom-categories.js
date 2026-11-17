@@ -14,5 +14,9 @@ window.qnaCustomCategories = window.qnaCustomCategories || [
   {
     "id": "אורח-חיים-הלכות-יומיומית",
     "name": "אורח חיים - הלכות יומיומית"
+  },
+  {
+    "id": "יורה-דעה-הלכות-כלליות",
+    "name": "יורה דעה הלכות כלליות"
   }
 ];
