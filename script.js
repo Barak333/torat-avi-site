@@ -1725,9 +1725,21 @@ function renderAlonimQna() {
       const meta = document.createElement("span");
       meta.className = "alonim-question-number";
       meta.textContent = String(runningQuestionNumber);
+      const titleGroup = document.createElement("div");
+      titleGroup.className = "alonim-title-group";
       const title = document.createElement("strong");
       title.textContent = item.title || item.question || "שאלה";
-      button.append(meta, title);
+      const publishedAt = String(item.publishedAt || item.createdAt || "2026-06-25").slice(0, 10);
+      const published = document.createElement("time");
+      published.className = "alonim-published";
+      published.dateTime = publishedAt;
+      published.textContent = `פורסם באתר: ${new Intl.DateTimeFormat("he-IL", {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      }).format(new Date(`${publishedAt}T12:00:00`))}`;
+      titleGroup.append(title, published);
+      button.append(meta, titleGroup);
       const body = document.createElement("div");
       body.className = "alonim-body";
       body.hidden = true;

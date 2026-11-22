@@ -61,3 +61,86 @@
 .qna-page :is(.back-to-top, .install-app-button) {
   transition: none !important;
 }
+
+/* Publication date remains visible while comprehensive Q&A drawers are closed. */
+.alonim-qna-section .alonim-title-group {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+  align-content: center;
+}
+
+.alonim-qna-section .alonim-published {
+  color: #65786f;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.alonim-qna-section .alonim-date-sort {
+  width: min(720px, calc(100% - 32px));
+  margin: 4px auto 22px;
+  padding: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid rgba(184, 158, 20, 0.28);
+  border-radius: 10px;
+  background: rgba(255, 253, 245, 0.92);
+  box-shadow: 0 8px 22px rgba(0, 48, 24, 0.07);
+}
+
+.alonim-qna-section .alonim-date-sort > strong {
+  margin-inline-end: 5px;
+  color: #29483d;
+  font-size: 0.9rem;
+}
+
+.alonim-qna-section .alonim-date-sort button {
+  min-height: 38px;
+  padding: 7px 15px;
+  border: 1px solid rgba(0, 48, 24, 0.18);
+  border-radius: 8px;
+  color: #153d2f;
+  background: #fff;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.alonim-qna-section .alonim-date-sort button:is(:hover, :focus-visible) {
+  border-color: rgba(184, 158, 20, 0.78);
+  box-shadow: 0 7px 16px rgba(0, 48, 24, 0.1);
+}
+
+.alonim-qna-section .alonim-date-sort button.is-active {
+  color: #fffdf0;
+  border-color: rgba(224, 200, 91, 0.72);
+  background: linear-gradient(180deg, #075432, #002b18);
+}
+
+@media (max-width: 680px) {
+  .alonim-qna-section .alonim-published {
+    font-size: 0.74rem;
+  }
+
+  .alonim-qna-section .alonim-date-sort {
+    width: calc(100% - 20px);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .alonim-qna-section .alonim-date-sort > strong {
+    grid-column: 1 / -1;
+    margin: 0;
+    text-align: center;
+  }
+
+  .alonim-qna-section .alonim-date-sort button {
+    width: 100%;
+    padding-inline: 8px;
+  }
+}
