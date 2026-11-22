@@ -4010,11 +4010,7 @@ function initTimedVisitorPromos() {
     }
   };
 
-  const visitState = window.toratAviVisitState;
-  if (forcePreview || (
-    Number.isFinite(visitState?.inactivityMs) &&
-    visitState.inactivityMs >= visitState.timeoutMs
-  )) {
+  if (forcePreview) {
     state = {};
     saveState();
   }
@@ -4168,6 +4164,44 @@ function initTimedVisitorPromos() {
     }, 300);
   };
 
+  const closePromoImmediately = () => {
+    window.clearTimeout(timerId);
+
+    if (!modal.hidden && activePromo) {
+      const closedAt = Date.now();
+      if (activePromo === "first" && !state.firstClosedAt) {
+        state.firstClosedAt = closedAt;
+        state.secondDueAt = closedAt + SECOND_DELAY_MS;
+      } else if (activePromo === "second" && !state.secondClosedAt) {
+        state.secondClosedAt = closedAt;
+      }
+      saveState();
+    }
+
+    modal.classList.remove("is-visible");
+    modal.hidden = true;
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("visitor-promo-open");
+    unlockPage();
+    activePromo = "";
+    closing = false;
+  };
+
+  const resumePromosAfterVisibility = () => {
+    closePromoImmediately();
+    syncState();
+
+    // Count popup delays only while the page is actually visible. This prevents
+    // a background tab from returning with a backdrop already covering it.
+    if (!state.firstShownAt && !state.firstClosedAt) {
+      state.firstDueAt = Date.now() + FIRST_DELAY_MS;
+    } else if (state.firstClosedAt && !state.secondShownAt && !state.secondClosedAt) {
+      state.secondDueAt = Date.now() + SECOND_DELAY_MS;
+    }
+    saveState();
+    scheduleNextPromo();
+  };
+
   modal.querySelectorAll("[data-visitor-promo-close]").forEach((element) => {
     element.addEventListener("click", closePromo);
   });
@@ -4178,21 +4212,19 @@ function initTimedVisitorPromos() {
     closePromo();
   });
 
-  window.addEventListener("pagehide", () => {
-    if (activePromo !== "first" || state.firstClosedAt) return;
-    state.firstClosedAt = Date.now();
-    state.secondDueAt = state.firstClosedAt + SECOND_DELAY_MS;
-    saveState();
+  window.addEventListener("pagehide", closePromoImmediately);
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted) resumePromosAfterVisibility();
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      closePromoImmediately();
+    } else {
+      resumePromosAfterVisibility();
+    }
   });
 
   window.addEventListener("toratavi:rabbi-opinion-resolved", scheduleNextPromo);
-  window.addEventListener("toratavi:returned-after-inactivity", (event) => {
-    if (activePromo || !Number.isFinite(event.detail?.inactivityMs)) return;
-    window.clearTimeout(timerId);
-    state = { firstDueAt: Date.now() + FIRST_DELAY_MS };
-    saveState();
-    scheduleNextPromo();
-  });
   scheduleNextPromo();
 }
 
