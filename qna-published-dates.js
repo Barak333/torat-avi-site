@@ -26,7 +26,7 @@
     if (!search || !archive || search.dataset.flexibleHebrewSearch === "true") return;
     search.dataset.flexibleHebrewSearch = "true";
 
-    search.addEventListener("input", () => {
+    const applyFlexibleSearch = () => {
       const query = normalizeHebrewSearch(search.value);
       if (!query) return;
 
@@ -47,7 +47,10 @@
 
       archive.hidden = !archiveHasMatches;
       archive.classList.toggle("is-active", archiveHasMatches);
-    });
+    };
+
+    search.addEventListener("input", applyFlexibleSearch);
+    if (search.value.trim()) applyFlexibleSearch();
   }
 
   function itemMap() {

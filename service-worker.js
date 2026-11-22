@@ -1,4 +1,4 @@
-const CACHE_NAME = "mevakshei-panecha-pwa-v23-qna-live-sync";
+const CACHE_NAME = "mevakshei-panecha-pwa-v24-qna-flexible-search";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -11,7 +11,7 @@ const CORE_ASSETS = [
   "./site.min.css?v=20261027-lazy-warmup-4",
   "./qna-performance.css?v=20261122-date-sort-2",
   "./qna-performance.js?v=20261027-qna-dom-1",
-  "./qna-published-dates.js?v=20261122-flexible-search-1",
+  "./qna-published-dates.js?v=20261122-flexible-search-2",
   "./home.min.css?v=20261018-scroll-stability-1",
   "./script.min.js?v=20261122-published-dates-1",
   "./home-gate-intro.min.js?v=20261018-scroll-stability-1",
