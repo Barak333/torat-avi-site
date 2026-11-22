@@ -80,11 +80,6 @@ document.addEventListener("visibilitychange", () => {
   };
   markSiteActivity();
 
-  if (inactivityMs >= siteReturnTimeout) {
-    window.dispatchEvent(new CustomEvent("toratavi:returned-after-inactivity", {
-      detail: { inactivityMs }
-    }));
-  }
 });
 
 function numberToHebrewLetters(number, { omitThousands = false } = {}) {

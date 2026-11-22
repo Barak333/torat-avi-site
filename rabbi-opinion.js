@@ -198,7 +198,4 @@
 
   window.addEventListener("load", openAfterGate, { once: true });
 
-  window.addEventListener("toratavi:returned-after-inactivity", () => {
-    open();
-  });
 })();

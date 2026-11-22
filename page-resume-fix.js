@@ -53,6 +53,23 @@
     });
   }
 
+  function clearReopenedRabbiOpinion() {
+    const modal = document.querySelector("[data-rabbi-opinion-modal]");
+    const dock = document.querySelector("[data-rabbi-opinion-dock]");
+    const wasAlreadyRead = dock?.classList.contains("is-settled");
+    if (!modal || !wasAlreadyRead) return;
+
+    modal.hidden = true;
+    modal.setAttribute("aria-hidden", "true");
+    modal.dataset.opinionResolved = "true";
+    modal.classList.remove("is-visible", "is-reading", "is-unlocked", "is-docking");
+    document.body.classList.remove("rabbi-opinion-open");
+    document.documentElement.classList.remove("rabbi-opinion-pending");
+    Array.from(document.body.children).forEach((element) => {
+      if (element !== modal && element.inert) element.inert = false;
+    });
+  }
+
   function armPromoWatchdog() {
     window.clearTimeout(promoWatchdogId);
     window.clearTimeout(promoRenderCheckId);
@@ -82,8 +99,12 @@
     // suspended page becomes visible. Clear once now and again across that
     // short restoration window so an old popup cannot put the blur back.
     clearStalePromo();
+    clearReopenedRabbiOpinion();
     [50, 180, 500, 1200, 2500].forEach((delay) => {
-      window.setTimeout(clearStalePromo, delay);
+      window.setTimeout(() => {
+        clearStalePromo();
+        clearReopenedRabbiOpinion();
+      }, delay);
     });
   }
 
@@ -93,6 +114,16 @@
   });
   window.addEventListener("pagehide", clearStalePromo);
   window.addEventListener("pageshow", () => window.requestAnimationFrame(settleAfterResume));
+
+  // The rabbi opinion is intentionally shown only on the initial visit. Older
+  // cached versions tried to reopen it after two minutes of inactivity, which
+  // could leave only its blurred backdrop visible. Stop that legacy event
+  // before the opinion script receives it.
+  window.addEventListener("toratavi:returned-after-inactivity", (event) => {
+    event.stopImmediatePropagation();
+    clearStalePromo();
+    clearReopenedRabbiOpinion();
+  });
 
   const promoObserver = new MutationObserver(armPromoWatchdog);
   promoObserver.observe(document.body, {
