@@ -4058,6 +4058,7 @@ function initTimedVisitorPromos() {
   const closeButton = modal.querySelector(".visitor-promo-close");
   let activePromo = "";
   let timerId = 0;
+  let autoCloseTimerId = 0;
   let previousFocus = null;
   let closing = false;
   let lockedElements = [];
@@ -4111,6 +4112,8 @@ function initTimedVisitorPromos() {
     window.requestAnimationFrame(() => {
       modal.classList.add("is-visible");
       closeButton.focus({ preventScroll: true });
+      window.clearTimeout(autoCloseTimerId);
+      autoCloseTimerId = window.setTimeout(closePromo, 12_000);
     });
   };
 
@@ -4139,6 +4142,7 @@ function initTimedVisitorPromos() {
 
   const closePromo = () => {
     if (modal.hidden || closing) return;
+    window.clearTimeout(autoCloseTimerId);
     closing = true;
     modal.classList.remove("is-visible");
 
@@ -4166,6 +4170,7 @@ function initTimedVisitorPromos() {
 
   const closePromoImmediately = () => {
     window.clearTimeout(timerId);
+    window.clearTimeout(autoCloseTimerId);
 
     if (!modal.hidden && activePromo) {
       const closedAt = Date.now();

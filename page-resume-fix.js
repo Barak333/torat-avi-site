@@ -2,6 +2,9 @@
   "use strict";
 
   const PROMO_STATE_KEY = "toratAviVisitorPromosV2";
+  const MAX_PROMO_OPEN_MS = 12_000;
+  let promoWatchdogId = 0;
+  let promoRenderCheckId = 0;
 
   function readPromoState() {
     try {
@@ -20,6 +23,8 @@
   }
 
   function clearStalePromo() {
+    window.clearTimeout(promoWatchdogId);
+    window.clearTimeout(promoRenderCheckId);
     const modal = document.querySelector(".visitor-promo-modal");
     if (!modal) return;
 
@@ -48,6 +53,30 @@
     });
   }
 
+  function armPromoWatchdog() {
+    window.clearTimeout(promoWatchdogId);
+    window.clearTimeout(promoRenderCheckId);
+
+    const modal = document.querySelector(".visitor-promo-modal");
+    if (!modal || modal.hidden || !modal.classList.contains("is-visible")) return;
+
+    // A visitor message must never cover the page indefinitely when no one is
+    // interacting with it. Close it automatically and reveal the exact same
+    // scroll position after a short, readable display period.
+    promoWatchdogId = window.setTimeout(clearStalePromo, MAX_PROMO_OPEN_MS);
+
+    // If a suspended or resource-constrained browser displays only the dark
+    // backdrop while the card/image failed to render, recover immediately.
+    promoRenderCheckId = window.setTimeout(() => {
+      const dialog = modal.querySelector(".visitor-promo-dialog");
+      const image = modal.querySelector(".visitor-promo-media img");
+      const dialogStyle = dialog ? window.getComputedStyle(dialog) : null;
+      const dialogVisible = dialog && dialogStyle && Number(dialogStyle.opacity) > 0.8;
+      const imageReady = image && image.complete && image.naturalWidth > 0;
+      if (!dialogVisible || !imageReady) clearStalePromo();
+    }, 1800);
+  }
+
   function settleAfterResume() {
     // Browsers can replay a throttled animation frame or timer just after a
     // suspended page becomes visible. Clear once now and again across that
@@ -64,4 +93,12 @@
   });
   window.addEventListener("pagehide", clearStalePromo);
   window.addEventListener("pageshow", () => window.requestAnimationFrame(settleAfterResume));
+
+  const promoObserver = new MutationObserver(armPromoWatchdog);
+  promoObserver.observe(document.body, {
+    subtree: true,
+    attributes: true,
+    attributeFilter: ["class", "hidden"]
+  });
+  armPromoWatchdog();
 })();
